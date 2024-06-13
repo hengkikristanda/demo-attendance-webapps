@@ -30,7 +30,13 @@ module.exports = {
 				tertiary: "#ffc300",
 				danger: "#ffd60a",
 			},
+			maxWidth: {
+				"1/3": "33%",
+				10: "10px",
+				1920: "1920px",
+			},
 			height: {
+				400: "25rem",
 				480: "30rem",
 				640: "40rem",
 				768: "48rem",

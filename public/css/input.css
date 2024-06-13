@@ -388,6 +388,14 @@ div::-webkit-scrollbar-thumb:hover {
 	.text-slater {
 		@apply text-slate-700;
 	}
+
+	.facilities-container {
+		@apply flex flex-col;
+	}
+
+	.facilities-container .tabs {
+		@apply flex;
+	}
 }
 /* 
 .profile-cards {
@@ -464,8 +472,9 @@ div::-webkit-scrollbar-thumb:hover {
 
 .campus-vibe {
 	padding: 1rem 2rem;
-	max-height: 10rem;
-	max-width: 50rem;
+	/* max-height: 10rem; */
+	/* max-width: 50rem; */
+	width: 30rem;
 	position: relative;
 	/* right: 20rem; */
 	/* top: 20rem; */
@@ -474,4 +483,25 @@ div::-webkit-scrollbar-thumb:hover {
 	/* max-width: 38rem; */
 	/* color: #393939; */
 	/* font-weight: 500; */
+}
+
+.facilities-container > .tabs {
+	@apply flex gap-8 border-b border-secondary px-8 justify-between cursor-pointer my-8;
+}
+
+.tabs h3 {
+	@apply text-lg font-semibold border-b-8 border-white hover:border-tertiary;
+}
+
+.content {
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+.dropdown-menu {
+	display: none;
 }

@@ -14,6 +14,57 @@
 		<title><%= title %></title>
 	</head>
 	<body>
+		<nav class="bg-white border-b-2 border-secondary p-4 fixed top-0 w-full z-10">
+			<div class="container mx-auto flex justify-between items-center">
+				<div class="flex w-1/2 justify-start gap-4 items-center cursor-pointer">
+					<img src="/img/logo.png" class="max-h-12 object-contain" />
+					<h1 class="text-secondary text-xl font-bold w-full">
+						POLITEKNIK TRANSPORTASI DARAT INDONESIA
+					</h1>
+				</div>
+				<div class="flex justify-end gap-16 w-1/2">
+					<div class="relative dropdown">
+						<a href="#" class="text-secondary font-semibold hover:text-tertiary"><h4 class="bi bi-translate"></h4></a>
+						<div
+							class="dropdown-menu absolute hidden bg-white text-black mt-2 rounded-lg shadow-lg w-72">
+							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Bahasa Indonesia</a>
+							<a href="#" class="block px-4 py-2 hover:bg-gray-200">English</a>
+						</div>
+					</div>
+					<div class="relative">
+						<a href="#" class="text-secondary font-semibold hover:text-tertiary">News and Events</a>
+					</div>
+					<div class="relative dropdown">
+						<a href="#" class="text-secondary font-semibold hover:text-tertiary">Facilities</a>
+						<div class="dropdown-menu absolute bg-white text-black mt-2 rounded-lg shadow-lg">
+							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Campus</a>
+							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Hall</a>
+							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Sports</a>
+							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Canteen</a>
+							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Dorms</a>
+						</div>
+					</div>
+					<div class="relative dropdown">
+						<a href="#" class="text-secondary font-semibold hover:text-tertiary">Academic</a>
+						<div
+							class="dropdown-menu absolute hidden bg-white text-black mt-2 rounded-lg shadow-lg">
+							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Undergraduate</a>
+							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Scholarship</a>
+						</div>
+					</div>
+					<div class="relative dropdown">
+						<a href="#" class="text-secondary font-semibold hover:text-tertiary">About Us</a>
+						<div
+							class="dropdown-menu absolute hidden bg-white text-black mt-2 rounded-lg shadow-lg">
+							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Alumni</a>
+							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Locations</a>
+							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Founder</a>
+							<a href="#" class="block px-4 py-2 hover:bg-gray-200">History</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
 		<div class="flex flex-col items-center hidden">
 			<div class="min-w-xs max-w-md w-full my-10">
 				<form
@@ -53,7 +104,7 @@
 		</div>
 
 		<section id="campuses">
-			<div class="flex flex-col px-20">
+			<div class="flex flex-col px-20 mt-32">
 				<div class="flex gap-2">
 					<div class="bg-tertiary w-3"></div>
 					<div class="flex flex-col">
@@ -62,26 +113,126 @@
 					</div>
 				</div>
 				<p class="px-2 py-8">
-					Explore our vibrant campus, featuring state-of-the-art buildings, exceptional
-					facilities, and dedicated faculty members committed to providing a dynamic and
-					supportive learning environment. Discover the resources and opportunities that make
-					our university a thriving community for academic and personal growth.
+					Explore our vibrant campus, featuring state-of-the-art buildings, exceptional facilities,
+					and dedicated faculty members committed to providing a dynamic and supportive learning
+					environment. Discover the resources and opportunities that make our university a thriving
+					community for academic and personal growth.
 				</p>
-				<div class="flex justify-center">
-					<div class="w-3/4">
-						<img src="/img/our_campus.jpg" class="w-full" />
+				<div class="flex justify-center w-[50rem] mx-auto">
+					<img src="/img/our_campus.jpg" class="w-full" />
+				</div>
+				<div class="flex campus-vibe">
+					<h1 class="text-gray-700 bi bi-quote"></h1>
+					<div class="flex flex-col items-start text-gray-700 pl-4">
+						<p class="font-semibold uppercase py-4">
+							Education is the most powerful weapon which you can use to change the world.
+						</p>
+						<p class="text-secondary font-bold">- Nelson Mandela</p>
+					</div>
+					<h1 class="text-gray-700 bi bi-quote"></h1>
+				</div>
+			</div>
+		</section>
+
+		<section id="facilities">
+			<div class="flex flex-col px-20">
+				<div class="flex gap-2">
+					<div class="bg-tertiary w-3"></div>
+					<h1 class="font-semibold text-primary">FACILITIES</h1>
+				</div>
+				<div class="flex flex-col sm:flex-row gap-12 py-4">
+					<div class="flex flex-col w-3/4 gap-2">
+						<h3 class="pr-20">Our facilities offer advanced resources for every student.</h3>
 					</div>
 				</div>
-				<div class="campus-vibe">
-					<div class="flex">
-						<h1 class="text-gray-700 bi bi-quote"></h1>
-						<div class="flex flex-col items-start text-gray-700 pl-4">
-							<p class="font-semibold uppercase py-4">
-								Education is the most powerful weapon which you can use to change the world.
-							</p>
-							<p class="text-secondary font-bold">- Nelson Mandela</p>
+				<div class="facilities-container">
+					<div class="tabs">
+						<h3 class="tabs-facil" id="labs">LABS, SPORTS, LIBRARY</h3>
+						<h3 class="tabs-facil" id="cafe">CAFETERIA, COLLEGE CANTEEN</h3>
+						<h3 class="tabs-facil" id="inte">ART AND MUSIC STUDIO</h3>
+						<h3 class="tabs-facil" id="dorm">DORMITORY</h3>
+					</div>
+					<div id="facil-lab" class="content">
+						<div class="flex justify-between gap-8">
+							<div class="w-1/2 h-96">
+								<img src="/img/sports_facilities.jpg" class="h-full w-full object-cover" />
+							</div>
+							<div class="flex flex-col w-1/2 relative gap-4">
+								<p class="border-l-8 border-tertiary pl-4 text-justify">
+									<span class="text-3xl font-bold">Our campus</span> features advanced laboratories
+									that provide students with hands-on experience in various scientific fields,
+									modern sports facilities that cater to a wide range of athletic activities, and a
+									comprehensive library stocked with an extensive collection of books, journals, and
+									digital resources. These amenities are designed to support both academic and
+									extracurricular pursuits, fostering a well-rounded educational experience. Our
+									labs are equipped with cutting-edge technology, our sports facilities promote
+									physical fitness and teamwork, and our library offers a quiet and resourceful
+									environment for study and research, ensuring students have access to the best
+									resources available.
+								</p>
+							</div>
 						</div>
-						<h1 class="text-gray-700 bi bi-quote"></h1>
+					</div>
+					<div id="facil-cafe" class="content hidden">
+						<div class="flex justify-between gap-8">
+							<div class="w-1/2 h-96">
+								<img src="/img/cafe_facilities.jpg" class="h-full w-full object-cover" />
+							</div>
+							<div class="flex flex-col w-1/2 relative gap-4">
+								<p class="border-l-8 border-tertiary pl-4 text-justify">
+									<span class="text-3xl font-bold">Our college</span> cafeteria and canteen offer a
+									diverse array of nutritious and delicious meal options, catering to various
+									dietary preferences and needs. With a focus on providing a comfortable and
+									inviting dining environment, students can enjoy freshly prepared dishes ranging
+									from local specialties to international cuisines. The canteen is designed to be a
+									social hub where students can relax, study, and interact with peers between
+									classes. Emphasizing quality and affordability, our food services ensure that
+									every meal is both satisfying and healthy, contributing to the overall well-being
+									and academic success of our student community.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div id="facil-info" class="content hidden">
+						<div class="flex justify-between gap-8">
+							<div class="w-1/2 h-96">
+								<img src="/img/art_music_facilities.jpg" class="h-full w-full object-cover" />
+							</div>
+							<div class="flex flex-col w-1/2 relative gap-4">
+								<p class="border-l-8 border-tertiary pl-4 text-justify">
+									<span class="text-3xl font-bold">Art and music studios</span> are designed to
+									inspire creativity and foster artistic talent among students. Equipped with the
+									latest tools and technology, these studios provide a conducive environment for
+									both individual practice and collaborative projects. The art studio offers a
+									variety of materials and spaces for drawing, painting, and sculpture, while the
+									music studio features soundproof rooms, advanced recording equipment, and a range
+									of musical instruments. These facilities are dedicated to supporting the artistic
+									pursuits of our students, allowing them to explore their passions, develop their
+									skills, and express their creativity freely.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div id="facil-dorm" class="content hidden">
+						<div class="flex justify-between gap-8">
+							<div class="w-1/2 h-96">
+								<img src="/img/dorm_facilities.jpg" class="h-full w-full object-cover" />
+							</div>
+							<div class="flex flex-col w-1/2 relative gap-4">
+								<p class="border-l-8 border-tertiary pl-4 text-justify">
+									<span class="text-3xl font-bold">The dormitory</span> offers a comfortable and
+									secure living environment, providing students with modern amenities and a
+									supportive community atmosphere. Each room is thoughtfully designed to ensure a
+									balance of privacy and social interaction, featuring cozy furnishings, ample
+									storage, and study spaces. Common areas, such as lounges, kitchens, and
+									recreational rooms, foster a sense of community and encourage collaborative
+									activities among residents. With 24/7 security and dedicated residential staff,
+									the dormitory ensures a safe and nurturing environment, allowing students to focus
+									on their academic and personal growth while enjoying the convenience of on-campus
+									living.
+								</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -96,7 +247,7 @@
 				<div class="grid grid-rows-1 grid-cols-1 md:grid-cols-3 gap-6 py-4">
 					<a href="#" class="profile-card">
 						<div class="left-side">
-							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+							<img src="/img/lecturers/pexels-italo-melo-881954-2379004.jpg" alt="Profile Photo" />
 						</div>
 						<div class="right-side">
 							<h3>John Doe</h3>
@@ -109,13 +260,13 @@
 							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
 						</div>
 						<div class="right-side">
-							<h3>Saga John</h3>
+							<h3>Mary Ane</h3>
 							<p>Architecture</p>
 						</div>
 					</a>
 					<a href="#" class="profile-card">
 						<div class="left-side">
-							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+							<img src="/img/lecturers/images_1u0doGLgMmUjxVtJpiN3.png" alt="Profile Photo" />
 						</div>
 						<div class="right-side">
 							<h3>Olive Brown</h3>
@@ -124,58 +275,57 @@
 					</a>
 					<a href="#" class="profile-card">
 						<div class="left-side">
-							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+							<img src="/img/lecturers/images_rEtsplTEyhhipKtdWioi.png" alt="Profile Photo" />
 						</div>
 						<div class="right-side">
-							<h3>John Doe</h3>
+							<h3>Alex Murphy</h3>
 							<p>Software Developer</p>
-							<p>Lecture</p>
+							<p>Economics</p>
 						</div>
 					</a>
 					<a href="#" class="profile-card">
 						<div class="left-side">
-							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+							<img src="/img/lecturers/images_uIqtqTwiWXtniIx6bJCA.png" alt="Profile Photo" />
 						</div>
 						<div class="right-side">
-							<h3>Saga John</h3>
-							<p>Architecture</p>
+							<h3>Kelly Tan</h3>
+							<p>History</p>
 						</div>
 					</a>
 					<a href="#" class="profile-card">
 						<div class="left-side">
-							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+							<img src="/img/lecturers/images_C1f83fRvBi4JA7oMWMuE.png" alt="Profile Photo" />
 						</div>
 						<div class="right-side">
-							<h3>Olive Brown</h3>
-							<p>Management</p>
+							<h3>Alexandra Josephine</h3>
+							<p>Computer 101</p>
 						</div>
 					</a>
 					<a href="#" class="profile-card">
 						<div class="left-side">
-							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+							<img src="/img/lecturers/pexels-nkhajotia-1516680.jpg" alt="Profile Photo" />
 						</div>
 						<div class="right-side">
-							<h3>John Doe</h3>
-							<p>Software Developer</p>
-							<p>Lecture</p>
+							<h3>David John</h3>
+							<p>Business and Management</p>
 						</div>
 					</a>
 					<a href="#" class="profile-card">
 						<div class="left-side">
-							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+							<img src="/img/lecturers/images_phafv2KomxR7Q7PiD9Lr.png" alt="Profile Photo" />
 						</div>
 						<div class="right-side">
-							<h3>Saga John</h3>
-							<p>Architecture</p>
+							<h3>Kiera</h3>
+							<p>Basic Engineering</p>
 						</div>
 					</a>
 					<a href="#" class="profile-card">
 						<div class="left-side">
-							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+							<img src="/img/lecturers/images_ELfYaS9ot5QH8p5CYNJK.png" alt="Profile Photo" />
 						</div>
 						<div class="right-side">
-							<h3>Olive Brown</h3>
-							<p>Management</p>
+							<h3>Michelle Agustine</h3>
+							<p>Medical Doctor</p>
 						</div>
 					</a>
 				</div>
@@ -201,9 +351,8 @@
 							<h1 class="bi bi-chat-dots cursor-pointer text-primary"></h1>
 						</div>
 					</div>
-					<div class="w-96 overflow-hidden">
-						<img src="/img/hand_holding_smartphone.jpg" class="image-abs" />
-						<div class="box-abs"></div>
+					<div class="w-96">
+						<img src="/img/hand_holding_smartphone.jpg" />
 					</div>
 				</div>
 			</div>
@@ -259,4 +408,29 @@
 			</div>
 		</footer>
 	</body>
+	<script>
+		const section = document.getElementsByClassName("tabs-facil");
+
+		for (let n = 0; n < section.length; n++) {
+			section[n].addEventListener("mouseup", (event) => {
+				const targetSection = document.getElementsByClassName("content");
+				for (let x = 0; x < targetSection.length; x++) {
+					if (!targetSection[x].classList.contains("hidden")) {
+						targetSection[x].classList.add("hidden");
+					}
+					if (x == n) {
+						targetSection[x].classList.remove("hidden");
+					}
+				}
+
+				for (let x = 0; x < section.length; x++) {
+					if (section[x].classList.contains("text-tertiary")) {
+						section[x].classList.remove("text-tertiary");
+					}
+				}
+
+				event.target.classList.add("text-tertiary");
+			});
+		}
+	</script>
 </html>
