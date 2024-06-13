@@ -1,0 +1,26 @@
+const express = require("express");
+const app = express();
+const dotenv = require("dotenv");
+const cookieParser = require('cookie-parser');
+
+dotenv.config();
+
+const port = process.env.PORT || 3000;
+
+const router = require('./src/routes/router');
+
+app.use(cookieParser());
+app.use(router);
+
+// Set the view engine to ejs
+app.set("view engine", "ejs");
+
+// Set the directory for the EJS templates
+app.set("views", "./src/views");
+
+// Middleware to serve static files (e.g., CSS, JavaScript, images)
+app.use(express.static("public"));
+
+app.listen(port, () => {
+	console.log(`Server is running on port ${port}`);
+});

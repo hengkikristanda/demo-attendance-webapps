@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iLimits CMS - <%= title %></title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <div class="relative min-h-screen md:flex justify-center">
+
+    <%- include('./components/sidebar') %>
+
+    <!-- Content -->
+    <div class="container main-stage">
+      <div class="flex justify-between items-center px-2">
+        <h1><%= title %></h1>
+        <%- include('./components/navbar') %>
+      </div>
+      <div class="inner-container">
+        <div class="w-full sm:w-3/5 container-card">
+          <h2>Live Attendance</h2>
+          <form class="forms" method="POST" action="/">
+            <div>
+              <div id="clock" class="font-bold flex justify-center">
+                <h2 id="hour">--</h2>
+                <h2 id="colon" class="text-white">:</h2>
+                <h2 id="minute">--</h2>
+              </div>
+              <p id="date" class="text-center">Loading date...</p>
+              <label for="firstName">
+                Catatan
+              </label>
+              <textarea>Absen kehadiran</textarea>
+            </div>            
+            <div class="action-button gap-4">
+              <button id="clockedIn" class="btn w-1/2" type="button">Clock In</button>
+              <button id="clockedOut" class="btn disabled w-1/2" type="button">Clock Out</button>
+            </div>
+            <div id="location-result"></div>
+          </form>
+          <div class="badge danger hidden">
+            <ol>
+              <li>Invalid Input</li>
+              <li>Invalid Input</li>
+            </ol>
+          </div>
+        </div>
+        <div class="w-full sm:w-2/5 container-card">
+          <h2>Daftar Rekan yang cuti hari ini</h2>
+          <form class="forms">
+            <div class="flex flex-col gap-4">
+              <div>
+                <h6 class="font-semibold">12 Mei 2024</h6>
+                <h6>Muhlifain Firgana - Annual Leave</h6>
+              </div>
+              <div>
+                <h6 class="font-semibold">12 Mei 2024</h6>
+                <h6>Muhlifain Firgana - Sick Leave</h6>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <%- include('./components/footer') %>
+    </div>
+  </div>
+
+  <script src="/js/CommonUtils.js"></script>
+  <script src="/js/absensi.js"></script>
+</body>
+
+</html>

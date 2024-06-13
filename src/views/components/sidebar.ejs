@@ -1,0 +1,56 @@
+<!-- Mobile menu bar -->
+<!-- <div class="bg-gray-800 text-gray-100 flex justify-between md:hidden"> -->
+<div class="flex justify-between items-center md:hidden bg-slate-200 border-b border-slate-300">
+
+  <div class="flex">
+    <!-- Mobile menu button -->
+    <button class="mobile-menu-button p-4 focus:outline-none focus:bg-gray-700">
+      <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+      </svg>
+    </button>
+
+    <!-- Logo -->
+    <!-- <a href="#" class="flex p-4 text-white font-bold">iLimits - CMS</a> -->
+    <a href="#" class="flex p-4 text-slate-700 font-bold hover:text-primary">STTD</a>
+  </div>
+
+  <div class="navbar menu-mobile">
+    <h5 class="bi bi-bell cursor-pointer py-1 px-2 rounded-full"></h5>
+    <div
+      class="cursor-pointer hover:bg-primary hover:text-white max-w-10 overflow-hidden rounded-full">
+      <img src="/img/avatar/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="" />
+    </div>
+  </div>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar z-50 -translate-x-full md:translate-x-0 ">
+  <!-- Logo -->
+  <a href="#" class="logo">
+    <!-- <svg class="w-8 h-8" viewBox="0 0 20 20" fill="currentColor"> -->
+    <!-- SVG content here -->
+    <!-- </svg> -->
+    <h3 class="font-extrabold">STTD</h3>
+    <p>Absensi</p>
+  </a>
+  <!-- Navigation -->
+  <nav>
+    <% sidebar.forEach(function(sideBarMenu) { 
+  
+    %>
+    <p class="group-menu"><%= sideBarMenu.groupMenu %></p>
+    <%
+      sideBarMenu.item.forEach(function(item) {                 
+      %>
+    <a href=<%= item.href %> class="<%= item.id.toLowerCase() === id.toLowerCase() ? 'active' : 'inactive' %>">
+      <h5 class="bi <%= item.bsClass %>"></h5>
+      <%= item.label %>
+    </a>
+    <% }); %>
+  <% }); %>
+  </nav>
+</div>
+
+<!-- Overlay to close sidebar on mobile -->
+<div class="overlay absolute inset-0 bg-black bg-opacity-50 hidden"></div>

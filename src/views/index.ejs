@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/x-icon" href="/img/icon.png" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+		<link rel="stylesheet" href="/css/style.css" />
+		<title><%= title %></title>
+	</head>
+	<body>
+		<div class="flex flex-col items-center hidden">
+			<div class="min-w-xs max-w-md w-full my-10">
+				<form
+					id="loginForm"
+					action="/login"
+					method="POST"
+					class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+					<div class="flex flex-col justify-center py-12">
+						<img src="/img/logo.jpg" class="w-1/2 mx-auto" />
+						<h6 class="mx-auto text-primary font-semibold">Attendance Login</h6>
+					</div>
+					<div class="mb-4">
+						<label for="email">Email</label>
+						<input
+							id="email"
+							name="email"
+							type="email"
+							placeholder="Enter your email address"
+							required />
+					</div>
+					<div class="mb-6">
+						<label for="password">Password</label>
+						<input
+							id="password"
+							name="password"
+							type="password"
+							placeholder="Enter your password"
+							autocomplete="off"
+							required />
+					</div>
+					<div class="flex items-center justify-between mb-6">
+						<button id="signInButton" class="btn block" type="submit">Sign In</button>
+					</div>
+					<a class="flex justify-center text-link" href="#">Forget Password</a>
+				</form>
+			</div>
+		</div>
+
+		<section id="campuses">
+			<div class="flex flex-col px-20">
+				<div class="flex gap-2">
+					<div class="bg-tertiary w-3"></div>
+					<div class="flex flex-col">
+						<h3 class="font-semibold text-primary">OUR</h3>
+						<h1 class="text-6xl font-semibold text-primary">CAMPUS</h1>
+					</div>
+				</div>
+				<p class="px-2 py-8">
+					Explore our vibrant campus, featuring state-of-the-art buildings, exceptional
+					facilities, and dedicated faculty members committed to providing a dynamic and
+					supportive learning environment. Discover the resources and opportunities that make
+					our university a thriving community for academic and personal growth.
+				</p>
+				<div class="flex justify-center">
+					<div class="w-3/4">
+						<img src="/img/our_campus.jpg" class="w-full" />
+					</div>
+				</div>
+				<div class="campus-vibe">
+					<div class="flex">
+						<h1 class="text-gray-700 bi bi-quote"></h1>
+						<div class="flex flex-col items-start text-gray-700 pl-4">
+							<p class="font-semibold uppercase py-4">
+								Education is the most powerful weapon which you can use to change the world.
+							</p>
+							<p class="text-secondary font-bold">- Nelson Mandela</p>
+						</div>
+						<h1 class="text-gray-700 bi bi-quote"></h1>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="lecturers">
+			<div class="flex flex-col px-20">
+				<div class="flex gap-2">
+					<div class="bg-tertiary w-3"></div>
+					<h1 class="font-semibold text-primary">LECTURERS</h1>
+				</div>
+				<div class="grid grid-rows-1 grid-cols-1 md:grid-cols-3 gap-6 py-4">
+					<a href="#" class="profile-card">
+						<div class="left-side">
+							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+						</div>
+						<div class="right-side">
+							<h3>John Doe</h3>
+							<p>Software Developer</p>
+							<p>Lecture</p>
+						</div>
+					</a>
+					<a href="#" class="profile-card">
+						<div class="left-side">
+							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+						</div>
+						<div class="right-side">
+							<h3>Saga John</h3>
+							<p>Architecture</p>
+						</div>
+					</a>
+					<a href="#" class="profile-card">
+						<div class="left-side">
+							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+						</div>
+						<div class="right-side">
+							<h3>Olive Brown</h3>
+							<p>Management</p>
+						</div>
+					</a>
+					<a href="#" class="profile-card">
+						<div class="left-side">
+							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+						</div>
+						<div class="right-side">
+							<h3>John Doe</h3>
+							<p>Software Developer</p>
+							<p>Lecture</p>
+						</div>
+					</a>
+					<a href="#" class="profile-card">
+						<div class="left-side">
+							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+						</div>
+						<div class="right-side">
+							<h3>Saga John</h3>
+							<p>Architecture</p>
+						</div>
+					</a>
+					<a href="#" class="profile-card">
+						<div class="left-side">
+							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+						</div>
+						<div class="right-side">
+							<h3>Olive Brown</h3>
+							<p>Management</p>
+						</div>
+					</a>
+					<a href="#" class="profile-card">
+						<div class="left-side">
+							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+						</div>
+						<div class="right-side">
+							<h3>John Doe</h3>
+							<p>Software Developer</p>
+							<p>Lecture</p>
+						</div>
+					</a>
+					<a href="#" class="profile-card">
+						<div class="left-side">
+							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+						</div>
+						<div class="right-side">
+							<h3>Saga John</h3>
+							<p>Architecture</p>
+						</div>
+					</a>
+					<a href="#" class="profile-card">
+						<div class="left-side">
+							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+						</div>
+						<div class="right-side">
+							<h3>Olive Brown</h3>
+							<p>Management</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="contactUs">
+			<div class="flex flex-col px-20">
+				<div class="flex gap-2">
+					<div class="bg-tertiary w-3"></div>
+					<h1 class="font-semibold text-primary">TALK TO US</h1>
+				</div>
+				<div class="flex flex-col sm:flex-row gap-12 py-4">
+					<div class="flex flex-col w-3/4 gap-2">
+						<p class="pr-20">
+							Have questions about our university programs, admissions, or any other inquiries? Our
+							team is here to assist you. Feel free to reach out to us via email or WhatsApp, and
+							we'll provide the information and support you need. We're just a message away and
+							happy to help!
+						</p>
+						<div class="flex gap-8 items-center">
+							<h1 class="bi bi-whatsapp cursor-pointer text-primary"></h1>
+							<h1 class="bi bi-chat-dots cursor-pointer text-primary"></h1>
+						</div>
+					</div>
+					<div class="w-96 overflow-hidden">
+						<img src="/img/hand_holding_smartphone.jpg" class="image-abs" />
+						<div class="box-abs"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer>
+			<div class="flex flex-col bg-primary text-white px-20">
+				<div class="flex justify-between py-12">
+					<div class="flex flex-col text-start gap-2 w-2/5">
+						<h1 class="font-semibold">PTDI STTD</h1>
+						<p class="text-danger">Politeknik Transportasi Darat</p>
+						<div class="flex gap-3">
+							<h5 class="bi bi-facebook"></h5>
+							<h5 class="bi bi-instagram"></h5>
+							<h5 class="bi bi-youtube"></h5>
+							<h5 class="bi bi-linkedin"></h5>
+						</div>
+					</div>
+					<div class="flex justify-between w-3/5">
+						<div class="flex flex-col w-1/4 text-start gap-4">
+							<h6 class="font-semibold">PTDI STTD</h6>
+							<hr class="w-1/4 border-4 border-tertiary" />
+							<div class="flex flex-col text-sm gap-2">
+								<a href="#" class="text-sm">Lecturer</a>
+								<a href="#" class="text-sm">News</a>
+								<a href="#" class="text-sm">Events</a>
+								<a href="#" class="text-sm">Facilities</a>
+								<a href="#" class="text-sm">Academic Calendar</a>
+								<a href="#" class="text-sm">About Us</a>
+							</div>
+						</div>
+						<div class="flex flex-col w-1/4 text-start gap-4">
+							<h6 class="font-semibold">Contact Us</h6>
+							<hr class="w-1/4 border-4 border-tertiary" />
+							<div class="flex flex-col text-sm gap-2">
+								<p>(021) 8254640</p>
+								<p>info@ptdisttd.ac.id</p>
+								<p>humas@ptdisttd.ac.id</p>
+							</div>
+						</div>
+						<div class="flex flex-col w-1/4 text-start gap-4">
+							<h6 class="font-semibold">Locations</h6>
+							<hr class="w-1/4 border-4 border-tertiary" />
+							<div class="flex flex-col text-sm gap-1">
+								<p>Jalan Raya Setu No.89 Bekasi, 17520</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="text-xs pt-6 pb-12 border-t border-gray-500">
+					Copyright © 2024 by PTDI STTD. All Rights Reserved.
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

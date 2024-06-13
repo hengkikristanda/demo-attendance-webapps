@@ -1,0 +1,53 @@
+/** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require("tailwindcss/defaultTheme");
+
+module.exports = {
+	content: ["./src/**/*.{html,ejs}"],
+	theme: {
+		// screens: {
+		// 	sm: "480px",
+		// 	// => @media (min-width: 480px) { ... }
+
+		// 	md: "768px",
+		// 	// => @media (min-width: 768px) { ... }
+
+		// 	lg: "1024px",
+		// 	// => @media (min-width: 1024px) { ... }
+
+		// 	xl: "1280px",
+		// 	// => @media (min-width: 1280px) { ... }
+		// 	"2xl": "1536px",
+		// },
+		extend: {
+			fontFamily: {
+				sans: ['"Noto Sans"', ...defaultTheme.fontFamily.sans],
+				inter: ['"Inter"', "sans-serif"],
+			},
+			colors: {
+				primary: "#001d3d",
+				secondary: "#003566",
+				tertiary: "#ffc300",
+				danger: "#ffd60a",
+			},
+			height: {
+				480: "30rem",
+				640: "40rem",
+				768: "48rem",
+				800: "50rem",
+				960: "60rem",
+				1040: "65rem",
+				1200: "75rem",
+				1536: "96rem",
+				7680: "480rem",
+			},
+			width: {
+				480: "30rem",
+				200: "50rem",
+				1200: "75rem",
+				4800: "300rem",
+			},
+		},
+	},
+	plugins: [require("@tailwindcss/forms")],
+};
