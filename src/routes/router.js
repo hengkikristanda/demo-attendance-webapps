@@ -14,6 +14,12 @@ router.get("/", (req, res) => {
 	});
 });
 
+router.get("/login", (req, res) => {
+	res.render("login", {
+		title: "Attendance System - Login",
+	});
+});
+
 router.get("/home-employee", (req, res) => {
 	const sideBarMenu = siteMenuServices.getSideBarMenu();
 	res.render("homeEmployee", {

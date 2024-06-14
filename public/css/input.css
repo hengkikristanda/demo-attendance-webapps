@@ -505,3 +505,43 @@ div::-webkit-scrollbar-thumb:hover {
 .dropdown-menu {
 	display: none;
 }
+
+.slideshow-container {
+	position: relative;
+	max-width: 1536px;
+	max-height: 720px;
+	margin: auto;
+	overflow: hidden;
+  }
+  .slides {
+	display: flex;
+	transition: transform 0.5s ease-in-out;
+  }
+  .slide {
+	min-width: 100%;
+	box-sizing: border-box;
+  }
+  .slide img {
+	width: 100%;
+	display: block;
+  }
+  .nav-buttons {
+	position: absolute;
+	bottom: 10px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+  }
+  .nav-buttons button {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	border: none;
+	padding: 8px 16px;
+	cursor: pointer;
+	border-radius: 50%;
+	transition: background-color 0.3s;
+  }
+  .nav-buttons button:hover {
+	background-color: rgba(0, 0, 0, 0.7);
+  }

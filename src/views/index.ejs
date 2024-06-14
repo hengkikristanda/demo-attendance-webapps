@@ -24,7 +24,9 @@
 				</div>
 				<div class="flex justify-end gap-16 w-1/2">
 					<div class="relative dropdown">
-						<a href="#" class="text-secondary font-semibold hover:text-tertiary"><h4 class="bi bi-translate"></h4></a>
+						<a href="#" class="text-secondary font-semibold hover:text-tertiary"
+							><h4 class="bi bi-translate"></h4
+						></a>
 						<div
 							class="dropdown-menu absolute hidden bg-white text-black mt-2 rounded-lg shadow-lg w-72">
 							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Bahasa Indonesia</a>
@@ -53,14 +55,11 @@
 						</div>
 					</div>
 					<div class="relative dropdown">
-						<a href="#" class="text-secondary font-semibold hover:text-tertiary">About Us</a>
-						<div
-							class="dropdown-menu absolute hidden bg-white text-black mt-2 rounded-lg shadow-lg">
-							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Alumni</a>
-							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Locations</a>
-							<a href="#" class="block px-4 py-2 hover:bg-gray-200">Founder</a>
-							<a href="#" class="block px-4 py-2 hover:bg-gray-200">History</a>
-						</div>
+						<a
+							href="/login"
+							class="bg-secondary px-8 rounded-md py-2 text-white font-semibold hover:bg-tertiary"
+							>Login</a
+						>
 					</div>
 				</div>
 			</div>
@@ -103,310 +102,425 @@
 			</div>
 		</div>
 
-		<section id="campuses">
-			<div class="flex flex-col px-20 mt-32">
-				<div class="flex gap-2">
-					<div class="bg-tertiary w-3"></div>
-					<div class="flex flex-col">
-						<h3 class="font-semibold text-primary">OUR</h3>
-						<h1 class="text-6xl font-semibold text-primary">CAMPUS</h1>
+		<div class="max-w-screen-2xl mx-auto">
+			<section>
+				<div class="slideshow-container mt-32">
+					<div class="slides">
+						<div class="slide">
+							<img src="/img/sports_facilities.jpg" alt="Slide 1" />
+						</div>
+						<div class="slide">
+							<img src="/img/cafe_facilities.jpg" alt="Slide 2" />
+						</div>
+						<div class="slide">
+							<img src="/img/internet_facilities.jpg" alt="Slide 3" />
+						</div>
 					</div>
-				</div>
-				<p class="px-2 py-8">
-					Explore our vibrant campus, featuring state-of-the-art buildings, exceptional facilities,
-					and dedicated faculty members committed to providing a dynamic and supportive learning
-					environment. Discover the resources and opportunities that make our university a thriving
-					community for academic and personal growth.
-				</p>
-				<div class="flex justify-center w-[50rem] mx-auto">
-					<img src="/img/our_campus.jpg" class="w-full" />
-				</div>
-				<div class="flex campus-vibe">
-					<h1 class="text-gray-700 bi bi-quote"></h1>
-					<div class="flex flex-col items-start text-gray-700 pl-4">
-						<p class="font-semibold uppercase py-4">
-							Education is the most powerful weapon which you can use to change the world.
-						</p>
-						<p class="text-secondary font-bold">- Nelson Mandela</p>
-					</div>
-					<h1 class="text-gray-700 bi bi-quote"></h1>
-				</div>
-			</div>
-		</section>
 
-		<section id="facilities">
-			<div class="flex flex-col px-20">
-				<div class="flex gap-2">
-					<div class="bg-tertiary w-3"></div>
-					<h1 class="font-semibold text-primary">FACILITIES</h1>
-				</div>
-				<div class="flex flex-col sm:flex-row gap-12 py-4">
-					<div class="flex flex-col w-3/4 gap-2">
-						<h3 class="pr-20">Our facilities offer advanced resources for every student.</h3>
+					<!-- Navigation Buttons -->
+					<div class="nav-buttons">
+						<button onclick="showSlide(0)">1</button>
+						<button onclick="showSlide(1)">2</button>
+						<button onclick="showSlide(2)">3</button>
 					</div>
 				</div>
-				<div class="facilities-container">
-					<div class="tabs">
-						<h3 class="tabs-facil" id="labs">LABS, SPORTS, LIBRARY</h3>
-						<h3 class="tabs-facil" id="cafe">CAFETERIA, COLLEGE CANTEEN</h3>
-						<h3 class="tabs-facil" id="inte">ART AND MUSIC STUDIO</h3>
-						<h3 class="tabs-facil" id="dorm">DORMITORY</h3>
-					</div>
-					<div id="facil-lab" class="content">
-						<div class="flex justify-between gap-8">
-							<div class="w-1/2 h-96">
-								<img src="/img/sports_facilities.jpg" class="h-full w-full object-cover" />
-							</div>
-							<div class="flex flex-col w-1/2 relative gap-4">
-								<p class="border-l-8 border-tertiary pl-4 text-justify">
-									<span class="text-3xl font-bold">Our campus</span> features advanced laboratories
-									that provide students with hands-on experience in various scientific fields,
-									modern sports facilities that cater to a wide range of athletic activities, and a
-									comprehensive library stocked with an extensive collection of books, journals, and
-									digital resources. These amenities are designed to support both academic and
-									extracurricular pursuits, fostering a well-rounded educational experience. Our
-									labs are equipped with cutting-edge technology, our sports facilities promote
-									physical fitness and teamwork, and our library offers a quiet and resourceful
-									environment for study and research, ensuring students have access to the best
-									resources available.
-								</p>
-							</div>
-						</div>
-					</div>
-					<div id="facil-cafe" class="content hidden">
-						<div class="flex justify-between gap-8">
-							<div class="w-1/2 h-96">
-								<img src="/img/cafe_facilities.jpg" class="h-full w-full object-cover" />
-							</div>
-							<div class="flex flex-col w-1/2 relative gap-4">
-								<p class="border-l-8 border-tertiary pl-4 text-justify">
-									<span class="text-3xl font-bold">Our college</span> cafeteria and canteen offer a
-									diverse array of nutritious and delicious meal options, catering to various
-									dietary preferences and needs. With a focus on providing a comfortable and
-									inviting dining environment, students can enjoy freshly prepared dishes ranging
-									from local specialties to international cuisines. The canteen is designed to be a
-									social hub where students can relax, study, and interact with peers between
-									classes. Emphasizing quality and affordability, our food services ensure that
-									every meal is both satisfying and healthy, contributing to the overall well-being
-									and academic success of our student community.
-								</p>
-							</div>
-						</div>
-					</div>
-					<div id="facil-info" class="content hidden">
-						<div class="flex justify-between gap-8">
-							<div class="w-1/2 h-96">
-								<img src="/img/art_music_facilities.jpg" class="h-full w-full object-cover" />
-							</div>
-							<div class="flex flex-col w-1/2 relative gap-4">
-								<p class="border-l-8 border-tertiary pl-4 text-justify">
-									<span class="text-3xl font-bold">Art and music studios</span> are designed to
-									inspire creativity and foster artistic talent among students. Equipped with the
-									latest tools and technology, these studios provide a conducive environment for
-									both individual practice and collaborative projects. The art studio offers a
-									variety of materials and spaces for drawing, painting, and sculpture, while the
-									music studio features soundproof rooms, advanced recording equipment, and a range
-									of musical instruments. These facilities are dedicated to supporting the artistic
-									pursuits of our students, allowing them to explore their passions, develop their
-									skills, and express their creativity freely.
-								</p>
-							</div>
-						</div>
-					</div>
-					<div id="facil-dorm" class="content hidden">
-						<div class="flex justify-between gap-8">
-							<div class="w-1/2 h-96">
-								<img src="/img/dorm_facilities.jpg" class="h-full w-full object-cover" />
-							</div>
-							<div class="flex flex-col w-1/2 relative gap-4">
-								<p class="border-l-8 border-tertiary pl-4 text-justify">
-									<span class="text-3xl font-bold">The dormitory</span> offers a comfortable and
-									secure living environment, providing students with modern amenities and a
-									supportive community atmosphere. Each room is thoughtfully designed to ensure a
-									balance of privacy and social interaction, featuring cozy furnishings, ample
-									storage, and study spaces. Common areas, such as lounges, kitchens, and
-									recreational rooms, foster a sense of community and encourage collaborative
-									activities among residents. With 24/7 security and dedicated residential staff,
-									the dormitory ensures a safe and nurturing environment, allowing students to focus
-									on their academic and personal growth while enjoying the convenience of on-campus
-									living.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+			</section>
 
-		<section id="lecturers">
-			<div class="flex flex-col px-20">
-				<div class="flex gap-2">
-					<div class="bg-tertiary w-3"></div>
-					<h1 class="font-semibold text-primary">LECTURERS</h1>
+			<section id="campuses">
+				<div class="flex flex-col px-20">
+					<div class="flex gap-2">
+						<div class="bg-tertiary w-3"></div>
+						<div class="flex flex-col">
+							<h3 class="font-semibold text-primary">OUR</h3>
+							<h1 class="text-6xl font-semibold text-primary">CAMPUS</h1>
+						</div>
+					</div>
+					<p class="px-2 py-8">
+						Explore our vibrant campus, featuring state-of-the-art buildings, exceptional
+						facilities, and dedicated faculty members committed to providing a dynamic and
+						supportive learning environment. Discover the resources and opportunities that make our
+						university a thriving community for academic and personal growth.
+					</p>
+					<div class="flex justify-center w-[50rem] mx-auto">
+						<img src="/img/our_campus.jpg" class="w-full" />
+					</div>
+					<div class="flex campus-vibe">
+						<h1 class="text-gray-700 bi bi-quote"></h1>
+						<div class="flex flex-col items-start text-gray-700 pl-4">
+							<p class="font-semibold uppercase py-4">
+								Education is the most powerful weapon which you can use to change the world.
+							</p>
+							<p class="text-secondary font-bold">- Nelson Mandela</p>
+						</div>
+						<h1 class="text-gray-700 bi bi-quote"></h1>
+					</div>
 				</div>
-				<div class="grid grid-rows-1 grid-cols-1 md:grid-cols-3 gap-6 py-4">
-					<a href="#" class="profile-card">
-						<div class="left-side">
-							<img src="/img/lecturers/pexels-italo-melo-881954-2379004.jpg" alt="Profile Photo" />
-						</div>
-						<div class="right-side">
-							<h3>John Doe</h3>
-							<p>Software Developer</p>
-							<p>Lecture</p>
-						</div>
-					</a>
-					<a href="#" class="profile-card">
-						<div class="left-side">
-							<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
-						</div>
-						<div class="right-side">
-							<h3>Mary Ane</h3>
-							<p>Architecture</p>
-						</div>
-					</a>
-					<a href="#" class="profile-card">
-						<div class="left-side">
-							<img src="/img/lecturers/images_1u0doGLgMmUjxVtJpiN3.png" alt="Profile Photo" />
-						</div>
-						<div class="right-side">
-							<h3>Olive Brown</h3>
-							<p>Management</p>
-						</div>
-					</a>
-					<a href="#" class="profile-card">
-						<div class="left-side">
-							<img src="/img/lecturers/images_rEtsplTEyhhipKtdWioi.png" alt="Profile Photo" />
-						</div>
-						<div class="right-side">
-							<h3>Alex Murphy</h3>
-							<p>Software Developer</p>
-							<p>Economics</p>
-						</div>
-					</a>
-					<a href="#" class="profile-card">
-						<div class="left-side">
-							<img src="/img/lecturers/images_uIqtqTwiWXtniIx6bJCA.png" alt="Profile Photo" />
-						</div>
-						<div class="right-side">
-							<h3>Kelly Tan</h3>
-							<p>History</p>
-						</div>
-					</a>
-					<a href="#" class="profile-card">
-						<div class="left-side">
-							<img src="/img/lecturers/images_C1f83fRvBi4JA7oMWMuE.png" alt="Profile Photo" />
-						</div>
-						<div class="right-side">
-							<h3>Alexandra Josephine</h3>
-							<p>Computer 101</p>
-						</div>
-					</a>
-					<a href="#" class="profile-card">
-						<div class="left-side">
-							<img src="/img/lecturers/pexels-nkhajotia-1516680.jpg" alt="Profile Photo" />
-						</div>
-						<div class="right-side">
-							<h3>David John</h3>
-							<p>Business and Management</p>
-						</div>
-					</a>
-					<a href="#" class="profile-card">
-						<div class="left-side">
-							<img src="/img/lecturers/images_phafv2KomxR7Q7PiD9Lr.png" alt="Profile Photo" />
-						</div>
-						<div class="right-side">
-							<h3>Kiera</h3>
-							<p>Basic Engineering</p>
-						</div>
-					</a>
-					<a href="#" class="profile-card">
-						<div class="left-side">
-							<img src="/img/lecturers/images_ELfYaS9ot5QH8p5CYNJK.png" alt="Profile Photo" />
-						</div>
-						<div class="right-side">
-							<h3>Michelle Agustine</h3>
-							<p>Medical Doctor</p>
-						</div>
-					</a>
-				</div>
-			</div>
-		</section>
+			</section>
 
-		<section id="contactUs">
-			<div class="flex flex-col px-20">
-				<div class="flex gap-2">
-					<div class="bg-tertiary w-3"></div>
-					<h1 class="font-semibold text-primary">TALK TO US</h1>
-				</div>
-				<div class="flex flex-col sm:flex-row gap-12 py-4">
-					<div class="flex flex-col w-3/4 gap-2">
-						<p class="pr-20">
-							Have questions about our university programs, admissions, or any other inquiries? Our
-							team is here to assist you. Feel free to reach out to us via email or WhatsApp, and
-							we'll provide the information and support you need. We're just a message away and
-							happy to help!
-						</p>
-						<div class="flex gap-8 items-center">
-							<h1 class="bi bi-whatsapp cursor-pointer text-primary"></h1>
-							<h1 class="bi bi-chat-dots cursor-pointer text-primary"></h1>
+			<section id="facilities">
+				<div class="flex flex-col px-20">
+					<div class="flex gap-2">
+						<div class="bg-tertiary w-3"></div>
+						<h1 class="font-semibold text-primary">FACILITIES</h1>
+					</div>
+					<div class="flex flex-col sm:flex-row gap-12 py-4">
+						<div class="flex flex-col w-3/4 gap-2">
+							<h3 class="pr-20">Our facilities offer advanced resources for every student.</h3>
 						</div>
 					</div>
-					<div class="w-96">
-						<img src="/img/hand_holding_smartphone.jpg" />
+					<div class="facilities-container">
+						<div class="tabs">
+							<h3 class="tabs-facil" id="labs">LABS, SPORTS, LIBRARY</h3>
+							<h3 class="tabs-facil" id="cafe">CAFETERIA, COLLEGE CANTEEN</h3>
+							<h3 class="tabs-facil" id="inte">ART AND MUSIC STUDIO</h3>
+							<h3 class="tabs-facil" id="dorm">DORMITORY</h3>
+						</div>
+						<div id="facil-lab" class="content">
+							<div class="flex justify-between gap-8">
+								<div class="w-1/2 h-96">
+									<img src="/img/sports_facilities.jpg" class="h-full w-full object-cover" />
+								</div>
+								<div class="flex flex-col w-1/2 relative gap-4">
+									<p class="border-l-8 border-tertiary pl-4 text-justify">
+										<span class="text-3xl font-bold">Our campus</span> features advanced
+										laboratories that provide students with hands-on experience in various
+										scientific fields, modern sports facilities that cater to a wide range of
+										athletic activities, and a comprehensive library stocked with an extensive
+										collection of books, journals, and digital resources. These amenities are
+										designed to support both academic and extracurricular pursuits, fostering a
+										well-rounded educational experience. Our labs are equipped with cutting-edge
+										technology, our sports facilities promote physical fitness and teamwork, and our
+										library offers a quiet and resourceful environment for study and research,
+										ensuring students have access to the best resources available.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div id="facil-cafe" class="content hidden">
+							<div class="flex justify-between gap-8">
+								<div class="w-1/2 h-96">
+									<img src="/img/cafe_facilities.jpg" class="h-full w-full object-cover" />
+								</div>
+								<div class="flex flex-col w-1/2 relative gap-4">
+									<p class="border-l-8 border-tertiary pl-4 text-justify">
+										<span class="text-3xl font-bold">Our college</span> cafeteria and canteen offer
+										a diverse array of nutritious and delicious meal options, catering to various
+										dietary preferences and needs. With a focus on providing a comfortable and
+										inviting dining environment, students can enjoy freshly prepared dishes ranging
+										from local specialties to international cuisines. The canteen is designed to be
+										a social hub where students can relax, study, and interact with peers between
+										classes. Emphasizing quality and affordability, our food services ensure that
+										every meal is both satisfying and healthy, contributing to the overall
+										well-being and academic success of our student community.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div id="facil-info" class="content hidden">
+							<div class="flex justify-between gap-8">
+								<div class="w-1/2 h-96">
+									<img src="/img/art_music_facilities.jpg" class="h-full w-full object-cover" />
+								</div>
+								<div class="flex flex-col w-1/2 relative gap-4">
+									<p class="border-l-8 border-tertiary pl-4 text-justify">
+										<span class="text-3xl font-bold">Art and music studios</span> are designed to
+										inspire creativity and foster artistic talent among students. Equipped with the
+										latest tools and technology, these studios provide a conducive environment for
+										both individual practice and collaborative projects. The art studio offers a
+										variety of materials and spaces for drawing, painting, and sculpture, while the
+										music studio features soundproof rooms, advanced recording equipment, and a
+										range of musical instruments. These facilities are dedicated to supporting the
+										artistic pursuits of our students, allowing them to explore their passions,
+										develop their skills, and express their creativity freely.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div id="facil-dorm" class="content hidden">
+							<div class="flex justify-between gap-8">
+								<div class="w-1/2 h-96">
+									<img src="/img/dorm_facilities.jpg" class="h-full w-full object-cover" />
+								</div>
+								<div class="flex flex-col w-1/2 relative gap-4">
+									<p class="border-l-8 border-tertiary pl-4 text-justify">
+										<span class="text-3xl font-bold">The dormitory</span> offers a comfortable and
+										secure living environment, providing students with modern amenities and a
+										supportive community atmosphere. Each room is thoughtfully designed to ensure a
+										balance of privacy and social interaction, featuring cozy furnishings, ample
+										storage, and study spaces. Common areas, such as lounges, kitchens, and
+										recreational rooms, foster a sense of community and encourage collaborative
+										activities among residents. With 24/7 security and dedicated residential staff,
+										the dormitory ensures a safe and nurturing environment, allowing students to
+										focus on their academic and personal growth while enjoying the convenience of
+										on-campus living.
+									</p>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
 
-		<footer>
-			<div class="flex flex-col bg-primary text-white px-20">
-				<div class="flex justify-between py-12">
-					<div class="flex flex-col text-start gap-2 w-2/5">
-						<h1 class="font-semibold">PTDI STTD</h1>
-						<p class="text-danger">Politeknik Transportasi Darat</p>
-						<div class="flex gap-3">
-							<h5 class="bi bi-facebook"></h5>
-							<h5 class="bi bi-instagram"></h5>
-							<h5 class="bi bi-youtube"></h5>
-							<h5 class="bi bi-linkedin"></h5>
-						</div>
+			<section id="lecturers">
+				<div class="flex flex-col px-20">
+					<div class="flex gap-2">
+						<div class="bg-tertiary w-3"></div>
+						<h1 class="font-semibold text-primary">LECTURERS</h1>
 					</div>
-					<div class="flex justify-between w-3/5">
-						<div class="flex flex-col w-1/4 text-start gap-4">
-							<h6 class="font-semibold">PTDI STTD</h6>
-							<hr class="w-1/4 border-4 border-tertiary" />
-							<div class="flex flex-col text-sm gap-2">
-								<a href="#" class="text-sm">Lecturer</a>
-								<a href="#" class="text-sm">News</a>
-								<a href="#" class="text-sm">Events</a>
-								<a href="#" class="text-sm">Facilities</a>
-								<a href="#" class="text-sm">Academic Calendar</a>
-								<a href="#" class="text-sm">About Us</a>
+					<div class="grid grid-rows-1 grid-cols-1 md:grid-cols-3 gap-6 py-4">
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img
+									src="/img/lecturers/pexels-italo-melo-881954-2379004.jpg"
+									alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>John Doe</h3>
+								<p>Software Developer</p>
+								<p>Lecture</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>Mary Ane</h3>
+								<p>Architecture</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/images_1u0doGLgMmUjxVtJpiN3.png" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>Olive Brown</h3>
+								<p>Management</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/images_rEtsplTEyhhipKtdWioi.png" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>Alex Murphy</h3>
+								<p>Software Developer</p>
+								<p>Economics</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/images_uIqtqTwiWXtniIx6bJCA.png" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>Kelly Tan</h3>
+								<p>History</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/images_C1f83fRvBi4JA7oMWMuE.png" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>Alexandra Josephine</h3>
+								<p>Computer 101</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/pexels-nkhajotia-1516680.jpg" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>David John</h3>
+								<p>Business and Management</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/images_phafv2KomxR7Q7PiD9Lr.png" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>Kiera</h3>
+								<p>Basic Engineering</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/images_ELfYaS9ot5QH8p5CYNJK.png" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>Michelle Agustine</h3>
+								<p>Medical Doctor</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="flex gap-6 py-4 overflow-hidden hidden">
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img
+									src="/img/lecturers/pexels-italo-melo-881954-2379004.jpg"
+									alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>John Doe</h3>
+								<p>Software Developer</p>
+								<p>Lecture</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>Mary Ane</h3>
+								<p>Architecture</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/images_1u0doGLgMmUjxVtJpiN3.png" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>Olive Brown</h3>
+								<p>Management</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/images_rEtsplTEyhhipKtdWioi.png" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>Alex Murphy</h3>
+								<p>Software Developer</p>
+								<p>Economics</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/images_uIqtqTwiWXtniIx6bJCA.png" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>Kelly Tan</h3>
+								<p>History</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/images_C1f83fRvBi4JA7oMWMuE.png" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>Alexandra Josephine</h3>
+								<p>Computer 101</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/pexels-nkhajotia-1516680.jpg" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>David John</h3>
+								<p>Business and Management</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/images_phafv2KomxR7Q7PiD9Lr.png" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>Kiera</h3>
+								<p>Basic Engineering</p>
+							</div>
+						</a>
+						<a href="#" class="profile-card">
+							<div class="left-side">
+								<img src="/img/lecturers/images_ELfYaS9ot5QH8p5CYNJK.png" alt="Profile Photo" />
+							</div>
+							<div class="right-side">
+								<h3>Michelle Agustine</h3>
+								<p>Medical Doctor</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<section id="contactUs">
+				<div class="flex flex-col px-20">
+					<div class="flex gap-2">
+						<div class="bg-tertiary w-3"></div>
+						<h1 class="font-semibold text-primary">TALK TO US</h1>
+					</div>
+					<div class="flex flex-col sm:flex-row gap-12 py-4">
+						<div class="flex flex-col w-3/4 gap-2">
+							<p class="pr-20">
+								Have questions about our university programs, admissions, or any other inquiries?
+								Our team is here to assist you. Feel free to reach out to us via email or WhatsApp,
+								and we'll provide the information and support you need. We're just a message away
+								and happy to help!
+							</p>
+							<div class="flex gap-8 items-center">
+								<h1 class="bi bi-whatsapp cursor-pointer text-primary"></h1>
+								<h1 class="bi bi-chat-dots cursor-pointer text-primary"></h1>
 							</div>
 						</div>
-						<div class="flex flex-col w-1/4 text-start gap-4">
-							<h6 class="font-semibold">Contact Us</h6>
-							<hr class="w-1/4 border-4 border-tertiary" />
-							<div class="flex flex-col text-sm gap-2">
-								<p>(021) 8254640</p>
-								<p>info@ptdisttd.ac.id</p>
-								<p>humas@ptdisttd.ac.id</p>
-							</div>
-						</div>
-						<div class="flex flex-col w-1/4 text-start gap-4">
-							<h6 class="font-semibold">Locations</h6>
-							<hr class="w-1/4 border-4 border-tertiary" />
-							<div class="flex flex-col text-sm gap-1">
-								<p>Jalan Raya Setu No.89 Bekasi, 17520</p>
-							</div>
+						<div class="w-96">
+							<img src="/img/hand_holding_smartphone.jpg" />
 						</div>
 					</div>
 				</div>
-				<div class="text-xs pt-6 pb-12 border-t border-gray-500">
-					Copyright © 2024 by PTDI STTD. All Rights Reserved.
+			</section>
+
+			<footer>
+				<div class="flex flex-col bg-primary text-white px-20">
+					<div class="flex justify-between py-12">
+						<div class="flex flex-col text-start gap-2 w-2/5">
+							<h1 class="font-semibold">PTDI STTD</h1>
+							<p class="text-danger">Politeknik Transportasi Darat</p>
+							<div class="flex gap-3">
+								<h5 class="bi bi-facebook"></h5>
+								<h5 class="bi bi-instagram"></h5>
+								<h5 class="bi bi-youtube"></h5>
+								<h5 class="bi bi-linkedin"></h5>
+							</div>
+						</div>
+						<div class="flex justify-between w-3/5">
+							<div class="flex flex-col w-1/4 text-start gap-4">
+								<h6 class="font-semibold">PTDI STTD</h6>
+								<hr class="w-1/4 border-4 border-tertiary" />
+								<div class="flex flex-col text-sm gap-2">
+									<a href="#" class="text-sm">Lecturer</a>
+									<a href="#" class="text-sm">News</a>
+									<a href="#" class="text-sm">Events</a>
+									<a href="#" class="text-sm">Facilities</a>
+									<a href="#" class="text-sm">Academic Calendar</a>
+									<a href="#" class="text-sm">About Us</a>
+								</div>
+							</div>
+							<div class="flex flex-col w-1/4 text-start gap-4">
+								<h6 class="font-semibold">Contact Us</h6>
+								<hr class="w-1/4 border-4 border-tertiary" />
+								<div class="flex flex-col text-sm gap-2">
+									<p>(021) 8254640</p>
+									<p>info@ptdisttd.ac.id</p>
+									<p>humas@ptdisttd.ac.id</p>
+								</div>
+							</div>
+							<div class="flex flex-col w-1/4 text-start gap-4">
+								<h6 class="font-semibold">Locations</h6>
+								<hr class="w-1/4 border-4 border-tertiary" />
+								<div class="flex flex-col text-sm gap-1">
+									<p>Jalan Raya Setu No.89 Bekasi, 17520</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="text-xs pt-6 pb-12 border-t border-gray-500">
+						Copyright © 2024 by PTDI STTD. All Rights Reserved.
+					</div>
 				</div>
-			</div>
-		</footer>
+			</footer>
+		</div>
 	</body>
 	<script>
 		const section = document.getElementsByClassName("tabs-facil");
@@ -431,6 +545,17 @@
 
 				event.target.classList.add("text-tertiary");
 			});
+		}
+
+		var slidesContainer = document.querySelector(".slides");
+		var slides = document.querySelectorAll(".slide");
+		var currentSlide = 0;
+
+		function showSlide(index) {
+			if (index >= 0 && index < slides.length) {
+				slidesContainer.style.transform = `translateX(${-index * 100}%)`;
+				currentSlide = index;
+			}
 		}
 	</script>
 </html>
