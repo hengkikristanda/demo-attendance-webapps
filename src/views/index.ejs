@@ -31,7 +31,7 @@
 						<ul>
 							<li class="nav-menu__label">
 								Tentang Kami
-								<ul class="dropdown_menu-6">
+								<ul>
 									<li class="link"><a href="/sejarah">Sejarah</a></li>
 									<li class="link"><a href="/tugas-fungsi">Tugas & Fungsi</a></li>
 									<li class="link"><a href="/visi-misi">Visi Misi</a></li>
@@ -42,7 +42,7 @@
 							</li>
 							<li class="nav-menu__label">
 								Akademik
-								<ul class="dropdown_menu-6">
+								<ul>
 									<li>
 										<a href="" class="link">Undergraduate</a>
 										<ul>
@@ -77,13 +77,13 @@
 							</li>
 							<li class="nav-menu__label">
 								For Student
-								<ul class="dropdown_menu-6">
+								<ul>
 									<li class="link"><a href="/elibrary">e-Library</a></li>
 								</ul>
 							</li>
 							<li class="nav-menu__label">
 								Informasi
-								<ul class="dropdown_menu-6">
+								<ul>
 									<li class="link"><a href="/berita">Berita</a></li>
 									<li class="link"><a href="/pengumuman">Pengumuman</a></li>
 								</ul>
@@ -208,41 +208,55 @@
 		</div>
 
 		<nav id="navbar-mobile" class="navbar-mobile">
-				<ul class="flex flex-col w-screen border-b border-tertiary">
-					<li class="nav-menu__label py-4 text-center cursor-pointer border-b border-secondary font-semibold">
-						TENTANG KAMI
-						<ul class="dropdown_menu-6">
-							<li class="link"><a href="/sejarah">Sejarah</a></li>
-							<li class="link"><a href="/tugas-fungsi">Tugas & Fungsi</a></li>
-							<li class="link"><a href="/visi-misi">Visi Misi</a></li>
-							<li class="link"><a href="/struktur-organisasi">Struktur Organisasi</a></li>
-							<li class="link"><a href="/pimpinan">Pimpinan</a></li>
-							<li class="link"><a href="/fasilitas">Fasilitas</a></li>
-						</ul>
-					</li>
-					<li class="nav-menu__label py-4 text-center cursor-pointer border-b border-secondary font-semibold">
-						AKADEMIK
-						<ul class="dropdown_menu-6">
-							<li class="link"><a href="/sejarah">Undergraduate</a></li>
-							<li class="link"><a href="/tugas-fungsi">Postgraduate</a></li>
-							<li class="link"><a href="/visi-misi">Diklat</a></li>
-							<li class="link"><a href="/struktur-organisasi">Dosen</a></li>
-						</ul>
-					</li>
-					<li class="nav-menu__label py-4 text-center cursor-pointer border-b border-secondary font-semibold">
-						FOR STUDENT
-						<ul class="dropdown_menu-6">
-							<li class="link"><a href="/sejarah">e-Library</a></li>
-						</ul>
-					</li>
-					<li class="nav-menu__label py-4 text-center cursor-pointer border-b border-secondary font-semibold">
-						INFORMASI
-						<ul class="dropdown_menu-6">
-							<li class="link"><a href="/sejarah">Berita</a></li>
-							<li class="link"><a href="/tugas-fungsi">Pengumuman</a></li>
-						</ul>
-					</li>
-				</ul>
+			<ul class="flex flex-col">
+				<li class="navbar-mobile__label">
+					<p class="submenu">TENTANG KAMI</p>
+					<ul class="hideDropdown">
+						<li><a href="/sejarah">Sejarah</a></li>
+						<li><a href="/tugas-fungsi">Tugas & Fungsi</a></li>
+						<li><a href="/visi-misi">Visi Misi</a></li>
+						<li><a href="/struktur-organisasi">Struktur Organisasi</a></li>
+						<li><a href="/pimpinan">Pimpinan</a></li>
+						<li><a href="/fasilitas">Fasilitas</a></li>
+					</ul>
+				</li>
+				<li class="navbar-mobile__label">
+					<p class="submenu">AKADEMIK</p>
+					<ul class="hideDropdown">
+						<li>
+							<a href="#" class="submenu">Undergraduate</a>
+							<ul class="hideDropdown px-4">
+								<li><a href="/sejarah">D-III Manajemen Transportasi Jalan</a></li>
+								<li><a href="/tugas-fungsi">D-III Manajemen Transportasi Perkerataapian</a></li>
+								<li><a href="/visi-misi">D-IV Manajemen Transportasi Darat</a></li>
+								<li><a href="/struktur-organisasi">D-IV Teknologi Rekayasa Otomotif</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#" class="submenu">Postgraduate</a>
+							<ul class="hideDropdown px-4">
+								<li><a href="/sejarah">S-2 Pemasaran, Inovasi, dan Teknologi</a></li>
+								<li><a href="/tugas-fungsi">S-2 Teknik Keselamatan dan Resiko</a></li>
+							</ul>
+						</li>
+						<li><a href="/visi-misi">Diklat</a></li>
+						<li><a href="/struktur-organisasi">Dosen</a></li>
+					</ul>
+				</li>
+				<li class="navbar-mobile__label">
+					<p class="submenu">FOR STUDENT</p>
+					<ul class="hideDropdown">
+						<li><a href="/sejarah">e-Library</a></li>
+					</ul>
+				</li>
+				<li class="navbar-mobile__label">
+					<p class="submenu">INFORMASI</p>
+					<ul class="hideDropdown">
+						<li><a href="/sejarah">Berita</a></li>
+						<li><a href="/tugas-fungsi">Pengumuman</a></li>
+					</ul>
+				</li>
+			</ul>
 		</nav>
 
 		<div class="max-w-screen-2xl mx-auto">
@@ -270,7 +284,7 @@
 			</section>
 
 			<section id="campuses">
-				<div class="flex flex-col lg:px-20">
+				<div class="flex flex-col lg:px-20 hidden">
 					<div class="flex gap-2">
 						<div class="bg-tertiary w-3"></div>
 						<div class="flex flex-col">
@@ -301,7 +315,7 @@
 			</section>
 
 			<section id="facilities">
-				<div class="flex flex-col px-20">
+				<div class="flex flex-col px-20 hidden">
 					<div class="flex gap-2">
 						<div class="bg-tertiary w-3"></div>
 						<h1 class="font-semibold text-primary">FACILITIES</h1>
@@ -405,97 +419,99 @@
 			</section>
 
 			<section id="lecturers">
-				<div class="flex flex-col px-20">
+				<div class="flex flex-col md:px-20">
 					<div class="flex gap-2">
 						<div class="bg-tertiary w-3"></div>
 						<h1 class="font-semibold text-primary">LECTURERS</h1>
 					</div>
-					<div class="grid grid-rows-1 grid-cols-1 md:grid-cols-3 gap-6 py-4">
-						<a href="#" class="profile-card">
-							<div class="left-side">
-								<img
-									src="/img/lecturers/pexels-italo-melo-881954-2379004.jpg"
-									alt="Profile Photo" />
-							</div>
-							<div class="right-side">
-								<h3>John Doe</h3>
-								<p>Software Developer</p>
-								<p>Lecture</p>
-							</div>
-						</a>
-						<a href="#" class="profile-card">
-							<div class="left-side">
-								<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
-							</div>
-							<div class="right-side">
-								<h3>Mary Ane</h3>
-								<p>Architecture</p>
-							</div>
-						</a>
-						<a href="#" class="profile-card">
-							<div class="left-side">
-								<img src="/img/lecturers/images_1u0doGLgMmUjxVtJpiN3.png" alt="Profile Photo" />
-							</div>
-							<div class="right-side">
-								<h3>Olive Brown</h3>
-								<p>Management</p>
-							</div>
-						</a>
-						<a href="#" class="profile-card">
-							<div class="left-side">
-								<img src="/img/lecturers/images_rEtsplTEyhhipKtdWioi.png" alt="Profile Photo" />
-							</div>
-							<div class="right-side">
-								<h3>Alex Murphy</h3>
-								<p>Software Developer</p>
-								<p>Economics</p>
-							</div>
-						</a>
-						<a href="#" class="profile-card">
-							<div class="left-side">
-								<img src="/img/lecturers/images_uIqtqTwiWXtniIx6bJCA.png" alt="Profile Photo" />
-							</div>
-							<div class="right-side">
-								<h3>Kelly Tan</h3>
-								<p>History</p>
-							</div>
-						</a>
-						<a href="#" class="profile-card">
-							<div class="left-side">
-								<img src="/img/lecturers/images_C1f83fRvBi4JA7oMWMuE.png" alt="Profile Photo" />
-							</div>
-							<div class="right-side">
-								<h3>Alexandra Josephine</h3>
-								<p>Computer 101</p>
-							</div>
-						</a>
-						<a href="#" class="profile-card">
-							<div class="left-side">
-								<img src="/img/lecturers/pexels-nkhajotia-1516680.jpg" alt="Profile Photo" />
-							</div>
-							<div class="right-side">
-								<h3>David John</h3>
-								<p>Business and Management</p>
-							</div>
-						</a>
-						<a href="#" class="profile-card">
-							<div class="left-side">
-								<img src="/img/lecturers/images_phafv2KomxR7Q7PiD9Lr.png" alt="Profile Photo" />
-							</div>
-							<div class="right-side">
-								<h3>Kiera</h3>
-								<p>Basic Engineering</p>
-							</div>
-						</a>
-						<a href="#" class="profile-card">
-							<div class="left-side">
-								<img src="/img/lecturers/images_ELfYaS9ot5QH8p5CYNJK.png" alt="Profile Photo" />
-							</div>
-							<div class="right-side">
-								<h3>Michelle Agustine</h3>
-								<p>Medical Doctor</p>
-							</div>
-						</a>
+					<div class="profile-card2__wrapper">
+						<div class="profile-card2__container">
+							<a href="#" class="profile-card2">
+								<div class="left-side">
+									<img
+										src="/img/lecturers/pexels-italo-melo-881954-2379004.jpg"
+										alt="Profile Photo" />
+								</div>
+								<div class="right-side">
+									<h3>John Doe</h3>
+									<p>Software Developer</p>
+									<p>Lecture</p>
+								</div>
+							</a>
+							<a href="#" class="profile-card2">
+								<div class="left-side">
+									<img src="/img/lecturers/images_MmpLGDfH6LaHGa3Z1fRv2.png" alt="Profile Photo" />
+								</div>
+								<div class="right-side">
+									<h3>Mary Ane</h3>
+									<p>Architecture</p>
+								</div>
+							</a>
+							<a href="#" class="profile-card2">
+								<div class="left-side">
+									<img src="/img/lecturers/images_1u0doGLgMmUjxVtJpiN3.png" alt="Profile Photo" />
+								</div>
+								<div class="right-side">
+									<h3>Olive Brown</h3>
+									<p>Management</p>
+								</div>
+							</a>
+							<a href="#" class="profile-card2">
+								<div class="left-side">
+									<img src="/img/lecturers/images_rEtsplTEyhhipKtdWioi.png" alt="Profile Photo" />
+								</div>
+								<div class="right-side">
+									<h3>Alex Murphy</h3>
+									<p>Software Developer</p>
+									<p>Economics</p>
+								</div>
+							</a>
+							<a href="#" class="profile-card2">
+								<div class="left-side">
+									<img src="/img/lecturers/images_uIqtqTwiWXtniIx6bJCA.png" alt="Profile Photo" />
+								</div>
+								<div class="right-side">
+									<h3>Kelly Tan</h3>
+									<p>History</p>
+								</div>
+							</a>
+							<a href="#" class="profile-card2">
+								<div class="left-side">
+									<img src="/img/lecturers/images_C1f83fRvBi4JA7oMWMuE.png" alt="Profile Photo" />
+								</div>
+								<div class="right-side">
+									<h3>Alexandra Josephine</h3>
+									<p>Computer 101</p>
+								</div>
+							</a>
+							<a href="#" class="profile-card2">
+								<div class="left-side">
+									<img src="/img/lecturers/pexels-nkhajotia-1516680.jpg" alt="Profile Photo" />
+								</div>
+								<div class="right-side">
+									<h3>David John</h3>
+									<p>Business and Management</p>
+								</div>
+							</a>
+							<a href="#" class="profile-card2">
+								<div class="left-side">
+									<img src="/img/lecturers/images_phafv2KomxR7Q7PiD9Lr.png" alt="Profile Photo" />
+								</div>
+								<div class="right-side">
+									<h3>Kiera</h3>
+									<p>Basic Engineering</p>
+								</div>
+							</a>
+							<a href="#" class="profile-card2">
+								<div class="left-side">
+									<img src="/img/lecturers/images_ELfYaS9ot5QH8p5CYNJK.png" alt="Profile Photo" />
+								</div>
+								<div class="right-side">
+									<h3>Michelle Agustine</h3>
+									<p>Medical Doctor</p>
+								</div>
+							</a>
+						</div>
 					</div>
 
 					<div class="flex gap-6 py-4 overflow-hidden hidden">
@@ -589,14 +605,14 @@
 			</section>
 
 			<section id="contactUs">
-				<div class="flex flex-col px-20">
+				<div class="flex flex-col md:px-20">
 					<div class="flex gap-2">
 						<div class="bg-tertiary w-3"></div>
 						<h1 class="font-semibold text-primary">TALK TO US</h1>
 					</div>
-					<div class="flex flex-col sm:flex-row gap-12 py-4">
-						<div class="flex flex-col w-3/4 gap-2">
-							<p class="pr-20">
+					<div class="flex flex-col items-center md:items-start sm:flex-row gap-12 py-4">
+						<div class="flex flex-col md:w-3/4 gap-2 px-4 md:px-0">
+							<p class="md:pr-20">
 								Have questions about our university programs, admissions, or any other inquiries?
 								Our team is here to assist you. Feel free to reach out to us via email or WhatsApp,
 								and we'll provide the information and support you need. We're just a message away
@@ -607,7 +623,7 @@
 								<h1 class="bi bi-chat-dots cursor-pointer text-primary"></h1>
 							</div>
 						</div>
-						<div class="w-96">
+						<div class="w-full md:w-96">
 							<img src="/img/hand_holding_smartphone.jpg" />
 						</div>
 					</div>
@@ -615,9 +631,9 @@
 			</section>
 
 			<footer>
-				<div class="flex flex-col bg-primary text-white px-20">
-					<div class="flex justify-between py-12">
-						<div class="flex flex-col text-start gap-2 w-2/5">
+				<div class="flex flex-col bg-primary text-white md:px-20">
+					<div class="grid grid-cols-1 gap-12 lg:gap-0 lg:grid-cols-2 justify-between py-12">
+						<div class="flex flex-col items-center md:items-start text-center md:text-start gap-2">
 							<h1 class="font-semibold">PTDI STTD</h1>
 							<p class="text-danger">Politeknik Transportasi Darat</p>
 							<div class="flex gap-3">
@@ -627,8 +643,9 @@
 								<h5 class="bi bi-linkedin"></h5>
 							</div>
 						</div>
-						<div class="flex justify-between w-3/5">
-							<div class="flex flex-col w-1/4 text-start gap-4">
+						<div class="flex flex-col gap-8 md:gap-4 md:flex-row justify-between">
+							<div
+								class="flex flex-col items-center md:items-start md:w-1/3 text-center md:text-start gap-4">
 								<h6 class="font-semibold">PTDI STTD</h6>
 								<hr class="w-1/4 border-4 border-tertiary" />
 								<div class="flex flex-col text-sm gap-2">
@@ -640,7 +657,8 @@
 									<a href="#" class="text-sm">About Us</a>
 								</div>
 							</div>
-							<div class="flex flex-col w-1/4 text-start gap-4">
+							<div
+								class="flex flex-col items-center md:items-start md:w-1/3 text-center md:text-start gap-4">
 								<h6 class="font-semibold">Contact Us</h6>
 								<hr class="w-1/4 border-4 border-tertiary" />
 								<div class="flex flex-col text-sm gap-2">
@@ -649,7 +667,8 @@
 									<p>humas@ptdisttd.ac.id</p>
 								</div>
 							</div>
-							<div class="flex flex-col w-1/4 text-start gap-4">
+							<div
+								class="flex flex-col items-center md:items-start md:w-1/3 text-center md:text-start gap-4">
 								<h6 class="font-semibold">Locations</h6>
 								<hr class="w-1/4 border-4 border-tertiary" />
 								<div class="flex flex-col text-sm gap-1">
@@ -708,5 +727,21 @@
 
 		const listNavbarMobile = document.getElementById("list-navbar__mobile");
 		listNavbarMobile.addEventListener("mouseup", handleIcon_onClicked);
+
+		function toggleNavBarMobileMenu(event) {
+			const targetList = event.target.nextElementSibling;
+			if (targetList.classList.contains("showDropdown")) {
+				targetList.classList.remove("showDropdown");
+				targetList.classList.add("hideDropdown");
+			} else if (targetList.classList.contains("hideDropdown")) {
+				targetList.classList.remove("hideDropdown");
+				targetList.classList.add("showDropdown");
+			}
+		}
+
+		const navbarMobileLabel = document.querySelectorAll(".navbar-mobile__label");
+		for (let n = 0; n < navbarMobileLabel.length; n++) {
+			navbarMobileLabel[n].addEventListener("mouseup", toggleNavBarMobileMenu);
+		}
 	</script>
 </html>

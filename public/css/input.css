@@ -261,7 +261,7 @@ div::-webkit-scrollbar-thumb:hover {
 	} */
 
 	.navbar {
-		@apply bg-white border-b border-tertiary py-4 fixed top-0 w-full max-w-screen-2xl z-10;
+		@apply bg-white border-b border-tertiary py-4 fixed top-0 w-full max-w-screen-2xl z-10 px-4 2xl:px-0;
 	}
 
 	.sidebar {
@@ -420,6 +420,28 @@ div::-webkit-scrollbar-thumb:hover {
 	width: 100%;
 	height: 100%;
 } */
+
+.profile-card2__wrapper {
+	width: 100%;
+	overflow-x: scroll;
+}
+
+.profile-card2__container {
+	width: 270rem;
+	display: flex;
+	flex-direction: row;
+	gap: 2rem;
+}
+
+.profile-card2 {
+	position: relative;
+	min-width: 30rem;
+	height: 200px;
+	background-color: #fff;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	display: flex;
+	border: 0.05rem solid white;
+}
 
 .profile-card {
 	position: relative;
@@ -717,16 +739,89 @@ div::-webkit-scrollbar-thumb:hover {
 	height: 0;
 	position: fixed;
 	z-index: 11;
-	overflow: hidden;
+	overflow: scroll;
 	top: 5rem;
+	width: 100%;
 	background-color: white;
 	transition: height 200ms ease-in-out;
 }
 
+.navbar-mobile__label p {
+	padding: 1rem 0;
+	cursor: pointer;
+	font-weight: 700;
+	color: var(--primary);
+	font-size: 1rem;
+}
+
+.submenu::before {
+	content: "";
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid black; /* Arrow color */
+	margin-right: 8px; /* Space between arrow and text */
+}
+
+.navbar-mobile__label a {
+	cursor: pointer;
+	font-weight: 700;
+	color: var(--primary);
+	font-size: 1rem;
+}
+
+.navbar-mobile__label a:hover {
+	color: var(--danger);
+}
+
+.navbar-mobile__label li {
+	padding: 0.2rem 1rem;
+}
+
+.navbar-mobile__label ul {
+	display: none;
+	transform: scaleY(0);
+	transform-origin: top;
+	padding-bottom: 1rem;
+}
+
+.navbar-mobile__label ul.showDropdown {
+	display: block;
+	animation: showDropdown 100ms ease-in-out forwards;
+}
+
+.navbar-mobile__label ul.hideDropdown {
+	display: none;
+	animation: hideDropdown 100ms ease-in-out forwards;
+}
+
 .navbar-mobile.show {
 	height: 100vh; /* Adjust as necessary */
+	padding-bottom: 6rem;
+	padding-left: 1rem;
 }
 
 .text-xxs {
-	font-size: 0.7rem;		
+	font-size: 0.7rem;
+}
+
+@keyframes showDropdown {
+	0% {
+		transform: scaleY(0);
+	}
+	100% {
+		transform: scaleY(1);
+	}
+}
+
+/* Keyframes for hiding the dropdown */
+@keyframes hideDropdown {
+	0% {
+		transform: scaleY(1);
+	}
+	100% {
+		transform: scaleY(0);
+	}
 }
