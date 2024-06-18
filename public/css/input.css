@@ -582,6 +582,31 @@ div::-webkit-scrollbar-thumb:hover {
 	background-color: rgba(0, 0, 0, 0.7);
 }
 
+.navbar-mobile__language ul {
+	position: absolute;
+	right: 5rem;
+	display: none;
+	flex-direction: column;
+	background-color: var(--primary);
+	width: fit-content;
+	color: white;
+	z-index: 100;
+	justify-content: center;
+}
+.navbar-mobile__language li {
+	padding: 0.5rem 1rem;
+}
+
+.navbar-mobile__language a {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+}
+
+.navbar-mobile__language li:hover {
+	background-color: var(--danger);
+}
+
 .menu {
 	/* --menu-height: 40px; */
 	/* box-sizing: border-box; */
@@ -744,6 +769,7 @@ div::-webkit-scrollbar-thumb:hover {
 	width: 100%;
 	background-color: white;
 	transition: height 200ms ease-in-out;
+	padding-left: 1rem;
 }
 
 .navbar-mobile__label p {
@@ -752,6 +778,10 @@ div::-webkit-scrollbar-thumb:hover {
 	font-weight: 700;
 	color: var(--primary);
 	font-size: 1rem;
+}
+
+.navbar-mobile__label:hover > p {
+	color: var(--danger);
 }
 
 .submenu::before {
@@ -800,7 +830,6 @@ div::-webkit-scrollbar-thumb:hover {
 .navbar-mobile.show {
 	height: 100vh; /* Adjust as necessary */
 	padding-bottom: 6rem;
-	padding-left: 1rem;
 }
 
 .text-xxs {
