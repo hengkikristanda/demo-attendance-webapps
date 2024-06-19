@@ -2,6 +2,8 @@ const express = require("express");
 const axios = require("axios");
 const multer = require("multer");
 const router = express.Router();
+const path = require("path");
+const fs = require("fs");
 
 const siteMenuServices = require("../services/siteMenuServices");
 
@@ -9,8 +11,22 @@ const siteMenuServices = require("../services/siteMenuServices");
 router.use(express.urlencoded({ extended: true }));
 
 router.get("/", (req, res) => {
+	let selectedLanguage = req.query.lang;
+	if (selectedLanguage == undefined) {
+		selectedLanguage = "id";
+	}
+
+	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase())) selectedLanguage = "id";
+
+	const translations = JSON.parse(
+		fs.readFileSync(path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`), "utf8")
+	);
+
+	res.locals.translations = translations;
+
 	res.render("index", {
-		title: "Attendance System - Login",
+		title: "Attendance System - Home",
+		selectedLanguage: "ID",
 	});
 });
 
@@ -44,8 +60,7 @@ router.get("/absensi", (req, res) => {
 	});
 });
 
-router.post("/absensi", (req, res) => {
-});
+router.post("/absensi", (req, res) => {});
 
 router.post("/login", (req, res) => {
 	res.redirect("/home-employee");

@@ -41,11 +41,18 @@ section {
 	@apply mb-36;
 }
 
-:root {
+/* :root {
 	--primary: #001d3d;
 	--secondary: #003566;
 	--tertiary: #ffc300;
 	--danger: #ffd60a;
+} */
+
+:root {
+	--primary: #222831;
+	--secondary: #393E46;
+	--tertiary: #00ADB5;
+	--danger: #EEEEEE;
 }
 
 /* -sm: small tablets, large phones */
@@ -712,7 +719,7 @@ div::-webkit-scrollbar-thumb:hover {
 	left: -750%;
 }
 
-.menu > ul li ul li {
+.menu > ul li ul li, a {
 	margin: 0;
 	padding: 8px 16px;
 	display: flex;
@@ -730,6 +737,14 @@ div::-webkit-scrollbar-thumb:hover {
 	border-left: 5px solid #ffa500;
 }
 
+.menu > ul li ul a::before {
+	width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid #ffa500;
+}
+
 .menu > ul li ul li ul {
 	top: -2%;
 	left: 100%;
@@ -737,6 +752,10 @@ div::-webkit-scrollbar-thumb:hover {
 }
 
 .menu > ul li ul li:hover {
+	background-color: var(--tertiary);
+}
+
+.menu > ul li ul a:hover {
 	background-color: var(--tertiary);
 }
 

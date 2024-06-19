@@ -1,0 +1,102 @@
+{
+	"menus": [
+		{
+			"label": "About Us",
+			"subMenus": [
+				{
+					"label": "History",
+					"href": "/sejarah"
+				},
+				{
+					"label": "Duties & Functions",
+					"href": "/tugas-fungsi"
+				},
+				{
+					"label": "Vision & Mission",
+					"href": "/visi-misi"
+				},
+				{
+					"label": "Organizational Structure",
+					"href": "/struktur-organisasi"
+				},
+				{
+					"label": "Leadership",
+					"href": "/pimpinan"
+				},
+				{
+					"label": "Facilities",
+					"href": "/fasilitas"
+				}
+			]
+		},
+		{
+			"label": "Academics",
+			"subMenus": [
+				{
+					"label": "Undergraduate",
+					"subMenus": [
+						{
+							"label": "D-III Road Transportation Management",
+							"href": "/d3-manajemen-transportasi-jalan"
+						},
+						{
+							"label": "D-III Railway Transportation Management",
+							"href": "/d3-manajemen-transportasi-kereta"
+						},
+						{
+							"label": "D-IV Land Transportation Management",
+							"href": "/d4-manajemen-transportasi-darat"
+						},
+						{
+							"label": "D-IV Automotive Engineering Technology",
+							"href": "/d4-teknologi-rekayasa-otomotif"
+						}
+					]
+				},
+				{
+					"label": "Graduate",
+					"subMenus": [
+						{
+							"label": "S-2 Marketing, Innovation, and Technology",
+							"href": "/s2-pemasaran-inovasi-teknologi"
+						},
+						{
+							"label": "S-2 Safety Engineering and Risk",
+							"href": "/s2-teknik-keselamatan-resiko"
+						}
+					]
+				},
+				{
+					"label": "Training",
+					"href": "/diklat"
+				},
+				{
+					"label": "Lecturers",
+					"href": "/dosen"
+				}
+			]
+		},
+		{
+			"label": "For Students",
+			"subMenus": [
+				{
+					"label": "Electronic Library",
+					"href": "/perpustakaan-elektronik"
+				}
+			]
+		},
+		{
+			"label": "Information",
+			"subMenus": [
+				{
+					"label": "News",
+					"href": "/berita"
+				},
+				{
+					"label": "Announcements",
+					"href": "/pengumuman"
+				}
+			]
+		}
+	]
+}

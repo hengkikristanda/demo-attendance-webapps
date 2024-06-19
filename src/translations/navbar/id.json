@@ -1,0 +1,102 @@
+{
+	"menus": [
+		{
+			"label": "Tentang Kami",
+			"subMenus": [
+				{
+					"label": "Sejarah",
+					"href": "/sejarah"
+				},
+				{
+					"label": "Tugas & Fungsi",
+					"href": "/tugas-fungsi"
+				},
+				{
+					"label": "Visi Misi",
+					"href": "/visi-misi"
+				},
+				{
+					"label": "Struktur Organisasi",
+					"href": "/struktur-organisasi"
+				},
+				{
+					"label": "Pimpinan",
+					"href": "/pimpinan"
+				},
+				{
+					"label": "Fasilitas",
+					"href": "/fasilitas"
+				}
+			]
+		},
+		{
+			"label": "Akademik",
+			"subMenus": [
+				{
+					"label": "Sarjana",
+					"subMenus": [
+						{
+							"label": "D-III Manajemen Transportasi Jalan",
+							"href": "/d3-manajemen-transportasi-jalan"
+						},
+						{
+							"label": "D-III Manajemen Transportasi Perkeretaapian",
+							"href": "/d3-manajemen-transportasi-kereta"
+						},
+						{
+							"label": "D-IV Manajemen Transportasi Darat",
+							"href": "/d4-manajemen-transportasi-darat"
+						},
+						{
+							"label": "D-IV Teknologi Rekayasa Otomotif",
+							"href": "/d4-teknologi-rekayasa-otomotif"
+						}
+					]
+				},
+				{
+					"label": "Pasca Sarjana",
+					"subMenus": [
+						{
+							"label": "S-2 Pemasaran, Inovasi, dan Teknologi",
+							"href": "/s2-pemasaran-inovasi-teknologi"
+						},
+						{
+							"label": "S-2 Teknik Keselamatan dan Resiko",
+							"href": "/s2-teknik-keselamatan-resiko"
+						}
+					]
+				},
+				{
+					"label": "Diklat",
+					"href": "/diklat"
+				},
+				{
+					"label": "Dosen",
+					"href": "/dosen"
+				}
+			]
+		},
+		{
+			"label": "Untuk Mahasiswa",
+			"subMenus": [
+				{
+					"label": "Perpustakaan Elektronik",
+					"href": "/perpustakaan-elektronik"
+				}
+			]
+		},
+		{
+			"label": "Informasi",
+			"subMenus": [
+				{
+					"label": "Berita",
+					"href": "/berita"
+				},
+				{
+					"label": "Pengumuman",
+					"href": "/pengumuman"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,102 @@
+{
+	"menus": [
+		{
+			"label": "私たちについて",
+			"subMenus": [
+				{
+					"label": "歴史",
+					"href": "/sejarah"
+				},
+				{
+					"label": "任務と機能",
+					"href": "/tugas-fungsi"
+				},
+				{
+					"label": "ビジョンとミッション",
+					"href": "/visi-misi"
+				},
+				{
+					"label": "組織構造",
+					"href": "/struktur-organisasi"
+				},
+				{
+					"label": "リーダーシップ",
+					"href": "/pimpinan"
+				},
+				{
+					"label": "施設",
+					"href": "/fasilitas"
+				}
+			]
+		},
+		{
+			"label": "学術",
+			"subMenus": [
+				{
+					"label": "学士",
+					"subMenus": [
+						{
+							"label": "D-III 道路交通管理",
+							"href": "/d3-manajemen-transportasi-jalan"
+						},
+						{
+							"label": "D-III 鉄道交通管理",
+							"href": "/d3-manajemen-transportasi-kereta"
+						},
+						{
+							"label": "D-IV 陸上交通管理",
+							"href": "/d4-manajemen-transportasi-darat"
+						},
+						{
+							"label": "D-IV 自動車工学技術",
+							"href": "/d4-teknologi-rekayasa-otomotif"
+						}
+					]
+				},
+				{
+					"label": "大学院",
+					"subMenus": [
+						{
+							"label": "S-2 マーケティング、イノベーション、および技術",
+							"href": "/s2-pemasaran-inovasi-teknologi"
+						},
+						{
+							"label": "S-2 安全工学およびリスク",
+							"href": "/s2-teknik-keselamatan-resiko"
+						}
+					]
+				},
+				{
+					"label": "トレーニング",
+					"href": "/diklat"
+				},
+				{
+					"label": "講師",
+					"href": "/dosen"
+				}
+			]
+		},
+		{
+			"label": "学生向け",
+			"subMenus": [
+				{
+					"label": "電子図書館",
+					"href": "/perpustakaan-elektronik"
+				}
+			]
+		},
+		{
+			"label": "情報",
+			"subMenus": [
+				{
+					"label": "ニュース",
+					"href": "/berita"
+				},
+				{
+					"label": "お知らせ",
+					"href": "/pengumuman"
+				}
+			]
+		}
+	]
+}

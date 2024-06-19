@@ -1,0 +1,102 @@
+{
+	"menus": [
+		{
+			"label": "关于我们",
+			"subMenus": [
+				{
+					"label": "历史",
+					"href": "/sejarah"
+				},
+				{
+					"label": "职责与功能",
+					"href": "/tugas-fungsi"
+				},
+				{
+					"label": "愿景与使命",
+					"href": "/visi-misi"
+				},
+				{
+					"label": "组织结构",
+					"href": "/struktur-organisasi"
+				},
+				{
+					"label": "领导",
+					"href": "/pimpinan"
+				},
+				{
+					"label": "设施",
+					"href": "/fasilitas"
+				}
+			]
+		},
+		{
+			"label": "学术",
+			"subMenus": [
+				{
+					"label": "本科",
+					"subMenus": [
+						{
+							"label": "D-III 道路交通管理",
+							"href": "/d3-manajemen-transportasi-jalan"
+						},
+						{
+							"label": "D-III 铁路交通管理",
+							"href": "/d3-manajemen-transportasi-kereta"
+						},
+						{
+							"label": "D-IV 陆地交通管理",
+							"href": "/d4-manajemen-transportasi-darat"
+						},
+						{
+							"label": "D-IV 汽车工程技术",
+							"href": "/d4-teknologi-rekayasa-otomotif"
+						}
+					]
+				},
+				{
+					"label": "研究生",
+					"subMenus": [
+						{
+							"label": "S-2 市场、创新与技术",
+							"href": "/s2-pemasaran-inovasi-teknologi"
+						},
+						{
+							"label": "S-2 安全工程与风险",
+							"href": "/s2-teknik-keselamatan-resiko"
+						}
+					]
+				},
+				{
+					"label": "培训",
+					"href": "/diklat"
+				},
+				{
+					"label": "讲师",
+					"href": "/dosen"
+				}
+			]
+		},
+		{
+			"label": "为学生",
+			"subMenus": [
+				{
+					"label": "电子图书馆",
+					"href": "/perpustakaan-elektronik"
+				}
+			]
+		},
+		{
+			"label": "信息",
+			"subMenus": [
+				{
+					"label": "新闻",
+					"href": "/berita"
+				},
+				{
+					"label": "公告",
+					"href": "/pengumuman"
+				}
+			]
+		}
+	]
+}

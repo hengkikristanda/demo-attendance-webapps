@@ -1,0 +1,102 @@
+{
+	"menus": [
+		{
+			"label": "회사 소개",
+			"subMenus": [
+				{
+					"label": "역사",
+					"href": "/sejarah"
+				},
+				{
+					"label": "임무 및 기능",
+					"href": "/tugas-fungsi"
+				},
+				{
+					"label": "비전 및 사명",
+					"href": "/visi-misi"
+				},
+				{
+					"label": "조직 구조",
+					"href": "/struktur-organisasi"
+				},
+				{
+					"label": "리더십",
+					"href": "/pimpinan"
+				},
+				{
+					"label": "시설",
+					"href": "/fasilitas"
+				}
+			]
+		},
+		{
+			"label": "학문",
+			"subMenus": [
+				{
+					"label": "학부",
+					"subMenus": [
+						{
+							"label": "D-III 도로 교통 관리",
+							"href": "/d3-manajemen-transportasi-jalan"
+						},
+						{
+							"label": "D-III 철도 교통 관리",
+							"href": "/d3-manajemen-transportasi-kereta"
+						},
+						{
+							"label": "D-IV 육상 교통 관리",
+							"href": "/d4-manajemen-transportasi-darat"
+						},
+						{
+							"label": "D-IV 자동차 공학 기술",
+							"href": "/d4-teknologi-rekayasa-otomotif"
+						}
+					]
+				},
+				{
+					"label": "대학원",
+					"subMenus": [
+						{
+							"label": "S-2 마케팅, 혁신, 및 기술",
+							"href": "/s2-pemasaran-inovasi-teknologi"
+						},
+						{
+							"label": "S-2 안전 공학 및 리스크",
+							"href": "/s2-teknik-keselamatan-resiko"
+						}
+					]
+				},
+				{
+					"label": "교육",
+					"href": "/diklat"
+				},
+				{
+					"label": "교수진",
+					"href": "/dosen"
+				}
+			]
+		},
+		{
+			"label": "학생용",
+			"subMenus": [
+				{
+					"label": "전자 도서관",
+					"href": "/perpustakaan-elektronik"
+				}
+			]
+		},
+		{
+			"label": "정보",
+			"subMenus": [
+				{
+					"label": "뉴스",
+					"href": "/berita"
+				},
+				{
+					"label": "공지사항",
+					"href": "/pengumuman"
+				}
+			]
+		}
+	]
+}

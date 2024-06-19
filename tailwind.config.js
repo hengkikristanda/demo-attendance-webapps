@@ -25,10 +25,10 @@ module.exports = {
 				inter: ['"Inter"', "sans-serif"],
 			},
 			colors: {
-				primary: "#001d3d",
-				secondary: "#003566",
-				tertiary: "#ffc300",
-				danger: "#ffd60a",
+				primary: "#222831",
+				secondary: "#393E46",
+				tertiary: "#00ADB5",
+				danger: "#EEEEEE",
 			},
 			maxWidth: {
 				"1/3": "33%",
