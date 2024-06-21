@@ -14,8 +14,6 @@
 		<title><%= title %></title>
 	</head>
 	<body>
-		
-		
 		<div class="hidden">
 			<div class="min-w-xs max-w-md w-full my-10">
 				<form
@@ -427,58 +425,13 @@
 				</div>
 			</section>
 
-			<footer>
-				<div class="flex flex-col bg-primary text-white md:px-20">
-					<div class="grid grid-cols-1 gap-12 lg:gap-0 lg:grid-cols-2 justify-between py-12">
-						<div class="flex flex-col items-center md:items-start text-center md:text-start gap-2">
-							<h1 class="font-semibold">PTDI STTD</h1>
-							<p class="text-danger">Politeknik Transportasi Darat</p>
-							<div class="flex gap-3">
-								<h5 class="bi bi-facebook"></h5>
-								<h5 class="bi bi-instagram"></h5>
-								<h5 class="bi bi-youtube"></h5>
-								<h5 class="bi bi-linkedin"></h5>
-							</div>
-						</div>
-						<div class="flex flex-col gap-8 md:gap-4 md:flex-row justify-between">
-							<div
-								class="flex flex-col items-center md:items-start md:w-1/3 text-center md:text-start gap-4">
-								<h6 class="font-semibold">PTDI STTD</h6>
-								<hr class="w-1/4 border-4 border-tertiary" />
-								<div class="flex flex-col text-sm gap-2">
-									<a href="#" class="text-sm">Lecturer</a>
-									<a href="#" class="text-sm">News</a>
-									<a href="#" class="text-sm">Events</a>
-									<a href="#" class="text-sm">Facilities</a>
-									<a href="#" class="text-sm">Academic Calendar</a>
-									<a href="#" class="text-sm">About Us</a>
-								</div>
-							</div>
-							<div
-								class="flex flex-col items-center md:items-start md:w-1/3 text-center md:text-start gap-4">
-								<h6 class="font-semibold">Contact Us</h6>
-								<hr class="w-1/4 border-4 border-tertiary" />
-								<div class="flex flex-col text-sm gap-2">
-									<p>(021) 8254640</p>
-									<p>info@ptdisttd.ac.id</p>
-									<p>humas@ptdisttd.ac.id</p>
-								</div>
-							</div>
-							<div
-								class="flex flex-col items-center md:items-start md:w-1/3 text-center md:text-start gap-4">
-								<h6 class="font-semibold">Locations</h6>
-								<hr class="w-1/4 border-4 border-tertiary" />
-								<div class="flex flex-col text-sm gap-1">
-									<p>Jalan Raya Setu No.89 Bekasi, 17520</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="text-xs pt-6 pb-12 border-t border-gray-500">
-						Copyright © 2024 by PTDI STTD. All Rights Reserved.
-					</div>
-				</div>
-			</footer>
+			<%- include('./sections/footer') %>
+
+			<div class="flex flex-col items-center w-12 bg-tertiary rounded-md fixed bottom-1/2 right-0">
+				<a href="mailto:humas@ptdisttd.ac.id" target="_blank" class="p-0"><h3 class="w-full text-center text-danger bi bi-envelope-at"></h3></a>
+				<div class="h-0 w-1/2 border border-danger"></div>
+				<a href="https://wa.me/6285213801872" target="_blank" class="p-0"><h3 class="w-full text-center text-danger bi bi-whatsapp"></h3></a>
+			</div>
 		</div>
 	</body>
 	<script>
@@ -516,56 +469,6 @@
 				currentSlide = index;
 			}
 		}
-
-		function handleIcon_onClicked() {
-			const navbarMobile = document.getElementById("navbar-mobile");
-			navbarMobile.classList.toggle("show");
-		}
-
-		const listNavbarMobile = document.getElementById("list-navbar__mobile");
-		listNavbarMobile.addEventListener("mouseup", handleIcon_onClicked);
-
-		function toggleNavBarMobileMenu(event) {
-			const targetList = event.target.nextElementSibling;
-			if (targetList.classList.contains("showDropdown")) {
-				targetList.classList.remove("showDropdown");
-				targetList.classList.add("hideDropdown");
-			} else if (targetList.classList.contains("hideDropdown")) {
-				targetList.classList.remove("hideDropdown");
-				targetList.classList.add("showDropdown");
-			}
-		}
-
-		const navbarMobileLabel = document.querySelectorAll(".navbar-mobile__label");
-		for (let n = 0; n < navbarMobileLabel.length; n++) {
-			navbarMobileLabel[n].addEventListener("mouseup", toggleNavBarMobileMenu);
-		}
-
-		function outsideClickListener(event) {
-			const container = document.querySelector(".navbar-mobile__language ul");
-			const button = document.querySelector("#translation-icon__mobile");
-			if (!container.contains(event.target) && !button.contains(event.target)) {
-				container.style.display = "none";
-				document.removeEventListener("click", outsideClickListener);
-			}
-		}
-
-		function toggleMobileLanguage() {
-			const navbarMobile = document.getElementById("navbar-mobile");
-			navbarMobile.classList.remove("show");
-
-			const targetList = event.target.nextElementSibling;
-
-			if (targetList.style.display === "none" || targetList.style.display === "") {
-				targetList.style.display = "flex";
-				document.addEventListener("click", outsideClickListener);
-			} else {
-				targetList.style.display = "none";
-				document.removeEventListener("click", outsideClickListener);
-			}
-		}
-
-		const translationIconMobile = document.getElementById("translation-icon__mobile");
-		translationIconMobile.addEventListener("mouseup", toggleMobileLanguage);
 	</script>
+	<script src="/js/navbarUtils.js"></script>
 </html>

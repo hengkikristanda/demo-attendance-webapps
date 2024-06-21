@@ -611,7 +611,7 @@ div::-webkit-scrollbar-thumb:hover {
 }
 
 .navbar-mobile__language li:hover {
-	background-color: var(--danger);
+	background-color: var(--tertiary);
 }
 
 .menu {
@@ -716,7 +716,8 @@ div::-webkit-scrollbar-thumb:hover {
 }
 
 .menu > ul li .drop-right {
-	left: -750%;
+	right: 0rem;
+	top: 1.8rem;
 }
 
 .menu > ul li ul li, a {
@@ -734,7 +735,7 @@ div::-webkit-scrollbar-thumb:hover {
 	height: 0;
 	border-top: 5px solid transparent;
 	border-bottom: 5px solid transparent;
-	border-left: 5px solid #ffa500;
+	border-left: 5px solid var(--tertiary);
 }
 
 .menu > ul li ul a::before {
@@ -800,7 +801,7 @@ div::-webkit-scrollbar-thumb:hover {
 }
 
 .navbar-mobile__label:hover > p {
-	color: var(--danger);
+	color: var(--tertiary);
 }
 
 .submenu::before {
@@ -822,7 +823,7 @@ div::-webkit-scrollbar-thumb:hover {
 }
 
 .navbar-mobile__label a:hover {
-	color: var(--danger);
+	color: var(--tertiary);
 }
 
 .navbar-mobile__label li {
