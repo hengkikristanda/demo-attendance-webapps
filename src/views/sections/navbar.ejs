@@ -38,7 +38,7 @@
 					<ul>
 						<li class="nav-menu__label">
 							<!-- <i class="text-xl bi bi-translate"></i> -->
-							<div class="flex items-center h-10 w-10 p-2 bg-gray-200"><img src="/img/flags/<%= selectedLanguage %>.png" class="w-full h-full" /></div>
+							<div class="flex items-center h-10 w-10 p-2 bg-tertiary rounded-md"><img src="/img/flags/<%= selectedLanguage %>.png" class="w-full h-full" /></div>
 							<ul class="dropdown_menu-6 drop-right">
 								<a href="/?lang=id" class="flex gap-2 link">
 									<img src="/img/flags/id.png" class="max-w-4" />Bahasa Indonesia
@@ -62,10 +62,9 @@
 			</div>
 		</div>
 		<div class="flex lg:hidden items-center gap-4 justify-between">
-			<a href="/search" class="bi bi-search text-xl hover:text-secondary"></a>
+			<a href="/search" class="px-2 bi bi-search text-xl hover:text-secondary"></a>
 			<div class="navbar-mobile__language">
-				<!-- <i id="translation-icon__mobile" class="cursor-pointer text-xl bi bi-translate"></i> -->
-				<div id="translation-icon__mobile" class="flex items-center h-10 w-10 p-2 bg-gray-200">
+				<div id="translation-icon__mobile" class="flex items-center h-10 w-10 p-2 bg-tertiary cursor-pointer">
 					<img src="/img/flags/<%= selectedLanguage %>.png" class="w-full h-full" />
 				</div>
 				<ul>
@@ -92,12 +91,13 @@
 					</li>
 				</ul>
 			</div>
-			<h1 id="list-navbar__mobile" class="btn primary cursor-pointer bi bi-list"></h1>
+			<h1 id="list-navbar__mobile" class="text-2xl btn primary cursor-pointer bi bi-list"></h1>
 		</div>
 	</div>
 </nav>
 <nav id="navbar-mobile" class="navbar-mobile">
 	<ul class="flex flex-col">
+		<a href="/login" class="btn success">Login</a>
 		<% translations.menus.forEach((menu) => { %>
 		<li class="navbar-mobile__label">
 			<p class="submenu"><%= menu.label %></p>
