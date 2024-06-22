@@ -50,9 +50,9 @@ section {
 
 :root {
 	--primary: #222831;
-	--secondary: #393E46;
-	--tertiary: #00ADB5;
-	--danger: #EEEEEE;
+	--secondary: #393e46;
+	--tertiary: #00adb5;
+	--danger: #eeeeee;
 }
 
 /* -sm: small tablets, large phones */
@@ -428,62 +428,44 @@ div::-webkit-scrollbar-thumb:hover {
 	height: 100%;
 } */
 
-.profile-card2__wrapper {
-	width: 100%;
-	overflow-x: scroll;
-}
-
-.profile-card2__container {
-	width: 270rem;
-	display: flex;
-	flex-direction: row;
-	gap: 2rem;
-}
-
-.profile-card2 {
-	position: relative;
-	min-width: 30rem;
-	height: 200px;
-	background-color: #fff;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	display: flex;
-	border: 0.05rem solid white;
-}
-
-.profile-card {
+/* .profile-card {
+	padding: 0;
 	position: relative;
 	width: 100%;
-	height: 200px;
-	background-color: #fff;
+	max-width: 20rem;
+	height: 10rem;
+	background-color: violet;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	display: flex;
 	overflow: hidden;
 	border: 0.05rem solid white;
 }
 .profile-card:hover {
-	border: 0.05rem solid #ffc300;
+	border: 0.05rem solid var(--tertiary);
 }
-
+ 
 .left-side {
 	position: relative;
-	width: 40%;
+	width: 100%;
+	height: 100%;
 	background-color: #4caf50;
-	clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+	clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
 }
 
 .left-side img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+	clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
 }
 
 .right-side {
 	position: relative;
-	width: 60%;
+	width: 100%;
+	height: 100%;
 	box-sizing: border-box;
-	background-color: #fff;
-	clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+	background-color: red;
+	clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
 	padding-left: 1.2rem;
 	padding-top: 2rem;
 }
@@ -496,6 +478,14 @@ div::-webkit-scrollbar-thumb:hover {
 
 .right-side p {
 	@apply bg-gray-200 inline p-1 text-xs;
+}
+*/
+
+.profile-card {
+	width: 20rem;
+	height: 10rem;
+	border: 2px solid red;
+	border-radius: 1rem;
 }
 
 .image-abs {
@@ -720,7 +710,8 @@ div::-webkit-scrollbar-thumb:hover {
 	top: 1.8rem;
 }
 
-.menu > ul li ul li, a {
+.menu > ul li ul li,
+a {
 	margin: 0;
 	padding: 8px 16px;
 	display: flex;
