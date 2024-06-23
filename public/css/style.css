@@ -1564,6 +1564,10 @@ p.danger,
   overflow: hidden;
 }
 
+.overflow-scroll {
+  overflow: scroll;
+}
+
 .break-words {
   overflow-wrap: break-word;
 }
@@ -2394,19 +2398,17 @@ div::-webkit-scrollbar-thumb:hover {
 */
 
 .profile-card-container {
+  width: 180rem;
   display: flex;
-  gap: 0.5rem;
-  overflow: scroll;
-  border-width: 2px;
-  --tw-border-opacity: 1;
-  border-color: rgb(239 68 68 / var(--tw-border-opacity));
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  flex-direction: row;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 .profile-card {
   display: flex;
   max-height: 10rem;
+  max-width: 18rem;
   border-radius: 0.5rem;
   border-width: 1px;
   --tw-border-opacity: 1;
@@ -2838,6 +2840,31 @@ a {
 
   100% {
     transform: scaleY(0);
+  }
+}
+
+.reveal {
+  position: relative;
+  opacity: 0;
+}
+
+.reveal.active {
+  opacity: 1;
+}
+
+.active.fade-right {
+  animation: fade-right 0.5s ease-in-out;
+}
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 

@@ -481,11 +481,15 @@ div::-webkit-scrollbar-thumb:hover {
 }
 */
 .profile-card-container {
-	@apply flex gap-2 py-4 overflow-scroll border-2 border-red-500;
+	width: 180rem;
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	padding-bottom: 0.5rem;
 }
 
 .profile-card {
-	@apply flex border border-gray-300 max-h-40 rounded-lg shadow-gray-300 shadow-lg hover:border-tertiary;
+	@apply flex border border-gray-300 max-w-72 max-h-40 rounded-lg shadow-gray-300 shadow-lg hover:border-tertiary;
 }
 
 .image-abs {
@@ -866,5 +870,28 @@ a {
 	}
 	100% {
 		transform: scaleY(0);
+	}
+}
+
+
+.reveal {
+	position: relative;
+	opacity: 0;
+}
+
+.reveal.active {
+	opacity: 1;
+}
+.active.fade-right {
+	animation: fade-right 0.5s ease-in-out;
+}
+@keyframes fade-right {
+	0% {
+		transform: translateX(-100px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
 	}
 }

@@ -133,5 +133,27 @@
 			"email": "wisnuwardanakusuma25@gmail.com",
 			"pic": "wisnu-wardana-kusuma.jpg"
 		}
-	]
+	],
+	"section": {
+		"id": {
+			"title": "Dosen Kami",
+			"href": "Lihat lebih banyak"
+		},
+		"en": {
+			"title": "Our Lecturers",
+			"href": "See more"
+		},
+		"zh": {
+			"title": "我们的讲师",
+			"href": "查看更多"
+		},
+		"ko": {
+			"title": "우리 교수진",
+			"href": "더보기"
+		},
+		"ja": {
+			"title": "私たちの講師",
+			"href": "もっと見る"
+		}
+	}
 }

@@ -10,7 +10,7 @@
 		<link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-		<link rel="stylesheet" href="/css/style.css?v=27338bef-0735-43b6-adbd-fef91db26681" />
+		<link rel="stylesheet" href="/css/style.css?v=27338bef-0735-43b6-adbd-fef91db26682" />
 		<title><%= title %></title>
 	</head>
 	<body>
@@ -79,7 +79,7 @@
 			</section> -->
 
 			<section id="campuses">
-				<div class="flex flex-col lg:px-20 hidden">
+				<div class="flex flex-col lg:px-20">
 					<div class="flex gap-2">
 						<div class="bg-tertiary w-3"></div>
 						<div class="flex flex-col">
@@ -108,6 +108,33 @@
 					</div>
 				</div>
 			</section>
+
+			<section id="contactUs">
+				<div class="flex flex-col md:px-20">
+					<div class="flex gap-2">
+						<div class="bg-tertiary w-3"></div>
+						<h1 class="font-semibold text-primary">TALK TO US</h1>
+					</div>
+					<div class="flex flex-col items-center md:items-start sm:flex-row gap-12 py-4">
+						<div class="flex flex-col md:w-3/4 gap-2 px-4 md:px-0">
+							<p class="md:pr-20">
+								Have questions about our university programs, admissions, or any other inquiries?
+								Our team is here to assist you. Feel free to reach out to us via email or WhatsApp,
+								and we'll provide the information and support you need. We're just a message away
+								and happy to help!
+							</p>
+							<div class="flex gap-8 items-center">
+								<h1 class="bi bi-whatsapp cursor-pointer text-primary"></h1>
+								<h1 class="bi bi-chat-dots cursor-pointer text-primary"></h1>
+							</div>
+						</div>
+						<div class="w-full md:w-96">
+							<img src="/img/hand_holding_smartphone.jpg" />
+						</div>
+					</div>
+				</div>
+			</section>
+
 
 			<section id="facilities">
 				<div class="flex flex-col px-20 hidden">
@@ -215,32 +242,7 @@
 
 			<%- include('./sections/lecturers') %>
 
-			<section id="contactUs">
-				<div class="flex flex-col md:px-20">
-					<div class="flex gap-2">
-						<div class="bg-tertiary w-3"></div>
-						<h1 class="font-semibold text-primary">TALK TO US</h1>
-					</div>
-					<div class="flex flex-col items-center md:items-start sm:flex-row gap-12 py-4">
-						<div class="flex flex-col md:w-3/4 gap-2 px-4 md:px-0">
-							<p class="md:pr-20">
-								Have questions about our university programs, admissions, or any other inquiries?
-								Our team is here to assist you. Feel free to reach out to us via email or WhatsApp,
-								and we'll provide the information and support you need. We're just a message away
-								and happy to help!
-							</p>
-							<div class="flex gap-8 items-center">
-								<h1 class="bi bi-whatsapp cursor-pointer text-primary"></h1>
-								<h1 class="bi bi-chat-dots cursor-pointer text-primary"></h1>
-							</div>
-						</div>
-						<div class="w-full md:w-96">
-							<img src="/img/hand_holding_smartphone.jpg" />
-						</div>
-					</div>
-				</div>
-			</section>
-
+			
 			<%- include('./sections/footer') %>
 
 			<div
