@@ -50,6 +50,7 @@ module.exports = {
 			width: {
 				480: "30rem",
 				200: "50rem",
+				960: "60rem",
 				1200: "75rem",
 				4800: "300rem",
 			},

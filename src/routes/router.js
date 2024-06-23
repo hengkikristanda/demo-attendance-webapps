@@ -33,8 +33,13 @@ router.get("/", (req, res) => {
 		)
 	);
 
+	const lecturers = JSON.parse(
+		fs.readFileSync(path.join(__dirname, "../translations/lecturers.json"), "utf8")
+	);
+
 	res.locals.translations = translations;
 	res.locals.footerTranslation = footerTranslation;
+	res.locals.lecturers = lecturers;
 
 	res.render("index", {
 		title: "Attendance System - Home",
