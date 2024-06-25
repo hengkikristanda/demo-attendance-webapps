@@ -1,0 +1,159 @@
+{
+	"data": [
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Agus Sembodo",
+			"title": "S.S.T., M.Sc.",
+			"email": "AGUS.SEMBODO@PTDISTTD.AC.ID",
+			"pic": "agus-sembodo.jpg"
+		},
+		{
+			"id": "06dc0f7c-b50a-4418-93f5-a3b2653aa510",
+			"name": "Arief Apriyanto",
+			"title": "S.T., M.Sc.",
+			"email": "ariefapriyanto17@gmail.com",
+			"pic": "arief-apriyanto.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Budi Harso Hidayat",
+			"title": "A.TD., MT.",
+			"email": "budiharso.hidayat@ptdisttd.ac.id",
+			"pic": "budi-harso-hidayat.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Dessy Angga Afrianti",
+			"title": "S.SiT., MSc., MT.",
+			"email": "dessy.angga@ptdisttd.ac.id",
+			"pic": "dessy-angga-afrianti.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Drs. Bambang Wijonarko",
+			"title": "M.AP.",
+			"email": "wijonarko612@gmail.com",
+			"pic": "bambang-wijonarko.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Drs. Wijianto",
+			"title": "M.Si.",
+			"email": "wijiantosadik@gmail.com",
+			"pic": "wijianto.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Drs.Aan Sunandar",
+			"title": "M.M.",
+			"email": "aan_sunandar@dephub.go.id",
+			"pic": "aan-sunandar.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Guntoro Zain Ma'Arif",
+			"title": "S.T., M.T.",
+			"email": "GUNTORO.ZAIN@PTDISTTD.AC.ID",
+			"pic": "guntoro-zain-maarif.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Guntur Tri Indra Setiawan",
+			"title": "S.Pd., M.Pd.",
+			"email": "guntur.setiawan@ptdisttd.ac.id",
+			"pic": "guntur-tri-indra-setiawan.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Ir. Hari Boedi",
+			"title": "M.T.",
+			"email": "haribudi64@gmail.com",
+			"pic": "hari-boedi.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Ir. Sumantri Widya Praja",
+			"title": "S.T., M.Sc., M.Eng.",
+			"email": "Sumantri.praja@ptdisttd.ac.id",
+			"pic": "sumantri-widya-praja.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Nurma Rubby S",
+			"title": "S. SiT, M. Sc.",
+			"email": "nurma.rubby@ptdisttd.ac.id",
+			"pic": "nurma-rubby.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Penni Cahyani",
+			"title": "S.Psi., M.T.",
+			"email": "penni_cahyani@dephub.go.id",
+			"pic": "penni-cahyani.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Rachmat Sadili",
+			"title": "S.Si.T., M.T.",
+			"email": "rachmat.sadili@ptdi sttd.ac.id",
+			"pic": "rachmat-sadili.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Siti Khadijah Koto",
+			"title": "S.S.T., M.M.",
+			"email": "sitikhadijahkoto@gmail.com",
+			"pic": "siti-khadijah-koto.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Sudirman Anggada Sianipar",
+			"title": "S.Si.T.,M.T.",
+			"email": "sudirman_anggada@dephub.go.id",
+			"pic": "sudirman-anggada-sianipar.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Veronica",
+			"title": "Amd.LLAJ., S.AP., M.M.",
+			"email": "vcsimanjuntak@gmail.com",
+			"pic": "veronica.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "William Seno",
+			"title": "S.Kom., M.Si.",
+			"email": "william_seno@dephub.go.id",
+			"pic": "william-seno.jpg"
+		},
+		{
+			"id": "610e43c2-1b87-4aeb-8cfb-7799b1e55c2d",
+			"name": "Wisnu Wardana Kusuma",
+			"title": "S.Si.T, M.M.",
+			"email": "wisnuwardanakusuma25@gmail.com",
+			"pic": "wisnu-wardana-kusuma.jpg"
+		}
+	],
+	"section": {
+		"id": {
+			"title": "Alumni",
+			"href": "Lihat lebih banyak"
+		},
+		"en": {
+			"title": "Alumni",
+			"href": "See more"
+		},
+		"zh": {
+			"title": "校友",
+			"href": "查看更多"
+		},
+		"ko": {
+			"title": "동문",
+			"href": "더보기"
+		},
+		"ja": {
+			"title": "卒業生",
+			"href": "もっと見る"
+		}
+	}
+}

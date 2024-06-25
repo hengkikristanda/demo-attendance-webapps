@@ -1,0 +1,41 @@
+<section id="alumnies" class="reveal fade-right">
+	<div class="flex flex-col md:px-16 gap-4">
+		<div class="flex justify-between items-end">
+			<div class="flex gap-2">
+				<div class="bg-tertiary w-3"></div>
+				<h1 class="font-semibold text-primary"><%= alumnies.section[selectedLanguage].title %></h1>
+			</div>
+			<a href="/alumni" class="underline text-tertiary font-semibold p-0"
+				><%= alumnies.section[selectedLanguage].href %></a
+			>
+		</div>
+		<div class="relative overflow-scroll">
+			<div class="profile-card-wrapper">
+				<div class="profile-card-container">
+				<% for (let n=0; n<10; n++) { %>
+					<div class="profile-card">
+						<div class="h-full w-2/6">
+							<img
+								src="/img/lecturers/<%= alumnies.data[n].pic %>"
+								alt=""
+								class="w-full h-full object-cover rounded-l-lg" />
+						</div>
+						<div class="w-4/6 py-4 px-2 rounded-r-lg">
+							<p class="font-bold"><%= alumnies.data[n].name %></p>
+							<p class="text-xs font-bold"><%= alumnies.data[n].title %></p>
+							<div class="flex gap-4 items-center text-tertiary">
+								<a
+									href="mailto:<%= alumnies.data[n].email %>"
+									class="p-0 text-lg bi bi-envelope"></a>
+								<a
+									href="/dosen/<%= alumnies.data[n].id %>"
+									class="p-0 text-lg bi bi-person-circle"></a>
+							</div>
+						</div>
+					</div>
+					<% } %>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

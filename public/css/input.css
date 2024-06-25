@@ -38,7 +38,7 @@ a {
 }
 
 section {
-	@apply mb-36;
+	@apply mb-20;
 }
 
 /* :root {
@@ -489,7 +489,8 @@ div::-webkit-scrollbar-thumb:hover {
 }
 
 .profile-card {
-	@apply flex border border-gray-300 max-w-72 max-h-40 rounded-lg shadow-gray-300 shadow-lg hover:border-tertiary;
+	/* @apply flex border border-gray-300 max-w-72 max-h-40 rounded-lg shadow-gray-300 shadow-lg hover:border-tertiary; */
+	@apply flex border border-gray-300 max-w-72 max-h-40 rounded-lg hover:border-tertiary;
 }
 
 .image-abs {
@@ -873,7 +874,6 @@ a {
 	}
 }
 
-
 .reveal {
 	position: relative;
 	opacity: 0;
@@ -883,7 +883,7 @@ a {
 	opacity: 1;
 }
 .active.fade-right {
-	animation: fade-right 0.5s ease-in-out;
+	animation: fade-right 1s ease-in-out;
 }
 @keyframes fade-right {
 	0% {
@@ -892,6 +892,43 @@ a {
 	}
 	100% {
 		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+.tabs-content {
+	display: none;
+	opacity: 0;
+	flex-direction: column;
+	gap: 0.15rem; /* Tailwind's default spacing scale: 2 corresponds to 0.5rem */
+	padding-left: 0.5rem; /* Tailwind's default spacing scale: 2 corresponds to 0.5rem */
+	padding-top: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
+	padding-bottom: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
+	/* background-color: rgba(0, 173, 181, 0.1); */
+}
+
+.tabs-content h6 {
+	font-size: .9rem;
+}
+
+.tabs-content.hide {
+	display: none;
+	opacity: 0;
+}
+
+.tabs-content.show {
+	display: flex;
+	opacity: 100;
+	animation: fade-down 0.5s ease-in-out;
+}
+
+@keyframes fade-down {
+	0% {
+		transform: translateY(-10px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
 		opacity: 1;
 	}
 }
