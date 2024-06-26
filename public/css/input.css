@@ -952,3 +952,18 @@ a {
 		opacity: 1;
 	}
 }
+
+.tabs-lecturer.accor:hover {
+	background-color: var(--tertiary);
+}
+
+.tabs-lecturer.accor::before {
+	content: "";
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid black; /* Arrow color */
+	margin-right: 8px; /* Space between arrow and text */
+}

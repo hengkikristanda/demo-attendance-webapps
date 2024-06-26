@@ -1513,6 +1513,26 @@ p.danger,
   max-width: 24rem;
 }
 
+.max-w-lg {
+  max-width: 32rem;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
+}
+
+.max-w-3xl {
+  max-width: 48rem;
+}
+
+.max-w-5xl {
+  max-width: 64rem;
+}
+
+.max-w-6xl {
+  max-width: 72rem;
+}
+
 .-translate-x-full {
   --tw-translate-x: -100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -2980,6 +3000,23 @@ a {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+.tabs-lecturer.accor:hover {
+  background-color: var(--tertiary);
+}
+
+.tabs-lecturer.accor::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid black;
+  /* Arrow color */
+  margin-right: 8px;
+  /* Space between arrow and text */
 }
 
 .hover\:border-primary:hover {
