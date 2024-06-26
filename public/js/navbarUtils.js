@@ -5,10 +5,10 @@ function handleIcon_onClicked() {
 
 function toggleNavBarMobileMenu(event) {
 	const targetList = event.target.nextElementSibling;
-	if (targetList.classList.contains("showDropdown")) {
+	if (targetList != null && targetList.classList.contains("showDropdown")) {
 		targetList.classList.remove("showDropdown");
 		targetList.classList.add("hideDropdown");
-	} else if (targetList.classList.contains("hideDropdown")) {
+	} else if (targetList != null && targetList.classList.contains("hideDropdown")) {
 		targetList.classList.remove("hideDropdown");
 		targetList.classList.add("showDropdown");
 	}

@@ -9,17 +9,17 @@
 				<div class="h-56 w-full">
 					<img src="/img/our_people.jpeg" class="w-full h-full object-cover" />
 					<h1
-						class="text-5xl text-white text-end p-2 bg-tertiary font-semibold relative w-80"
+						class="text-5xl text-white text-start p-2 bg-tertiary font-semibold relative w-80"
 						style="top: -10rem">
-						<span class="text-primary">Dosen</span> Kami
+						<%= detailDosen.section[selectedLanguage].title %>
 					</h1>
 				</div>
 			</div>
 
 			<section>
-				<div class="flex flex-col gap-4 reveal fade-right">
+				<div class="flex flex-col gap-6">
 					<% detailDosen.data.forEach((dosen) => { %>
-					<div class="dosen-card-container">
+					<div class="dosen-card-container reveal fade-right">
 						<div class="max-w-72 md:max-w-96 h-96 md:max-h-96">
 							<img
 								src="/img/lecturers/<%= dosen.pic %>"
@@ -28,17 +28,17 @@
 						<div id="<%= dosen.id %>" class="dosen-card-content-container">
 							<div class="flex items-center md:items-start flex-col">
 								<h3 class="font-bold"><%= dosen.name %></h3>
-								<div class="flex gap-4">
+								<div class="flex flex-col items-center md:flex-row md:gap-4">
 									<a
 										href="mailto:<%= dosen.email %>"
-										class="flex p-0 gap-2 items-start text-tertiary text-lg font-semibold text-sm w-fit">
+										class="flex p-0 gap-2 items-start text-tertiary text-lg font-semibold text-sm w-fit h-fit py-2">
 										<span class="bi bi-envelope"></span>
 										<span><%= dosen.email %></span>
 									</a>
 									<a
 										href="/dosen/<%= dosen.profile %>"
 										target="_blank"
-										class="flex p-0 gap-2 items-start text-tertiary text-lg font-semibold text-sm w-fit">
+										class="flex p-0 gap-2 items-start text-tertiary text-lg font-semibold text-sm w-fit h-fit py-2">
 										<span class="bi bi-person-circle"></span>
 										<span>Detail Profile</span>
 									</a>
@@ -46,14 +46,20 @@
 							</div>
 							<div class="flex flex-col hidden md:flex">
 								<div class="flex w-full items-end gap-2">
-									<h6 class="tabs-lecturer active">PROFESSIONAL EXPERIENCE</h6>
-									<h6 class="tabs-lecturer">EDUCATIONAL BACKGROUND</h6>
-									<h6 class="tabs-lecturer">RESEARCH ACTIVITIES</h6>
+									<h6 class="tabs-lecturer active">
+										<%= detailDosen.section[selectedLanguage].tabs[0] %>
+									</h6>
+									<h6 class="tabs-lecturer">
+										<%= detailDosen.section[selectedLanguage].tabs[1] %>
+									</h6>
+									<h6 class="tabs-lecturer">
+										<%= detailDosen.section[selectedLanguage].tabs[2] %>
+									</h6>
 								</div>
 								<div class="tabs-content show">
 									<% dosen.personalExp.forEach((exp) => { %>
 									<div class="flex gap-2">
-										<h5 class="bi bi-check-circle"></h5>
+										<h5 class="bi bi-dot"></h5>
 										<h6><%= exp %></h6>
 									</div>
 									<% }); %>
@@ -61,7 +67,7 @@
 								<div class="tabs-content hide">
 									<% dosen.education.forEach((education) => { %>
 									<div class="flex gap-2">
-										<h5 class="bi bi-check-circle"></h5>
+										<h5 class="bi bi-dot"></h5>
 										<h6><%= education %></h6>
 									</div>
 									<% }); %>
@@ -69,64 +75,51 @@
 								<div class="tabs-content hide">
 									<% dosen.research.forEach((research) => { %>
 									<div class="flex gap-2">
-										<h5 class="bi bi-check-circle"></h5>
+										<h5 class="bi bi-dot"></h5>
 										<h6><%= research %></h6>
 									</div>
 									<% }); %>
 								</div>
 							</div>
-							<!-- <div class="flex flex-col w-full md:hidden">
-								<h6 class="mobile-tabs tabs-lecturer accor">PROFESSIONAL EXPERIENCE</h6>
-								<div class="tabs-content accor">
+							<div id="mobile-tabs-content" class="flex flex-col w-full md:hidden">
+								<h6 class="mobile-tabs-lecturer">
+									<%= detailDosen.section[selectedLanguage].tabs[0] %>
+								</h6>
+								<div class="flex flex-col bg-tertiary/10 gap-2 p-2 md:p-0">
+									<% dosen.personalExp.forEach((exp) => { %>
 									<div class="flex gap-2">
-										<h5 class="bi bi-check-circle"></h5>
-										<h6 class="font-semibold">
-											June 2023 - Present: Lecturer Indonesian Land Transportation Polytechnic –
-											STTD
-										</h6>
+										<h5 class="bi bi-dot"></h5>
+										<h6><%= exp %></h6>
 									</div>
-									<div class="flex gap-2">
-										<h5 class="bi bi-check-circle"></h5>
-										<h6 class="font-semibold">
-											January 2021 – June 2023: Apparatus Human Resources Analyst Indonesian Land
-											Transportation Polytechnic – STTD
-										</h6>
-									</div>
+									<% }); %>
 								</div>
-								<h6 class="mobile-tabs tabs-lecturer accor">EDUCATIONAL BACKGROUND</h6>
-								<div class="tabs-content accor">
+							</div>
+							<div class="flex flex-col w-full md:hidden">
+								<h6 class="mobile-tabs-lecturer">
+									<%= detailDosen.section[selectedLanguage].tabs[1] %>
+								</h6>
+								<div class="flex flex-col bg-tertiary/10 gap-2 p-2 md:p-0">
+									<% dosen.education.forEach((education) => { %>
 									<div class="flex gap-2">
-										<h5 class="bi bi-check-circle"></h5>
-										<h6>
-											2016-2017: Master in Public Administration The Mensis College of
-											Administrative Sciences
-										</h6>
+										<h5 class="bi bi-dot"></h5>
+										<h6><%= education %></h6>
 									</div>
-									<div class="flex gap-2">
-										<h5 class="bi bi-check-circle"></h5>
-										<h6>2003: Bachelor in Information Technology Bina Nusantara University</h6>
-									</div>
+									<% }); %>
 								</div>
-								<h6 class="mobile-tabs tabs-lecturer accor">RESEARCH ACTIVITIES</h6>
-								<div class="tabs-content accor">
+							</div>
+							<div class="flex flex-col w-full md:hidden">
+								<h6 class="mobile-tabs-lecturer">
+									<%= detailDosen.section[selectedLanguage].tabs[2] %>
+								</h6>
+								<div class="flex flex-col bg-tertiary/10 gap-2 p-2 md:p-0">
+									<% dosen.research.forEach((research) => { %>
 									<div class="flex gap-2">
-										<h5 class="bi bi-check-circle"></h5>
-										<h6>Transport</h6>
+										<h5 class="bi bi-dot"></h5>
+										<h6><%= research %></h6>
 									</div>
-									<div class="flex gap-2">
-										<h5 class="bi bi-check-circle"></h5>
-										<h6>Public Administration</h6>
-									</div>
-									<div class="flex gap-2">
-										<h5 class="bi bi-check-circle"></h5>
-										<h6>Computer Science</h6>
-									</div>
-									<div class="flex gap-2">
-										<h5 class="bi bi-check-circle"></h5>
-										<h6>Government</h6>
-									</div>
+									<% }); %>
 								</div>
-							</div> -->
+							</div>
 						</div>
 					</div>
 					<% }); %>
@@ -163,6 +156,19 @@
 						tabContent.classList.add("show");
 					}
 				});
+			});
+		});
+
+		const mobileTabsLecturer = document.querySelectorAll(".mobile-tabs-lecturer");
+		mobileTabsLecturer.forEach((mobileTab) => {
+			mobileTab.addEventListener("mouseup", () => {
+				const target = event.target.nextElementSibling;
+
+				if (target.style.display == "none") {
+					target.style.display = "block";
+				} else {
+					target.style.display = "none";
+				}
 			});
 		});
 	</script>

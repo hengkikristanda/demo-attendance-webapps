@@ -47,6 +47,31 @@
 			"research": ["Mechanic Engineering", "Automotive Engineering", "Choice of Public Transport"]
 		},
 		{
+			"id": "c84ac6a7-18c3-4af7-8e18-1a3e76f1e0d4",
+			"name": "Budi Harso Hidayat",
+			"title": "A.TD., MT.",
+			"email": "budiharso.hidayat@ptdisttd.ac.id",
+			"pic": "budi-harso-hidayat.jpg",
+			"profile": "budi-harso-hidayat.pdf",
+			"personalExp": [
+				"2023 – Now: Lecturer Land Transportation Programme",
+				"2019 – 2023: Kepala P3M",
+				"2017 – 2019: Ka Unit Penelitian"
+			],
+			"education": [
+				"2000 – 2002: S2 MASTER of TRANSPORTATION SYSTEMS AND ENGINEERING (UNIVERSITAS GADJAH MADA)",
+				"1994 – 1996: D4 LAND TRANSPORT (PTDI-STTD)",
+				"1988 – 1991: D3 ROAD TRAFFIC AND TRANSPORT COLLEGE (BPL-ALLAJR)"
+			],
+			"research": [
+				"Distance analysis of U-turn round facilities for sustainable urban development (case study of Ahmad Yani Road, Tirtayasa and Cilegon road) (2021)",
+				"Transport Management for Sustainable Urban Development at Tambun Market Area (2020)",
+				"Accessibility and Connectivity Concept Between Motorcycles and Pedestrians at Education District (2020)",
+				"PERBANDINGAN EMISI GAS BUANG (EGB) MOBIL PENUMPANG UMUM TERHADAP LALU LINTAS PADA RUAS JALAN RAYA SETU DI BEKASI (2019)",
+				"Level of gas emissions of passenger car on climb road segment (2018)"
+			]
+		},
+		{
 			"id": "c2b7e5a3-1a4d-4c6d-9e8d-3d5b7c2a9a4e",
 			"name": "William Seno",
 			"title": "S.Kom., M.Si.",
@@ -63,5 +88,27 @@
 			],
 			"research": ["Transport", "Public Administration", "Computer Science", "Government"]
 		}
-	]
+	],
+	"section": {
+		"id": {
+			"title": "Dosen Kami",
+			"tabs": ["PENGALAMAN PROFESIONAL", "PENDIDIKAN", "PENELITIAN"]
+		},
+		"en": {
+			"title": "Our Lecturers",
+			"tabs": ["PROFESSIONAL EXPERIENCE", "EDUCATIONAL BACKGROUND", "RESEARCH ACTIVITIES"]
+		},
+		"zh": {
+			"title": "我们的讲师",
+			"tabs": ["专业经验", "教育背景", "研究活动"]
+		},
+		"ko": {
+			"title": "우리의 강사들",
+			"tabs": ["전문 경력", "교육 배경", "연구 활동"]
+		},
+		"ja": {
+			"title": "私たちの講師",
+			"tabs": ["専門経験", "学歴", "研究活動"]
+		}
+	}
 }

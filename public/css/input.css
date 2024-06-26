@@ -422,7 +422,7 @@ div::-webkit-scrollbar-thumb:hover {
 		@apply flex flex-col items-center md:items-start md:flex-row md:min-h-9 rounded-lg shadow-gray-300 shadow-lg hover:border-tertiary justify-between md:max-w-5xl mx-auto w-full;
 	}
 	.dosen-card-content-container {
-		@apply flex flex-col w-full py-2 px-6 rounded-r-lg;
+		@apply flex flex-col w-full py-2 px-0 md:px-6 rounded-r-lg;
 	}
 }
 /* 
@@ -710,6 +710,7 @@ div::-webkit-scrollbar-thumb:hover {
 	min-width: 160px;
 	background-color: var(--primary);
 	position: absolute;
+	z-index: 20	;
 	top: calc(var(--menu-height) + 5px);
 	/* left: 0%; */
 	transform: translateX(-50%);
@@ -791,7 +792,7 @@ a {
 	position: fixed;
 	z-index: 11;
 	overflow: scroll;
-	top: 5rem;
+	top: 4rem;
 	width: 100%;
 	background-color: white;
 	transition: height 200ms ease-in-out;
@@ -908,9 +909,7 @@ a {
 	opacity: 0;
 	flex-direction: column;
 	gap: 0.15rem; /* Tailwind's default spacing scale: 2 corresponds to 0.5rem */
-	padding-left: 0.5rem; /* Tailwind's default spacing scale: 2 corresponds to 0.5rem */
-	padding-top: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
-	padding-bottom: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
+	padding: 1rem 0.5rem;
 }
 
 .tabs-content.accor {
@@ -926,11 +925,20 @@ a {
 	padding-right: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
 }
 
-.tabs-lecturer.active {
+.mobile-tabs-lecturer {
+	cursor: pointer;
+	text-align: start;
+	font-weight: 600; /* Tailwind's font-semibold */
+	padding-top: 0.5rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
+	padding-bottom: 0.5rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
+	padding-left: 0.5rem; /* Tailwind's default spacing scale: 2 corresponds to 0.5rem */
+	padding-right: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
 	background-color: rgba(0, 173, 181, 0.15);
-	/* border-top: 1px var(--tertiary) solid; */
-	/* border-left: 1px var(--tertiary) solid; */
-	/* border-right: 1px var(--tertiary) solid; */
+}
+
+.tabs-lecturer.active,
+.mobile-tabs-lecturer.active {
+	background-color: rgba(0, 173, 181, 0.15);
 }
 
 .tabs-content h6 {
@@ -947,9 +955,6 @@ a {
 	opacity: 100;
 	animation: fade-down 0.5s ease-in-out;
 	background-color: rgba(0, 173, 181, 0.15);
-	/* border-bottom: 1px var(--tertiary) solid; */
-	/* border-left: 1px var(--tertiary) solid; */
-	/* border-right: 1px var(--tertiary) solid; */
 }
 
 @keyframes fade-down {
@@ -963,11 +968,7 @@ a {
 	}
 }
 
-.tabs-lecturer.accor:hover {
-	background-color: var(--tertiary);
-}
-
-.tabs-lecturer.accor::before {
+.mobile-tabs-lecturer::before {
 	content: "";
 	display: inline-block;
 	width: 0;
@@ -977,3 +978,4 @@ a {
 	border-left: 5px solid black; /* Arrow color */
 	margin-right: 8px; /* Space between arrow and text */
 }
+
