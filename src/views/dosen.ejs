@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/x-icon" href="/img/icon.png" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-			rel="stylesheet" />
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-		<link rel="stylesheet" href="/css/style.css?v=27338bef-0735-43b6-adbd-fef91db26682" />
-		<title><%= title %></title>
-	</head>
+	<%- include('./sections/head') %>
 	<body>
 		<%- include('./sections/navbar') %>
 
@@ -40,12 +28,21 @@
 						<div id="<%= dosen.id %>" class="dosen-card-content-container">
 							<div class="flex items-center md:items-start flex-col">
 								<h3 class="font-bold"><%= dosen.name %></h3>
-								<a
-									href="mailto:<%= dosen.email %>"
-									class="flex p-0 gap-2 items-start text-tertiary text-lg font-semibold text-sm w-fit">
-									<span class="bi bi-envelope"></span>
-									<span><%= dosen.email %></span>
-								</a>
+								<div class="flex gap-4">
+									<a
+										href="mailto:<%= dosen.email %>"
+										class="flex p-0 gap-2 items-start text-tertiary text-lg font-semibold text-sm w-fit">
+										<span class="bi bi-envelope"></span>
+										<span><%= dosen.email %></span>
+									</a>
+									<a
+										href="/dosen/<%= dosen.profile %>"
+										target="_blank"
+										class="flex p-0 gap-2 items-start text-tertiary text-lg font-semibold text-sm w-fit">
+										<span class="bi bi-person-circle"></span>
+										<span>Detail Profile</span>
+									</a>
+								</div>
 							</div>
 							<div class="flex flex-col hidden md:flex">
 								<div class="flex w-full items-end gap-2">

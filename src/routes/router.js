@@ -84,7 +84,7 @@ router.get("/dosen", (req, res) => {
 	res.locals.detailDosen = detailDosen;
 
 	res.render("dosen", {
-		title: "Attendance System - Dosen",
+		title: "PTDI STTD - Dosen",
 		selectedLanguage,
 	});
 });
