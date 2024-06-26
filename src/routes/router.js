@@ -75,18 +75,13 @@ router.get("/dosen", (req, res) => {
 		)
 	);
 
-	const alumnies = JSON.parse(
-		fs.readFileSync(path.join(__dirname, "../translations/alumnies.json"), "utf8")
-	);
-
-	const lecturers = JSON.parse(
-		fs.readFileSync(path.join(__dirname, "../translations/lecturers.json"), "utf8")
+	const detailDosen = JSON.parse(
+		fs.readFileSync(path.join(__dirname, "../translations/dosen/detailDosen.json"), "utf8")
 	);
 
 	res.locals.translations = translations;
 	res.locals.footerTranslation = footerTranslation;
-	res.locals.alumnies = alumnies;
-	res.locals.lecturers = lecturers;
+	res.locals.detailDosen = detailDosen;
 
 	res.render("dosen", {
 		title: "Attendance System - Dosen",

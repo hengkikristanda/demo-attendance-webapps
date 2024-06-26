@@ -417,6 +417,13 @@ div::-webkit-scrollbar-thumb:hover {
 	.facilities-container .tabs {
 		@apply flex;
 	}
+
+	.dosen-card-container {
+		@apply flex flex-col items-center md:items-start md:flex-row md:min-h-9 rounded-lg shadow-gray-300 shadow-lg hover:border-tertiary justify-between md:max-w-5xl mx-auto w-full;
+	}
+	.dosen-card-content-container {
+		@apply flex flex-col w-full py-2 px-6 rounded-r-lg;
+	}
 }
 /* 
 .profile-cards {
@@ -906,12 +913,15 @@ a {
 	padding-bottom: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
 }
 
+.tabs-content.accor {
+}
+
 .tabs-lecturer {
 	cursor: pointer;
 	text-align: start;
 	font-weight: 600; /* Tailwind's font-semibold */
-	padding-top: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
-	padding-bottom: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
+	padding-top: 0.5rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
+	padding-bottom: 0.5rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
 	padding-left: 0.5rem; /* Tailwind's default spacing scale: 2 corresponds to 0.5rem */
 	padding-right: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
 }

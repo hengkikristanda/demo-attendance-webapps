@@ -1,0 +1,64 @@
+{
+	"data": [
+		{
+			"id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+			"name": "Agus Sembodo",
+			"title": "S.S.T., M.Sc.",
+			"email": "agus.sembodo@ptdisttd.ac.id",
+			"pic": "agus-sembodo.jpg",
+			"personalExp": [
+				"January 2023 - Present: Assistant Professor",
+				"2022 - 2023: Head of Technology and Information Unit PTDI-STTD",
+				"2019 - 2022: Program and Budget Plan Planner",
+				"2015 - 2017: Head of Technology and Information Unit PTDI-STTD"
+			],
+			"education": [
+				"2017 - 2019: Master Degree: Multimodal Transport Gadjah Mada University",
+				"2011 - 2012: Diploma IV Land Transportation Sekolah Tinggi Transportasi Darat",
+				"2006 - 2009: Diploma III Traffic and Road Transport Engineering Sekolah Tinggi Transportasi Darat"
+			],
+			"research": [
+				"Traffic Engineering",
+				"Transport Planning",
+				"Public Transport Planning and Operation",
+				"Sustainable Transport",
+				"Pedestrian",
+				"Macroscopic Simulation",
+				"Microscopic Simulation",
+				"Road Safety"
+			]
+		},
+		{
+			"id": "c2b7e5a3-1a4d-4c6d-9e8d-3d5b7c2a9a4e",
+			"name": "William Seno",
+			"title": "S.Kom., M.Si.",
+			"email": "william_seno@dephub.go.id",
+			"pic": "william-seno.jpg",
+			"personalExp": [
+				"June 2023 - Present: Lecturer Indonesian Land Transportation Polytechnic – STTD",
+				"January 2021 – June 2023: Apparatus Human Resources Analyst Indonesian Land Transportation Polytechnic – STTD"
+			],
+			"education": [
+				"2016-2017: Master in Public Administration The Mensis College of Administrative Sciences",
+				"2003: Bachelor in Information Technology Bina Nusantara University"
+			],
+			"research": ["Transport", "Public Administration", "Computer Science", "Government"]
+		},
+		{
+			"id": "9b75f7c0-b3a1-4c73-9af6-8e7e7a5d1d67",
+			"name": "Arief Apriyanto",
+			"title": "S.T., M.Sc.",
+			"email": "ariefapriyanto17@gmail.com",
+			"pic": "arief-apriyanto.jpg",
+			"personalExp": [
+				"August 2023 – Present: Lecturer - Indonesian land transportation polytechnic - STTD",
+				"January 2011 – July 2023: Automotive and Vehicle Inspection Instructor - Indonesian land transportation polytechnic - STTD"
+			],
+			"education": [
+				"2020 – 2022: Master Degree : Transportation System and Engineering - Gadjah Mada University, Yogyakarta, Indonesia",
+				"2016: Bachelor in Mechanical Engineering - University of Krisnadwipayana, Jakarta, Indonesia"
+			],
+			"research": ["Mechanic Engineering", "Automotive Engineering", "Choice of Public Transport"]
+		}
+	]
+}
