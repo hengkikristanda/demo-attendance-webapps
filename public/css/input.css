@@ -904,11 +904,27 @@ a {
 	padding-left: 0.5rem; /* Tailwind's default spacing scale: 2 corresponds to 0.5rem */
 	padding-top: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
 	padding-bottom: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
-	/* background-color: rgba(0, 173, 181, 0.1); */
+}
+
+.tabs-lecturer {
+	cursor: pointer;
+	text-align: start;
+	font-weight: 600; /* Tailwind's font-semibold */
+	padding-top: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
+	padding-bottom: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
+	padding-left: 0.5rem; /* Tailwind's default spacing scale: 2 corresponds to 0.5rem */
+	padding-right: 1rem; /* Tailwind's default spacing scale: 4 corresponds to 1rem */
+}
+
+.tabs-lecturer.active {
+	background-color: rgba(0, 173, 181, 0.15);
+	/* border-top: 1px var(--tertiary) solid; */
+	/* border-left: 1px var(--tertiary) solid; */
+	/* border-right: 1px var(--tertiary) solid; */
 }
 
 .tabs-content h6 {
-	font-size: .9rem;
+	font-size: 0.9rem;
 }
 
 .tabs-content.hide {
@@ -920,6 +936,10 @@ a {
 	display: flex;
 	opacity: 100;
 	animation: fade-down 0.5s ease-in-out;
+	background-color: rgba(0, 173, 181, 0.15);
+	/* border-bottom: 1px var(--tertiary) solid; */
+	/* border-left: 1px var(--tertiary) solid; */
+	/* border-right: 1px var(--tertiary) solid; */
 }
 
 @keyframes fade-down {

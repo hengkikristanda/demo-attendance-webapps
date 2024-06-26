@@ -69,14 +69,14 @@
 			<section>
 				<div class="flex flex-col gap-4">
 					<div
-						class="flex border border-gray-300 h-96 max-h-96 rounded-lg shadow-gray-300 shadow-lg hover:border-tertiary justify-between">
-						<div class="w-[30rem]">
+						class="flex flex-col items-center md:items-start md:flex-row md:h-96 md:max-h-96 rounded-lg shadow-gray-300 shadow-lg hover:border-tertiary justify-between">
+						<div class="max-w-72 md:max-w-96 h-96 md:max-h-96">
 							<img
 								src="/img/lecturers/william-seno.jpg"
 								class="w-full h-full object-cover rounded-l-lg" />
 						</div>
-						<div class="flex flex-col w-full py-4 px-2 rounded-r-lg">
-							<div class="flex flex-col">
+						<div class="flex flex-col w-full py-4 px-6 rounded-r-lg">
+							<div class="flex items-center md:items-start flex-col">
 								<h3 class="font-bold">William Seno, S.Kom., M.Si.</h3>
 								<a
 									href="mailto:william_seno@dephub.go.id"
@@ -85,20 +85,11 @@
 									<span>william_seno@dephub.go.id</span>
 								</a>
 							</div>
-							<div class="flex flex-col gap-2">
-								<div class="flex w-full items-end gap-4 tabs">
-									<h6
-										class="cursor-pointer text-start font-semibold border-b-8 border-tertiary hover:border-tertiary">
-										PROFESSIONAL EXPERIENCE
-									</h6>
-									<h6
-										class="cursor-pointer text-start font-semibold border-b-8 border-white hover:border-tertiary">
-										EDUCATIONAL BACKGROUND
-									</h6>
-									<h6
-										class="cursor-pointer text-start font-semibold border-b-8 border-white hover:border-tertiary">
-										RESEARCH ACTIVITIES
-									</h6>
+							<div class="flex flex-col">
+								<div class="flex w-full items-end gap-2">
+									<h6 class="tabs-lecturer active">PROFESSIONAL EXPERIENCE</h6>
+									<h6 class="tabs-lecturer">EDUCATIONAL BACKGROUND</h6>
+									<h6 class="tabs-lecturer">RESEARCH ACTIVITIES</h6>
 								</div>
 								<div class="tabs-content show">
 									<div class="flex gap-2">
@@ -178,19 +169,15 @@
 	</body>
 	<script>
 		function handleClick_tabs(index) {
-			const targetTabs = event.target;
-			targetTabs.classList.remove("border-tertiary");
-			targetTabs.classList.add("border-white");
-
-			const tabs = document.querySelectorAll(".tabs h6");
-			tabs.forEach((tab) => {
-				if (tab.classList.contains("border-tertiary")) {
-					tab.classList.remove("border-tertiary");
-					tab.classList.add("border-white");
+			const tabs = document.querySelectorAll(".tabs-lecturer");
+			tabs.forEach((tab, idx) => {
+				if (tab.classList.contains("active")) {
+					tab.classList.remove("active");
+				}
+				if (index == idx) {
+					tab.classList.add("active");
 				}
 			});
-			tabs[index].classList.remove("border-white");
-			tabs[index].classList.add("border-tertiary");
 
 			const tabsContent = document.querySelectorAll(".tabs-content");
 
@@ -205,7 +192,7 @@
 			tabsContent[index].classList.add("show");
 		}
 
-		const tabs = document.querySelectorAll(".tabs h6");
+		const tabs = document.querySelectorAll(".tabs-lecturer");
 		tabs.forEach((tab, index) => {
 			tab.addEventListener("mouseup", () => handleClick_tabs(index));
 		});
