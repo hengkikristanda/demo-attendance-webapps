@@ -2320,9 +2320,9 @@ section {
 /* Targeting the scrollbar itself */
 
 div::-webkit-scrollbar {
-  width: 6px;
+  width: 0.3rem;
   /* Sets the width of the vertical scrollbar */
-  height: 6px;
+  height: 0.3rem;
   /* Sets the height of the horizontal scrollbar, if needed */
 }
 
@@ -2336,15 +2336,13 @@ div::-webkit-scrollbar-track {
 /* Optional: Styling the thumb (part that you drag) */
 
 div::-webkit-scrollbar-thumb {
-  background: #888;
-  /* Dark grey thumb */
+  background: var(--tertiary);
 }
 
 /* Optional: Styling the thumb on hover */
 
 div::-webkit-scrollbar-thumb:hover {
-  background: #59b950;
-  /* Darker grey on hover */
+  background: var(--primary);
 }
 
 #overlay {
@@ -3094,14 +3092,21 @@ a {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .info-card__home p {
   color: var(--primary);
   font-weight: 800;
   line-height: normal;
-  text-align: left;
   font-size: 0.75rem;
+  display: flex;
+  width: 100%;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .info-card__home span {
@@ -3109,6 +3114,7 @@ a {
   display: inline-block;
   text-align: left;
   width: 100%;
+  display: flex;
 }
 
 .info-card__home:hover {

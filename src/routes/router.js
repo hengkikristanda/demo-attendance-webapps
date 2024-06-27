@@ -41,9 +41,9 @@ router.get("/", (req, res) => {
 		fs.readFileSync(path.join(__dirname, "../translations/lecturers.json"), "utf8")
 	);
 
-	const announcement = JSON.parse(
+	const news = JSON.parse(
 		fs.readFileSync(
-			path.join(__dirname, "../translations/pengumuman/", `${selectedLanguage}.json`),
+			path.join(__dirname, "../translations/berita/", `${selectedLanguage}.json`),
 			"utf8"
 		)
 	);
@@ -52,7 +52,7 @@ router.get("/", (req, res) => {
 	res.locals.footerTranslation = footerTranslation;
 	res.locals.alumnies = alumnies;
 	res.locals.lecturers = lecturers;
-	res.locals.announcement = announcement;
+	res.locals.news = news;
 
 	res.render("index", {
 		title: "Attendance System - Home",

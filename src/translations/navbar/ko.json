@@ -93,8 +93,8 @@
 					"href": "/berita"
 				},
 				{
-					"label": "공지사항",
-					"href": "/pengumuman"
+					"label": "PPID",
+					"href": "/ppid"
 				}
 			]
 		}

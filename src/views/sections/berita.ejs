@@ -3,20 +3,20 @@
     <div class="flex justify-between items-end">
       <div class="flex gap-2">
         <div class="bg-tertiary w-3"></div>
-        <h1 class="font-semibold text-primary">Pengumuman Terbaru</h1>
+        <h1 class="font-semibold text-primary"><%= news.section.title %></h1>
       </div>
-      <a href="/pengumuman-terbaru" class="underline text-tertiary font-semibold p-0">Lihat lebih banyak</a>
+      <a href="/berita-terbaru" class="underline text-tertiary font-semibold p-0"><%= news.section.href %></a>
     </div>
 
     <div class="relative overflow-hidden">
-      <div class="slides announcement-slides">
+      <div class="slides news-slides">
         <% 
-			const numberOfrows = announcement.data.length;
+			const numberOfrows = news.data.length;
 			const numberOfCardsPerPage = 4;
 			const numberOfPages = Math.ceil(numberOfrows/numberOfCardsPerPage);
 			for(let index=0; index<numberOfPages; index++) { 
 		%>
-        <div class="slide announcement-slide">
+        <div class="slide news-slide">
           <div class="flex w-full gap-4">
             <% 
 			const startIndex = index * numberOfCardsPerPage;
@@ -26,10 +26,10 @@
 			%>
             <a class="info-card__home" href="#">
               <div class="info-card-img__container">
-                <img src="/img/pengumuman/<%= announcement.data[n].pic %>" />
+                <img src="/img/berita/<%= news.data[n].pic %>" />
               </div>
-              <p><%= announcement.data[n].title %></p>
-              <span><%= announcement.data[n].subTitle %></span>
+              <p><%= news.data[n].title %></p>
+              <span><%= news.data[n].subTitle %></span>
             </a>
             <% } %>
           </div>
@@ -39,7 +39,7 @@
 
       <div class="nav-buttons">
 		<% for(let n=0; n<numberOfPages; n++) { %>
-			<button onclick="handleSlideAnnouncement(<%=n%>)"><%=n + 1%></button>
+			<button onclick="handleSlideNews(<%=n%>)"><%=n + 1%></button>
 		<% } %>
       </div>
     </div>
@@ -48,13 +48,13 @@
 
 
 <script>
-  var announcementSlidesContainer = document.querySelector(".announcement-slides");
-  var slides = document.querySelectorAll(".announcement-slide");
+  var newsSlidesContainer = document.querySelector(".news-slides");
+  var slides = document.querySelectorAll(".news-slide");
   var currentSlide = 0;
 
-  function handleSlideAnnouncement(index) {
+  function handleSlideNews(index) {
     if (index >= 0 && index < slides.length) {
-      announcementSlidesContainer.style.transform = `translateX(${-index * 100}%)`;
+      newsSlidesContainer.style.transform = `translateX(${-index * 100}%)`;
       currentSlide = index;
     }
   }
