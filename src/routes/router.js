@@ -67,6 +67,10 @@ router.get("/dosen", (req, res) => {
 		selectedLanguage = "id";
 	}
 
+	if (pageNumber == undefined) {
+		pageNumber = 1;
+	}
+
 	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
 		selectedLanguage = "id";
 
