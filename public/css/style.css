@@ -1440,6 +1440,10 @@ p.danger,
   height: 14rem;
 }
 
+.h-72 {
+  height: 18rem;
+}
+
 .h-8 {
   height: 2rem;
 }
@@ -2218,6 +2222,11 @@ li.action-card.danger:hover {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 h1 {
   font-size: 2rem;
 }
@@ -2748,7 +2757,7 @@ div::-webkit-scrollbar-thumb:hover {
   min-width: 160px;
   background-color: var(--primary);
   position: absolute;
-  z-index: 20	;
+  z-index: 20;
   top: calc(var(--menu-height) + 5px);
   /* left: 0%; */
   transform: translateX(-50%);
@@ -3042,6 +3051,70 @@ a {
   /* Space between arrow and text */
 }
 
+.info-card__wrapper {
+  overflow: hidden;
+  /* width: 100%; */
+  /* width: 86.5rem; */
+  width: 1384px;
+  min-height: 12rem;
+  height: 13rem;
+}
+
+.info-card__container {
+  display: flex;
+  gap: 1.5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: auto;
+}
+
+.info-card__home {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  height: -moz-fit-content;
+  height: fit-content;
+  gap: 0.5rem;
+  /* width: 14rem; */
+  /* max-width: 14rem; */
+  width: 25%;
+  min-width: 20%;
+}
+
+.info-card-img__container {
+  height: 8rem;
+  max-height: 8rem;
+  /* width: 14rem; */
+  /* max-width: 14rem; */
+  width: 100%;
+}
+
+.info-card__home img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.info-card__home p {
+  color: var(--primary);
+  font-weight: 800;
+  line-height: normal;
+  text-align: left;
+  font-size: 0.75rem;
+}
+
+.info-card__home span {
+  font-size: 0.6rem;
+  display: inline-block;
+  text-align: left;
+  width: 100%;
+}
+
+.info-card__home:hover {
+  text-decoration: underline;
+}
+
 .hover\:border-primary:hover {
   --tw-border-opacity: 1;
   border-color: rgb(34 40 49 / var(--tw-border-opacity));
@@ -3166,6 +3239,14 @@ a {
     align-items: flex-start;
   }
 
+  .md\:gap-12 {
+    gap: 3rem;
+  }
+
+  .md\:gap-2 {
+    gap: 0.5rem;
+  }
+
   .md\:gap-4 {
     gap: 1rem;
   }
@@ -3220,4 +3301,3 @@ a {
     padding-right: 5rem;
   }
 }
-
