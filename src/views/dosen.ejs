@@ -18,25 +18,34 @@
 
 			<section>
 				<div class="flex flex-col gap-6">
-					<% detailDosen.data.forEach((dosen) => { %>
+					<% 
+					const cardPerPage = 5;
+					const numberOfRows = detailDosen.data.length;
+
+					const numberOfPages = Math.ceil(numberOfRows / cardPerPage);
+
+					const startIndex = (pageNumber - 1) * cardPerPage;
+
+					for (let n=startIndex; n<numberOfRows && n<(cardPerPage * pageNumber); n++) {
+					%>
 					<div class="dosen-card-container reveal fade-right">
 						<div class="max-w-72 md:max-w-96 h-96 md:max-h-96">
 							<img
-								src="/img/lecturers/<%= dosen.pic %>"
+								src="/img/lecturers/<%= detailDosen.data[n].pic %>"
 								class="w-full h-full object-cover rounded-l-lg" />
 						</div>
-						<div id="<%= dosen.id %>" class="dosen-card-content-container">
+						<div id="<%= detailDosen.data[n].id %>" class="dosen-card-content-container">
 							<div class="flex items-center md:items-start flex-col">
-								<h3 class="font-bold"><%= dosen.name %></h3>
+								<h3 class="font-bold"><%= detailDosen.data[n].name %></h3>
 								<div class="flex flex-col items-center md:flex-row md:gap-4">
 									<a
-										href="mailto:<%= dosen.email %>"
+										href="mailto:<%= detailDosen.data[n].email %>"
 										class="flex p-0 gap-2 items-start text-tertiary text-lg font-semibold text-sm w-fit h-fit py-2">
 										<span class="bi bi-envelope"></span>
-										<span><%= dosen.email %></span>
+										<span><%= detailDosen.data[n].email %></span>
 									</a>
 									<a
-										href="/dosen/<%= dosen.profile %>"
+										href="/dosen/<%= detailDosen.data[n].profile %>"
 										target="_blank"
 										class="flex p-0 gap-2 items-start text-tertiary text-lg font-semibold text-sm w-fit h-fit py-2">
 										<span class="bi bi-person-circle"></span>
@@ -57,7 +66,7 @@
 									</h6>
 								</div>
 								<div class="tabs-content show">
-									<% dosen.personalExp.forEach((exp) => { %>
+									<% detailDosen.data[n].personalExp.forEach((exp) => { %>
 									<div class="flex gap-2">
 										<h5 class="bi bi-dot"></h5>
 										<h6><%= exp %></h6>
@@ -65,7 +74,7 @@
 									<% }); %>
 								</div>
 								<div class="tabs-content hide">
-									<% dosen.education.forEach((education) => { %>
+									<% detailDosen.data[n].education.forEach((education) => { %>
 									<div class="flex gap-2">
 										<h5 class="bi bi-dot"></h5>
 										<h6><%= education %></h6>
@@ -73,7 +82,7 @@
 									<% }); %>
 								</div>
 								<div class="tabs-content hide">
-									<% dosen.research.forEach((research) => { %>
+									<% detailDosen.data[n].research.forEach((research) => { %>
 									<div class="flex gap-2">
 										<h5 class="bi bi-dot"></h5>
 										<h6><%= research %></h6>
@@ -81,12 +90,12 @@
 									<% }); %>
 								</div>
 							</div>
-							<div id="mobile-tabs-content" class="flex flex-col w-full md:hidden">
+							<div id="mobile-tabs-content" class="flex flex-col w-full md:hidden px-2 mb-2">
 								<h6 class="mobile-tabs-lecturer">
 									<%= detailDosen.section[selectedLanguage].tabs[0] %>
 								</h6>
-								<div class="flex flex-col bg-tertiary/10 gap-2 p-2 md:p-0">
-									<% dosen.personalExp.forEach((exp) => { %>
+								<div class="flex flex-col bg-tertiary/10 gap-2 p-2 md:p-0 hidden">
+									<% detailDosen.data[n].personalExp.forEach((exp) => { %>
 									<div class="flex gap-2">
 										<h5 class="bi bi-dot"></h5>
 										<h6><%= exp %></h6>
@@ -94,12 +103,12 @@
 									<% }); %>
 								</div>
 							</div>
-							<div class="flex flex-col w-full md:hidden">
+							<div class="flex flex-col w-full md:hidden px-2 mb-2">
 								<h6 class="mobile-tabs-lecturer">
 									<%= detailDosen.section[selectedLanguage].tabs[1] %>
 								</h6>
-								<div class="flex flex-col bg-tertiary/10 gap-2 p-2 md:p-0">
-									<% dosen.education.forEach((education) => { %>
+								<div class="flex flex-col bg-tertiary/10 gap-2 p-2 md:p-0 hidden">
+									<% detailDosen.data[n].education.forEach((education) => { %>
 									<div class="flex gap-2">
 										<h5 class="bi bi-dot"></h5>
 										<h6><%= education %></h6>
@@ -107,12 +116,12 @@
 									<% }); %>
 								</div>
 							</div>
-							<div class="flex flex-col w-full md:hidden">
+							<div class="flex flex-col w-full md:hidden px-2 mb-2">
 								<h6 class="mobile-tabs-lecturer">
 									<%= detailDosen.section[selectedLanguage].tabs[2] %>
 								</h6>
-								<div class="flex flex-col bg-tertiary/10 gap-2 p-2 md:p-0">
-									<% dosen.research.forEach((research) => { %>
+								<div class="flex flex-col bg-tertiary/10 gap-2 p-2 md:p-0 hidden">
+									<% detailDosen.data[n].research.forEach((research) => { %>
 									<div class="flex gap-2">
 										<h5 class="bi bi-dot"></h5>
 										<h6><%= research %></h6>
@@ -122,7 +131,21 @@
 							</div>
 						</div>
 					</div>
-					<% }); %>
+					<% }	 %>
+
+					<div class="flex gap-4 justify-center">
+						<%
+						for (let n=0; n<numberOfPages; n++) {
+							let className = "bg-secondary/50";
+							if (pageNumber == (n+1)) {
+								className = "bg-tertiary/50";
+							}
+						%>
+							<a href="?lang=<%=selectedLanguage%>&page=<%=(n+1)%>" class="<%=className%> hover:bg-tertiary px-4 py-2 rounded-full text-white"><%= (n+1) %></a>
+						<%
+						}
+						%>
+					</div>
 				</div>
 			</section>
 
@@ -164,11 +187,17 @@
 			mobileTab.addEventListener("mouseup", () => {
 				const target = event.target.nextElementSibling;
 
-				if (target.style.display == "none") {
-					target.style.display = "block";
-				} else {
-					target.style.display = "none";
+				if (target.classList.contains("hidden")){
+					target.classList.remove("hidden");
+				}else{
+					target.classList.add("hidden");
 				}
+
+				// if (target.style.display == "block") {
+				// 	target.style.display = "none";
+				// } else {
+				// 	target.style.display = "block";
+				// }
 			});
 		});
 	</script>

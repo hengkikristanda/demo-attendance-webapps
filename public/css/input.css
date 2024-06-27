@@ -424,7 +424,7 @@ div::-webkit-scrollbar-thumb:hover {
 	}
 
 	.dosen-card-container {
-		@apply flex flex-col items-center md:items-start md:flex-row md:min-h-9 rounded-lg shadow-gray-300 shadow-lg hover:border-tertiary justify-between md:max-w-5xl mx-auto w-full;
+		@apply flex flex-col items-center md:items-start md:flex-row md:min-h-9 rounded-lg md:shadow-gray-300 md:shadow-lg hover:border-tertiary justify-between md:max-w-5xl mx-auto w-full;
 	}
 	.dosen-card-content-container {
 		@apply flex flex-col w-full py-2 px-0 md:px-6 rounded-r-lg;

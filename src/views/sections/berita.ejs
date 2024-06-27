@@ -5,7 +5,7 @@
         <div class="bg-tertiary w-3"></div>
         <h1 class="font-semibold text-primary"><%= news.section.title %></h1>
       </div>
-      <a href="/berita-terbaru" class="underline text-tertiary font-semibold p-0"><%= news.section.href %></a>
+      <a href="/berita" class="underline text-tertiary font-semibold p-0"><%= news.section.href %></a>
     </div>
 
     <div class="relative overflow-hidden">
@@ -24,7 +24,7 @@
 
 			for(let n=startIndex; n<endIndex && n<numberOfrows; n++) { 
 			%>
-            <a class="info-card__home" href="#">
+            <a class="info-card__home" href="/berita/<%=news.data[n].id%>">
               <div class="info-card-img__container">
                 <img src="/img/berita/<%= news.data[n].pic %>" />
               </div>

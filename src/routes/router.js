@@ -62,6 +62,7 @@ router.get("/", (req, res) => {
 
 router.get("/dosen", (req, res) => {
 	let selectedLanguage = req.query.lang;
+	let pageNumber = req.query.page;
 	if (selectedLanguage == undefined) {
 		selectedLanguage = "id";
 	}
@@ -94,6 +95,7 @@ router.get("/dosen", (req, res) => {
 	res.render("dosen", {
 		title: "PTDI STTD - Dosen",
 		selectedLanguage,
+		pageNumber,
 	});
 });
 

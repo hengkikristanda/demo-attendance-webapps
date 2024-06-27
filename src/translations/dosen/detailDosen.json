@@ -72,6 +72,357 @@
 			]
 		},
 		{
+			"id": "d4a154f7-2c3e-44cf-8b19-e5d7c8afac93",
+			"name": "Dessy Angga Afrianti",
+			"title": "S.SiT., MSc., MT.",
+			"email": "dessy.angga@ptdisttd.ac.id",
+			"pic": "dessy-angga-afrianti.jpg",
+			"profile": "dessy-angga-afrianti.pdf",
+			"personalExp": [
+				"2024 - Now: Dosen Lektor",
+				"2019 – 2023: Ketua Program Studi Transportasi Darat Sarjana Terapan",
+				"2018 – 2022: Dosen Lektor",
+				"2015 – 2018 Sekretaris Jurusan D.IV Transportasi Darat",
+				"2015 – 2017 Dosen Asisten Ahli",
+				"2009 – 2014 Staf Prodi D.III LLaj"
+			],
+			"education": [
+				"2012 – 2013: S2 Master Spatial Science (University Of Groningen)",
+				"2011 – 2012: S2 Magister Transportasi (Institut Teknologi Bandung)",
+				"2005 – 2009: D.IV Transportasi Darat (Sekolah Tinggi Transportasi Darat)"
+			],
+			"research": [
+				"Land Use Transport",
+				"Transport Planning",
+				"Accessibility",
+				"Mobility",
+				"Traffic Engineering",
+				"Public Transport Planning and Operation",
+				"Bus Scheduling Optimization",
+				"Facility Location Problem"
+			]
+		},
+		{
+			"id": "b2b2a32b-9377-4d4a-85d2-d3b7a1c3c8a5",
+			"name": "Drs. Bambang Wijonarko",
+			"title": "M.AP.",
+			"email": "wijonarko612@gmail.com",
+			"pic": "bambang-wijonarko.jpg",
+			"profile": "bambang-wijonarko.pdf",
+			"personalExp": [
+				"2022 - Present: Asisstant Professor - PTDI STTD",
+				"2021 - 2022: Head of General Affair Division, The Human Resources Development center for Land Transport",
+				"2019 – 2021: Director of Bali Land Transportation Polytechnic"
+			],
+			"education": [
+				"2020 - 2021: Graduate School - Public Administration (Ngurah Rai University Bali)",
+				"1983 - 1989: Undergraduate School - Public Administration (Gadjah Mada University)",
+				"1980 - 1983: Senior High School - SMAN 1 Bantul"
+			],
+			"research": [
+				"Public Transportation Policy",
+				"Transportation Safety",
+				"Public Transportation Management"
+			]
+		},
+		{
+			"id": "a27c257f-4a5b-49a5-8d6a-b9d2a8a3b7a8",
+			"name": "Drs. Wijianto",
+			"title": "M.Si.",
+			"email": "wijiantosadik@gmail.com",
+			"pic": "wijianto.jpg",
+			"profile": "wijianto.pdf",
+			"personalExp": [
+				"Januari 2023 - Present: Lecturer – PTDI STTD",
+				"Desember 2019 – Desember 2023: Asisstant Professor",
+				"Juli 2018 - November 2019: Head of General Affair Division – PTDI – STTD",
+				"Mei 2016 – Juni 2018: Head of Mutation and Discipline Human Resources Bureau – Ministry of Transportation"
+			],
+			"education": [
+				"2004 - 2006: Graduate School – Public Administration (STIAMI JAKARTA)",
+				"1980 – 1985: Undergraduate School – Public/State Administration ( Brawijaya University)",
+				"1978 – 1980: Senior High School – SMAN 2 Bojonegoro"
+			],
+			"research": [
+				"Public Transportation Policy",
+				"Transportation Safety",
+				"Public Transportation Management"
+			]
+		},
+		{
+			"id": "0f5c30b3-d4d9-478d-83d2-c8a6e8e5c7d8",
+			"name": "Drs.Aan Sunandar",
+			"title": "M.M.",
+			"email": "aan_sunandar@dephub.go.id",
+			"pic": "aan-sunandar.jpg",
+			"profile": "aan-sunandar.pdf",
+			"personalExp": [
+				"April 2019 - Present: LECTURERS PTDI_STTD",
+				"September 2018 - 2019: Head of Sub Directorat System Development , Traffic Directorat",
+				"April 2018: Head of Program Planning BPTJ",
+				"October 2017: Head of General Departement PPTB SETJEN (Center for Sustainable Transport Management.)",
+				"July 2016: Head of Planning and Finance BIRO UMUM SETJEN",
+				"October 2015 - 2016: Head of General Departement PUSDATIN SETJEN",
+				"January 2011 - 2015: Head of General Departement, PUSBANG SDM APARATUR BPSDMP",
+				"January 2006: Head of Program Planning Sub Section PUSKOM SETJEN",
+				"October 1992-2001: Researcher at The Transportation Research and Development Agency (BADAN LITBANG)"
+			],
+			"education": [
+				"1991: Bachelor of State Administration",
+				"2006: Masters in Marketing Management",
+				"2006: Masters in Financial Management"
+			],
+			"research": [
+				"Land use transport",
+				"Transport planning",
+				"Transport economic",
+				"Traffic engineering",
+				"Supervisor ATCS"
+			]
+		},
+		{
+			"id": "db03e7a2-1f6d-44d4-b1b2-2a2e7b4a3d5f",
+			"name": "Guntoro Zain Ma'Arif",
+			"title": "S.T., M.T.",
+			"email": "GUNTORO.ZAIN@PTDISTTD.AC.ID",
+			"pic": "guntoro-zain-maarif.jpg",
+			"profile": "guntoro-zain-maarif.pdf",
+			"personalExp": ["2019 – 2024: LECTURER", "2017 – 2018: CIVIL CONSULTANT"],
+			"education": [
+				"2024: ENGINEERING PROFESSION (ATMAJAYA UNIVERSITY)",
+				"2017: MASTER OF CIVIL ENGINEERING (MUHAMMADIYAH SURAKARTA UNIVERSITY",
+				"2008: CIVIL ENGINEERING (MUHAMMADIYAH SURAKARTA UNIVERSITY)"
+			],
+			"research": [
+				"COMPARISON OF THE PERFORMANCE OF SIGNALIZED INTERSECTIONS BETWEEN MKJI 1997 AND PKJI 2014",
+				"STUDY OF THE FULFILLMENT OF ROAD TECHNICAL REQUIREMENTS ON THE PRIMARY ARTERIAL ROAD NETWORK",
+				"IMPROVING PUBLIC TRANSPORT SERVICES BASED ON BUY THE SERVICE"
+			]
+		},
+		{
+			"id": "f5b2c4d5-2e1d-4c2e-8d6e-3d7e8a3c9a4b",
+			"name": "Guntur Tri Indra Setiawan",
+			"title": "S.Pd., M.Pd.",
+			"email": "guntur.setiawan@ptdisttd.ac.id",
+			"pic": "guntur-tri-indra-setiawan.jpg",
+			"profile": "guntur-tri-indra-setiawan.pdf",
+			"personalExp": [],
+			"education": [
+				"2007 – 2010: Master of Education Muhammadiyah University of Surakarta",
+				"2003 – 2007: Bachelor in English Education Muhammadiyah University of Surakarta"
+			],
+			"research": ["Linguistics", "Educations", "Learning methods"]
+		},
+		{
+			"id": "b1d3c5e7-3f1e-4e4a-9d5e-6e8b3c7a9b5c",
+			"name": "Ir. Hari Boedi",
+			"title": "M.T.",
+			"email": "haribudi64@gmail.com",
+			"pic": "hari-boedi.jpg",
+			"profile": "hari-boedi.pdf",
+			"personalExp": ["2014 – 2022: (LAST 5 YEARS) Indonesian Railway Polytechnic Madiun"],
+			"education": [
+				"S2 Master Automotive Engineering - Pancasila University, Jakarta",
+				"S1 Mechanical Engineering - National Institute of Technology Malang"
+			],
+			"research": ["Vehicle Engineering", "Surface Treatment Technology", "Rolling Stock"]
+		},
+		{
+			"id": "e8b7d2f4-4a3d-4c2b-8e5d-7d9b3e7a2b5c",
+			"name": "Ir. Sumantri Widya Praja",
+			"title": "S.T., M.Sc., M.Eng.",
+			"email": "Sumantri.praja@ptdisttd.ac.id",
+			"pic": "sumantri-widya-praja.jpg",
+			"profile": "sumantri-widya-praja.pdf",
+			"personalExp": ["2014 – 2022: (LAST 5 YEARS) LECTURER"],
+			"education": [
+				"ENGINEERING PROFESSION (ATMAJAYA UNIVERSITY) (2023)",
+				"S2 TRANSPORTATION SYSTEM AND ENGINEERING (GADJAH MADA UNIVERSITY (2009)",
+				"S1 ENVIRONMENT AND CIVIL ENGINEERING (GADJAH MADA UNIVERSITY) (2007)"
+			],
+			"research": [
+				"ANALISIS SISTEM FRONT WHEEL ALIGMENT TERHADAP PROPORSI BERAT DAN DAMPAKNYA PADA KESELAMATAN KENDARAAN (2020)",
+				"PENGARUH MODIFIKASI WAKTU PENGAPIAN TERHADAP UNJUK KERJA DAN EMISI GAS BUANG MESIN BENSIN DENGAN VARIASI CAMPURAN BAHAN BAKAR PREMIUM DAN BIOETANOL (2019)",
+				"ANALISA PENGARUH CAMPURAN BIOETANOL DALAM PREMIUM PADA SEPEDA MOTOR (2018)",
+				"PENGARUH BEBAN LALU LINTAS TERHADAP UMUR PERKERASAN JALAN RIGID (2018)",
+				"PENGARUH CAMPURAN BIOETANOL PADA PERTALITE TERHADAP UNJUK KERJA (PERFORMA) MESIN OTTO 4 SILINDER (2018)"
+			]
+		},
+		{
+			"id": "c3e2f5a6-5a2b-4d4c-8d7e-3d5b2c7a9a5e",
+			"name": "Nurma Rubby S",
+			"title": "S. SiT, M. Sc.",
+			"email": "nurma.rubby@ptdisttd.ac.id",
+			"pic": "nurma-rubby.jpg",
+			"profile": "nurma-rubby.pdf",
+			"personalExp": [
+				"2023 – 2024: DOSEN – ASISTEN AHLI",
+				"2021 – 2023: ANALIS PENGELOLAAN KEUANGAN APBN AHLI MUDA",
+				"2021: KASUBAG TU, KEPEGAWAIAN DAN KEUANGAN",
+				"2018 – 2020: PENYUSUN BAHAN EVALUASI DAN PELAPORAN",
+				"2017 – 2018: PENYUSUN RENCANA DAN PROGRAM",
+				"2015 – 2017: PENYUSUN BAHAN EVALUASI DAN PELAPORAN",
+				"2012 – 2015: PENYUSUN LAPORAN",
+				"2012: PENGANALISIS HASIL EVALUASI DIKLAT TEKNIS"
+			],
+			"education": [
+				"2012 - 2017: S2 MAGISTER SISTEM DAN TEKNIK TRANSPORTASI (UGM)",
+				"2006 - 2010: D IV AHLI TRANSPORTASI DARAT (STTD)"
+			],
+			"research": ["TRANSPORTASI"]
+		},
+		{
+			"id": "a7c2d5e8-6a1d-4c2b-8e7d-2d3e7b5a1b4c",
+			"name": "Penni Cahyani",
+			"title": "S.Psi., M.T.",
+			"email": "penni_cahyani@dephub.go.id",
+			"pic": "penni-cahyani.jpg",
+			"profile": "penni-cahyani.pdf",
+			"personalExp": [
+				"2021 - NOW: DOSEN ASISTEN AHLI JURUSAN MANAJEMEN TRANSPORTASI JALAN",
+				"2021 - NOW: PSIKOLOG PUSAT PENGEMBANGAN KARAKTER TARUNA PTDI STTD",
+				"2019 - 2021: PENANGGUNG JAWAB PSIKOLOGI PUSAT PENGEMBANGAN KARAKTER TARUNA PTDI STTD",
+				"2019 - 2022: HR SPECIALIST PT ALFA INTERNUSA REMPAKA",
+				"2018 - 2019: KEPALA UNIT PEMBINAAN MENTAL DAN SPIRITUAL PUSAT PENGEMBANGAN KARAKTER TARUNA PTDI STTD",
+				"2016 - 2018: KONSELOR UNIT LAYANAN PSIKOLOGI PUSAT PENGEMBANGAN KARAKTER TARUNA STTD",
+				"2013 - 2019: HR SPECIALIST PT FICO INDO REKAYASA",
+				"2008 - 2015: STAF BAGIAN KEPEGAWAIAN SEKRETARIAT BADAN PENGEMBANGAN SDM PERHUBUNGAN",
+				"2002 - 2008: WIDYA ISWARA LEMBAGA PENDIDIKAN PERKEBUNAN YOGYAKARTA",
+				"2001 - 2002: HR MANAGER PT INTER KUSUMA BANDUNG",
+				"2000 - 2001: ASSOCIATE CONSULTANT HK JAKARTA",
+				"2000 - 2001: RSJ PROF DR SOEROYO MAGELANG",
+				"2000 - 2001: ASSOCIATE CONSULTANT HR USC SATUNAMA YOGYAKARTA",
+				"1998 - 2001: ASISTEN RISET DANA HIBAH PENDIDIKAN TINGGI FAKULTAS PSIKOLOGI UNIVERSITAS GADAH MADA YOGYAKARTA",
+				"1998 - 1999: ASISTEN PSIKOLOG KLINIK TUMBUH KEMBANG ANAK RSUP DR SARDJITO YOGYAKARTA",
+				"1997 - 1999: ASISTEN KONSELOR BIRO KONSULTASI PSIKOLOGI FAKULTAS PSIKOLOGI UNIVERSITAS GADJAH MADA YOGYAKARTA"
+			],
+			"education": [
+				"2007 - 2009: PROGRAM STUDI REKAYASA SISTEM KERJA DAN ERGONOMI PASCA SARJANA FAKULTAS TEKNOLOGI INDUSTRI INSTITUT TEKNOLOGI BANDUNG",
+				"1999 - 2001: PENDIDIKAN PROGRAM PROFESI PSIKOLOG FAKULTAS PSIKOLOGI UNIVERSITAS GADJAH MADA YOGYAKARTA",
+				"1995 - 1999: FAKULTAS PSIKOLOGI UNIVERSITAS GADJAH MADA YOGYAKARTA"
+			],
+			"research": [
+				"2023: STUDI PERSEPSI PENGGUNA ANGKUTAN UMUM K 14 RUTE KAMPUNG UTAN PASAR SETU BEKASI",
+				"2023: BIG FIVE PERSONALITY TRAIT TERHADAP INTENSI PERILAKU SELFHARM PADA TARUNA",
+				"2023: BIG FIVE PERSONALITY TRAIT TERHADAP PERSEPSI SAFETY CULTER PADA PENGEMUDI TRUK",
+				"2023: BIG FIVE PERSONALITY TRAIT TERHADAP BURN OUT PADA PROFESI PENGASUH TARUNA",
+				"2023: BIG FIVE PERSONALITY TRAIT TERHADAP PERSEPSI SAFETY DRIVING PENGENDARA OJOL",
+				"2022: BIG FIVE PERSONALITY TRAIT TERHADAP KEPUASAN KERJA PADA DOSEN PTDI STTD",
+				"2022: BIG FIVE PERSONALITY TRAIT TERHADAP PENGGUNAAN HELM PADA PELAJAR SMA BEKASI",
+				"2022: PERSEPSI TERHADAP FASILITAS PEJALAN KAKI DI JL. JEND AHMAD YANI SEGMENT 1 KOTA BEKASI",
+				"2022: STUDI EKSPERIMENTAL TERHADAP PERBEDAAN TINGKAT KECENDERUNGAN KEWIRAUSAHAAN (ENTERPRENEURSHIP) PADA KELOMPOK TARUNA DENGAN PERLAKUAN STIMULASI MODELLING EMPHASIZE",
+				"2022: PERSEPSI SAFETY RIDING PENGENDARA MOTOR DI JL RAYA SETU-JL. KH AHMAD (TERUSAN KAWASAN MM2100) KABUPATEN BEKASI",
+				"2022: PERBEDAAN TINGKAT STRESS TARUNA DITINJAU DARI KECENDERUNGAN KEPRIBADIAN SAAT OUTBREAK KASUS PANDEMI COVID 19 DI ASRAMA",
+				"2021: INDEKS KEBAHAGIAAN TARUNA PTDI STTD TINGKAT I SAAT MASA KARANTINA PERKULIAHAN TATAP MUKA SELAMA PANDEMI",
+				"2019: EFEKTIVITAS METODE STORY TELLING DALAM PENINGKATAN PENGETAHUAN BERLALU LINTAS PADA ANAK USIA DINI",
+				"2017: EFEKTIVITAS PELATIHAN PENGAYAAN KESIAPAN KERJA DALAM MENINGKATKAN KEMAMPUAN PENGELOLAAN DIRI TARUNA",
+				"2015: ANALISA GAYA BELAJAR TARUNA UPT MATRA PERHUBUNGAN DARAT",
+				"2015: PROFIL PENGASUH TARUNA UPT BPSDM PERHUBUNGAN",
+				"2014: EFEKTIVITAS PENINGKATAN KEPERCAYAAN DIRI TARUNA MELALUI PELATIHAN HIGH ROPE ACTIVITY",
+				"2013: POLA PENGASUHAN TARUNA UPT BPSDM PERHUBUNGAN",
+				"2009: PEMETAAN SISTEM ORGANISASI SEBAGAI REFLEKSI BUDAYA KESELAMATAN KERJA(SAFETY CULTURE) INDUSTRI MANUFAKTUR INDONESIA",
+				"2008: PERBANDINGAN KAPASITAS VO2 MAX MASYARAKAT SIPIL DAN TNI AD",
+				"2007: PENGUKURAN VO2 MAX PADA MAHASISWA FAKULTAS TEKNOLOGI INDUSTRI UNIVERSITAS SWASTA DI BANDUNG",
+				"2001: PENYUSUNAN ANALISA JABATAN PADA INTERNATIONAL NON GOVERMENTAL ORGANIZATION USC SATUNAMA YOGYAKARTA",
+				"2001: PERILAKU SELF HARASHMENT PRIBADI PERFECTIONIST (STUDI KASUS PASIEN POLIKLINIK JIWA DI RSUD PURWOREJO)",
+				"2000: POTRET SISWA DIDIK BERMASALAH DI SMK AAU YOGYAKARTA",
+				"1999: KEMARAHAN DAN BERPIKIR POSITIF DITINJAU DARI PERBEDAAN GAYA KELEKATAN",
+				"1999: STUDI TENTANG SEMANGAT TANDING PEMAIN SEPAK BOLA",
+				"1999: EFEKTIVITAS PELATIHAN PENGELOLAAN EMOSI UNTUK MENINGKATKAN KEMAMPUAN NEGOSIASI",
+				"1998: FENOMENA MENARCHE PADA ANAK-ANAK DI DAERAH ISTIMEWA YOGYAKARTA",
+				"1998: MODEL KEPEMIMPINAN BERGILIR (DISTRIBUTIVE LEADERSHIP) DALAM MENINGKATKAN KEPERCAYAAN DIRI PADA ANAK USIA 7-10 TAHUN DI PANTI ASUHAN PUTRA YOGYAKARTA"
+			]
+		},
+		{
+			"id": "e9b7c5d2-7a3c-4b4d-9e8e-1d5b2c7a9a4f",
+			"name": "Rachmat Sadili",
+			"title": "S.Si.T., M.T.",
+			"email": "rachmat.sadili@ptdi sttd.ac.id",
+			"pic": "rachmat-sadili.jpg",
+			"profile": "rachmat-sadili.pdf",
+			"personalExp": [
+				"February 2019 - Present: Lecturer at Politeknik Transportasi Darat Indonesia – STTD",
+				"February 2024 - Present: Head of Quality Assurance Unit PTDI – STTD",
+				"July 2017 – February 2019: Head Sub Division Cadet and Academic of Indonesia Railway Academy",
+				"May 2014 – July 2017: Head Sub Division Administration Of Lecturer PTDI- STTD",
+				"May 2013 – May 2014: Lecturer at Politeknik Transportasi Darat Indonesia – STTD",
+				"April 2006 – Now: Civil Servant at PTDI-STTD"
+			],
+			"education": [
+				"2009 - 2011: Master Degree : Transportation Engineering University Of Indonesia, Indonesia",
+				"2007 – 2008: Bachelor in Road Transportation",
+				"2002 - 2005: Diploma III in Traic and Public Transport Programme"
+			],
+			"research": ["Public Transportation", "Traic Engineering"]
+		},
+		{
+			"id": "b2d5a7c6-8a1b-4c2e-9d7d-0d3e7b5a9a5f",
+			"name": "Siti Khadijah Koto",
+			"title": "S.S.T., M.M.",
+			"email": "sitikhadijahkoto@gmail.com",
+			"pic": "siti-khadijah-koto.jpg",
+			"profile": "siti-khadijah-koto.pdf",
+			"personalExp": [
+				"February 2019 - Present: Lecturer at Politeknik Transportasi Darat Indonesia – STTD",
+				"February 2024 - Present: Head of Quality Assurance Unit PTDI – STTD",
+				"July 2017 – February 2019: Head Sub Division Cadet and Academic of Indonesia Railway Academy",
+				"May 2014 – July 2017: Head Sub Division Administration Of Lecturer PTDI- STTD",
+				"May 2013 – May 2014: Lecturer at Politeknik Transportasi Darat Indonesia – STTD",
+				"April 2006 – Now: Civil Servant at PTDI-STTD"
+			],
+			"education": [
+				"2020 - 2024: LECTURER",
+				"2018 - 2024: STAF PRODI DIII MANAJEMEN TRANSPORTASI JALAN",
+				"2016 - 2017: SUBAG TU & KEPEGAWAIAN (PENGELOLA KEPEGAWAIAN)",
+				"2015: SUBAG ADM. KERJASAMA & PKN (PENYIAP PROGRAM PRAKTEK KERJA",
+				"2012 - 2014: SEKRETARIS PIMPINAN",
+				"2010: PELAKSANA SUB BAGIAN TU & KEPEGAWAIAN"
+			],
+			"research": ["TRANSPORTASI", "MANAJEMEN SDM", "ADMINISTRASI PERKANTORAN"]
+		},
+		{
+			"id": "d3e7b2a6-9a1d-4c4e-8d9e-3d7b2c5a9a4c",
+			"name": "Sudirman Anggada Sianipar",
+			"title": "S.Si.T.,M.T.",
+			"email": "sudirman_anggada@dephub.go.id",
+			"pic": "sudirman-anggada-sianipar.jpg",
+			"profile": "sudirman-anggada-sianipar.pdf",
+			"personalExp": [
+				"February 2024 - Present: Head of Undergraduate Program in Automotive Engineering Technology",
+				"2021 - 2022: Secretary of Graduate Program in Marketing, Innovation, and Technology",
+				"2017 - present: Assistant Professor",
+				"2015 - 2017: Study Program Staff",
+				"2010 - 2013: Informatics Lab Staff",
+				"2010 - Present: Civil Servant"
+			],
+			"education": [
+				"2013 - 2015: Master Degree : Transportation Bandung Institute Of Technology, Indonesia",
+				"2006 - 2010: Bachelor Degree Land Transportation - Indonesian Land Transportation Polytechnic"
+			],
+			"research": ["Transportation Safety", "Traffic Engineering", "Public Tranportation"]
+		},
+		{
+			"id": "e8d7c2a4-0a3d-4c5d-8e7d-2d5b3c7a1b5f",
+			"name": "Veronica",
+			"title": "Amd.LLAJ., S.AP., M.M.",
+			"email": "vcsimanjuntak@gmail.com",
+			"pic": "veronica.jpg",
+			"profile": "veronica.pdf",
+			"personalExp": [
+				"2024: KEPALA UNIT PERPUSTAKAAN",
+				"2020 – 2024: LECTURER",
+				"2018 – 2024: STAF PRODI D4 TRANSPORTASI DARAT",
+				"2012 – 2018: STAF PELATIH",
+				"2006 – 2011: STAF AKADEMIK PTDI STTD"
+			],
+			"education": [
+				"2017 - 2020: S2 SEKOLAH TINGGI ILMU EKONOMI (IPWIJA)",
+				"2006 - 2008: S1 SEKOLAH TINGGI ILMU ADMINISTRASI INDONESIA (STIAKIN)",
+				"2001 - 2004: D III AHLI LALU LINTAS ANGKUTAN JALAN (STTD)"
+			],
+			"research": ["TRANSPORTASI", "MANAJEMEN SDM", "ADMINISTRASI PERKANTORAN"]
+		},
+		{
 			"id": "c2b7e5a3-1a4d-4c6d-9e8d-3d5b7c2a9a4e",
 			"name": "William Seno",
 			"title": "S.Kom., M.Si.",
@@ -87,6 +438,32 @@
 				"2003: Bachelor in Information Technology Bina Nusantara University"
 			],
 			"research": ["Transport", "Public Administration", "Computer Science", "Government"]
+		},
+		{
+			"id": "d1e7c5a4-2a3d-4c7d-9e8e-1d5b7c2a9a5f",
+			"name": "Wisnu Wardana Kusuma",
+			"title": "S.Si.T, M.M.",
+			"email": "wisnuwardanakusuma25@gmail.com",
+			"pic": "wisnu-wardana-kusuma.jpg",
+			"profile": "wisnu-wardana-kusuma.pdf",
+			"personalExp": [
+				"2020 – 2024: KEPALA UNIT PELATIHAN",
+				"2019 - Present: DOSEN (LEKTOR)",
+				"2018 – 2019: KEPALA SUB BAGIAN TU DAN KEPEGAWAIAN",
+				"2018 – 2018: KEPALA SUB BAG KEUANGAN DAN UMUM",
+				"2017 – 2018: KEPALA SEKSI PENYELENGGARA DIKLAT"
+			],
+			"education": [
+				"MAGISTER OF LAW SCIENCE",
+				"2014: MAGISTER OF MANAGEMENT - SEKOLAH TINGGI ILMU EKONOMI – IPWI JAKARTA",
+				"2007: DIPLOMA IV LAND TRANSPORT - SEKOLAH TINGGI TRANSPORTASI DARAT BEKASI"
+			],
+			"research": [
+				"ANALISIS KINERJA PELAYANAN ANGKUTAN PEDESAAN DI KABUPATEN BEKASI TAHUN 2016",
+				"TINJAUAN BIAYA PERJALANAN DAN WAKTU PERJALANAN PENGGUNA KERETA COMMUTER LINE JABODETABEK TAHUN 2020",
+				"MONITORING PERJALANAN PENGGUNA ANGKUTAN UMUM DENGAN INTEGRASI E-KTP MELALUI APLIKASI PEDULILINDUNGI TAHUN 2021",
+				"PENGARUH KAPASITAS MESIN TERHADAP PERILAKU PENGENDARA SEPEDA MOTOR (STUDI KASUS : JALAN INSPEKSI KALIMALANG KAB. BEKASI TAHUN 2022"
+			]
 		}
 	],
 	"section": {
