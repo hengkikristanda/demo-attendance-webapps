@@ -1,46 +1,82 @@
 <section id="information">
   <div class="flex flex-col md:px-16 gap-4">
     <div class="flex justify-between items-end">
-      <div class="flex gap-2">
+      <div class="flex gap-2 w-1/2 ">
         <div class="bg-tertiary w-3"></div>
         <h1 class="font-semibold text-primary"><%= news.section.title %></h1>
       </div>
-      <a href="/berita" class="underline text-tertiary font-semibold p-0"><%= news.section.href %></a>
+      <a href="/berita" class="w-1/2 underline justify-end text-tertiary font-semibold py-0 px-4 md:px-0"><%= news.section.href %></a>
     </div>
 
-    <div class="relative overflow-hidden">
+    <div class="relative overflow-hidden hidden md:block">
       <div class="slides news-slides">
         <% 
-			const numberOfrows = news.data.length;
-			const numberOfCardsPerPage = 4;
-			const numberOfPages = Math.ceil(numberOfrows/numberOfCardsPerPage);
-			for(let index=0; index<numberOfPages; index++) { 
-		%>
+          let numberOfrows = news.data.length;
+          let numberOfCardsPerPage = 4;
+          let numberOfPages = Math.ceil(numberOfrows/numberOfCardsPerPage);
+
+          for(let index=0; index<numberOfPages; index++) { 
+		    %>
         <div class="slide news-slide">
           <div class="flex w-full gap-4">
-            <% 
-			const startIndex = index * numberOfCardsPerPage;
-			const endIndex = numberOfCardsPerPage * (index + 1);
+        <% 
+          let startIndex = index * numberOfCardsPerPage;
+          let endIndex = numberOfCardsPerPage * (index + 1);
 
-			for(let n=startIndex; n<endIndex && n<numberOfrows; n++) { 
-			%>
-            <a class="info-card__home" href="/berita/<%=news.data[n].id%>">
-              <div class="info-card-img__container">
+			    for(let n=startIndex; (n<endIndex && n<numberOfrows); n++) { 
+			  %>
+            <a class="info-card__home w-1/4 " href="/berita/<%=news.data[n].id%>">
+              <div class="info-card-img__container h-36 max-h-36">
                 <img src="/img/berita/<%= news.data[n].pic %>" />
               </div>
               <p><%= news.data[n].title %></p>
               <span><%= news.data[n].subTitle %></span>
             </a>
-            <% } %>
+        <% } %>
           </div>
         </div>
         <% } %>
       </div>
 
       <div class="nav-buttons">
-		<% for(let n=0; n<numberOfPages; n++) { %>
-			<button onclick="handleSlideNews(<%=n%>)"><%=n + 1%></button>
-		<% } %>
+        <% for(let n=0; n<numberOfPages; n++) { %>
+        <button onclick="handleSlideNews(<%= n %> )"><%=n + 1%></button>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="relative overflow-hidden md:hidden">
+      <div class="slides news-slides news-slides-sm">
+        <% 
+          numberOfCardsPerPage = 1;
+          numberOfPages = Math.ceil(numberOfrows/numberOfCardsPerPage);
+
+          for(let index=0; index<numberOfPages; index++) { 
+		    %>
+        <div class="slide news-slide">
+          <div class="flex w-full gap-4">
+        <% 
+			    const startIndex = index * numberOfCardsPerPage;
+			    const endIndex = numberOfCardsPerPage * (index + 1);
+
+			    for(let n=startIndex; (n<endIndex && n<numberOfrows); n++) { 
+			  %>
+            <a class="info-card__home w-full" href="/berita/<%=news.data[n].id%>">
+              <div class="info-card-img__container h-60 md:h-32">
+                <img src="/img/berita/<%= news.data[n].pic %>" />
+              </div>
+              <p class="px-4"><%= news.data[n].title %></p>
+              <span class="px-4"><%= news.data[n].subTitle %></span>
+            </a>
+        <% } %>
+          </div>
+        </div>
+        <% } %>
+      </div>
+
+      <div class="nav-buttons">
+        <button id="slideLeftButton"><h4 class="bi bi-arrow-left-short"></h4></button>
+        <button id="slideRightButton"><h4 class="bi bi-arrow-right-short"></h4></button>
       </div>
     </div>
   </div>
@@ -49,8 +85,14 @@
 
 <script>
   var newsSlidesContainer = document.querySelector(".news-slides");
+  var newsSlidesSm = document.querySelector(".news-slides-sm");
+  
   var slides = document.querySelectorAll(".news-slide");
   var currentSlide = 0;
+  let currentPage = 1;
+  let next = 0;
+
+  let numberOfrows = <%= news.data.length %>;
 
   function handleSlideNews(index) {
     if (index >= 0 && index < slides.length) {
@@ -58,4 +100,22 @@
       currentSlide = index;
     }
   }
+
+  const slideLeftButton = document.getElementById("slideLeftButton");
+  slideLeftButton.addEventListener("mouseup", () =>{
+    if (currentPage > 1){
+      next += 100;
+      newsSlidesSm.style.transform = `translateX(${next}%)`;
+      currentPage--;
+    }
+  })
+
+  const slideRightButton = document.getElementById("slideRightButton");
+  slideRightButton.addEventListener("mouseup", () =>{
+    if (currentPage < numberOfrows){
+      next -= 100;
+      newsSlidesSm.style.transform = `translateX(${next}%)`;
+      currentPage++;
+    }
+  })
 </script>

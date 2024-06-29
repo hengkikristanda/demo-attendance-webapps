@@ -643,7 +643,7 @@ select {
 
 html {
   font-family: "Inter", system-ui, sans;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 body {
@@ -1436,12 +1436,20 @@ p.danger,
   height: 7rem;
 }
 
+.h-36 {
+  height: 9rem;
+}
+
 .h-5 {
   height: 1.25rem;
 }
 
 .h-56 {
   height: 14rem;
+}
+
+.h-60 {
+  height: 15rem;
 }
 
 .h-72 {
@@ -1469,12 +1477,20 @@ p.danger,
   max-height: 3rem;
 }
 
+.max-h-36 {
+  max-height: 9rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
 
 .w-1\/2 {
   width: 50%;
+}
+
+.w-1\/4 {
+  width: 25%;
 }
 
 .w-10 {
@@ -1605,6 +1621,10 @@ p.danger,
 
 .justify-start {
   justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-center {
@@ -1844,6 +1864,11 @@ p.danger,
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.py-0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .py-1 {
@@ -3087,13 +3112,13 @@ a {
   gap: 0.5rem;
   /* width: 14rem; */
   /* max-width: 14rem; */
-  width: 25%;
+  /* width: 25%; */
   min-width: 20%;
 }
 
 .info-card-img__container {
-  height: 8rem;
-  max-height: 8rem;
+  /* height: 8rem; */
+  /* max-height: 8rem; */
   /* width: 14rem; */
   /* max-width: 14rem; */
   width: 100%;
@@ -3131,6 +3156,12 @@ a {
 
 .info-card__home:hover {
   text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .md\:block {
+    width: 100%;
+  }
 }
 
 .hover\:border-primary:hover {
@@ -3225,12 +3256,20 @@ a {
     margin-right: 0px;
   }
 
+  .md\:block {
+    display: block;
+  }
+
   .md\:flex {
     display: flex;
   }
 
   .md\:hidden {
     display: none;
+  }
+
+  .md\:h-32 {
+    height: 8rem;
   }
 
   .md\:max-h-96 {

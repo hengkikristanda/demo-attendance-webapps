@@ -5,14 +5,14 @@
 				<div class="bg-tertiary w-3"></div>
 				<h1 class="font-semibold text-primary"><%= alumnies.section[selectedLanguage].title %></h1>
 			</div>
-			<a href="/alumni" class="underline text-tertiary font-semibold p-0"
+			<a href="/alumni" class="underline text-tertiary font-semibold py-0 px-4 md:px-0"	
 				><%= alumnies.section[selectedLanguage].href %></a
 			>
 		</div>
 		<div class="relative overflow-scroll">
 			<div class="profile-card-wrapper">
 				<div class="profile-card-container">
-				<% for (let n=0; n<10; n++) { %>
+					<% for (let n=0; n<10; n++) { %>
 					<div class="profile-card">
 						<div class="h-full w-2/6">
 							<img

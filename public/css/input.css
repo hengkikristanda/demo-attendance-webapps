@@ -5,7 +5,7 @@
 @layer base {
 	html {
 		font-family: "Inter", system-ui, sans;
-		font-size: 14px;
+		font-size: 12px;
 	}
 	body {
 		@apply bg-white max-w-screen-2xl mx-auto;
@@ -1008,13 +1008,13 @@ a {
 	gap: 0.5rem;
 	/* width: 14rem; */
 	/* max-width: 14rem; */
-	width: 25%;
+	/* width: 25%; */
 	min-width: 20%;
 }
 
 .info-card-img__container {
-	height: 8rem;
-	max-height: 8rem;
+	/* height: 8rem; */
+	/* max-height: 8rem; */
 	/* width: 14rem; */
 	/* max-width: 14rem; */
 	width: 100%;
