@@ -1372,6 +1372,11 @@ p.danger,
   z-index: 50;
 }
 
+.mx-16 {
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1387,9 +1392,19 @@ p.danger,
   margin-bottom: 5rem;
 }
 
+.my-28 {
+  margin-top: 7rem;
+  margin-bottom: 7rem;
+}
+
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .mb-2 {
@@ -1410,6 +1425,10 @@ p.danger,
 
 .mt-32 {
   margin-top: 8rem;
+}
+
+.mt-28 {
+  margin-top: 7rem;
 }
 
 .block {
@@ -1479,6 +1498,10 @@ p.danger,
 
 .max-h-36 {
   max-height: 9rem;
+}
+
+.max-h-\[25rem\] {
+  max-height: 25rem;
 }
 
 .min-h-screen {
@@ -1568,6 +1591,10 @@ p.danger,
 
 .max-w-72 {
   max-width: 18rem;
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 
 .max-w-md {
@@ -1717,6 +1744,10 @@ p.danger,
   border-bottom-width: 1px;
 }
 
+.border-l {
+  border-left-width: 1px;
+}
+
 .border-l-8 {
   border-left-width: 8px;
 }
@@ -1761,6 +1792,10 @@ p.danger,
 .border-tertiary {
   --tw-border-opacity: 1;
   border-color: rgb(0 173 181 / var(--tw-border-opacity));
+}
+
+.border-tertiary\/50 {
+  border-color: rgb(0 173 181 / 0.5);
 }
 
 .bg-black {
@@ -1827,6 +1862,16 @@ p.danger,
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.object-center {
+  -o-object-position: center;
+     object-position: center;
+}
+
+.object-top {
+  -o-object-position: top;
+     object-position: top;
 }
 
 .p-0 {
@@ -1901,6 +1946,11 @@ p.danger,
   padding-bottom: 2rem;
 }
 
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 .pb-12 {
   padding-bottom: 3rem;
 }
@@ -1923,6 +1973,18 @@ p.danger,
 
 .pt-6 {
   padding-top: 1.5rem;
+}
+
+.pb-16 {
+  padding-bottom: 4rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
+}
+
+.pb-32 {
+  padding-bottom: 8rem;
 }
 
 .text-center {
@@ -3129,8 +3191,7 @@ a {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  /* object-position: center; */
 }
 
 .info-card__home p {
@@ -3156,6 +3217,16 @@ a {
 
 .info-card__home:hover {
   text-decoration: underline;
+}
+
+.article {
+  margin: 2rem 0;
+  padding-right: 1rem;
+}
+
+.article p {
+  margin-bottom: 1rem;
+  color: var(--secondary);
 }
 
 @media (min-width: 768px) {

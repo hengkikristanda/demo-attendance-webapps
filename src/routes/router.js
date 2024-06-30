@@ -6,6 +6,7 @@ const path = require("path");
 const fs = require("fs");
 
 const siteMenuServices = require("../services/siteMenuServices");
+const { LANGUAGE_CODE } = require("../utils/Constants");
 
 // Middleware to parse the body of POST requests
 router.use(express.urlencoded({ extended: true }));
@@ -100,6 +101,51 @@ router.get("/dosen", (req, res) => {
 		title: "PTDI STTD - Dosen",
 		selectedLanguage,
 		pageNumber,
+	});
+});
+
+router.get("/berita/:newsId?", (req, res) => {
+	let selectedLanguage = req.query.lang;
+	let newsId = req.query.newsId;
+	if (selectedLanguage == undefined) {
+		selectedLanguage = "id";
+	}
+
+	if (!LANGUAGE_CODE.includes(selectedLanguage.toLowerCase())) selectedLanguage = "id";
+
+	const translations = JSON.parse(
+		fs.readFileSync(
+			path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`),
+			"utf8"
+		)
+	);
+
+	const footerTranslation = JSON.parse(
+		fs.readFileSync(
+			path.join(__dirname, "../translations/footer/", `${selectedLanguage}.json`),
+			"utf8"
+		)
+	);
+
+	const detailDosen = JSON.parse(
+		fs.readFileSync(path.join(__dirname, "../translations/dosen/detailDosen.json"), "utf8")
+	);
+
+	const news = JSON.parse(
+		fs.readFileSync(
+			path.join(__dirname, "../translations/berita/", `${selectedLanguage}.json`),
+			"utf8"
+		)
+	);
+
+	res.locals.translations = translations;
+	res.locals.footerTranslation = footerTranslation;
+	res.locals.detailDosen = detailDosen;
+	res.locals.news = news;
+
+	res.render("berita-terbaru", {
+		title: "PTDI STTD - Berita Terbaru",
+		selectedLanguage,
 	});
 });
 

@@ -27,7 +27,7 @@
 			  %>
             <a class="info-card__home w-1/4 " href="/berita/<%=news.data[n].id%>">
               <div class="info-card-img__container h-36 max-h-36">
-                <img src="/img/berita/<%= news.data[n].pic %>" />
+                <img src="/img/berita/<%= news.data[n].pic %>" class="object-center" />
               </div>
               <p><%= news.data[n].title %></p>
               <span><%= news.data[n].subTitle %></span>
@@ -63,7 +63,7 @@
 			  %>
             <a class="info-card__home w-full" href="/berita/<%=news.data[n].id%>">
               <div class="info-card-img__container h-60 md:h-32">
-                <img src="/img/berita/<%= news.data[n].pic %>" />
+                <img src="/img/berita/<%= news.data[n].pic %>" class="object-top" />
               </div>
               <p class="px-4"><%= news.data[n].title %></p>
               <span class="px-4"><%= news.data[n].subTitle %></span>
