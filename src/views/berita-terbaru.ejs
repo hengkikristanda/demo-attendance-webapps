@@ -5,34 +5,25 @@
 		<%- include('./sections/navbar') %>
 
 		<div class="max-w-screen-2xl mx-auto">
-			<div class="flex flex-col mt-28 mx-16">
-				<h1 class="text-6xl w-3/4 font-bold mb-2">
-					PTDI-STTD Menyabet Penghargaan Juara 1 Cashless Society
+			<div class="flex flex-col mt-28 mx-4 md:mx-16">
+				<h1 class="text-4xl md:text-5xl md:w-3/4 font-bold mb-2">
+					<%= news.title %>
 				</h1>
-				<h6 class="mb-6 text-xs font-semibold">24 Juni 2024</h6>
+				<h6 class="mb-6 text-xs font-semibold"><%= news.subTitle %></h6>
 				<div class="flex">
-					<div class="flex justify-start w-3/4 max-h-[25rem]">
+					<div class="flex md:justify-start md:w-3/4 max-h-[30rem]">
 						<img
-							src="/img//berita/berita-3.jpg"
+							src="/img//berita/<%= news.pic %>"
 							alt=""
-							class="max-w-full object-cover object-top" />
+							class="max-w-full object-contain object-center md:object-left" />
 					</div>
 				</div>
-				<div class="flex">
-					<div class="w-3/4 article">
-						<p>
-							Politeknik Transportasi Darat Indonesia - STTD berhasil mendapatkan Penghargaan Juara
-							1 Cashless Society untuk Satuan Kerja (Satker).
-						</p>
-						<p>
-							Penghargaan ini berikan oleh KPPN Bekasi bersama dengan Bank Negara Indonesia Cabang
-							Bekasi dalam rangka mengapresiasi seluruh Satker yang telah mengimplementasikan
-							Cashless Society berupa penggunaan KKP, Digipay dan juga CMS.
-						</p>
-						<p>Semoga hal ini dapat menjadi acuan untuk memperoleh penghargaan selanjutnya</p>
+				<div class="flex flex-col md:flex-row">
+					<div class="w-full md:w-3/4 article">
+						<%- news.content %>
 					</div>
-					<div class="flex flex-col w-1/4 my-8 pl-4 border-l border-tertiary h-fit">
-						<h6 class="text-sm font-semibold">Bagikan Artikel Ini</h6>
+					<div class="flex md:flex-col w-full md:w-1/4 my-8 pl-4 border-l border-tertiary h-fit items-center md:items-start gap-4 md:gap-0">
+						<h6 class="text-sm font-semibold"><%= section.shareThis %></h6>
 						<div class="flex gap-2">
 							<a href="#" class="text-lg p-0 text-tertiary bi bi-facebook"></a>
 							<a href="#" class="text-lg p-0 text-tertiary bi bi-twitter-x"></a>
@@ -42,40 +33,40 @@
 				</div>
 			</div>
 
-			<div class="flex flex-col border-t border-tertiary/50 mx-16 pt-8 pb-32 gap-4">
+			<div class="flex flex-col border-t border-tertiary/50 md:mx-16 pt-8 pb-32 gap-4 px-4 md:px-0">
 				<div class="flex gap-2">
 					<div class="bg-tertiary w-3"></div>
 					<h5 class="font-bold">Related News</h5>
 				</div>
 
-                <div class="relative overflow-hidden hidden md:block">
+                <div class="relative overflow-hidden">
                     <div class="slides news-slides">
+						<div class="slide news-slide">
+							<div class="flex flex-col md:flex-row w-full gap-4">
                       <% 
-                        let numberOfrows = news.data.length;
+                        let numberOfrows = allNews.data.length;
                         let numberOfCardsPerPage = 4;
-                        let numberOfPages = Math.ceil(numberOfrows/numberOfCardsPerPage);
-              
-                        for(let index=0; index<numberOfPages; index++) { 
-                          %>
-                      <div class="slide news-slide">
-                        <div class="flex w-full gap-4">
-                      <% 
-                        let startIndex = index * numberOfCardsPerPage;
-                        let endIndex = numberOfCardsPerPage * (index + 1);
-              
-                              for(let n=startIndex; (n<endIndex && n<numberOfrows); n++) { 
-                            %>
-                          <a class="info-card__home w-1/4 " href="/berita/<%=news.data[n].id%>">
-                            <div class="info-card-img__container h-36 max-h-36">
-                              <img src="/img/berita/<%= news.data[n].pic %>" class="object-center" />
-                            </div>
-                            <p><%= news.data[n].title %></p>
-                            <span><%= news.data[n].subTitle %></span>
-                          </a>
-                      <% } %>
-                        </div>
-                      </div>
-                      <% } %>
+						const loadedContent = [];
+						let n = 0;
+                        while (n<numberOfCardsPerPage) {
+							let index = Math.floor(Math.random() * numberOfrows);
+							if (allNews.data[index].id !== news.id && loadedContent[index] == undefined) {
+						%>
+                          			<a class="info-card__home md:w-1/4 " href="/berita/<%=allNews.data[index].id%>?lang=<%=selectedLanguage%>">
+                            			<div class="info-card-img__container h-36 max-h-36">
+                              				<img src="/img/berita/<%= allNews.data[index].pic %>" class="object-center" />
+                            			</div>
+                            			<p><%= allNews.data[index].title %></p>
+                            			<span><%= allNews.data[index].subTitle %></span>
+                          			</a>
+						<%
+								n++;
+								loadedContent[index] = true;
+							}
+						}
+						%>
+							</div>
+						</div>
                     </div>
               
                   </div>

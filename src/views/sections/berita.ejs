@@ -25,7 +25,7 @@
 
 			    for(let n=startIndex; (n<endIndex && n<numberOfrows); n++) { 
 			  %>
-            <a class="info-card__home w-1/4 " href="/berita/<%=news.data[n].id%>">
+            <a class="info-card__home w-1/4 " href="/berita/<%=news.data[n].id%>?lang=<%= selectedLanguage %>">
               <div class="info-card-img__container h-36 max-h-36">
                 <img src="/img/berita/<%= news.data[n].pic %>" class="object-center" />
               </div>

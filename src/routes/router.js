@@ -8,6 +8,8 @@ const fs = require("fs");
 const siteMenuServices = require("../services/siteMenuServices");
 const { LANGUAGE_CODE } = require("../utils/Constants");
 
+
+
 // Middleware to parse the body of POST requests
 router.use(express.urlencoded({ extended: true }));
 
@@ -19,6 +21,8 @@ router.get("/", (req, res) => {
 
 	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
 		selectedLanguage = "id";
+
+	// req.session.selectedLanguage = selectedLanguage;
 
 	const translations = JSON.parse(
 		fs.readFileSync(
@@ -106,7 +110,9 @@ router.get("/dosen", (req, res) => {
 
 router.get("/berita/:newsId?", (req, res) => {
 	let selectedLanguage = req.query.lang;
-	let newsId = req.query.newsId;
+
+	let newsId = req.params.newsId;
+
 	if (selectedLanguage == undefined) {
 		selectedLanguage = "id";
 	}
@@ -127,21 +133,20 @@ router.get("/berita/:newsId?", (req, res) => {
 		)
 	);
 
-	const detailDosen = JSON.parse(
-		fs.readFileSync(path.join(__dirname, "../translations/dosen/detailDosen.json"), "utf8")
-	);
-
-	const news = JSON.parse(
+	const newsJson = JSON.parse(
 		fs.readFileSync(
 			path.join(__dirname, "../translations/berita/", `${selectedLanguage}.json`),
 			"utf8"
 		)
 	);
 
+	const news = searchById(newsJson.data, newsId);
+
 	res.locals.translations = translations;
 	res.locals.footerTranslation = footerTranslation;
-	res.locals.detailDosen = detailDosen;
 	res.locals.news = news;
+	res.locals.section = newsJson.section;
+	res.locals.allNews = newsJson;
 
 	res.render("berita-terbaru", {
 		title: "PTDI STTD - Berita Terbaru",
@@ -184,5 +189,11 @@ router.post("/absensi", (req, res) => {});
 router.post("/login", (req, res) => {
 	res.redirect("/home-employee");
 });
+
+function searchById(data, id) {
+	console.log("Search JSON by id: ", id);
+
+	return data.find((item) => item.id === id);
+}
 
 module.exports = router;
