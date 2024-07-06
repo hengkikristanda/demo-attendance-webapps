@@ -44,17 +44,17 @@
 							"href": "/d3-manajemen-transportasi-kereta"
 						},
 						{
-							"label": "D-IV Land Transportation Management",
+							"label": "Applied Bachelor Land Transportation Management",
 							"href": "/d4-manajemen-transportasi-darat"
 						},
 						{
-							"label": "D-IV Automotive Engineering Technology",
+							"label": "Applied Bachelor Automotive Engineering Technology",
 							"href": "/d4-teknologi-rekayasa-otomotif"
 						}
 					]
 				},
 				{
-					"label": "Graduate",
+					"label": "Post Graduate",
 					"subMenus": [
 						{
 							"label": "S-2 Marketing, Innovation, and Technology",

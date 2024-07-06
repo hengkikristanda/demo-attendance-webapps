@@ -1348,6 +1348,15 @@ p.danger,
   inset: 0px;
 }
 
+.inset-1\/2 {
+  inset: 50%;
+}
+
+.inset-y-1\/2 {
+  top: 50%;
+  bottom: 50%;
+}
+
 .bottom-1\/4 {
   bottom: 25%;
 }
@@ -1370,6 +1379,14 @@ p.danger,
 
 .top-14 {
   top: 3.5rem;
+}
+
+.top-1\/2 {
+  top: 50%;
+}
+
+.top-1\/4 {
+  top: 25%;
 }
 
 .z-50 {
@@ -3288,7 +3305,8 @@ a {
 }
 
 #homeCarousel #innerContainer {
-  animation: slide-left 20s ease-in-out infinite;
+  /* animation: slide-left 20s ease-in-out infinite; */
+  transition: transform 0.2s ease-in-out;
 }
 
 @keyframes slide-left {
@@ -3329,7 +3347,31 @@ a {
   }
 }
 
+.carousel-nav-btn {
+  height: 5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+  background-color: rgb(249 250 251 / 0.1);
+  padding: 0px;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: rgb(255 255 255 / 0.3);
+}
+
+.carousel-nav-btn:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 173 181 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 @media (min-width: 768px) {
+  .carousel-nav-btn {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
   .md\:block {
     width: 100%;
   }
@@ -3424,6 +3466,10 @@ a {
 @media (min-width: 768px) {
   .md\:bottom-10 {
     bottom: 2.5rem;
+  }
+
+  .md\:top-1\/2 {
+    top: 50%;
   }
 
   .md\:mx-0 {

@@ -44,17 +44,17 @@
 							"href": "/d3-manajemen-transportasi-kereta"
 						},
 						{
-							"label": "D-IV 陸上交通管理",
+							"label": "応用学士 陸上交通管理",
 							"href": "/d4-manajemen-transportasi-darat"
 						},
 						{
-							"label": "D-IV 自動車工学技術",
+							"label": "応用学士 自動車工学技術",
 							"href": "/d4-teknologi-rekayasa-otomotif"
 						}
 					]
 				},
 				{
-					"label": "大学院",
+					"label": "大学院生",
 					"subMenus": [
 						{
 							"label": "S-2 マーケティング、イノベーション、および技術",

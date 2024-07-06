@@ -44,17 +44,17 @@
 							"href": "/d3-manajemen-transportasi-kereta"
 						},
 						{
-							"label": "D-IV 육상 교통 관리",
+							"label": "응용 학사 육상 교통 관리",
 							"href": "/d4-manajemen-transportasi-darat"
 						},
 						{
-							"label": "D-IV 자동차 공학 기술",
+							"label": "응용 학사 자동차 공학 기술",
 							"href": "/d4-teknologi-rekayasa-otomotif"
 						}
 					]
 				},
 				{
-					"label": "대학원",
+					"label": "대학 졸업 후의",
 					"subMenus": [
 						{
 							"label": "S-2 마케팅, 혁신, 및 기술",

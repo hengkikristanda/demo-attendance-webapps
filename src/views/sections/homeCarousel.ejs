@@ -16,9 +16,38 @@
 				<img src="/img/diploma_4_transportasi_darat.jpeg" class="w-full h-full object-cover" />
 			</div>
 		</div>
+		<div class="flex justify-between absolute top-1/4 md:top-1/2 w-full">
+			<a class="carousel-nav-btn bi bi-chevron-compact-left"></a>
+			<a class="carousel-nav-btn bi bi-chevron-compact-right"></a>
+		</div>
 	</div>
 </section>
 
 <script>
 	const innerContainer = document.getElementById("innerContainer");
+
+	let slidePercentage = 0;
+
+	const carouselNavBtn = document.querySelectorAll(".carousel-nav-btn");
+	carouselNavBtn.forEach((btn, index) => {
+		btn.addEventListener("mouseup", () => {
+			if (index == 0 && slidePercentage < 0) {
+				slidePercentage += 25;
+			} else if (index == 1 && slidePercentage > -75) {
+				slidePercentage -= 25;
+			}
+			innerContainer.style.transform = `translateX(${slidePercentage}%)`;
+		});
+	});
+
+	function goToNextSlide() {
+		if (slidePercentage > -75) {
+			slidePercentage -= 25;
+		} else {
+			slidePercentage = 0;
+		}
+		innerContainer.style.transform = `translateX(${slidePercentage}%)`;
+	}
+
+	setInterval(goToNextSlide, 5000);
 </script>
