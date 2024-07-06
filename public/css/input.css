@@ -60,10 +60,49 @@ section {
 	--danger: #eeeeee;
 }
 
+@media (min-width: 340px) and (max-width: 480px) {
+	.hero-banner {
+		height: 9rem;
+	}
+}
+
+@media (min-width: 481px) and (max-width: 640px) {
+	.hero-banner {
+		height: 14rem;
+	}
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+	.hero-banner {
+		height: 14rem;
+	}
+}
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+	.hero-banner {
+		height: 20rem;
+	}
+}
+
+@media (min-width: 1440px) and (max-width: 1536px) {
+	.hero-banner {
+		height: 26rem;
+	}
+}
+
+@media (min-width: 1536px){
+	.hero-banner {
+		height: 28rem;
+	}
+}
+
 /* -sm: small tablets, large phones */
 @media (min-width: 640px) {
 	html {
 		font-size: 15px;
+	}
+	.hero-banner {
+		/* height: 15rem; */
 	}
 }
 
@@ -71,6 +110,9 @@ section {
 @media (min-width: 768px) {
 	html {
 		font-size: 16px;
+	}
+	.hero-banner {
+		/* height: 17rem; */
 	}
 }
 
@@ -88,9 +130,13 @@ section {
 	.navbar-mobile {
 		display: none;
 	}
+	.hero-banner {
+		/* height: 21rem; */
+	}
 }
 
 /* -xl: extra large devices, large desktop */
+/* if width > 1280 */
 @media (min-width: 1280px) {
 	html {
 		font-size: 19px;
@@ -430,74 +476,17 @@ div::-webkit-scrollbar-thumb:hover {
 		@apply flex flex-col w-full py-2 px-0 md:px-6 rounded-r-lg;
 	}
 }
-/* 
-.profile-cards {
-	@apply flex bg-white h-36 w-full gap-4;
-}
 
-.profile-cards img {
-	width: 100%;
-	height: 100%;
-} */
-
-/* .profile-card {
-	padding: 0;
-	position: relative;
-	width: 100%;
-	max-width: 20rem;
-	height: 10rem;
-	background-color: violet;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	display: flex;
-	overflow: hidden;
-	border: 0.05rem solid white;
-}
-.profile-card:hover {
-	border: 0.05rem solid var(--tertiary);
-}
- 
-.left-side {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	background-color: #4caf50;
-	clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
-}
-
-.left-side img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
-}
-
-.right-side {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	box-sizing: border-box;
-	background-color: red;
-	clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
-	padding-left: 1.2rem;
-	padding-top: 2rem;
-}
-
-.right-side h3 {
-	margin: 0;
-	font-size: 1.2rem;
-	font-weight: 500;
-}
-
-.right-side p {
-	@apply bg-gray-200 inline p-1 text-xs;
-}
-*/
 .profile-card-container {
 	width: 180rem;
 	display: flex;
 	flex-direction: row;
 	gap: 1rem;
 	padding-bottom: 0.5rem;
+}
+
+.slider-container__profile-card {
+	@apply relative overflow-x-hidden h-fit hover:overflow-x-scroll overflow-y-hidden h-40;
 }
 
 .profile-card {
@@ -1058,8 +1047,6 @@ a {
 	@apply my-8 mx-0 md:pr-4;
 }
 
-
-
 .article p {
 	/* margin-bottom: 1rem;
 	color: var(--secondary); */
@@ -1079,4 +1066,19 @@ a {
 
 .article li {
 	@apply mb-2 text-secondary;
+}
+
+.hero-banner {
+	margin-top: 4.6rem;
+	/* margin-top: 5rem; */
+	position: relative;
+	width: 100%;
+	/* height: 10rem;  */
+	overflow: hidden;
+}
+.hero-video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* Ensure the video covers the entire container */
+	object-position: center; /* Align the video to show the top part */
 }
