@@ -50,6 +50,7 @@ module.exports = {
 			height: {
 				400: "25rem",
 				480: "30rem",
+				560: "35rem",
 				640: "40rem",
 				768: "48rem",
 				800: "50rem",
