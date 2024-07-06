@@ -53,6 +53,14 @@ router.get("/", (req, res) => {
 		)
 	);
 
+	const hero = JSON.parse(
+		fs.readFileSync(
+			path.join(__dirname, "../translations/home-hero/", `homeHero.json`),
+			"utf8"
+		)
+	);
+
+	res.locals.hero = hero[selectedLanguage];
 	res.locals.translations = translations;
 	res.locals.footerTranslation = footerTranslation;
 	res.locals.alumnies = alumnies;
