@@ -1352,6 +1352,10 @@ p.danger,
   bottom: 25%;
 }
 
+.bottom-10 {
+  bottom: 2.5rem;
+}
+
 .right-0 {
   right: 0px;
 }
@@ -1366,6 +1370,10 @@ p.danger,
 
 .top-14 {
   top: 3.5rem;
+}
+
+.bottom-5 {
+  bottom: 1.25rem;
 }
 
 .z-50 {
@@ -1505,6 +1513,10 @@ p.danger,
 
 .w-1\/2 {
   width: 50%;
+}
+
+.w-1\/3 {
+  width: 33.333333%;
 }
 
 .w-1\/4 {
@@ -1796,6 +1808,10 @@ p.danger,
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.bg-black\/30 {
+  background-color: rgb(0 0 0 / 0.3);
 }
 
 .bg-danger {
@@ -2112,6 +2128,12 @@ p.danger,
 
 .outline-0 {
   outline-width: 0px;
+}
+
+.backdrop-blur-sm {
+  --tw-backdrop-blur: blur(4px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+          backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 
 textarea {
@@ -3370,6 +3392,10 @@ a {
 }
 
 @media (min-width: 768px) {
+  .md\:bottom-10 {
+    bottom: 2.5rem;
+  }
+
   .md\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
@@ -3378,6 +3404,10 @@ a {
   .md\:mx-16 {
     margin-left: 4rem;
     margin-right: 4rem;
+  }
+
+  .md\:ml-4 {
+    margin-left: 1rem;
   }
 
   .md\:block {
@@ -3410,6 +3440,10 @@ a {
 
   .md\:w-96 {
     width: 24rem;
+  }
+
+  .md\:w-1\/3 {
+    width: 33.333333%;
   }
 
   .md\:max-w-96 {
@@ -3485,9 +3519,19 @@ a {
     text-align: start;
   }
 
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
   .md\:text-5xl {
     font-size: 3rem;
     line-height: 1;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
 
@@ -3511,5 +3555,10 @@ a {
   .lg\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
+  }
+
+  .lg\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 }
