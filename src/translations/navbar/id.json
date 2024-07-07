@@ -57,11 +57,11 @@
 					"label": "Pasca Sarjana",
 					"subMenus": [
 						{
-							"label": "S-2 Pemasaran, Inovasi, dan Teknologi",
+							"label": "Magister Pemasaran, Inovasi, dan Teknologi",
 							"href": "/s2-pemasaran-inovasi-teknologi"
 						},
 						{
-							"label": "S-2 Teknik Keselamatan dan Resiko",
+							"label": "Magister Teknik Keselamatan dan Resiko",
 							"href": "/s2-teknik-keselamatan-resiko"
 						}
 					]
@@ -81,7 +81,7 @@
 			"subMenus": [
 				{
 					"label": "Perpustakaan Elektronik",
-					"href": "/perpustakaan-elektronik"
+					"href": "https://e-library.ptdisttd.ac.id/"
 				}
 			]
 		},

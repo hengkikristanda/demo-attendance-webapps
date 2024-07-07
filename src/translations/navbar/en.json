@@ -57,11 +57,11 @@
 					"label": "Post Graduate",
 					"subMenus": [
 						{
-							"label": "S-2 Marketing, Innovation, and Technology",
+							"label": "Master's degree of Marketing, Innovation, and Technology",
 							"href": "/s2-pemasaran-inovasi-teknologi"
 						},
 						{
-							"label": "S-2 Safety Engineering and Risk",
+							"label": "Master's degree of Safety Engineering and Risk",
 							"href": "/s2-teknik-keselamatan-resiko"
 						}
 					]
@@ -81,7 +81,7 @@
 			"subMenus": [
 				{
 					"label": "Electronic Library",
-					"href": "/perpustakaan-elektronik"
+					"href": "https://e-library.ptdisttd.ac.id/"
 				}
 			]
 		},

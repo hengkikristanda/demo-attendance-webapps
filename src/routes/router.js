@@ -73,6 +73,75 @@ router.get("/", (req, res) => {
 	});
 });
 
+router.get("/s2-pemasaran-inovasi-teknologi", (req, res) => {
+	let selectedLanguage = req.query.lang;
+	if (selectedLanguage == undefined) {
+		selectedLanguage = "id";
+	}
+
+	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
+		selectedLanguage = "id";
+
+	// req.session.selectedLanguage = selectedLanguage;
+
+	const translations = JSON.parse(
+		fs.readFileSync(
+			path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`),
+			"utf8"
+		)
+	);
+
+	const footerTranslation = JSON.parse(
+		fs.readFileSync(
+			path.join(__dirname, "../translations/footer/", `${selectedLanguage}.json`),
+			"utf8"
+		)
+	);
+
+	const alumnies = JSON.parse(
+		fs.readFileSync(path.join(__dirname, "../translations/alumnies.json"), "utf8")
+	);
+
+	const lecturers = JSON.parse(
+		fs.readFileSync(path.join(__dirname, "../translations/lecturers.json"), "utf8")
+	);
+
+	const news = JSON.parse(
+		fs.readFileSync(
+			path.join(__dirname, "../translations/berita/", `${selectedLanguage}.json`),
+			"utf8"
+		)
+	);
+
+	const hero = JSON.parse(
+		fs.readFileSync(
+			path.join(__dirname, "../translations/home-hero/", `homeHero.json`),
+			"utf8"
+		)
+	);
+
+	res.locals.hero = hero[selectedLanguage];
+	res.locals.translations = translations;
+	res.locals.footerTranslation = footerTranslation;
+	res.locals.alumnies = alumnies;
+	res.locals.lecturers = lecturers;
+	res.locals.news = news;
+
+	const department = translations.menus[1].label;
+	const level = translations.menus[1].subMenus[1].label;
+	const study = translations.menus[1].subMenus[1].subMenus[1].label;
+	const pageTitle = `${department} - ${study}`;
+
+
+	res.render("akademik/s2-pemasaran-inovasi-teknologi", {
+		title: pageTitle,
+		study,
+		selectedLanguage,
+		department,
+		level
+	});
+});
+
 router.get("/dosen", (req, res) => {
 	let selectedLanguage = req.query.lang;
 	let pageNumber = req.query.page;

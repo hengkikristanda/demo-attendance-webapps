@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../sections/head') %>
+
+	<body>
+		<%- include('../sections/navbar') %>
+		<div class="max-w-screen-2xl mx-auto">
+			<section id="pageHeader">
+				<div class="flex w-full h-96 max-h-96 mt-16 relative">
+					<img src="/img/postgraduate.JPG" class="object-cover w-full h-full object-top" />
+					<div
+						class="absolute flex items-center px-8 bg-tertiary/75 backdrop-blur-sm h-full w-1/3 ml-4 hidden">
+						<h1 class="text-white text-5xl font-bold uppercase"><%= study %></h1>
+					</div>
+					<div class="absolute flex flex-col gap-2 items-start bg-tertiary top-1/4 p-4 w-2/5 ml-4">
+						<h6 class="font-bold uppercase bg-primary text-white py-px px-2"><%= level %></h6>
+						<h1 class="font-bold text-4xl uppercase text-white"><%= study %></h1>
+					</div>
+				</div>
+			</section>
+
+			<%- include('../sections/akademik/s2-pemasaran-teknologi-inovasi/main-content') %>
+
+			<%- include('../sections/footer') %> <%- include('../components/chatWidget') %>
+		</div>
+	</body>
+	<script src="/js/navbarUtils.js"></script>
+	<script src="/js/lecturerUtils.js"></script>
+</html>

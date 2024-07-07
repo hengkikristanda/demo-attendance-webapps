@@ -1,0 +1,134 @@
+<section>
+	<div class="flex flex-col w-full gap-16">
+		<div class="flex justify-evenly border-b border-gray-300">
+			<h6
+				class="nav-btn cursor-pointer w-1/3 py-4 text-center hover-effect bg-tertiary/30 font-semibold">
+				OVERVIEW
+			</h6>
+			<h6 class="nav-btn cursor-pointer w-1/3 py-4 text-center hover-effect font-semibold">
+				STUDENTS ACTIVITIES
+			</h6>
+			<h6 class="nav-btn cursor-pointer w-1/3 py-4 text-center hover-effect font-semibold">
+				CAREER IMPACT
+			</h6>
+		</div>
+		<div id="overview" class="nav-btn_content flex flex-col w-full gap-16">
+			<div class="flex">
+				<div class="flex flex-col w-2/5 px-2">
+					<h1 class="text-secondary font-bold">STUDY PLAN</h1>
+					<hr class="h-2 w-1/4 bg-tertiary" />
+				</div>
+				<div class="flex justify-evenly py-4 bg-tertiary/10 w-full">
+					<div class="flex flex-col border-r-2 border-white w-1/3 py-8 px-8">
+						<h3 class="text-tertiary font-bold">Duration</h3>
+						<p>4 Years</p>
+					</div>
+					<div class="flex flex-col border-r-2 border-white w-1/3 py-8 px-8">
+						<h3 class="text-tertiary font-bold">Degree</h3>
+						<p>Sarjana Transportasi Terapan</p>
+					</div>
+					<div class="flex flex-col border-r-2 border-white w-1/3 py-8 px-8">
+						<h3 class="text-tertiary font-bold">Akreditasi</h3>
+						<p>Baik Sekali</p>
+					</div>
+				</div>
+			</div>
+			<div class="flex gap-12">
+				<div class="flex flex-col w-1/2 my-12 px-2 gap-4">
+					<h3 class="font-bold uppercase text-tertiary">Safety and Risk Engineering</h3>
+					<p class="text-secondary">
+						The Master's Degree in Safety Engineering and Risk is designed to equip students with
+						advanced knowledge and skills in identifying, analyzing, and mitigating risks across
+						various industries. This program offers a comprehensive curriculum that covers key areas
+						such as hazard assessment, risk management, safety protocols, and regulatory compliance.
+						Students will learn to apply engineering principles to improve safety and reduce risks
+						in complex systems. Through a blend of theoretical coursework, practical labs, and
+						real-world projects, graduates will be prepared to lead safety initiatives and drive
+						innovation in safety engineering. This program is ideal for those seeking careers in
+						safety consultancy, risk management, and safety engineering roles in sectors like
+						manufacturing, construction, energy, and healthcare.
+					</p>
+				</div>
+				<div
+					class="w-1/2 h-96 border border-tertiary/10 shadow-tertiary/10 shadow-2xl drop-shadow-lg">
+					<img src="/img/lab_pengujian_kendaraan.JPG" class="w-full h-full object-cover" />
+				</div>
+			</div>
+		</div>
+		<div id="studentActivity" class="nav-btn_content flex flex-col w-full gap-16 hidden">
+			<div class="flex flex-row-reverse gap-12">
+				<div class="flex flex-col w-1/2 my-12 px-2 gap-4">
+					<h3 class="font-bold uppercase text-tertiary">Student's Activities</h3>
+					<p class="text-secondary">
+						At our university, we believe that a well-rounded education extends beyond the
+						classroom. Our Student Activities program offers a diverse range of extracurricular
+						opportunities that cater to various interests and passions. From academic clubs and
+						professional organizations to cultural societies and recreational sports, there is
+						something for everyone. Students can join the debate team, participate in community
+						service projects, or explore creative outlets through art and music groups. Our campus
+						is also home to numerous events throughout the year, including workshops, seminars,
+						cultural festivals, and sports competitions. These activities provide students with
+						valuable experiences, help them develop leadership and teamwork skills, and foster a
+						vibrant campus community. Whether you're looking to enhance your resume, meet new
+						people, or simply have fun, our Student Activities program has something to offer.
+					</p>
+				</div>
+				<div
+					class="w-1/2 h-96 border border-tertiary/10 shadow-tertiary/10 shadow-2xl drop-shadow-lg">
+					<img src="/img/student_activity.jpg" class="w-full h-full object-cover" />
+				</div>
+			</div>
+		</div>
+		<div id="careerImpact" class="nav-btn_content flex flex-col w-full gap-16 hidden">
+			<div class="flex gap-12">
+				<div class="flex flex-col w-1/2 my-12 px-2 gap-4">
+					<h3 class="font-bold uppercase text-tertiary">Career Impact</h3>
+					<p class="text-secondary">
+						Our university is dedicated to ensuring that our graduates are well-prepared for
+						successful and impactful careers. The Career Impact program is designed to provide
+						students with the resources, support, and opportunities needed to excel in the
+						professional world. Through personalized career counseling, industry connections, and
+						comprehensive workshops, students gain invaluable insights into career planning and
+						development. We offer resume-building sessions, interview preparation, and networking
+						events that connect students with potential employers and alumni. Our strong
+						partnerships with leading companies across various sectors provide exclusive internship
+						and job placement opportunities. Additionally, our career fairs and on-campus
+						recruitment events are platforms where students can showcase their talents to top
+						employers. By fostering a proactive approach to career readiness, we empower our
+						students to achieve their professional goals and make meaningful contributions to their
+						chosen fields.
+					</p>
+				</div>
+				<div
+					class="w-1/2 h-96 border border-tertiary/10 shadow-tertiary/10 shadow-2xl drop-shadow-lg">
+					<img src="/img/DRZ02844.jpg" class="w-full h-full object-cover" />
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const navBtn = document.querySelectorAll(".nav-btn ");
+	navBtn.forEach((btn, index) => {
+		btn.addEventListener("mouseup", () => {
+			const targetContent = document.querySelectorAll(".nav-btn_content");
+
+			targetContent.forEach((content, idx) => {
+				if (index == idx) {
+					content.classList.remove("hidden");
+				} else {
+					content.classList.add("hidden");
+				}
+			});
+
+			navBtn.forEach((btn, idx) => {
+				if (index == idx) {
+					btn.classList.add("bg-tertiary/30");
+				} else {
+					btn.classList.remove("bg-tertiary/30");
+				}
+			});
+		});
+	});
+</script>

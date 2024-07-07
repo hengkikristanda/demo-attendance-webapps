@@ -57,11 +57,11 @@
 					"label": "大学院生",
 					"subMenus": [
 						{
-							"label": "S-2 マーケティング、イノベーション、および技術",
+							"label": "マーケティング、イノベーション、テクノロジーの修士号",
 							"href": "/s2-pemasaran-inovasi-teknologi"
 						},
 						{
-							"label": "S-2 安全工学およびリスク",
+							"label": "安全工学とリスクの修士号",
 							"href": "/s2-teknik-keselamatan-resiko"
 						}
 					]
@@ -81,7 +81,7 @@
 			"subMenus": [
 				{
 					"label": "電子図書館",
-					"href": "/perpustakaan-elektronik"
+					"href": "https://e-library.ptdisttd.ac.id/"
 				}
 			]
 		},
