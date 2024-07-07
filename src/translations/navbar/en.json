@@ -44,11 +44,11 @@
 							"href": "/d3-manajemen-transportasi-kereta"
 						},
 						{
-							"label": "Applied Bachelor Land Transportation Management",
+							"label": "Bachelor of Applied Land Transportation Management",
 							"href": "/d4-manajemen-transportasi-darat"
 						},
 						{
-							"label": "Applied Bachelor Automotive Engineering Technology",
+							"label": "Bachelor of Applied Automotive Engineering Technology",
 							"href": "/d4-teknologi-rekayasa-otomotif"
 						}
 					]
@@ -57,11 +57,11 @@
 					"label": "Post Graduate",
 					"subMenus": [
 						{
-							"label": "Master's degree of Marketing, Innovation, and Technology",
+							"label": "Master in Marketing, Innovation and Technology",
 							"href": "/s2-pemasaran-inovasi-teknologi"
 						},
 						{
-							"label": "Master's degree of Safety Engineering and Risk",
+							"label": "Master in Safety and Risk Engineering",
 							"href": "/s2-teknik-keselamatan-resiko"
 						}
 					]

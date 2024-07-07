@@ -30,6 +30,28 @@
 			]
 		},
 		{
+			"id": "ebd2dd46-7ecc-4ae4-bc57-52efd56211d3",
+			"name": "Agus Pramono",
+			"title": "S.H., M.M.",
+			"email": "agus_pramono@dephub.go.id",
+			"pic": "agus-pramono.jpg",
+			"profile": "agus-pramono.pdf",
+			"personalExp": [
+				"June 2022 - Present: Lecturer Indonesian Land Transportation Polytechnic – STTD",
+				"2020 - 2022: Head Of Finance, General And Cooperation Department Sorong Marine Polytechnic",
+				"2019 - 2020: Head Of Finance, General And Cooperation Department Banten Marine Polytechnic",
+				"2018 - 2019: Head of Planning Center of Human Resources Development for Transportation Apparatus",
+				"2018: Head of General Department - Center of Human Resources Development for Transportation Apparatus",
+				"2018: Head of Education - Center of Marine Transportation Human Resources Development",
+				"2017 - 2018: Head of General Department - Center of Marine Transportation Human Resources Development"
+			],
+			"education": [
+				"2006: Bachelor in Law Jakarta Ibnu Chaldun University",
+				"1998: Master in Management The Jakarta College of Economic Sciences"
+			],
+			"research": ["Transport", "Management", "Law", "Planning"]
+		},
+		{
 			"id": "9b75f7c0-b3a1-4c73-9af6-8e7e7a5d1d67",
 			"name": "Arief Apriyanto",
 			"title": "S.T., M.Sc.",
@@ -69,6 +91,35 @@
 				"Accessibility and Connectivity Concept Between Motorcycles and Pedestrians at Education District (2020)",
 				"PERBANDINGAN EMISI GAS BUANG (EGB) MOBIL PENUMPANG UMUM TERHADAP LALU LINTAS PADA RUAS JALAN RAYA SETU DI BEKASI (2019)",
 				"Level of gas emissions of passenger car on climb road segment (2018)"
+			]
+		},
+		{
+			"id": "68a2579d-3d3d-4c5b-97d3-3a5d2fb73675",
+			"name": "Cut Adinda Natashia",
+			"title": "S.T., M.T.",
+			"email": "adindanathasia@gmail.com",
+			"pic": "cut-adinda-natashia.jpg",
+			"profile": "cut-adinda-natashia.pdf",
+			"personalExp": [
+				"2023 – Present: Lecturer, Majoring Transportasi Darat, PTDI – STTD, The Ministry Of Transportation",
+				"2020 – 2023: Civil Engineering Lecturer, Faculty of Engineering, Civil Engineering Study Program, Syekh Yusuf University Tangerang, Muhammadiyah University Tangerang, and Trisakti University Jakarta",
+				"2018 – 2023: Division Head of Project Procurement, Supply Chain and Logistics, PT Angkasa Pura Properti (Angkasa Pura 1 Airport subsidiary)",
+				"2017 – 2019: Project Control Manager, PT Widya Sapta Contractor",
+				"2015 – 2017: Manager Commercial Division, PT Central Proteina Prima, Tbk (Sister Company of PT Charoen Phokphand, Tbk)",
+				"2010 – 2015: Procurement Spv, PT Marga Mandalasakti, Investor Of Tangerang Merak Toll Road, Astra International Group",
+				"2009 – 2010: Management Trainee PT. PROMETAMA (subsidiary of PT. Krakatau Steel)",
+				"2008 – 2009: “Quantity Surveyor/Estimator dan Quality Control” Kebayoran Lama Underpass Development Project, South Jakarta in the General Contractor of PT.Pembangunan Perumahan (BUMN / Persero)."
+			],
+			"education": [
+				"2017: Master Degree - Construction Management Magister of Civil Engineering Program, Faculty of Civil Engineering and Planning, Trisakti University Jakarta",
+				"2002: Bacheor in Civil Engineering Department of Civil Engineering, Faculty of Engineering, Diponegoro University, Semarang"
+			],
+			"research": [
+				"Civil Engineering",
+				"Public Transport",
+				"Transport Planning",
+				"Construction Management",
+				"Road Transport Safety"
 			]
 		},
 		{
@@ -464,6 +515,110 @@
 				"MONITORING PERJALANAN PENGGUNA ANGKUTAN UMUM DENGAN INTEGRASI E-KTP MELALUI APLIKASI PEDULILINDUNGI TAHUN 2021",
 				"PENGARUH KAPASITAS MESIN TERHADAP PERILAKU PENGENDARA SEPEDA MOTOR (STUDI KASUS : JALAN INSPEKSI KALIMALANG KAB. BEKASI TAHUN 2022"
 			]
+		},
+		{
+			"id": "9ad6efb5-96cf-4d00-8b5d-0bd563d4900b",
+			"name": "Gadang Endrayanto",
+			"title": "S.E., M.AP.",
+			"email": "gadang_endrayanto@dephub.go.id",
+			"pic": "gadang-endrayanto.jpg",
+			"profile": "gadang-endrayanto.pdf",
+			"personalExp": ["2023 – Present: Lecturer Indonesian Land Transportation Polytechnic – STTD"],
+			"education": [
+				"2017: Master in Public Administration Tama Jagakarsa University",
+				"2012: Bachelor in Economy State Administrative Institution College of Administrative Sciences"
+			],
+			"research": ["Transport", "Management", "Railway", "Public Administration"]
+		},
+		{
+			"id": "fc874db7-4f00-408f-9f08-7f2d3d786513",
+			"name": "Ir. Erni Basri",
+			"title": "ST., M.Eng., IPM, ASEAN Eng.",
+			"email": "erni_basri@kemenhub.go.id",
+			"pic": "erni-basri.jpg",
+			"profile": "erni-basri.pdf",
+			"personalExp": [
+				"2024 May – Present: Lecture & Researcher PTDI – STTD Polytechnics of Land Transportation Indonesia Ministry of Transportation of Indonesia",
+				"Jan - May 2024: The Head of Policy on Transportation Facility Center - Body Policy Transportation, Ministry of Transportation of Indonesia",
+				"2023: Director Safety Directorate General of Railway, Ministry of Transportation of Indonesia",
+				"2020 - 2023: Head of Railway Engineering Center for West Java Region",
+				"Jan - Aug 2020: Head of Sub-Directorate of Railway Tracks and Buildings Region I, Directorate of Infrastructure, Directorate General of Railways",
+				"Jan - Dec 2019: PPK Construction LRT Jabodebek, DGR, MoT",
+				"July 2018 - Jan 2019: Head of Sub-Directorate of State-Owned Facilities Management, Directorate of Facilities, Directorate General of Railways",
+				"Apr 2018 - July 2018: Head of Sub-Directorate of Railway Track and Building Suitability, Directorate of Infrastructure, Directorate General of Railways",
+				"Feb 2018 - Apr 2018: Head of Sub-Directorate of Railway Operation Facilities Suitability, Directorate General of Infrastructure, Directorate General of Railways",
+				"Apr 2017 - Dec 2017: PPK Design & Preparation Construction Patimban Port, DGLC, MoT",
+				"Jul 2017 - Feb 2018: Head of Railway Track and Land Section, Region II, Sub-Directorate of Railway Track and Buildings",
+				"Jun 2016 - Apr 2017: Head of Railway Track and Building Suitability Section, Wil. I SubDirectorate of Railway Track and Building Suitability",
+				"Mar 2016 - Jun 2016: Head of Accident Analysis Section, Sub-Directorate of Accident Inspection and Analysis",
+				"Apr 2015 - Mar 2016: Head of Railway Infrastructure Section, Class II Railway Engineering Center, West Sumatera Region",
+				"Feb 2015 - Apr 2015: Head of Evaluation and Reporting Sub-Division, Planning Section",
+				"Dec 2010 - Sep 2012: Head of Planning Sub-Division, Planning Section, Sesditjen KA",
+				"Mar 2008 - Dec 2010: Head of Bridges and Buildings, Region II, Sub-Directorate of Railway Track and Buildings",
+				"2002 - Present: Civil servant Ministry of Transportation of Indonesia"
+			],
+			"education": [
+				"2012 – 2014: Master Degree : Transportation Engineering - University of Hiroshima, Japan",
+				"1995- 1999: Bachelor in Civil Engineering University of Diponegoro, Semarang, Indonesia"
+			],
+			"research": [
+				"Mobility",
+				"Land use transport",
+				"Transport planning",
+				"Connectivity & Accessibility",
+				"Public transport planning and operation",
+				"Infrastructure Project Management",
+				"Transport Safety Management",
+				"Intelligent Transport",
+				"Operation research in Transportation",
+				"Big data analysis in Transportation"
+			]
+		},
+		{
+			"id": "ab57df18-10eb-4bfe-8d3e-557707676596",
+			"name": "Ir. Popik Montanasyah",
+			"title": "M.T.",
+			"email": "m_popik@dephub.go.id",
+			"pic": "popik-montanasyah.jpg",
+			"profile": "popik-montanasyah.pdf",
+			"personalExp": [
+				"2023 – Present: Lecturer Indonesian Land Transportation Polytechnic – STTD",
+				"2020 - 2023: Director of Road Transportation Infrastructure Directorate General of Land Transportation",
+				"2019 - 2020: Secretary of Agency Transportation Human Resources Development Agency",
+				"2018 - 2019: Head of Center Center of Land Transportation Human Resources Development",
+				"2016 - 2018: Secretary of Directorate General Directorate General of Railway Transportation",
+				"2015 - 2016: Director of Railway Transportation Infrastructure Directorate General of Railway Transportation",
+				"2015 - 2016: Railway Transportation Traffic Director Directorate General of Railway Transportation",
+				"2014 - 2015: Railway Transportation Safety Director Directorate General of Railway Transportation",
+				"2010 - 2014: Transportation Attaché Embassy of the Republic of Indonesia in Tokyo"
+			],
+			"education": [
+				"2001: Master in Railway Engineering Bandung Technology Institute",
+				"1991: Bachelor in Engineering National Science and Technology Institute"
+			],
+			"research": ["Transport", "Civil Engineering", "Railway", "K3"]
+		},
+		{
+			"id": "48efb6b1-5fa9-4391-b8fb-66e6f06ca897",
+			"name": "Robert Simanjuntak",
+			"title": "S.E., M.M.",
+			"email": "robert_simanjuntak@dephub.go.id",
+			"pic": "robert-simanjuntak.jpg",
+			"profile": "robert-simanjuntak.pdf",
+			"personalExp": [
+				"2018 – Present: Lecturer Indonesian Land Transportation Polytechnic – STTD",
+				"2016 - 2018: Head Of Managerial Training Implementation SubDivision Center of Human Resources Development for Transportation Apparatus",
+				"2014 - 2016: Head Of Sub-Division Of Business & Personnel Indonesian Land Transportation Polytechnic – STTD",
+				"2010 - 2014: Head Of Education Administration Sub-Division Land Transportation Polytechnic – STTD",
+				"2009 - 2010: Head Of Finance Sub-Division Land Transportation Polytechnic – STTD",
+				"2005 - 2009: Head Of Household & Public Relations Land Transportation Polytechnic – STTD",
+				"2001 - 2005: Head Of Finance Sub Section Land Transportation Polytechnic – STTD"
+			],
+			"education": [
+				"2019: Master in Management IPWIJA",
+				"1987: Bachelor in Management Nomensen University"
+			],
+			"research": ["Transport", "Management", "Planning", "K3"]
 		}
 	],
 	"section": {

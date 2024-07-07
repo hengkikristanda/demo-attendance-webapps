@@ -36,19 +36,19 @@
 					"label": "本科",
 					"subMenus": [
 						{
-							"label": "D-III 道路交通管理",
+							"label": "D-III 公路运输管理",
 							"href": "/d3-manajemen-transportasi-jalan"
 						},
 						{
-							"label": "D-III 铁路交通管理",
+							"label": "D-III 铁路运输管理",
 							"href": "/d3-manajemen-transportasi-kereta"
 						},
 						{
-							"label": "应用学士学位 陆地交通管理",
+							"label": "应用陆路运输管理学士",
 							"href": "/d4-manajemen-transportasi-darat"
 						},
 						{
-							"label": "应用学士学位 汽车工程技术",
+							"label": "应用汽车工程技术学士",
 							"href": "/d4-teknologi-rekayasa-otomotif"
 						}
 					]
@@ -57,11 +57,11 @@
 					"label": "研究生",
 					"subMenus": [
 						{
-							"label": "市场营销、创新和技术硕士学位",
+							"label": "市场营销、创新和技术硕士",
 							"href": "/s2-pemasaran-inovasi-teknologi"
 						},
 						{
-							"label": "安全工程与风险硕士学位",
+							"label": "安全与风险工程硕士",
 							"href": "/s2-teknik-keselamatan-resiko"
 						}
 					]

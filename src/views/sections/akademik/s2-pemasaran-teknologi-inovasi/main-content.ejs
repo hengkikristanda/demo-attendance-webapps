@@ -12,7 +12,7 @@
 				CAREER IMPACT
 			</h6>
 		</div>
-		<div id="overview" class="nav-btn_content flex flex-col w-full gap-16">
+		<div id="overview" class="nav-btn_content flex flex-col w-full gap-16 reveal fade-right">
 			<div class="flex">
 				<div class="flex flex-col w-2/5 px-2">
 					<h1 class="text-secondary font-bold">STUDY PLAN</h1>
@@ -55,7 +55,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="studentActivity" class="nav-btn_content flex flex-col w-full gap-16 hidden">
+		<div id="studentActivity" class="nav-btn_content flex flex-col w-full gap-16 hidden reveal fade-right">
 			<div class="flex flex-row-reverse gap-12">
 				<div class="flex flex-col w-1/2 my-12 px-2 gap-4">
 					<h3 class="font-bold uppercase text-tertiary">Student's Activities</h3>
@@ -79,7 +79,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="careerImpact" class="nav-btn_content flex flex-col w-full gap-16 hidden">
+		<div id="careerImpact" class="nav-btn_content flex flex-col w-full gap-16 hidden reveal fade-right">
 			<div class="flex gap-12">
 				<div class="flex flex-col w-1/2 my-12 px-2 gap-4">
 					<h3 class="font-bold uppercase text-tertiary">Career Impact</h3>
@@ -109,6 +109,29 @@
 </section>
 
 <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+function reveal() {
+	var reveals = document.querySelectorAll(".reveal");
+
+	for (var i = 0; i < reveals.length; i++) {
+		var windowHeight = window.innerHeight;
+		var elementTop = reveals[i].getBoundingClientRect().top;
+		var elementVisible = 150;
+
+		if (elementTop < windowHeight - elementVisible) {
+			reveals[i].classList.add("active");
+		} /* else {
+			reveals[i].classList.remove("active");
+		} */
+	}
+}
+
+window.addEventListener("scroll", reveal);
+});
+
+
 	const navBtn = document.querySelectorAll(".nav-btn ");
 	navBtn.forEach((btn, index) => {
 		btn.addEventListener("mouseup", () => {

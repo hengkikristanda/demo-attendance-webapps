@@ -36,19 +36,19 @@
 					"label": "学士",
 					"subMenus": [
 						{
-							"label": "D-III 道路交通管理",
+							"label": "D-III 道路輸送管理",
 							"href": "/d3-manajemen-transportasi-jalan"
 						},
 						{
-							"label": "D-III 鉄道交通管理",
+							"label": "D-III 鉄道輸送管理",
 							"href": "/d3-manajemen-transportasi-kereta"
 						},
 						{
-							"label": "応用学士 陸上交通管理",
+							"label": "応用陸上輸送管理学士",
 							"href": "/d4-manajemen-transportasi-darat"
 						},
 						{
-							"label": "応用学士 自動車工学技術",
+							"label": "応用自動車工学技術学士",
 							"href": "/d4-teknologi-rekayasa-otomotif"
 						}
 					]
@@ -61,7 +61,7 @@
 							"href": "/s2-pemasaran-inovasi-teknologi"
 						},
 						{
-							"label": "安全工学とリスクの修士号",
+							"label": "安全およびリスク工学の修士号",
 							"href": "/s2-teknik-keselamatan-resiko"
 						}
 					]
