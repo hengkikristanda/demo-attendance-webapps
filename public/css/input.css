@@ -61,39 +61,21 @@ section {
 }
 
 @media (min-width: 340px) and (max-width: 480px) {
-	.hero-banner {
-		height: 9rem;
-	}
 }
 
 @media (min-width: 481px) and (max-width: 640px) {
-	.hero-banner {
-		height: 14rem;
-	}
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
-	.hero-banner {
-		height: 14rem;
-	}
 }
 
 @media (min-width: 1024px) and (max-width: 1440px) {
-	.hero-banner {
-		height: 20rem;
-	}
 }
 
 @media (min-width: 1440px) and (max-width: 1536px) {
-	.hero-banner {
-		height: 26rem;
-	}
 }
 
 @media (min-width: 1536px) {
-	.hero-banner {
-		height: 28rem;
-	}
 }
 
 /* -sm: small tablets, large phones */
@@ -101,18 +83,12 @@ section {
 	html {
 		font-size: 15px;
 	}
-	.hero-banner {
-		/* height: 15rem; */
-	}
 }
 
 /* -md: medium devices, tablets */
 @media (min-width: 768px) {
 	html {
 		font-size: 16px;
-	}
-	.hero-banner {
-		/* height: 17rem; */
 	}
 }
 
@@ -129,9 +105,6 @@ section {
 	}
 	.navbar-mobile {
 		display: none;
-	}
-	.hero-banner {
-		/* height: 21rem; */
 	}
 }
 
@@ -1073,7 +1046,10 @@ a {
 	/* margin-top: 5rem; */
 	position: relative;
 	width: 100%;
-	/* height: 10rem;  */
+	/* height: 50%; */
+	/* height: 100rem; */
+	/* height: 50vh; */
+	/* max-height: 50vh; */
 	overflow: hidden;
 }
 .hero-video {

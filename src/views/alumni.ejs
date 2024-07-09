@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('./sections/head') %>
+	<body>
+		<%- include('./sections/navbar') %>
+
+		<div class="max-w-screen-2xl mx-auto">
+			<div class="page-header w-full my-20">
+				<div class="h-56 w-full">
+					<img src="/img/our_people.jpeg" class="w-full h-full object-cover" />
+					<h1
+						class="text-5xl text-white text-start p-2 bg-tertiary font-semibold relative w-80"
+						style="top: -10rem">
+						<%= detailAlumni.section[selectedLanguage].title %>
+					</h1>
+				</div>
+			</div>
+
+			<section>
+				<div class="flex flex-col text-center mb-12">
+					<h2 class="font-bold"><%= detailAlumni.section[selectedLanguage].title %></h2>
+					<hr class="h-2 bg-tertiary w-20 mx-auto mb-4" />
+					<h5><%= detailAlumni.section[selectedLanguage].intro %></h5>
+				</div>
+				<div class="grid grid-rows grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+				<%
+				detailAlumni.data.forEach((alumni) => {
+				%>
+					<div class="flex flex-col items-center text-center">
+						<div class="w-56 mb-4">
+							<img src="/img/alumnies/<%= alumni.pic %>" class="w-40 h-40 object-cover rounded-full shadow-lg mx-auto border-2 border-secondary object-top">
+						</div>
+						<h4 class="font-bold"><%= alumni.name + " " + alumni.title %></h4>
+						<p><%= alumni.class[selectedLanguage] %></p>
+						<p><%= alumni.pos[selectedLanguage] %></p>
+					</div>
+				<%
+				})
+				%>
+				</div>
+			</section>
+
+			<%- include('./sections/footer') %> <%- include('./components/chatWidget') %>
+		</div>
+	</body>
+	<script>
+		const tabsLecturer = document.querySelectorAll(".tabs-lecturer");
+		tabsLecturer.forEach((tabs, index) => {
+			tabs.addEventListener("mouseup", () => {
+				const targetParent = event.target.closest(".dosen-card-content-container");
+
+				const targetTabs = targetParent.querySelectorAll(".tabs-lecturer");
+				targetTabs.forEach((tabs) => {
+					tabs.classList.remove("active");
+				});
+
+				const clickedTabs = event.target;
+				clickedTabs.classList.add("active");
+
+				const targetContent = targetParent.querySelectorAll(".tabs-content");
+				const n = index % 3;
+
+				targetContent.forEach((tabContent, idx) => {
+					if (tabContent.classList.contains("show")) {
+						tabContent.classList.remove("show");
+						tabContent.classList.add("hide");
+					}
+					if (n == idx) {
+						tabContent.classList.remove("hide");
+						tabContent.classList.add("show");
+					}
+				});
+			});
+		});
+
+		const mobileTabsLecturer = document.querySelectorAll(".mobile-tabs-lecturer");
+		mobileTabsLecturer.forEach((mobileTab) => {
+			mobileTab.addEventListener("mouseup", () => {
+				const target = event.target.nextElementSibling;
+
+				if (target.classList.contains("hidden")){
+					target.classList.remove("hidden");
+				}else{
+					target.classList.add("hidden");
+				}
+
+				// if (target.style.display == "block") {
+				// 	target.style.display = "none";
+				// } else {
+				// 	target.style.display = "block";
+				// }
+			});
+		});
+	</script>
+	<script src="/js/navbarUtils.js"></script>
+	<script src="/js/lecturerUtils.js"></script>
+</html>

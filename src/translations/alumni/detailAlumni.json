@@ -1,0 +1,206 @@
+{
+	"data": [
+		{
+			"id": "6ae725eb-fb8d-4fc0-bd20-ff8475ef6bda",
+			"name": "Ahmad Yani",
+			"title": "A.T.D., M.T",
+			"pic": "ahmad-yani.png",
+			"class": {
+				"id": "Angkatan VIII",
+				"en": "Class of VIII",
+				"ja": "クラス VIII",
+				"ko": "클래스 VIII",
+				"zh": "VIII级"
+			},
+			"pos": {
+				"id": "Direktur Lalu Lintas Jalan",
+				"en": "Road Traffic Director",
+				"ja": "道路交通ディレクター",
+				"ko": "도로교통국장",
+				"zh": "道路交通总监r"
+			}
+		},
+		{
+			"id": "2de9e831-6d05-4ab1-a3cc-9e9e5319fdd4",
+			"name": "B. Wahyu Hapsoro",
+			"title": "M.M.Tr.",
+			"pic": "b-wahyu-hapsoro.jpg",
+			"class": {
+				"id": "Angkatan XII",
+				"en": "Class of XII",
+				"ja": "クラス XII",
+				"ko": "클래스 XII",
+				"zh": "XII级"
+			},
+			"pos": {
+				"id": "Kepala Balai Pendidikan dan Pelatihan Transportasi Darat Mempawah",
+				"en": "Head of Mempawah Land Transportation Education and Training Center",
+				"ja": "メンパワ陸上交通教育訓練センター所長",
+				"ko": "멤파와 육상교통교육훈련센터장",
+				"zh": "曼帕瓦陆路交通教育培训中心主任"
+			}
+		},
+		{
+			"id": "cd1625c6-4e6f-4c6e-aa42-02d720f26796",
+			"name": "Dr. Gede Pasek Suardika",
+			"title": "M.Sc. Eng.",
+			"pic": "gede-pasek-suardika.png",
+			"class": {
+				"id": "Angkatan VII",
+				"en": "Class of VII",
+				"ja": "クラス VII",
+				"ko": "클래스 VII",
+				"zh": "VII级"
+			},
+			"pos": {
+				"id": "Inspektur Jenderal, Kementerian Perhubungan",
+				"en": "Inspector General, Ministry of Transportation",
+				"ja": "運輸省監察官",
+				"ko": "교통부 감찰관",
+				"zh": "交通运输部监察长"
+			}
+		},
+		{
+			"id": "d99ccf79-d262-4e22-8ba1-6f767922fefc",
+			"name": "Dr. Hananto Prakoso",
+			"title": "",
+			"pic": "hananto-prakoso.jpg",
+			"class": {
+				"id": "Angkatan XIX",
+				"en": "Class of XIX",
+				"ja": "クラス XIX",
+				"ko": "클래스 XIX",
+				"zh": "XIX级"
+			},
+			"pos": {
+				"id": "Kepala Pusat Pengembangan SDM Perhubungan Darat",
+				"en": "Head of Land Transportation Human Resources Development Center",
+				"ja": "陸運人材育成研究所 所長",
+				"ko": "육상교통인재개발원장",
+				"zh": "陆路交通人力资源开发研究所所长"
+			}
+		},
+		{
+			"id": "2ddc544c-ff15-4e0a-a6ba-eaa3b167214d",
+			"name": "Dr. H. Tri Adhianto Tjahyono",
+			"title": "S.E., M.M.",
+			"pic": "h-tri-adhianto-tjahyono.png",
+			"class": {
+				"id": "Angkatan XII",
+				"en": "Class of XII",
+				"ja": "クラス XII",
+				"ko": "클래스 XII",
+				"zh": "XII级"
+			},
+			"pos": {
+				"id": "Wali Kota Bekasi Ke-5",
+				"en": "5th Mayor of Bekasi",
+				"ja": "第5代ブカシ市長",
+				"ko": "제5대 베카시 시장",
+				"zh": "勿加泗第五任市长"
+			}
+		},
+		{
+			"id": "d513c345-f2ff-44fa-871d-13b2e0add415",
+			"name": "Ir. Mohamad Risal Wasal",
+			"title": "ATD., MM., IPM",
+			"pic": "mohamad-risal-wasal.png",
+			"class": {
+				"id": "Angkatan VIII",
+				"en": "Class of VIII",
+				"ja": "クラス VIII",
+				"ko": "클래스 VIII",
+				"zh": "VIII级"
+			},
+			"pos": {
+				"id": "Direktur Jenderal Perkeretaapian",
+				"en": "Director General of Railways",
+				"ja": "鉄道局長",
+				"ko": "철도국장",
+				"zh": "铁道部总监"
+			}
+		},
+		{
+			"id": "f5360099-f89f-4686-a7c0-5b7b81c0516c",
+			"name": "Novan Wahyu Hidayat",
+			"title": "",
+			"pic": "novan-wahyu-hidayat.jpg",
+			"class": {
+				"id": "Angkatan XVIII",
+				"en": "Class of XVIII",
+				"ja": "クラス XVIII",
+				"ko": "클래스 XVIII",
+				"zh": "XVIII级"
+			},
+			"pos": {
+				"id": "Atase Perhubungan Indonesia Belanda",
+				"en": "Dutch Indonesian Transportation Attaché",
+				"ja": "オランダ系インドネシア人の運輸担当官",
+				"ko": "네덜란드 인도네시아 교통 무관",
+				"zh": "荷兰印度尼西亚运输专员"
+			}
+		},
+		{
+			"id": "82b8e343-c775-4389-883e-3942b39d44ad",
+			"name": "Pandu Yunianto",
+			"title": "A.T.D., M.Eng.Sc",
+			"pic": "pandu-yunianto.jpg",
+			"class": {
+				"id": "Angkatan VI",
+				"en": "Class of VI",
+				"ja": "クラス VI",
+				"ko": "클래스 VI",
+				"zh": "VI级"
+			},
+			"pos": {
+				"id": "Kepala Pusat Pengelolaan Transportasi Berkelanjutan",
+				"en": "Head of the Center for Sustainable Transportation Management",
+				"ja": "持続可能な交通管理センター長",
+				"ko": "지속가능교통관리센터장",
+				"zh": "可持续交通管理中心主任"
+			}
+		},
+        {
+			"id": "5f327e07-5389-40c2-aff8-842e3b4704e4",
+			"name": "Dr. Robben Rico",
+			"title": "A.Md., LLAJ., SH., ST., M.Si., CRGP",
+			"pic": "robben-rico.png",
+			"class": {
+				"id": "Angkatan XXI",
+				"en": "Class of XXI",
+				"ja": "クラス XXI",
+				"ko": "클래스 XXI",
+				"zh": "XXI级"
+			},
+			"pos": {
+				"id": "Sekretaris Jenderal, Kementerian Sosial Ri / Komisaris Pt. Pos Indonesia",
+				"en": "Secretary General, Indonesian Ministry of Social Affairs / Commissioner of Pt. Indonesian post",
+				"ja": "インドネシア社会省事務総長/Pt.長官インドネシア郵便",
+				"ko": "인도네시아 사회부 사무총장 / Pt. 인도네시아 포스트",
+				"zh": "印度尼西亚社会事务部秘书长/Pt. 专员印尼邮政"
+			}
+		}
+	],
+	"section": {
+		"id": {
+			"title": "Alumni",
+            "intro": "Temui alumni-alumni terkemuka kami yang telah unggul di bidangnya masing-masing dan terus menginspirasi generasi penerus."
+		},
+		"en": {
+			"title": "Prominent Alumni",
+            "intro": "Meet our prominent alumni who have excelled in their respective fields and continue to inspire the next generation."
+		},
+		"ja": {
+			"title": "著名な卒業生",
+            "intro": "それぞれの分野で優れた業績を残し、次世代に刺激を与え続けている著名な卒業生たちをご紹介します。"
+		},
+		"ko": {
+			"title": "저명한 동문",
+            "intro": "각자의 분야에서 탁월한 성과를 거두고 다음 세대에게 계속해서 영감을 주고 있는 저명한 동문들을 만나보세요."
+		},
+		"zh": {
+			"title": "杰出校友",
+            "intro": "见见我们在各自领域取得出色成就并继续激励下一代的杰出校友。"
+		}
+	}
+}
