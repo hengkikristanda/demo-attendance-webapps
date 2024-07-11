@@ -8,8 +8,6 @@ const fs = require("fs");
 const siteMenuServices = require("../services/siteMenuServices");
 const { LANGUAGE_CODE } = require("../utils/Constants");
 
-
-
 // Middleware to parse the body of POST requests
 router.use(express.urlencoded({ extended: true }));
 
@@ -54,10 +52,7 @@ router.get("/", (req, res) => {
 	);
 
 	const hero = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/home-hero/", `homeHero.json`),
-			"utf8"
-		)
+		fs.readFileSync(path.join(__dirname, "../translations/home-hero/", `homeHero.json`), "utf8")
 	);
 
 	res.locals.hero = hero[selectedLanguage];
@@ -114,10 +109,7 @@ router.get("/s2-pemasaran-inovasi-teknologi", (req, res) => {
 	);
 
 	const hero = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/home-hero/", `homeHero.json`),
-			"utf8"
-		)
+		fs.readFileSync(path.join(__dirname, "../translations/home-hero/", `homeHero.json`), "utf8")
 	);
 
 	res.locals.hero = hero[selectedLanguage];
@@ -132,13 +124,12 @@ router.get("/s2-pemasaran-inovasi-teknologi", (req, res) => {
 	const study = translations.menus[1].subMenus[1].subMenus[1].label;
 	const pageTitle = `${department} - ${study}`;
 
-
 	res.render("akademik/s2-pemasaran-inovasi-teknologi", {
 		title: pageTitle,
 		study,
 		selectedLanguage,
 		department,
-		level
+		level,
 	});
 });
 
@@ -260,16 +251,19 @@ router.get("/berita/:newsId?", (req, res) => {
 		)
 	);
 
-	const news = searchById(newsJson.data, newsId);
+	let news;
+	if (newsId !== undefined) {
+		news = searchById(newsJson.data, newsId);	
+	}
 
 	res.locals.translations = translations;
 	res.locals.footerTranslation = footerTranslation;
-	res.locals.news = news;
 	res.locals.section = newsJson.section;
 	res.locals.allNews = newsJson;
+	res.locals.news = news;
 
 	res.render("berita-terbaru", {
-		title: "PTDI STTD - Berita Terbaru",
+		title: `PTDI STTD - ${newsJson.section.title}`,
 		selectedLanguage,
 	});
 });
