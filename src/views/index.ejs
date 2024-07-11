@@ -1,54 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-	<%- include('./sections/head') %>
+<%- include('./sections/head') %>
 
-	<body>
-		<div class="hidden">
-			<div class="min-w-xs max-w-md w-full my-10">
-				<form
-					id="loginForm"
-					action="/login"
-					method="POST"
-					class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-					<div class="flex flex-col justify-center py-12">
-						<img src="/img/logo.jpg" class="w-1/2 mx-auto" />
-						<h6 class="mx-auto text-primary font-semibold">Attendance Login</h6>
-					</div>
-					<div class="mb-4">
-						<label for="email">Email</label>
-						<input
-							id="email"
-							name="email"
-							type="email"
-							placeholder="Enter your email address"
-							required />
-					</div>
-					<div class="mb-6">
-						<label for="password">Password</label>
-						<input
-							id="password"
-							name="password"
-							type="password"
-							placeholder="Enter your password"
-							autocomplete="off"
-							required />
-					</div>
-					<div class="flex items-center justify-between mb-6">
-						<button id="signInButton" class="btn block" type="submit">Sign In</button>
-					</div>
-					<a class="flex justify-center text-link" href="#">Forget Password</a>
-				</form>
-			</div>
-		</div>
+<body>
+  <div class="hidden">
+    <div class="min-w-xs max-w-md w-full my-10">
+      <form id="loginForm" action="/login" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="flex flex-col justify-center py-12">
+          <img src="/img/logo.jpg" class="w-1/2 mx-auto" />
+          <h6 class="mx-auto text-primary font-semibold">Attendance Login</h6>
+        </div>
+        <div class="mb-4">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Enter your email address" required />
+        </div>
+        <div class="mb-6">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="off" required />
+        </div>
+        <div class="flex items-center justify-between mb-6">
+          <button id="signInButton" class="btn block" type="submit">Sign In</button>
+        </div>
+        <a class="flex justify-center text-link" href="#">Forget Password</a>
+      </form>
+    </div>
+  </div>
 
-		<%- include('./sections/navbar') %>
+  <%- include('./sections/navbar') %>
 
-		<%- include('./sections/homeHero') %>
+  <%- include('./sections/homeHero') %>
 
 
 
-		<div class="max-w-screen-2xl mx-auto">
-			<!-- <section>
+  <div class="max-w-screen-2xl mx-auto">
+    <!-- <section>
 				<div class="slideshow-container mt-32">
 					<div class="slides">
 						<div class="slide">
@@ -62,8 +47,8 @@
 						</div>
 					</div> -->
 
-			<!-- Navigation Buttons -->
-			<!-- <div class="nav-buttons">
+    <!-- Navigation Buttons -->
+    <!-- <div class="nav-buttons">
 						<button onclick="showSlide(0)">1</button>
 						<button onclick="showSlide(1)">2</button>
 						<button onclick="showSlide(2)">3</button>
@@ -71,201 +56,205 @@
 				</div>
 			</section> -->
 
-			
-			<%- include('./sections/homeCarousel') %>
-			
 
-			<section id="campuses">
-				<div class="flex flex-col lg:px-20">
-					<div class="flex gap-2">
-						<div class="bg-tertiary w-3"></div>
-						<div class="flex flex-col">
-							<h3 class="font-semibold text-primary">OUR</h3>
-							<h1 class="text-6xl font-semibold text-primary">CAMPUS</h1>
-						</div>
-					</div>
-					<p class="px-2 py-8">
-						Explore our vibrant campus, featuring state-of-the-art buildings, exceptional
-						facilities, and dedicated faculty members committed to providing a dynamic and
-						supportive learning environment. Discover the resources and opportunities that make our
-						university a thriving community for academic and personal growth.
-					</p>
-					<div class="flex justify-center max-w-screen-lg mx-auto">
-						<img src="/img/our_campus.jpg" class="w-full" />
-					</div>
-					<div class="flex campus-vibe">
-						<h1 class="text-gray-700 bi bi-quote"></h1>
-						<div class="flex flex-col items-start text-gray-700 pl-4">
-							<p class="font-semibold uppercase py-4">
-								Education is the most powerful weapon which you can use to change the world.
-							</p>
-							<p class="text-secondary font-bold">- Nelson Mandela</p>
-						</div>
-						<h1 class="text-gray-700 bi bi-quote"></h1>
-					</div>
-				</div>
-			</section>
+    <%- include('./sections/homeCarousel') %>
 
-			<section id="contactUs">
-				<div class="flex flex-col md:px-20">
-					<div class="flex gap-2">
-						<div class="bg-tertiary w-3"></div>
-						<h1 class="font-semibold text-primary">TALK TO US</h1>
-					</div>
-					<div class="flex flex-col items-center md:items-start sm:flex-row gap-12 py-4">
-						<div class="flex flex-col md:w-3/4 gap-2 px-4 md:px-0">
-							<p class="md:pr-20">
-								Have questions about our university programs, admissions, or any other inquiries?
-								Our team is here to assist you. Feel free to reach out to us via email or WhatsApp,
-								and we'll provide the information and support you need. We're just a message away
-								and happy to help!
-							</p>
-							<div class="flex gap-8 items-center">
-								<h1 class="bi bi-whatsapp cursor-pointer text-primary"></h1>
-								<h1 class="bi bi-chat-dots cursor-pointer text-primary"></h1>
-							</div>
-						</div>
-						<div class="w-full md:w-96">
-							<img src="/img/hand_holding_smartphone.jpg" />
-						</div>
-					</div>
-				</div>
-			</section>
 
-			<section id="facilities">
-				<div class="flex flex-col px-20 hidden">
-					<div class="flex gap-2">
-						<div class="bg-tertiary w-3"></div>
-						<h1 class="font-semibold text-primary">FACILITIES</h1>
-					</div>
-					<div class="flex flex-col sm:flex-row gap-12 py-4">
-						<div class="flex flex-col w-3/4 gap-2">
-							<h3 class="pr-20">Our facilities offer advanced resources for every student.</h3>
-						</div>
-					</div>
-					<div class="facilities-container">
-						<div class="tabs">
-							<h3 class="tabs-facil" id="labs">LABS, SPORTS, LIBRARY</h3>
-							<h3 class="tabs-facil" id="cafe">CAFETERIA, COLLEGE CANTEEN</h3>
-							<h3 class="tabs-facil" id="inte">ART AND MUSIC STUDIO</h3>
-							<h3 class="tabs-facil" id="dorm">DORMITORY</h3>
-						</div>
-						<div id="facil-lab" class="content">
-							<div class="flex justify-between gap-8">
-								<div class="w-1/2 h-96">
-									<img src="/img/sports_facilities.jpg" class="h-full w-full object-cover" />
-								</div>
-								<div class="flex flex-col w-1/2 relative gap-4">
-									<p class="border-l-8 border-tertiary pl-4 text-justify">
-										<span class="text-3xl font-bold">Our campus</span> features advanced
-										laboratories that provide students with hands-on experience in various
-										scientific fields, modern sports facilities that cater to a wide range of
-										athletic activities, and a comprehensive library stocked with an extensive
-										collection of books, journals, and digital resources. These amenities are
-										designed to support both academic and extracurricular pursuits, fostering a
-										well-rounded educational experience. Our labs are equipped with cutting-edge
-										technology, our sports facilities promote physical fitness and teamwork, and our
-										library offers a quiet and resourceful environment for study and research,
-										ensuring students have access to the best resources available.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div id="facil-cafe" class="content hidden">
-							<div class="flex justify-between gap-8">
-								<div class="w-1/2 h-96">
-									<img src="/img/cafe_facilities.jpg" class="h-full w-full object-cover" />
-								</div>
-								<div class="flex flex-col w-1/2 relative gap-4">
-									<p class="border-l-8 border-tertiary pl-4 text-justify">
-										<span class="text-3xl font-bold">Our college</span> cafeteria and canteen offer
-										a diverse array of nutritious and delicious meal options, catering to various
-										dietary preferences and needs. With a focus on providing a comfortable and
-										inviting dining environment, students can enjoy freshly prepared dishes ranging
-										from local specialties to international cuisines. The canteen is designed to be
-										a social hub where students can relax, study, and interact with peers between
-										classes. Emphasizing quality and affordability, our food services ensure that
-										every meal is both satisfying and healthy, contributing to the overall
-										well-being and academic success of our student community.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div id="facil-info" class="content hidden">
-							<div class="flex justify-between gap-8">
-								<div class="w-1/2 h-96">
-									<img src="/img/art_music_facilities.jpg" class="h-full w-full object-cover" />
-								</div>
-								<div class="flex flex-col w-1/2 relative gap-4">
-									<p class="border-l-8 border-tertiary pl-4 text-justify">
-										<span class="text-3xl font-bold">Art and music studios</span> are designed to
-										inspire creativity and foster artistic talent among students. Equipped with the
-										latest tools and technology, these studios provide a conducive environment for
-										both individual practice and collaborative projects. The art studio offers a
-										variety of materials and spaces for drawing, painting, and sculpture, while the
-										music studio features soundproof rooms, advanced recording equipment, and a
-										range of musical instruments. These facilities are dedicated to supporting the
-										artistic pursuits of our students, allowing them to explore their passions,
-										develop their skills, and express their creativity freely.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div id="facil-dorm" class="content hidden">
-							<div class="flex justify-between gap-8">
-								<div class="w-1/2 h-96">
-									<img src="/img/dorm_facilities.jpg" class="h-full w-full object-cover" />
-								</div>
-								<div class="flex flex-col w-1/2 relative gap-4">
-									<p class="border-l-8 border-tertiary pl-4 text-justify">
-										<span class="text-3xl font-bold">The dormitory</span> offers a comfortable and
-										secure living environment, providing students with modern amenities and a
-										supportive community atmosphere. Each room is thoughtfully designed to ensure a
-										balance of privacy and social interaction, featuring cozy furnishings, ample
-										storage, and study spaces. Common areas, such as lounges, kitchens, and
-										recreational rooms, foster a sense of community and encourage collaborative
-										activities among residents. With 24/7 security and dedicated residential staff,
-										the dormitory ensures a safe and nurturing environment, allowing students to
-										focus on their academic and personal growth while enjoying the convenience of
-										on-campus living.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+    <section id="campuses">
+      <div class="flex flex-col lg:px-20">
+        <div class="flex gap-2">
+          <div class="bg-tertiary w-3"></div>
+          <div class="flex flex-col">
+            <h3 class="font-semibold text-primary">OUR</h3>
+            <h1 class="text-6xl font-semibold text-primary">CAMPUS</h1>
+          </div>
+        </div>
+        <p class="px-2 py-8">
+          Explore our vibrant campus, featuring state-of-the-art buildings, exceptional
+          facilities, and dedicated faculty members committed to providing a dynamic and
+          supportive learning environment. Discover the resources and opportunities that make our
+          university a thriving community for academic and personal growth.
+        </p>
+        <div class="flex justify-center max-w-screen-lg mx-auto">
+          <img src="/img/our_campus.jpg" class="w-full" />
+        </div>
+        <div class="flex campus-vibe">
+          <h1 class="text-gray-700 bi bi-quote"></h1>
+          <div class="flex flex-col items-start text-gray-700 pl-4">
+            <p class="font-semibold uppercase py-4">
+              Education is the most powerful weapon which you can use to change the world.
+            </p>
+            <p class="text-secondary font-bold">- Nelson Mandela</p>
+          </div>
+          <h1 class="text-gray-700 bi bi-quote"></h1>
+        </div>
+      </div>
+    </section>
 
-			<%- include('./sections/alumnies') %> <%- include('./sections/lecturers') %> <%-
-			include('./sections/berita') %> <%- include('./sections/footer') %> <%-
-			include('./components/chatWidget') %>
-		</div>
-	</body>
-	<script>
-		const section = document.getElementsByClassName("tabs-facil");
+    <section id="contactUs">
+      <div class="flex flex-col md:px-20">
+        <div class="flex gap-2">
+          <div class="bg-tertiary w-3"></div>
+          <h1 class="font-semibold text-primary">TALK TO US</h1>
+        </div>
+        <div class="flex flex-col items-center md:items-start sm:flex-row gap-12 py-4">
+          <div class="flex flex-col md:w-3/4 gap-2 px-4 md:px-0">
+            <p class="md:pr-20">
+              Have questions about our university programs, admissions, or any other inquiries?
+              Our team is here to assist you. Feel free to reach out to us via email or WhatsApp,
+              and we'll provide the information and support you need. We're just a message away
+              and happy to help!
+            </p>
+            <div class="flex gap-8 items-center">
+              <h1 class="bi bi-whatsapp cursor-pointer text-primary"></h1>
+              <h1 class="bi bi-chat-dots cursor-pointer text-primary"></h1>
+            </div>
+          </div>
+          <div class="w-full md:w-96">
+            <img src="/img/hand_holding_smartphone.jpg" />
+          </div>
+        </div>
+      </div>
+    </section>
 
-		for (let n = 0; n < section.length; n++) {
-			section[n].addEventListener("mouseup", (event) => {
-				const targetSection = document.getElementsByClassName("content");
-				for (let x = 0; x < targetSection.length; x++) {
-					if (!targetSection[x].classList.contains("hidden")) {
-						targetSection[x].classList.add("hidden");
-					}
-					if (x == n) {
-						targetSection[x].classList.remove("hidden");
-					}
-				}
+    <section id="facilities">
+      <div class="flex flex-col px-20 hidden">
+        <div class="flex gap-2">
+          <div class="bg-tertiary w-3"></div>
+          <h1 class="font-semibold text-primary">FACILITIES</h1>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-12 py-4">
+          <div class="flex flex-col w-3/4 gap-2">
+            <h3 class="pr-20">Our facilities offer advanced resources for every student.</h3>
+          </div>
+        </div>
+        <div class="facilities-container">
+          <div class="tabs">
+            <h3 class="tabs-facil" id="labs">LABS, SPORTS, LIBRARY</h3>
+            <h3 class="tabs-facil" id="cafe">CAFETERIA, COLLEGE CANTEEN</h3>
+            <h3 class="tabs-facil" id="inte">ART AND MUSIC STUDIO</h3>
+            <h3 class="tabs-facil" id="dorm">DORMITORY</h3>
+          </div>
+          <div id="facil-lab" class="content">
+            <div class="flex justify-between gap-8">
+              <div class="w-1/2 h-96">
+                <img src="/img/sports_facilities.jpg" class="h-full w-full object-cover" />
+              </div>
+              <div class="flex flex-col w-1/2 relative gap-4">
+                <p class="border-l-8 border-tertiary pl-4 text-justify">
+                  <span class="text-3xl font-bold">Our campus</span> features advanced
+                  laboratories that provide students with hands-on experience in various
+                  scientific fields, modern sports facilities that cater to a wide range of
+                  athletic activities, and a comprehensive library stocked with an extensive
+                  collection of books, journals, and digital resources. These amenities are
+                  designed to support both academic and extracurricular pursuits, fostering a
+                  well-rounded educational experience. Our labs are equipped with cutting-edge
+                  technology, our sports facilities promote physical fitness and teamwork, and our
+                  library offers a quiet and resourceful environment for study and research,
+                  ensuring students have access to the best resources available.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="facil-cafe" class="content hidden">
+            <div class="flex justify-between gap-8">
+              <div class="w-1/2 h-96">
+                <img src="/img/cafe_facilities.jpg" class="h-full w-full object-cover" />
+              </div>
+              <div class="flex flex-col w-1/2 relative gap-4">
+                <p class="border-l-8 border-tertiary pl-4 text-justify">
+                  <span class="text-3xl font-bold">Our college</span> cafeteria and canteen offer
+                  a diverse array of nutritious and delicious meal options, catering to various
+                  dietary preferences and needs. With a focus on providing a comfortable and
+                  inviting dining environment, students can enjoy freshly prepared dishes ranging
+                  from local specialties to international cuisines. The canteen is designed to be
+                  a social hub where students can relax, study, and interact with peers between
+                  classes. Emphasizing quality and affordability, our food services ensure that
+                  every meal is both satisfying and healthy, contributing to the overall
+                  well-being and academic success of our student community.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="facil-info" class="content hidden">
+            <div class="flex justify-between gap-8">
+              <div class="w-1/2 h-96">
+                <img src="/img/art_music_facilities.jpg" class="h-full w-full object-cover" />
+              </div>
+              <div class="flex flex-col w-1/2 relative gap-4">
+                <p class="border-l-8 border-tertiary pl-4 text-justify">
+                  <span class="text-3xl font-bold">Art and music studios</span> are designed to
+                  inspire creativity and foster artistic talent among students. Equipped with the
+                  latest tools and technology, these studios provide a conducive environment for
+                  both individual practice and collaborative projects. The art studio offers a
+                  variety of materials and spaces for drawing, painting, and sculpture, while the
+                  music studio features soundproof rooms, advanced recording equipment, and a
+                  range of musical instruments. These facilities are dedicated to supporting the
+                  artistic pursuits of our students, allowing them to explore their passions,
+                  develop their skills, and express their creativity freely.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="facil-dorm" class="content hidden">
+            <div class="flex justify-between gap-8">
+              <div class="w-1/2 h-96">
+                <img src="/img/dorm_facilities.jpg" class="h-full w-full object-cover" />
+              </div>
+              <div class="flex flex-col w-1/2 relative gap-4">
+                <p class="border-l-8 border-tertiary pl-4 text-justify">
+                  <span class="text-3xl font-bold">The dormitory</span> offers a comfortable and
+                  secure living environment, providing students with modern amenities and a
+                  supportive community atmosphere. Each room is thoughtfully designed to ensure a
+                  balance of privacy and social interaction, featuring cozy furnishings, ample
+                  storage, and study spaces. Common areas, such as lounges, kitchens, and
+                  recreational rooms, foster a sense of community and encourage collaborative
+                  activities among residents. With 24/7 security and dedicated residential staff,
+                  the dormitory ensures a safe and nurturing environment, allowing students to
+                  focus on their academic and personal growth while enjoying the convenience of
+                  on-campus living.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-				for (let x = 0; x < section.length; x++) {
-					if (section[x].classList.contains("text-tertiary")) {
-						section[x].classList.remove("text-tertiary");
-					}
-				}
+    <%- include('./sections/alumnies') %>
+	<%- include('./sections/lecturers') %>
+	<%- include('./sections/berita') %>
+	<%- include('./sections/footer') %> 
+	<%- include('./components/chatWidget') %>
+	
+  </div>
+</body>
+<script>
+  const section = document.getElementsByClassName("tabs-facil");
 
-				event.target.classList.add("text-tertiary");
-			});
-		}
-	</script>
-	<script src="/js/navbarUtils.js"></script>
-	<script src="/js/lecturerUtils.js"></script>
+  for (let n = 0; n < section.length; n++) {
+    section[n].addEventListener("mouseup", (event) => {
+      const targetSection = document.getElementsByClassName("content");
+      for (let x = 0; x < targetSection.length; x++) {
+        if (!targetSection[x].classList.contains("hidden")) {
+          targetSection[x].classList.add("hidden");
+        }
+        if (x == n) {
+          targetSection[x].classList.remove("hidden");
+        }
+      }
+
+      for (let x = 0; x < section.length; x++) {
+        if (section[x].classList.contains("text-tertiary")) {
+          section[x].classList.remove("text-tertiary");
+        }
+      }
+
+      event.target.classList.add("text-tertiary");
+    });
+  }
+</script>
+<script src="/js/navbarUtils.js"></script>
+<script src="/js/lecturerUtils.js"></script>
+
 </html>

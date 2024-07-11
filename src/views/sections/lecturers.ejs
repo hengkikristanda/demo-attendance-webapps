@@ -1,6 +1,6 @@
-<section id="lecturers" class="reveal fade-right">
-	<div class="flex flex-col md:px-16 gap-4">
-		<div class="flex justify-between items-end">
+<section id="lecturers">
+	<div class="flex flex-col md:px-16 gap-8">
+		<div class="flex justify-between items-end reveal fade-right">
 			<div class="flex gap-2">
 				<div class="bg-tertiary w-3"></div>
 				<h1 class="font-semibold text-primary"><%= lecturers.section[selectedLanguage].title %></h1>
@@ -9,45 +9,7 @@
 				><%= lecturers.section[selectedLanguage].href %></a
 			>
 		</div>
-		<!-- <div class="relative overflow-scroll">
-			<div class="slides">
-				<% for (let index=0; index<3; index++) { %>
-				<div class="slide">
-					<div class="flex w-full gap-4">
-						<% for (let n=index*3; n<(index+1)*3; n++) { %>
-						<div class="profile-card">
-							<div class="h-full w-2/6">
-								<img
-									src="/img/lecturers/<%= lecturers.data[n].pic %>"
-									alt=""
-									class="w-full h-full object-cover rounded-l-lg" />
-							</div>
-							<div class="w-4/6 py-4 px-2 rounded-r-lg">
-								<p class="font-bold"><%= lecturers.data[n].name %></p>
-								<p class="text-xs font-bold"><%= lecturers.data[n].title %></p>
-								<div class="flex gap-4 items-center text-tertiary">
-									<a
-										href="mailto:<%= lecturers.data[n].email %>"
-										class="p-0 text-lg bi bi-envelope"></a>
-									<a
-										href="/dosen/<%= lecturers.data[n].id %>"
-										class="p-0 text-lg bi bi-person-circle"></a>
-								</div>
-							</div>
-						</div>
-						<% } %>
-					</div>
-				</div>
-				<% } %>
-			</div>
-	
-			<div class="nav-buttons">
-				<button onclick="showSlide(0)">1</button>
-				<button onclick="showSlide(1)">2</button>
-				<button onclick="showSlide(2)">3</button>
-			</div>
-		</div> -->
-		<div class="slider-container__profile-card">
+		<div class="slider-container__profile-card reveal fade-up with-delay">
 			<div class="profile-card-wrapper">
 				<div class="profile-card-container">
 				<% for (let n=0; n<10; n++) { %>
