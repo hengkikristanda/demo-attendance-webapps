@@ -1147,7 +1147,7 @@ a {
 	transform-origin: bottom left; /* Transition ends at the left */
 }
 
-#comment h5 {
+/* #comment h5 {
 	width: 0;
 	overflow: hidden;
 	white-space: nowrap;
@@ -1158,7 +1158,7 @@ a {
 	border-radius: 0.375rem;
 	position: relative;
 	text-align: center;
-	/* right: 2.5rem; */
+	right: 2.5rem;
 	transition: width 0.3s ease, transform 0.5s ease;
 	transform: translateX(-50px);
 }
@@ -1167,12 +1167,11 @@ a {
 	width: 25%;
 	transform: translateX(-15px);
 }
-
+*/
 #commentForm {
 	gap: 2rem;
 }
 #commentForm div {
-	/* flex flex-col border-b border-tertiary */
 	display: flex;
 	flex-direction: column;
 	border-bottom: 1px solid var(--tertiary);
@@ -1200,4 +1199,14 @@ a {
 
 #commentForm textarea:focus {
 	background-color: white;
+}
+
+input::file-selector-button {
+	background-color: white;
+	text-decoration: underline;
+	font-weight: bold;
+	color: var(--tertiary);
+	padding: 0.5em;
+	border: none;
+	border-radius: 0.369rem;
 }

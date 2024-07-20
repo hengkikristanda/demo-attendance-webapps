@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./sections/head') %>
+
+<body>
+  <%- include('./sections/navbar') %>
+
+  <div class="max-w-screen-2xl mx-auto">
+    <div class="page-header w-full my-20">
+    </div>
+
+    <section>
+      <div class="flex flex-col gap-6">
+        <div class="flex flex-col w-fit">
+          <h1 class="font-bold text-secondary">Complaints</h1>
+          <hr class="h-2 w-1/2 bg-tertiary" />
+        </div>
+        <h5 class="text-secondary mb-8">We'd love to hear from you! Share your feedback and reviews to help
+          us enhance your experience.</h5>
+        <div class="flex justify-between gap-32">
+          <form class="flex flex-col w-1/2" method="POST" id="commentForm">
+            <div>
+              <label for="">Type of Complaints</label>
+              <input type="text" placeholder="What is your name?" />
+            </div>
+            <div>
+              <label for="">Your Name</label>
+              <input type="text" placeholder="What is your name?" />
+            </div>
+            <div>
+              <label for="">Your Email</label>
+              <input type="email" placeholder="What is your email?" />
+            </div>
+            <div>
+              <label for="">Your Phone Number/Whatsapps</label>
+              <input type="tel" placeholder="What is your phone number?" />
+            </div>
+            <div>
+              <label for="">Date</label>
+              <input type="date" placeholder="Event date?" />
+            </div>
+            <div>
+              <label for="">Attachment File</label>
+              <input type="file" />
+            </div>
+            <div>
+              <label for="">Your Complaint</label>
+              <textarea placeholder="Write your complaint here..."></textarea>
+            </div>
+            <button class="btn success w-fit" type="submit">Submit Complaint</button>
+          </form>
+          <div class="flex flex-col w-1/2 gap-8">
+            <div class="flex items-start gap-3">
+              <h4 class="bi bi-chat text-tertiary"></h4>
+              <div class="flex flex-col">
+                <h5 class="font-bold text-tertiary">Chat to us</h5>
+                <p class="text-secondary mb-1">Our friendly team is here to help.</p>
+                <p class="text-secondary font-bold">humas@ptdisttd.ac.id</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <h4 class="bi bi-geo-alt text-tertiary"></h4>
+              <div class="flex flex-col">
+                <h5 class="font-bold text-tertiary">Visit us</h5>
+                <p class="text-secondary mb-1">Come say hello at our campus.</p>
+                <p class="text-secondary font-bold">Jl. Raya Setu No.89,
+                  Cibuntu, Kec. Cibitung,
+                  Kabupaten Bekasi, Jawa Barat 17520, Indonesia</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <h4 class="bi bi-telephone text-tertiary"></h4>
+              <div class="flex flex-col">
+                <h5 class="font-bold text-tertiary">Call us</h5>
+                <p class="text-secondary mb-1">Mon-Fri from 8am to 5pm.</p>
+                <p class="text-secondary font-bold">(021) 8254640</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <%- include('./sections/footer') %> <%- include('./components/chatWidget') %>
+  </div>
+</body>
+
+<script src="/js/navbarUtils.js"></script>
+<script src="/js/lecturerUtils.js"></script>
+
+</html>
