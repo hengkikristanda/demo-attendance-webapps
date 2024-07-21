@@ -10,15 +10,15 @@
     </div>
 
     <section>
-      <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-6 px-4">
         <div class="flex flex-col w-fit">
           <h1 class="font-bold text-secondary">Complaints</h1>
           <hr class="h-2 w-1/2 bg-tertiary" />
         </div>
         <h5 class="text-secondary mb-8">We'd love to hear from you! Share your feedback and reviews to help
           us enhance your experience.</h5>
-        <div class="flex justify-between gap-32">
-          <form class="flex flex-col w-1/2" method="POST" id="commentForm">
+        <div class="flex flex-col md:flex-row justify-between gap-20 md:gap-32">
+          <form class="flex flex-col w-full md:w-1/2" method="POST" id="commentForm">
             <div>
               <label for="">Type of Complaints</label>
               <input type="text" placeholder="What is your name?" />
@@ -47,9 +47,13 @@
               <label for="">Your Complaint</label>
               <textarea placeholder="Write your complaint here..."></textarea>
             </div>
-            <button class="btn success w-fit" type="submit">Submit Complaint</button>
+            <button class="btn success w-full md:w-fit" type="submit">Submit Complaint</button>
           </form>
-          <div class="flex flex-col w-1/2 gap-8">
+          <div class="flex flex-col md:w-1/2 gap-8">
+            <div class="flex flex-col items-center md:hidden">
+              <hr class="w-full h-0.5 bg-tertiary" />
+              <h6 class="bg-white p-2 text-tertiary font-bold relative bottom-5">OR</h6>
+            </div>
             <div class="flex items-start gap-3">
               <h4 class="bi bi-chat text-tertiary"></h4>
               <div class="flex flex-col">

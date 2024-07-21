@@ -17,8 +17,8 @@
         </div>
         <h5 class="text-secondary mb-8">We'd love to hear from you! Share your feedback and reviews to help
           us enhance your experience.</h5>
-        <div class="flex justify-between gap-32">
-          <form class="flex flex-col w-1/2" method="POST" id="commentForm">
+        <div class="flex flex-col md:flex-row justify-between gap-32">
+          <form class="flex flex-col w-full md:w-1/2" method="POST" id="commentForm">
             <div>
               <label for="">Your Name</label>
               <input type="text" placeholder="What is your name?" />
@@ -35,11 +35,15 @@
               <label for="">Your Comment</label>
               <textarea placeholder="Write your comment here..."></textarea>
             </div>
-            <button class="btn success w-1/4" type="submit">Submit</button>
+            <button class="btn success w-full md:w-1/4" type="submit">Submit</button>
           </form>
-          <div class="flex flex-col w-1/2 gap-8">
-            <div class="flex flex-col items-start gap-4">
-              <div class="flex flex-col bg-tertiary/5 rounded-md px-4 py-8 w-full">
+          <div class="flex flex-col w-full md:w-1/2 gap-8">
+            <div class="flex flex-col items-start gap-8">
+              <div class="flex gap-2 md:hidden">
+                <div class="bg-tertiary w-3"></div>
+                <h2 class="font-bold text-primary">Comments</h2>
+              </div>
+              <div class="flex flex-col bg-tertiary/5 rounded-md px-4 py-8 w-full shadow-md">
                 <div class="flex justify-between items-end">
                   <h5 class="font-bold text-tertiary">John Doe</h5>
                   <p class="text-primary text-xs">01-Jan-2024</p>
@@ -53,7 +57,7 @@
                 </div>
                 <p class="text-secondary font-semibold">I had an excellent experience using this website. The navigation is intuitive, and I found all the information I needed quickly. The design is clean and professional, making it a pleasure to browse. I highly recommend it!</p>
               </div>
-              <div class="flex flex-col bg-tertiary/5 rounded-md px-4 py-8 w-full">
+              <div class="flex flex-col bg-tertiary/5 rounded-md px-4 py-8 w-full shadow-md">
                 <div class="flex justify-between items-end">
                   <h5 class="font-bold text-tertiary">Jane D</h5>
                   <p class="text-primary text-xs">08-Feb-2024</p>
@@ -67,7 +71,7 @@
                 </div>
                 <p class="text-secondary font-semibold">This website exceeded my expectations. The content is well-organized and easy to read. I especially appreciate the responsive design, which makes it accessible on my phone and tablet. Great job!</p>
               </div>
-              <div class="flex flex-col bg-tertiary/5 rounded-md px-4 py-8 w-full">
+              <div class="flex flex-col bg-tertiary/5 rounded-md px-4 py-8 w-full shadow-md">
                 <div class="flex justify-between items-end">
                   <h5 class="font-bold text-tertiary">Emily R</h5>
                   <p class="text-primary text-xs">23-Mar-2024</p>

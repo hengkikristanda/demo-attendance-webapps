@@ -3,11 +3,9 @@
 		<div class="flex justify-between items-end reveal fade-right">
 			<div class="flex gap-2">
 				<div class="bg-tertiary w-3"></div>
-				<h1 class="font-semibold text-primary"><%= lecturers.section[selectedLanguage].title %></h1>
+				<h2 class="font-bold text-primary"><%= lecturers.section[selectedLanguage].title %></h2>
 			</div>
-			<a href="/dosen?page=1" class="underline text-tertiary font-semibold  py-0 px-4 md:px-0"
-				><%= lecturers.section[selectedLanguage].href %></a
-			>
+			<a href="/dosen?page=1" class="w-1/2 underline justify-end text-tertiary font-semibold py-0 px-4 md:px-0"><%= lecturers.section[selectedLanguage].href %></a>
 		</div>
 		<div class="slider-container__profile-card reveal fade-up with-delay">
 			<div class="profile-card-wrapper">

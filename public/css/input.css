@@ -78,6 +78,12 @@ section {
 @media (min-width: 1536px) {
 }
 
+@media (max-width: 639px) {
+	html {
+		font-size: 15px;
+	}
+}
+
 /* -sm: small tablets, large phones */
 @media (min-width: 640px) {
 	html {
@@ -292,7 +298,7 @@ div::-webkit-scrollbar-thumb:hover {
 	} */
 
 	.navbar {
-		@apply bg-white py-4 fixed top-0 w-full max-w-screen-2xl z-10 px-4 2xl:px-0;
+		@apply bg-white p-4 fixed top-0 w-full max-w-screen-2xl z-10 2xl:px-0;
 	}
 
 	.sidebar {
