@@ -1216,3 +1216,15 @@ input::file-selector-button {
 	border: none;
 	border-radius: 0.369rem;
 }
+
+#welcome p {
+	line-height: 1.625;
+}
+
+#welcome li {
+	margin-top: 0.3rem;
+	list-style-type: disc;
+	list-style-position: inside;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+}

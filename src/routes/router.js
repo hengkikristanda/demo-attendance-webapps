@@ -20,11 +20,16 @@ router.get("/", (req, res) => {
 	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
 		selectedLanguage = "id";
 
-	// req.session.selectedLanguage = selectedLanguage;
-
 	const translations = JSON.parse(
 		fs.readFileSync(
 			path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`),
+			"utf8"
+		)
+	);
+
+	const welcomeTranslation = JSON.parse(
+		fs.readFileSync(
+			path.join(__dirname, "../translations/home/welcome/", `${selectedLanguage}.json`),
 			"utf8"
 		)
 	);
@@ -65,6 +70,7 @@ router.get("/", (req, res) => {
 	res.render("index", {
 		title: "Attendance System - Home",
 		selectedLanguage,
+		welcome: welcomeTranslation,
 	});
 });
 
@@ -329,7 +335,7 @@ router.get("/berita/:newsId?", (req, res) => {
 
 	let news;
 	if (newsId !== undefined) {
-		news = searchById(newsJson.data, newsId);	
+		news = searchById(newsJson.data, newsId);
 	}
 
 	res.locals.translations = translations;
