@@ -386,6 +386,43 @@ router.post("/login", (req, res) => {
 	res.redirect("/home-employee");
 });
 
+router.get("/facilities", (req, res) => {
+	let selectedLanguage = req.query.lang;
+	if (selectedLanguage == undefined) {
+		selectedLanguage = "id";
+	}
+
+	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
+		selectedLanguage = "id";
+
+	const translations = JSON.parse(
+		fs.readFileSync(
+			path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`),
+			"utf8"
+		)
+	);
+
+	const footerTranslation = JSON.parse(
+		fs.readFileSync(
+			path.join(__dirname, "../translations/footer/", `${selectedLanguage}.json`),
+			"utf8"
+		)
+	);
+
+	const detailAlumni = JSON.parse(
+		fs.readFileSync(path.join(__dirname, "../translations/alumni/detailAlumni.json"), "utf8")
+	);
+
+	res.locals.translations = translations;
+	res.locals.footerTranslation = footerTranslation;
+	res.locals.detailAlumni = detailAlumni;
+
+	res.render("facilities/overview", {
+		title: "PTDI STTD - Facilities",
+		selectedLanguage,
+	});
+});
+
 function searchById(data, id) {
 	console.log("Search JSON by id: ", id);
 
