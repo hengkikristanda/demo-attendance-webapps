@@ -1,230 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../sections/head') %>
+	<%- include('../sections/head') %>
 
-<body>
-  <%- include('../sections/navbar') %>
+	<body>
+		<%- include('../sections/navbar') %>
 
-  <div class="max-w-screen-2xl mx-auto">
-    <div class="page-header w-full mt-20">
-      <div class="w-full h-[30rem] relative">
-        <img src="/img/facilities/asrama-1.JPG" alt="" class="w-full h-full object-cover" />
-        <h1 class="font-bold text-secondary text-6xl px-12 w-full absolute bottom-3/4 z-20">Facilities</h1>
-        <div class="bg-tertiary absolute size-28 bottom-2/3 z-10"></div>
-      </div>
-      <div class="flex justify-evenly gap-10 px-4 relative bottom-36">
-        <div class="w-1/3 h-60 border-4 border-white relative">
-          <img src="/img/facilities/modern-building.JPG" class="w-full h-full object-cover" alt="" />
-          <h5 class="font-semibold text-white absolute w-full backdrop-blur-sm bottom-0 h-1/4 pt-2 pl-2 bg-secondary/15">Modern Facilities</h5>
-        </div>
-        <div class="w-1/3 h-60 border-4 border-white relative">
-          <img src="/img/facilities/sports-hall.jpg" class="w-full h-full object-cover" alt="" />
-          <h5 class="font-semibold text-white absolute w-full backdrop-blur-sm bottom-0 h-1/4 pt-2 pl-2 bg-secondary/15">Sport Hall</h5>
-        </div>
-        <div class="w-1/3 h-60 border-4 border-white relative">
-          <img src="/img/facilities/modern-lab.JPG" class="w-full h-full object-cover" alt="" />
-          <h5 class="font-semibold text-white absolute w-full backdrop-blur-sm bottom-0 h-1/4 pt-2 pl-2 bg-secondary/15">Modern Laboratories</h5>
-        </div>
-      </div>
-    </div>
+		<div class="max-w-screen-2xl mx-auto">
+			<div class="page-header w-full my-20">
+				<div class="w-full h-[30rem] relative">
+					<img src="/img/facilities/asrama-1.JPG" alt="" class="w-full h-full object-cover" />
+					<h1 class="font-bold text-secondary text-6xl px-12 w-full absolute bottom-3/4 z-20">
+						Facilities
+					</h1>
+					<div class="bg-tertiary absolute size-28 bottom-2/3 z-10"></div>
+				</div>
+				<div class="flex justify-evenly gap-10 px-4 relative bottom-36 hidden">
+					<div class="w-1/3 h-60 border-4 border-white relative">
+						<img
+							src="/img/facilities/modern-building.JPG"
+							class="w-full h-full object-cover"
+							alt="" />
+						<h5
+							class="font-semibold text-white absolute w-full backdrop-blur-sm bottom-0 h-1/4 pt-2 pl-2 bg-secondary/15">
+							Modern Facilities
+						</h5>
+					</div>
+					<div class="w-1/3 h-60 border-4 border-white relative">
+						<img src="/img/facilities/sports-hall.jpg" class="w-full h-full object-cover" alt="" />
+						<h5
+							class="font-semibold text-white absolute w-full backdrop-blur-sm bottom-0 h-1/4 pt-2 pl-2 bg-secondary/15">
+							Sport Hall
+						</h5>
+					</div>
+					<div class="w-1/3 h-60 border-4 border-white relative">
+						<img src="/img/facilities/modern-lab.JPG" class="w-full h-full object-cover" alt="" />
+						<h5
+							class="font-semibold text-white absolute w-full backdrop-blur-sm bottom-0 h-1/4 pt-2 pl-2 bg-secondary/15">
+							Modern Laboratories
+						</h5>
+					</div>
+				</div>
+			</div>
 
-    <div class="flex flex-col mb-8 gap-12">
-      <h1 class="font-bold text-tertiary text-6xl w-2/3">MODERN FACILITIES TO BOOST YOUR LEARNING EXPERIENCE</h1>
-      <div class="flex gap-20">
-        <h6 class="w-1/2">Our campus boasts cutting-edge classrooms, fully equipped laboratories, and extensive libraries designed to provide an optimal learning environment. Additionally, we offer various recreational and wellness facilities, including a modern gym, sports fields, and comfortable student lounges. Our goal is to create a well-rounded experience that caters to both academic and personal growth. Explore the diverse range of facilities available to you and see how they contribute to a vibrant and dynamic campus life. Your success is our priority, and our facilities are here to support you every step of the way.</h6>
-        <div class="flex flex-col w-1/2 gap-4">
-          <div class="collapsible-section__facility flex flex-col border-b border-tertiary overflow-hidden">
-            <div class="flex items-center gap-3 mb-4 cursor-pointer">
-              <i class="bi bi-chevron-right"></i>
-              <h4 class="font-semibold text-tertiary hover:underline">GEDUNG REKTORAT HERJAN KENASIN</h4>
-            </div>
-            <p class="leading-6">Gedung Rektorat Herjan Kenasin merupakan salah satu bangunan penting yang menjadi pusat administrasi dan kepemimpinan di Politeknik Transportasi Darat Indonesia - STTD, Bekasi. Gedung ini tidak hanya berfungsi sebagai kantor bagi pimpinan kampus, tetapi juga sebagai tempat untuk berbagai kegiatan administratif dan strategis dalam pengembangan kebijakan akademik dan non-akademik.
+			<div class="flex flex-col mb-8 gap-12">
+				<div class="welcome-text__facilities">
+					<h1 class="font-bold text-tertiary text-6xl w-2/3">
+						MODERN FACILITIES TO BOOST YOUR LEARNING EXPERIENCE
+					</h1>
+					<span></span>
+				</div>
+				<div class="flex gap-20">
+					<h6 class="w-1/2">
+						Our campus boasts cutting-edge classrooms, fully equipped laboratories, and extensive
+						libraries designed to provide an optimal learning environment. Additionally, we offer
+						various recreational and wellness facilities, including a modern gym, sports fields, and
+						comfortable student lounges. Our goal is to create a well-rounded experience that caters
+						to both academic and personal growth. Explore the diverse range of facilities available
+						to you and see how they contribute to a vibrant and dynamic campus life. Your success is
+						our priority, and our facilities are here to support you every step of the way.
+					</h6>
+					<div class="flex flex-col w-1/2 gap-4">
+						<div class="collapsible-section__facility">
+							<div class="flex items-center gap-3 mb-4 cursor-pointer">
+								<i class="bi bi-chevron-right"></i>
+								<h4>GEDUNG REKTORAT HERJAN KENASIN</h4>
+							</div>
+							<p class="leading-6">
+								Gedung Rektorat Herjan Kenasin merupakan salah satu bangunan penting yang menjadi
+								pusat administrasi dan kepemimpinan di Politeknik Transportasi Darat Indonesia -
+								STTD, Bekasi. Gedung ini tidak hanya berfungsi sebagai kantor bagi pimpinan kampus,
+								tetapi juga sebagai tempat untuk berbagai kegiatan administratif dan strategis dalam
+								pengembangan kebijakan akademik dan non-akademik. Sebagai pusat administrasi, Gedung
+								Rektorat Herjan Kenasin menyediakan ruang bagi Pimpinan, Para Pejabat, dan staf
+								administrasi untuk menjalankan fungsi manajemen kampus secara efektif. Di sini,
+								berbagai keputusan strategis diambil, sumber daya kampus dikelola, dan berbagai
+								kegiatan pengembangan dirancang untuk mendukung misi pendidikan PTDI-STTD. Selain
+								itu, gedung ini juga sering menjadi tempat pertemuan antara pimpinan dengan dosen,
+								staf, mahasiswa, serta stakeholders eksternal. Berbagai rapat penting, presentasi,
+								dan diskusi kebijakan dilakukan di Gedung Rektorat ini, memastikan arah dan tujuan
+								kampus sesuai dengan visi dan misinya dalam mengembangkan SDM di bidang transportasi
+								darat. Dengan demikian, Gedung Rektorat Herjan Kenasin bukan hanya sebagai pusat
+								administrasi tetapi juga sebagai simbol kekuatan dan keberlanjutan pengembangan
+								Politeknik Transportasi Darat Indonesia - STTD, menjadi pendorong utama untuk
+								kemajuan pendidikan dan inovasi di bidang transportasi darat.
+							</p>
+						</div>
+						<div class="collapsible-section__facility">
+							<div class="flex items-center gap-3 mb-4 cursor-pointer">
+								<i class="bi bi-chevron-right"></i>
+								<h4>GEDUNG AUDITORIUM GIRI S. HADIHARDJONO</h4>
+							</div>
+							<p class="leading-6">
+								Gedung Auditorium Giri S. Hadihardjono adalah salah satu landmark penting di
+								Politeknik Transportasi Darat Indonesia - STTD, Bekasi. Gedung ini merupakan pusat
+								kegiatan akademik dan non-akademik yang berfungsi sebagai tempat untuk berbagai
+								acara penting seperti seminar, konferensi, kuliah umum, dan acara budaya. Didesain
+								dengan fasilitas modern dan kapasitas yang besar, Auditorium Giri S. Hadihardjono
+								menyediakan lingkungan yang ideal untuk pertemuan-pertemuan besar dan aktivitas
+								berbasis komunitas di kampus. Selain itu, auditorium ini juga sering digunakan untuk
+								acara-acara penting seperti wisuda, acara seni, dan kegiatan sosial lainnya yang
+								melibatkan mahasiswa, staf, dan masyarakat umum. Keberadaan Gedung Auditorium Giri
+								S. Hadihardjono bukan hanya sebagai tempat berlangsungnya berbagai acara, tetapi
+								juga sebagai simbol kebanggaan bagi PTDI-STTD, mengingat namanya berasal dari sosok
+								yang berjasa dalam pengembangan dan promosi transportasi darat di Indonesia. Hal ini
+								mencerminkan komitmen PTDI-STTD dalam menghadirkan fasilitas terbaik untuk mendukung
+								pengembangan ilmu pengetahuan dan seni di lingkungan akademik mereka.
+							</p>
+						</div>
+						<div class="collapsible-section__facility">
+							<div class="flex items-center gap-3 mb-4 cursor-pointer">
+								<i class="bi bi-chevron-right"></i>
+								<h4>GEDUNG AULA GARUDA</h4>
+							</div>
+							<p class="leading-6">
+								Gedung Aula Garuda adalah salah satu fasilitas utama di Politeknik Transportasi
+								Darat Indonesia - STTD, Bekasi, yang memegang peran vital dalam mendukung berbagai
+								kegiatan akademik dan non-akademik. Nama "Garuda" sendiri mencerminkan kebanggaan
+								atas identitas nasional, sekaligus menggambarkan tingginya cita-cita dan prestasi
+								yang ingin dicapai oleh PTDI-STTD dalam bidang transportasi darat. Gedung ini sering
+								digunakan untuk berbagai kegiatan seperti kuliah umum dengan pembicara terkemuka,
+								acara seni dan budaya, serta pertemuan besar antara mahasiswa, dosen, dan
+								stakeholder kampus. Selain sebagai tempat berlangsungnya berbagai acara, Aula Garuda
+								juga menjadi simbol kebersamaan dan komunitas di PTDI-STTD, tempat di mana ide-ide
+								baru diperkenalkan, kolaborasi akademik ditingkatkan, dan inspirasi untuk memajukan
+								pendidikan transportasi darat dipupuk. Dengan fasilitas dan suasana yang mendukung,
+								Aula Garuda menjadi ruang yang penting dalam memperkuat identitas dan kualitas
+								PTDI-STTD sebagai institusi pendidikan yang berwawasan global dan berkualitas
+								tinggi.
+							</p>
+						</div>
+						<div class="collapsible-section__facility">
+							<div class="flex items-center gap-3 mb-4 cursor-pointer">
+								<i class="bi bi-chevron-right"></i>
+								<h4>GEDUNG PROGRAM STUDI</h4>
+							</div>
+							<p class="leading-6">
+								Gedung Program Studi di Politeknik Transportasi Darat Indonesia - STTD, Bekasi,
+								merupakan fasilitas kunci yang mendukung aktivitas akademik dan pengembangan ilmu
+								pengetahuan di berbagai disiplin transportasi darat. Terdapat lima gedung program
+								studi yang masing-masing dilengkapi dengan fasilitas yang sesuai untuk mendukung
+								kegiatan belajar mengajar, yakni Gedung Program Studi Transportasi Darat, Gedung
+								Program Studi Manajemen Transportasi Jalan, Gedung Program Studi Manajemen
+								Transportasi Perkeretaapian, Gedung Program Studi Teknologi Rekayasa Otomotif, dan
+								Gedung Program Studi Magister Terapan. Tiap Gedung dilengkapi dengan Ruang Ketua
+								Program Studi, Ruang Akademik, Ruang Dosen, Amphiteater, Laboratorium, Kantin
+								Program Studi dan Ruang Kelas untuk mendukung kegiatan belajar mengajar. Setiap
+								gedung program studi ini dirancang tidak hanya untuk menawarkan ruang belajar yang
+								nyaman dan fungsional, tetapi juga untuk menciptakan lingkungan yang mendukung
+								kolaborasi antara mahasiswa, dosen, dan staf dalam pengembangan ilmu pengetahuan dan
+								keterampilan praktis di bidang transportasi darat. Dengan demikian, PTDI-STTD tidak
+								hanya memenuhi standar akademik tetapi juga memastikan bahwa mahasiswa mendapatkan
+								pengalaman pendidikan yang komprehensif dan berkualitas
+							</p>
+						</div>
+						<div class="collapsible-section__facility">
+							<div class="flex items-center gap-3 mb-4 cursor-pointer">
+								<i class="bi bi-chevron-right"></i>
+								<h4>GEDUNG PERPUSTAKAAN</h4>
+							</div>
+							<p class="leading-6">
+								Pada perpustakaan terdapat berbagai macam koleksi buku baik dari ilmu sains, sosial
+								maupun pengetahuan umum lainnya. Perpustakaan juga dilengkapi dengan sistem
+								manajemen perpustakaan yang modern untuk memudahkan pencarian dan peminjaman buku
+								serta sumber informasi lainnya. Perpustakaan di PTDI-STTD juga mengadopsi teknologi
+								terkini seperti akses online ke berbagai database jurnal dan e-book, sehingga
+								memperluas akses mahasiswa dan staf terhadap literatur ilmiah terbaru di bidang
+								transportasi darat. Perpustakaan PTDI-STTD saat ini menjadi satu gedung dengan
+								Laboratorium Komputer, Laboratorium Bahasa dan beberapa ruang lainnya yang mendukung
+								keberlangsungan kegiatan di kampus PTDI-STTD. Keberadaan fasilitas-fasilitas ini
+								dalam satu gedung mengoptimalkan penggunaan ruang dan sumber daya kampus,
+								menciptakan lingkungan yang kondusif untuk belajar, penelitian, dan pengembangan
+								keterampilan bagi seluruh komunitas akademik PTDI-STTD. Dengan mengintegrasikan
+								perpustakaan dengan laboratorium dan ruang lainnya, kampus ini tidak hanya
+								memfasilitasi akses terhadap pengetahuan, tetapi juga mendorong kolaborasi lintas
+								disiplin yang esensial dalam persiapan mahasiswa untuk tantangan dunia nyata di
+								bidang transportasi darat
+							</p>
+						</div>
+						<div class="collapsible-section__facility">
+							<div class="flex items-center gap-3 mb-4 cursor-pointer">
+								<i class="bi bi-chevron-right"></i>
+								<h4>SARANA OLAH RAGA</h4>
+							</div>
+							<p class="leading-6">
+								Sarana olahraga di kampus PTDI-STTD terdiri dari gedung olahraga indoor maupun
+								outdoor. Pada Gedung olahraga indoor (Gedung Olah Raga Sugihardjo) terdapat lapangan
+								futsal, lapangan bulu tangkis, dan lapangan voli dimana dilengkapi dengan ruang
+								ganti baju, toilet serta tribun penonton yang mampu menampung hingga 1000 lebih
+								pengunjung. Di Gedung indoor ini juga terdapat fasilitas gym yang dapat digunakan
+								oleh seluruh civitas akademika PTDI-STTD. Selain fasilitas indoor, terdapat pula
+								sarana olahraga yang sifatnya outdoor seperti lapangan basket, lapangan futsal,
+								lapangan tenis, lapangan sepakbola, serta sarana gym outdoor. Sarana olahraga yang
+								komprehensif di PTDI-STTD tidak hanya mendukung kebugaran fisik, tetapi juga
+								memberikan kesempatan bagi mahasiswa dan staf untuk terlibat dalam kegiatan olahraga
+								yang bervariasi dan berbagai kompetisi. Fasilitas indoor seperti Gedung Olah Raga
+								Sugihardjo memberikan ruang untuk olahraga dalam ruangan yang terstruktur, sementara
+								fasilitas outdoor menawarkan pengalaman olahraga di udara terbuka yang menyegarkan.
+								Hal ini mencerminkan komitmen kampus untuk mendukung kesejahteraan dan pengembangan
+								holistik bagi seluruh komunitas akademik PTDI-STTD
+							</p>
+						</div>
+						<div class="collapsible-section__facility">
+							<div class="flex items-center gap-3 mb-4 cursor-pointer">
+								<i class="bi bi-chevron-right"></i>
+								<h4>ASRAMA</h4>
+							</div>
+							<p class="leading-6">
+								PTDI-STTD menyediakan fasilitas asrama untuk mahasiswa/i yang sedang menempuh masa
+								pendidikan di kampus PTDI-STTD. Terdapat beberapa gedung asrama yang terdiri dari
+								Asrama Maleo, Asrama Cendrawasih, Asrama Merak, Asrama Rajawali, Asrama Elang,
+								Asrama Eksekutif dan Asrama Dadali. Pada asrama tentunya terdapat fasilitas tempat
+								tidur, kamar mandi dan toilet serta sarana belajar yang memadai. Asrama di PTDI-STTD
+								tidak hanya menyediakan tempat tinggal, tetapi juga berperan penting dalam membentuk
+								pengalaman belajar dan hidup mahasiswa. Dengan menyediakan lingkungan yang
+								mendukung, asrama membantu mahasiswa untuk berkembang secara pribadi, akademik, dan
+								sosial selama masa studi mereka. Ini juga menciptakan komunitas yang solid di antara
+								mahasiswa, memfasilitasi pertukaran ide dan pengalaman yang berharga di luar ruang
+								kelas. Dengan fasilitas yang komprehensif dan manajemen yang baik, asrama di
+								PTDI-STTD memberikan kontribusi positif dalam menciptakan lingkungan belajar yang
+								kondusif dan mempersiapkan mahasiswa untuk menjadi profesional di bidang
+								transportasi darat
+							</p>
+						</div>
+						<div class="collapsible-section__facility">
+							<div class="flex items-center gap-3 mb-4 cursor-pointer">
+								<i class="bi bi-chevron-right"></i>
+								<h4>LABORATORIUM</h4>
+							</div>
+							<p class="leading-6">
+								Salah satu fasilitas unggulan yang tersedia di PTDI-STTD adalah laboratorium.
+								Laboratorium ini dirancang dengan teknologi terkini dan peralatan untuk mendukung
+								praktikum dan penelitian dalam berbagai disiplin ilmu terkait transportasi darat.
+								Dengan adanya laboratorium ini, mahasiswa dapat mengaplikasikan teori yang
+								dipelajari di kelas ke dalam praktik langsung, memperdalam pemahaman mereka tentang
+								berbagai aspek transportasi darat seperti teknik perkeretaapian, manajemen lalu
+								lintas, dan teknologi otomotif. Selain itu, laboratorium ini juga menjadi tempat
+								kolaborasi antara mahasiswa dan dosen serta peneliti dalam mengembangkan inovasi
+								baru di bidang transportasi darat. Dengan demikian, PTDI-STTD tidak hanya
+								menyediakan pendidikan berkualitas tetapi juga mempersiapkan mahasiswa untuk menjadi
+								profesional yang siap berkontribusi dalam industri transportasi darat di masa depan
+							</p>
+						</div>
+						<div class="collapsible-section__facility">
+							<div class="flex items-center gap-3 mb-4 cursor-pointer">
+								<i class="bi bi-chevron-right"></i>
+								<h4>POLIKLINIK</h4>
+							</div>
+							<p class="leading-6">
+								Poliklinik di Politeknik Transportasi Darat Indonesia - STTD Bekasi merupakan
+								fasilitas penting yang mendukung kesehatan dan kesejahteraan mahasiswa, staf, dan
+								masyarakat sekitar. Poliklinik ini dilengkapi dengan tenaga medis dan paramedis yang
+								kompeten serta peralatan medis modern untuk memberikan pelayanan kesehatan dasar.
+								Mahasiswa dapat mengakses layanan pemeriksaan medis rutin, penanganan kasus ringan,
+								dan konsultasi kesehatan secara mudah dan efisien. Selain itu, poliklinik juga
+								berperan dalam menjaga kesehatan secara preventif dengan menyediakan program-program
+								kesehatan seperti vaksinasi dan edukasi kesehatan. Dengan adanya poliklinik di
+								PTDI-STTD, mahasiswa tidak hanya dapat fokus pada pengembangan akademiknya tetapi
+								juga merasa aman dan terjamin dalam hal kesehatan mereka selama menjalani masa studi
+								di kampus
+							</p>
+						</div>
+						<div class="collapsible-section__facility">
+							<div class="flex items-center gap-3 mb-4 cursor-pointer">
+								<i class="bi bi-chevron-right"></i>
+								<h4>GEDUNG WORKSHOP</h4>
+							</div>
+							<p class="leading-6">
+								Gedung workshop di PTDI-STTD memiliki peran yang krusial dalam mendukung kurikulum
+								pendidikan praktis. Di sinilah mahasiswa belajar secara langsung bagaimana
+								menerapkan pengetahuan teoritis yang mereka peroleh di kelas ke dalam praktik nyata.
+								Dengan fasilitas dan peralatan yang memadai, mahasiswa dapat mengembangkan
+								keterampilan teknis yang diperlukan untuk menjadi profesional yang kompeten di
+								industri transportasi darat Gedung workshop tidak hanya menyediakan tempat untuk
+								belajar praktis, tetapi juga berperan penting dalam meningkatkan keterampilan kerja
+								mahasiswa dan mempersiapkan mereka untuk tantangan di lapangan kerja. Ini juga
+								menjadi tempat untuk inovasi dan pengembangan teknologi baru dalam bidang
+								transportasi darat, yang merupakan fokus utama dari pendidikan di PTDI-STTD. Dengan
+								demikian, gedung workshop di PTDI-STTD tidak hanya sebagai ruang fisik, tetapi juga
+								sebagai pusat kegiatan yang memungkinkan mahasiswa untuk mengasah keterampilan
+								praktis mereka, meningkatkan daya saing, dan berkontribusi positif dalam industri
+								transportasi darat secara keseluruhan
+							</p>
+						</div>
+						<div class="collapsible-section__facility">
+							<div class="flex items-center gap-3 mb-4 cursor-pointer">
+								<i class="bi bi-chevron-right"></i>
+								<h4>KANTIN</h4>
+							</div>
+							<p class="leading-6">
+								Merupakan salah satu fasilitas vital yang mendukung kehidupan sehari-hari dan
+								kesejahteraan seluruh komunitas kampus. Terletak strategis di area kampus, kantin
+								menyediakan berbagai pilihan makanan dan minuman yang sesuai dengan selera dan
+								kebutuhan mahasiswa, dosen, dan staf. Selain menjadi tempat untuk menikmati
+								hidangan, kantin juga berfungsi sebagai ruang sosial yang memfasilitasi interaksi
+								antaranggota kampus, memperkuat jaringan sosial, dan menciptakan lingkungan yang
+								ramah dan inklusif. Dengan suasana yang nyaman dan layanan yang ramah, kantin di
+								PTDI-STTD tidak hanya memenuhi kebutuhan nutrisi, tetapi juga menjadi tempat untuk
+								bersantai dan melepas penat setelah aktivitas belajar dan mengajar. Ini
+								menjadikannya sebagai bagian integral dari pengalaman kampus yang berpusat pada
+								keseimbangan antara akademik, sosial, dan kesejahteraan personal
+							</p>
+						</div>
+						<div class="collapsible-section__facility">
+							<div class="flex items-center gap-3 mb-4 cursor-pointer">
+								<i class="bi bi-chevron-right"></i>
+								<h4>TEMPAT IBADAH</h4>
+							</div>
+							<p class="leading-6">
+								Masjid di Politeknik Transportasi Darat Indonesia - STTD (PTDI-STTD) merupakan pusat
+								kegiatan keagamaan dan spiritual bagi seluruh komunitas kampus. Didesain sebagai
+								tempat ibadah yang nyaman dan mendukung, masjid ini menjadi titik penting dalam
+								memenuhi kebutuhan spiritual mahasiswa, dosen, dan staf. Terletak di lokasi yang
+								mudah diakses di dalam kampus, masjid ini tidak hanya menyediakan tempat untuk
+								shalat lima waktu, tetapi juga menjadi pusat aktivitas keagamaan seperti ceramah,
+								pengajian, dan kegiatan sosial keagamaan lainnya. Fasilitas masjid di PTDI-STTD
+								mencakup ruang shalat yang luas, fasilitas wudhu yang bersih, serta lingkungan yang
+								tenang dan damai untuk refleksi spiritual. Dengan adanya masjid ini, kampus
+								menghargai dan memfasilitasi praktik keagamaan sebagai bagian dari kehidupan
+								mahasiswa dan staf, mempromosikan nilai-nilai toleransi, penghormatan, dan keragaman
+								di lingkungan pendidikan. Masjid di PTDI-STTD tidak hanya sebagai tempat ibadah,
+								tetapi juga sebagai simbol komitmen kampus dalam memperkuat nilai-nilai keagamaan
+								dan spiritualitas dalam pendidikan tinggi
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-              Sebagai pusat administrasi, Gedung Rektorat Herjan Kenasin menyediakan ruang bagi Pimpinan, Para Pejabat, dan staf administrasi untuk menjalankan fungsi manajemen kampus secara efektif. Di sini, berbagai keputusan strategis diambil, sumber daya kampus dikelola, dan berbagai kegiatan pengembangan dirancang untuk mendukung misi pendidikan PTDI-STTD.
+		<div class="flex flex-col py-20 gap-8">
+			<div class="flex gap-2">
+				<div class="bg-tertiary w-3"></div>
+				<h1 class="font-bold text-primary">Gallery</h1>
+			</div>
+			<div class="grid grid-rows grid-cols-3 gap-2">
+				<div class="hover-box">
+					<img
+						src="/img/facilities/facility-1-dorm.JPG"
+						alt=""
+						class="w-full h-full object-cover" />
+					<div class="absolute w-full text-white bottom-8 px-4">
+						<h3 class="font-semibold">Dormitory</h3>
+						<p>Comfortable and Convenient On-Campus Dormitories</p>
+					</div>
+					<a href="#" class="hover:bg-tertiary hover:text-white">LEARN MORE</a>
+					<span></span>
+				</div>
+				<div class="hover-box">
+					<img
+						src="/img/facilities/facility-2-labs.JPG"
+						alt=""
+						class="w-full h-full object-cover" />
+					<div class="absolute w-full text-white bottom-8 px-4">
+						<h3 class="font-semibold">Modern Labs</h3>
+						<p>State-of-the-Art Laboratories for Hands-On Learning</p>
+					</div>
+					<a href="#" class="hover:bg-tertiary hover:text-white">LEARN MORE</a>
+					<span></span>
+				</div>
+				<div class="hover-box">
+					<img
+						src="/img/facilities/facility-polyclinic.jpeg"
+						alt=""
+						class="w-full h-full object-cover" />
+					<div class="absolute w-full text-white bottom-8 px-4">
+						<h3 class="font-semibold">Policlinic</h3>
+						<p>Comprehensive On-Campus Polyclinic Services</p>
+					</div>
+					<a href="#" class="hover:bg-tertiary hover:text-white">LEARN MORE</a>
+					<span></span>
+				</div>
+				<div class="hover-box">
+					<img
+						src="/img/facilities/facility-workshop.jpg"
+						alt=""
+						class="w-full h-full object-cover" />
+					<div class="absolute w-full text-white bottom-8 px-4">
+						<h3 class="font-semibold">Workshop</h3>
+						<p>Fully Equipped Workshops for Practical Training</p>
+					</div>
+					<a href="#" class="hover:bg-tertiary hover:text-white">LEARN MORE</a>
+					<span></span>
+				</div>
+				<div class="hover-box">
+					<img
+						src="/img/facilities/facility-auditorium-giri.jpg"
+						alt=""
+						class="w-full h-full object-cover" />
+					<div class="absolute w-full text-white bottom-8 px-4">
+						<h3 class="font-semibold">Giri S. Hadihardjono Auditorium Hall</h3>
+						<p>Grand Event Space: Giri S. Hadihardjono Auditorium Hall</p>
+					</div>
+					<a href="#" class="hover:bg-tertiary hover:text-white">LEARN MORE</a>
+					<span></span>
+				</div>
+				<div class="hover-box">
+					<img
+						src="/img/facilities/facility-herjan-rectorate.jpg"
+						alt=""
+						class="w-full h-full object-cover" />
+					<div class="absolute w-full text-white bottom-8 px-4">
+						<h3 class="font-semibold">Herjan Kenasin Rectorate Building</h3>
+						<p>Administrative Hub: Herjan Kenasin Rectorate Building</p>
+					</div>
+					<a href="#" class="hover:bg-tertiary hover:text-white">LEARN MORE</a>
+					<span></span>
+				</div>
+			</div>
+		</div>
 
-              Selain itu, gedung ini juga sering menjadi tempat pertemuan antara pimpinan dengan dosen, staf, mahasiswa, serta stakeholders eksternal. Berbagai rapat penting, presentasi, dan diskusi kebijakan dilakukan di Gedung Rektorat ini, memastikan arah dan tujuan kampus sesuai dengan visi dan misinya dalam mengembangkan SDM di bidang transportasi darat.
+		<%- include('../sections/footer') %> <%- include('../components/chatWidget') %>
+	</body>
 
-              Dengan demikian, Gedung Rektorat Herjan Kenasin bukan hanya sebagai pusat administrasi tetapi juga sebagai simbol kekuatan dan keberlanjutan pengembangan Politeknik Transportasi Darat Indonesia - STTD, menjadi pendorong utama untuk kemajuan pendidikan dan inovasi di bidang transportasi darat.
-            </p>
-          </div>
-          <div class="collapsible-section__facility flex flex-col border-b border-tertiary overflow-hidden">
-            <div class="flex items-center gap-3 mb-4 cursor-pointer">
-              <i class="bi bi-chevron-right"></i>
-              <h4 class="font-semibold text-tertiary hover:underline">GEDUNG AUDITORIUM GIRI S. HADIHARDJONO</h4>
-            </div>
-            <p class="leading-6">Gedung Auditorium Giri S. Hadihardjono adalah salah satu landmark penting di Politeknik Transportasi Darat Indonesia - STTD, Bekasi. Gedung ini merupakan pusat kegiatan akademik dan non-akademik yang berfungsi sebagai tempat untuk berbagai acara penting seperti seminar, konferensi, kuliah umum, dan acara budaya.
+	<script src="/js/navbarUtils.js"></script>
+	<script src="/js/lecturerUtils.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+      const welcomeText = document.querySelector(".welcome-text__facilities span");
+      welcomeText.style.width = "30rem";
+    });
 
-              Didesain dengan fasilitas modern dan kapasitas yang besar, Auditorium Giri S. Hadihardjono menyediakan lingkungan yang ideal untuk pertemuan-pertemuan besar dan aktivitas berbasis komunitas di kampus. Selain itu, auditorium ini juga sering digunakan untuk acara-acara penting seperti wisuda, acara seni, dan kegiatan sosial lainnya yang melibatkan mahasiswa, staf, dan masyarakat umum.
+		const collapsibleClass = ".collapsible-section__facility";
 
-              Keberadaan Gedung Auditorium Giri S. Hadihardjono bukan hanya sebagai tempat berlangsungnya berbagai acara, tetapi juga sebagai simbol kebanggaan bagi PTDI-STTD, mengingat namanya berasal dari sosok yang berjasa dalam pengembangan dan promosi transportasi darat di Indonesia. Hal ini mencerminkan komitmen PTDI-STTD dalam menghadirkan fasilitas terbaik untuk mendukung pengembangan ilmu pengetahuan dan seni di lingkungan akademik mereka.
-            </p>
-          </div>
-          <div class="collapsible-section__facility flex flex-col border-b border-tertiary overflow-hidden">
-            <div class="flex items-center gap-3 mb-4 cursor-pointer">
-              <i class="bi bi-chevron-right"></i>
-              <h4 class="font-semibold text-tertiary hover:underline">GEDUNG AULA GARUDA</h4>
-            </div>
-            <p class="leading-6">Gedung Aula Garuda adalah salah satu fasilitas utama di Politeknik Transportasi Darat Indonesia - STTD, Bekasi, yang memegang peran vital dalam mendukung berbagai kegiatan akademik dan non-akademik.
+		const collapsible = document.querySelectorAll(collapsibleClass);
+		collapsible.forEach((item) => {
+			item.addEventListener("mouseup", () => {
+				const targetElement = event.target.closest(collapsibleClass);
+				if (targetElement) {
+					const targetCollapse = targetElement.querySelector("p");
+					const targetCollapseIcon = targetElement.querySelector("i");
 
-              Nama "Garuda" sendiri mencerminkan kebanggaan atas identitas nasional, sekaligus menggambarkan tingginya cita-cita dan prestasi yang ingin dicapai oleh PTDI-STTD dalam bidang transportasi darat. Gedung ini sering digunakan untuk berbagai kegiatan seperti kuliah umum dengan pembicara terkemuka, acara seni dan budaya, serta pertemuan besar antara mahasiswa, dosen, dan stakeholder kampus.
-
-              Selain sebagai tempat berlangsungnya berbagai acara, Aula Garuda juga menjadi simbol kebersamaan dan komunitas di PTDI-STTD, tempat di mana ide-ide baru diperkenalkan, kolaborasi akademik ditingkatkan, dan inspirasi untuk memajukan pendidikan transportasi darat dipupuk. Dengan fasilitas dan suasana yang mendukung, Aula Garuda menjadi ruang yang penting dalam memperkuat identitas dan kualitas PTDI-STTD sebagai institusi pendidikan yang berwawasan global dan berkualitas tinggi.
-            </p>
-          </div>
-          <div class="collapsible-section__facility flex flex-col border-b border-tertiary overflow-hidden">
-            <div class="flex items-center gap-3 mb-4 cursor-pointer">
-              <i class="bi bi-chevron-right"></i>
-              <h4 class="font-semibold text-tertiary hover:underline">GEDUNG PROGRAM STUDI</h4>
-            </div>
-            <p class="leading-6">Gedung Program Studi di Politeknik Transportasi Darat Indonesia - STTD, Bekasi, merupakan fasilitas kunci yang mendukung aktivitas akademik dan pengembangan ilmu pengetahuan di berbagai disiplin transportasi darat. Terdapat lima gedung program studi yang masing-masing dilengkapi dengan fasilitas yang sesuai untuk mendukung kegiatan belajar mengajar, yakni Gedung Program Studi Transportasi Darat, Gedung Program Studi Manajemen Transportasi Jalan, Gedung Program Studi Manajemen Transportasi Perkeretaapian, Gedung Program Studi Teknologi Rekayasa Otomotif, dan Gedung Program Studi Magister Terapan.
-
-              Tiap Gedung dilengkapi dengan Ruang Ketua Program Studi, Ruang Akademik, Ruang Dosen, Amphiteater, Laboratorium, Kantin Program Studi dan Ruang Kelas untuk mendukung kegiatan belajar mengajar. Setiap gedung program studi ini dirancang tidak hanya untuk menawarkan ruang belajar yang nyaman dan fungsional, tetapi juga untuk menciptakan lingkungan yang mendukung kolaborasi antara mahasiswa, dosen, dan staf dalam pengembangan ilmu pengetahuan dan keterampilan praktis di bidang transportasi darat. Dengan demikian, PTDI-STTD tidak hanya memenuhi standar akademik tetapi juga memastikan bahwa mahasiswa mendapatkan pengalaman pendidikan yang komprehensif dan berkualitas
-            </p>
-          </div>
-          <div class="collapsible-section__facility flex flex-col border-b border-tertiary overflow-hidden">
-            <div class="flex items-center gap-3 mb-4 cursor-pointer">
-              <i class="bi bi-chevron-right"></i>
-              <h4 class="font-semibold text-tertiary hover:underline">SARANA OLAH RAGA</h4>
-            </div>
-            <p class="leading-6">Sarana olahraga di kampus PTDI-STTD terdiri dari gedung olahraga indoor maupun outdoor. Pada Gedung olahraga indoor (Gedung Olah Raga Sugihardjo) terdapat lapangan futsal, lapangan bulu tangkis, dan lapangan voli dimana dilengkapi dengan ruang ganti baju, toilet serta tribun penonton yang mampu menampung hingga 1000 lebih pengunjung. Di Gedung indoor ini juga terdapat fasilitas gym yang dapat digunakan oleh seluruh civitas akademika PTDI-STTD. Selain fasilitas indoor, terdapat pula sarana olahraga yang sifatnya outdoor seperti lapangan basket, lapangan futsal, lapangan tenis, lapangan sepakbola, serta sarana gym outdoor.
-
-              Sarana olahraga yang komprehensif di PTDI-STTD tidak hanya mendukung kebugaran fisik, tetapi juga memberikan kesempatan bagi mahasiswa dan staf untuk terlibat dalam kegiatan olahraga yang bervariasi dan berbagai kompetisi. Fasilitas indoor seperti Gedung Olah Raga Sugihardjo memberikan ruang untuk olahraga dalam ruangan yang terstruktur, sementara fasilitas outdoor menawarkan pengalaman olahraga di udara terbuka yang menyegarkan. Hal ini mencerminkan komitmen kampus untuk mendukung kesejahteraan dan pengembangan holistik bagi seluruh komunitas akademik PTDI-STTD
-            </p>
-          </div>
-          <div class="collapsible-section__facility flex flex-col border-b border-tertiary overflow-hidden">
-            <div class="flex items-center gap-3 mb-4 cursor-pointer">
-              <i class="bi bi-chevron-right"></i>
-              <h4 class="font-semibold text-tertiary hover:underline">LABORATORIUM</h4>
-            </div>
-            <p class="leading-6">Salah satu fasilitas unggulan yang tersedia di PTDI-STTD adalah laboratorium. Laboratorium ini dirancang dengan teknologi terkini dan peralatan untuk mendukung praktikum dan penelitian dalam berbagai disiplin ilmu terkait transportasi darat. Dengan adanya laboratorium ini, mahasiswa dapat mengaplikasikan teori yang dipelajari di kelas ke dalam praktik langsung, memperdalam pemahaman mereka tentang berbagai aspek transportasi darat seperti teknik perkeretaapian, manajemen lalu lintas, dan teknologi otomotif. Selain itu, laboratorium ini juga menjadi tempat kolaborasi antara mahasiswa dan dosen serta peneliti dalam mengembangkan inovasi baru di bidang transportasi darat. Dengan demikian, PTDI-STTD tidak hanya menyediakan pendidikan berkualitas tetapi juga mempersiapkan mahasiswa untuk menjadi profesional yang siap berkontribusi dalam industri transportasi darat di masa depan
-            </p>
-          </div>
-          <div class="collapsible-section__facility flex flex-col border-b border-tertiary overflow-hidden">
-            <div class="flex items-center gap-3 mb-4 cursor-pointer">
-              <i class="bi bi-chevron-right"></i>
-              <h4 class="font-semibold text-tertiary hover:underline">GEDUNG WORKSHOP</h4>
-            </div>
-            <p class="leading-6">Gedung workshop di PTDI-STTD memiliki peran yang krusial dalam mendukung kurikulum pendidikan praktis. Di sinilah mahasiswa belajar secara langsung bagaimana menerapkan pengetahuan teoritis yang mereka peroleh di kelas ke dalam praktik nyata. Dengan fasilitas dan peralatan yang memadai, mahasiswa dapat mengembangkan keterampilan teknis yang diperlukan untuk menjadi profesional yang kompeten di industri transportasi darat
-
-              Gedung workshop tidak hanya menyediakan tempat untuk belajar praktis, tetapi juga berperan penting dalam meningkatkan keterampilan kerja mahasiswa dan mempersiapkan mereka untuk tantangan di lapangan kerja. Ini juga menjadi tempat untuk inovasi dan pengembangan teknologi baru dalam bidang transportasi darat, yang merupakan fokus utama dari pendidikan di PTDI-STTD.
-
-              Dengan demikian, gedung workshop di PTDI-STTD tidak hanya sebagai ruang fisik, tetapi juga sebagai pusat kegiatan yang memungkinkan mahasiswa untuk mengasah keterampilan praktis mereka, meningkatkan daya saing, dan berkontribusi positif dalam industri transportasi darat secara keseluruhan
-            </p>
-          </div>
-          <div class="collapsible-section__facility flex flex-col border-b border-tertiary overflow-hidden">
-            <div class="flex items-center gap-3 mb-4 cursor-pointer">
-              <i class="bi bi-chevron-right"></i>
-              <h4 class="font-semibold text-tertiary hover:underline">KANTIN</h4>
-            </div>
-            <p class="leading-6">Merupakan salah satu fasilitas vital yang mendukung kehidupan sehari-hari dan kesejahteraan seluruh komunitas kampus. Terletak strategis di area kampus, kantin menyediakan berbagai pilihan makanan dan minuman yang sesuai dengan selera dan kebutuhan mahasiswa, dosen, dan staf. Selain menjadi tempat untuk menikmati hidangan, kantin juga berfungsi sebagai ruang sosial yang memfasilitasi interaksi antaranggota kampus, memperkuat jaringan sosial, dan menciptakan lingkungan yang ramah dan inklusif. Dengan suasana yang nyaman dan layanan yang ramah, kantin di PTDI-STTD tidak hanya memenuhi kebutuhan nutrisi, tetapi juga menjadi tempat untuk bersantai dan melepas penat setelah aktivitas belajar dan mengajar. Ini menjadikannya sebagai bagian integral dari pengalaman kampus yang berpusat pada keseimbangan antara akademik, sosial, dan kesejahteraan personal
-            </p>
-          </div>
-          <div class="collapsible-section__facility flex flex-col border-b border-tertiary overflow-hidden">
-            <div class="flex items-center gap-3 mb-4 cursor-pointer">
-              <i class="bi bi-chevron-right"></i>
-              <h4 class="font-semibold text-tertiary hover:underline">TEMPAT IBADAH</h4>
-            </div>
-            <p class="leading-6">Masjid di Politeknik Transportasi Darat Indonesia - STTD (PTDI-STTD) merupakan pusat kegiatan keagamaan dan spiritual bagi seluruh komunitas kampus. Didesain sebagai tempat ibadah yang nyaman dan mendukung, masjid ini menjadi titik penting dalam memenuhi kebutuhan spiritual mahasiswa, dosen, dan staf. Terletak di lokasi yang mudah diakses di dalam kampus, masjid ini tidak hanya menyediakan tempat untuk shalat lima waktu, tetapi juga menjadi pusat aktivitas keagamaan seperti ceramah, pengajian, dan kegiatan sosial keagamaan lainnya.
-
-              Fasilitas masjid di PTDI-STTD mencakup ruang shalat yang luas, fasilitas wudhu yang bersih, serta lingkungan yang tenang dan damai untuk refleksi spiritual. Dengan adanya masjid ini, kampus menghargai dan memfasilitasi praktik keagamaan sebagai bagian dari kehidupan mahasiswa dan staf, mempromosikan nilai-nilai toleransi, penghormatan, dan keragaman di lingkungan pendidikan. Masjid di PTDI-STTD tidak hanya sebagai tempat ibadah, tetapi juga sebagai simbol komitmen kampus dalam memperkuat nilai-nilai keagamaan dan spiritualitas dalam pendidikan tinggi
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="bg-secondary/50 py-20 px-40">
-    <h1 class="text-white text-center mb-12">Welcome to Politeknik Transportasi Darat Indonesia</h1>
-    <div class="grid grid-rows grid-cols-2">
-      <div class="hover-box">
-        <img src="/img/facilities/facility-1-dorm.JPG" alt="" class="w-full h-full object-cover">
-        <div class="absolute w-full text-white bottom-8 px-4">
-          <h3 class="font-semibold">Dormitory</h3>
-          <p>Comfortable and Convenient On-Campus Dormitories</p>
-        </div>
-        <a href="#" class="hover:bg-tertiary hover:text-white">LEARN MORE</a>
-        <span></span>
-      </div>
-      <div class="hover-box">
-        <img src="/img/facilities/facility-2-labs.JPG" alt="" class="w-full h-full object-cover">
-        <div class="absolute w-full text-white bottom-8 px-4">
-          <h3 class="font-semibold">Modern Labs</h3>
-          <p>State-of-the-Art Laboratories for Hands-On Learning</p>
-        </div>
-        <a href="#" class="hover:bg-tertiary hover:text-white">LEARN MORE</a>
-        <span></span>
-      </div>
-      <div class="hover-box">
-        <img src="/img/facilities/facility-polyclinic.jpeg" alt="" class="w-full h-full object-cover">
-        <div class="absolute w-full text-white bottom-8 px-4">
-          <h3 class="font-semibold">Policlinic</h3>
-          <p>Comprehensive On-Campus Polyclinic Services</p>
-        </div>
-        <a href="#" class="hover:bg-tertiary hover:text-white">LEARN MORE</a>
-        <span></span>
-      </div>
-      <div class="hover-box">
-        <img src="/img/facilities/facility-workshop.jpg" alt="" class="w-full h-full object-cover">
-        <div class="absolute w-full text-white bottom-8 px-4">
-          <h3 class="font-semibold">Workshop</h3>
-          <p>Fully Equipped Workshops for Practical Training</p>
-        </div>
-        <a href="#" class="hover:bg-tertiary hover:text-white">LEARN MORE</a>
-        <span></span>
-      </div>
-      <div class="hover-box">
-        <img src="/img/facilities/facility-auditorium-giri.jpg" alt="" class="w-full h-full object-cover">
-        <div class="absolute w-full text-white bottom-8 px-4">
-          <h3 class="font-semibold">Giri S. Hadihardjono Auditorium Hall</h3>
-          <p>Grand Event Space: Giri S. Hadihardjono Auditorium Hall</p>
-        </div>
-        <a href="#" class="hover:bg-tertiary hover:text-white">LEARN MORE</a>
-        <span></span>
-      </div>
-      <div class="hover-box">
-        <img src="/img/facilities/facility-herjan-rectorate.jpg" alt="" class="w-full h-full object-cover">
-        <div class="absolute w-full text-white bottom-8 px-4">
-          <h3 class="font-semibold">Herjan Kenasin Rectorate Building</h3>
-          <p>Administrative Hub: Herjan Kenasin Rectorate Building</p>
-        </div>
-        <a href="#" class="hover:bg-tertiary hover:text-white">LEARN MORE</a>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  </div>
-
-  <%- include('../sections/footer') %> <%- include('../components/chatWidget') %>
-  </div>
-</body>
-
-<script src="/js/navbarUtils.js"></script>
-<script src="/js/lecturerUtils.js"></script>
-<script>
-  const collapsibleClass = ".collapsible-section__facility";
-
-  const collapsible = document.querySelectorAll(collapsibleClass);
-  collapsible.forEach((item) => {
-    item.addEventListener("mouseup", () => {
-
-      const targetElement = event.target.closest(collapsibleClass);
-      if (targetElement) {
-        const targetCollapse = targetElement.querySelector("p");
-        const targetCollapseIcon = targetElement.querySelector("i");
-
-        if (targetCollapse.style.maxHeight && targetCollapse.style.maxHeight !== '0px') {
-          targetCollapse.style.maxHeight = '0px';
-          targetCollapse.style.marginBottom = "0px";
-          targetCollapseIcon.style.transform = 'rotate(0deg)';
-        } else {
-          targetCollapse.style.maxHeight = targetCollapse.scrollHeight + 'px';
-          targetCollapse.style.marginBottom = "1rem";
-          targetCollapseIcon.style.transform = 'rotate(90deg)';
-        }
-      }
-    })
-  })
-</script>
-
+					if (targetCollapse.style.maxHeight && targetCollapse.style.maxHeight !== "0px") {
+						targetCollapse.style.maxHeight = "0px";
+						targetCollapse.style.marginBottom = "0px";
+						targetCollapseIcon.style.transform = "rotate(0deg)";
+					} else {
+						targetCollapse.style.maxHeight = targetCollapse.scrollHeight + "px";
+						targetCollapse.style.marginBottom = "1rem";
+						targetCollapseIcon.style.transform = "rotate(90deg)";
+					}
+				}
+			});
+		});
+	</script>
 </html>

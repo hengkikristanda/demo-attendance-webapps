@@ -1276,6 +1276,17 @@ input::file-selector-button {
 }
 
 .collapsible-section__facility {
+	display: flex;
+	flex-direction: column;
+	border-bottom: 1px solid var(--tertiary);
+	overflow: hidden;
+}
+
+.collapsible-section__facility h4 {
+	/* font-semibold text-tertiary hover:underline */
+	font-weight: 600;
+	font-size: 1.125rem;
+	color: var(--tertiary);
 }
 
 .collapsible-section__facility p {
@@ -1289,4 +1300,26 @@ input::file-selector-button {
 	font-size: 1rem;
 	transition: transform 0.2s ease-in-out;
 	/* -webkit-transform: rotate(-45deg); */
+}
+
+.welcome-text__facilities {
+	position: relative;
+	overflow: hidden;
+	padding: 1rem 0;
+}
+
+.welcome-text__facilities > h1{
+	z-index: 10;
+	position: relative;
+}
+
+.welcome-text__facilities > span{
+	position: absolute;
+	top: 0;
+	width: 0;
+	height: 50%;
+	z-index: 9;
+	background-color: var(--secondary);
+	opacity: 0.2;
+	transition: width 2s ease-in-out;
 }

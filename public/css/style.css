@@ -1485,10 +1485,6 @@ p.danger,
   margin-top: 4rem;
 }
 
-.mt-20 {
-  margin-top: 5rem;
-}
-
 .mt-28 {
   margin-top: 7rem;
 }
@@ -1769,8 +1765,8 @@ p.danger,
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .flex-row-reverse {
@@ -2117,11 +2113,6 @@ p.danger,
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
-}
-
-.px-40 {
-  padding-left: 10rem;
-  padding-right: 10rem;
 }
 
 .px-8 {
@@ -3802,6 +3793,17 @@ input::file-selector-button {
 }
 
 .collapsible-section__facility {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--tertiary);
+  overflow: hidden;
+}
+
+.collapsible-section__facility h4 {
+  /* font-semibold text-tertiary hover:underline */
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--tertiary);
 }
 
 .collapsible-section__facility p {
@@ -3815,6 +3817,28 @@ input::file-selector-button {
   font-size: 1rem;
   transition: transform 0.2s ease-in-out;
   /* -webkit-transform: rotate(-45deg); */
+}
+
+.welcome-text__facilities {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 0;
+}
+
+.welcome-text__facilities > h1{
+  z-index: 10;
+  position: relative;
+}
+
+.welcome-text__facilities > span{
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 50%;
+  z-index: 9;
+  background-color: var(--secondary);
+  opacity: 0.2;
+  transition: width 2s ease-in-out;
 }
 
 @media (min-width: 768px) {
@@ -3871,10 +3895,6 @@ input::file-selector-button {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.hover\:underline:hover {
-  text-decoration-line: underline;
 }
 
 .focus\:bg-gray-700:focus {
