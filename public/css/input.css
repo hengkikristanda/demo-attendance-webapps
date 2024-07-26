@@ -1274,3 +1274,19 @@ input::file-selector-button {
 	background-color: hsla(217, 10%, 25%, 50%);
 	backdrop-filter: blur(4px);
 }
+
+.collapsible-section__facility {
+}
+
+.collapsible-section__facility p {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-in-out;
+}
+
+.collapsible-section__facility i {
+	color: var(--tertiary);
+	font-size: 1rem;
+	transition: transform 0.2s ease-in-out;
+	/* -webkit-transform: rotate(-45deg); */
+}
