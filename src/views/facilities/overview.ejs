@@ -330,42 +330,42 @@
     <div class="grid grid-rows grid-cols-3 gap-2">
       <div class="hover-box">
         <img src="/img/facilities/facility-1-dorm.JPG" alt="" class="w-full h-full object-cover" />
-        <div class="absolute w-full text-white bottom-8 px-4 cursor-pointer">
+        <div class="absolute w-full text-white bottom-8 px-4">
           <h1 class="bi bi-zoom-in text-center text-6xl w-full"></h1>
         </div>
         <span></span>
       </div>
       <div class="hover-box">
         <img src="/img/facilities/facility-2-labs.JPG" alt="" class="w-full h-full object-cover" />
-        <div class="absolute w-full text-white bottom-8 px-4 cursor-pointer">
+        <div class="absolute w-full text-white bottom-8 px-4">
           <h1 class="bi bi-zoom-in text-center text-6xl w-full"></h1>
         </div>
         <span></span>
       </div>
       <div class="hover-box">
         <img src="/img/facilities/facility-polyclinic.jpeg" alt="" class="w-full h-full object-cover" />
-        <div class="absolute w-full text-white bottom-8 px-4 cursor-pointer">
+        <div class="absolute w-full text-white bottom-8 px-4">
           <h1 class="bi bi-zoom-in text-center text-6xl w-full"></h1>
         </div>
         <span></span>
       </div>
       <div class="hover-box">
         <img src="/img/facilities/facility-workshop-1.JPG" alt="" class="w-full h-full object-cover" />
-        <div class="absolute w-full text-white bottom-8 px-4 cursor-pointer">
+        <div class="absolute w-full text-white bottom-8 px-4">
           <h1 class="bi bi-zoom-in text-center text-6xl w-full"></h1>
         </div>
         <span></span>
       </div>
       <div class="hover-box">
         <img src="/img/facilities/facility-auditorium-giri.jpg" alt="" class="w-full h-full object-cover" />
-        <div class="absolute w-full text-white bottom-8 px-4 cursor-pointer">
+        <div class="absolute w-full text-white bottom-8 px-4">
           <h1 class="bi bi-zoom-in text-center text-6xl w-full"></h1>
         </div>
         <span></span>
       </div>
       <div class="hover-box">
         <img src="/img/facilities/facility-herjan-rectorate.jpg" alt="" class="w-full h-full object-cover" />
-        <div class="absolute w-full text-white bottom-8 px-4 cursor-pointer">
+        <div class="absolute w-full text-white bottom-8 px-4">
           <h1 class="bi bi-zoom-in text-center text-6xl w-full"></h1>
         </div>
         <span></span>
@@ -374,6 +374,13 @@
   </div>
 
   <%- include('../sections/footer') %> <%- include('../components/chatWidget') %>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <!-- <div id="caption"></div> -->
+  </div>
 </body>
 
 <script src="/js/navbarUtils.js"></script>
@@ -382,6 +389,34 @@
   document.addEventListener("DOMContentLoaded", () => {
     const welcomeText = document.querySelector(".welcome-text__facilities span");
     welcomeText.style.width = "30rem";
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+
+    document.querySelectorAll('.hover-box').forEach(function(img) {
+      img.addEventListener('click', function() {
+        modal.style.display = "block";
+
+        const clickedElement = event.target;
+        const targetImage = clickedElement.closest('.hover-box').querySelector('img');
+        
+        modalImg.src = targetImage.src.replace('hover-box', 'large'); // Assuming you have large versions with a naming convention
+        // captionText.innerHTML = this.alt;
+      });
+    });
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
   });
 
   const collapsibleClass = ".collapsible-section__facility";
