@@ -2,7 +2,7 @@
 	<div class="mx-auto flex justify-between items-center">
 		<a href="/?lang=<%= selectedLanguage %>" class="flex w-1/2 justify-start gap-4 items-center cursor-pointer p-0">
 			<img src="/img/logo-removebg.png" class="max-h-12 object-contain" />
-			<p class="text-secondary font-bold leading-4 hidden sm:inline">
+			<p class="text-secondary font-bold leading-4 hidden xl:inline">
 				<span class="text-xxs">POLITEKNIK</span><br />TRANSPORTASI DARAT INDONESIA
 			</p>
 		</a>
@@ -97,7 +97,7 @@
 	</div>
 </nav>
 <nav id="navbar-mobile" class="navbar-mobile">
-	<ul class="flex flex-col pr-4">
+	<ul class="flex flex-col pr-4 pt-6">
 		<a href="/login" class="btn success sm:hidden">Login</a>
 		<% translations.menus.forEach((menu) => { %>
 		<li class="navbar-mobile__label">

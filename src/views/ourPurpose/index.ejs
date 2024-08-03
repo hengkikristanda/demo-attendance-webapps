@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../sections/head') %>
+
+	<body>
+		<%- include('../sections/navbar') %>
+
+		<div class="max-w-screen-2xl mx-auto">
+			<div class="page-header w-full my-20">
+				<div class="w-full h-[30rem] relative">
+					<img src="/img/our-purpose.JPG" alt="" class="w-full h-full object-cover object-center" />
+					<div
+						class="bg-tertiary text-danger p-6 w-full lg:w-2/5 absolute bottom-0 lg:bottom-1/4 lg:left-8 z-10">
+						<h1 class="font-bold text-4xl lg:text-6xl mb-4">Our Purpose</h1>
+					</div>
+				</div>
+			</div>
+
+			<div class="flex flex-col mb-60 md:gap-12 px-4 2xl:px-0">
+				<div class="flex flex-col mb-32">
+					<div class="our-purpose">
+						<div class="flex flex-col md:flex-row md:justify-center">
+                            <div>
+                                <img src="/img/vision.JPG" class="object-right w-full h-full object-cover">
+                            </div>
+							<div class="flex flex-col md:w-1/2 lg:w-1/4 relative justify-center md:right-12 lg:right-6 py-20 md:py-0">
+								<h1 class="mx-8 text-6xl mb-6 font-bold text-white relative z-10">Our Vision</h1>
+								<h5 class="mx-8 text-danger font-semibold relative z-10">
+									PTDI STTD memiliki visi sebagai pusat pendidikan transportasi darat modern, unggul
+									dan profesional
+                                </h5>
+                                <div class="bg-tertiary w-full h-full absolute lg:top-20 z-0"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+                <div class="flex flex-col items-center mb-8 md:mb-0">
+					<h1 class="font-bold text-secondary">Our Missions</h1>
+					<hr class="h-2 w-20 bg-tertiary" />
+				</div>
+                <div class="flex flex-col gap-2">
+                    <div class="flex flex-col md:flex-row gap-4 bg-tertiary/10 px-4 h-fit py-4 md:py-0 md:h-20 items-center text-center md:text-left">
+                        <h4 class="md:w-1/2 text-tertiary font-semibold">Pendidikan Vokasional Transportasi Darat</h4>
+                        <p class="md:w-1/2">Menyelenggarakan pendidikan tinggi vokasional di bidang transportasi darat yang sesuai dengan perkembangan teknologi</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-4 bg-tertiary/10 px-4 h-fit py-4 md:py-0 md:h-20 items-center text-center md:text-left">
+                        <h4 class="md:w-1/2 text-tertiary font-semibold">Penelitian Transportasi Darat</h4>
+                        <p class="md:w-1/2">Menyelenggarakan penelitian dalam rangka penerapan dan pengembangan ilmu pengetahuan dan teknologi di bidang transportasi darat</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-4 bg-tertiary/10 px-4 h-fit py-4 md:py-0 md:h-20 items-center text-center md:text-left">
+                        <h4 class="md:w-1/2 text-tertiary font-semibold">Pengabdian Masyarakat Transportasi Darat</h4>
+                        <p class="md:w-1/2">Menyelenggarakan pengabdian kepada masyarakat di bidang transportasi darat</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-4 bg-tertiary/10 px-4 h-fit py-4 md:py-0 md:h-20 items-center text-center md:text-left">
+                        <h4 class="md:w-1/2 text-tertiary font-semibold">Kehidupan Kampus Berwawasan Lingkungan</h4>
+                        <p class="md:w-1/2">Menciptakan kehidupan kampus dengan dukungan sarana dan prasarana yang memadai, humanis serta berwawasan lingkungan</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-4 bg-tertiary/10 px-4 h-fit py-4 md:py-0 md:h-20 items-center text-center md:text-left">
+                        <h4 class="md:w-1/2 text-tertiary font-semibold">Tata Kelola Pendidikan Profesional</h4>
+                        <p class="md:w-1/2">Menyelenggarakan tata kelola pendidikan yang profesional dan akuntabel</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-4 bg-tertiary/10 px-4 h-fit py-4 md:py-0 md:h-20 items-center text-center md:text-left">
+                        <h4 class="md:w-1/2 text-tertiary font-semibold">SDM Lulusan Beretika</h4>
+                        <p class="md:w-1/2">Membentuk SDM lulusan transportasi darat yang prima dan beretika</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-4 bg-tertiary/10 px-4 h-fit py-4 md:py-0 md:h-20 items-center text-center md:text-left">
+                        <h4 class="md:w-1/2 text-tertiary font-semibold">Kerjasama Lembaga Internasional</h4>
+                        <p class="md:w-1/2">Mengembangkan kerjasama lembaga baik dalam maupun luar negeri</p>
+                    </div>
+                </div>
+			</div>
+		</div>
+
+		<%- include('../sections/footer') %> <%- include('../components/chatWidget') %>
+	</body>
+
+	<script src="/js/navbarUtils.js"></script>
+	<script src="/js/lecturerUtils.js"></script>
+</html>
