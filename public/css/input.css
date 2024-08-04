@@ -35,6 +35,9 @@ h5 {
 h6 {
 	font-size: 1rem;
 }
+ol {
+	@apply list-disc pl-5;
+}
 
 label,
 p,
