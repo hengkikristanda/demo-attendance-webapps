@@ -13,65 +13,63 @@
 						class="bg-tertiary text-danger p-6 w-full lg:w-2/5 absolute bottom-0 lg:bottom-1/4 lg:left-8 z-10">
 						<h1 class="font-bold text-4xl lg:text-6xl mb-4">Our Purpose</h1>
 					</div>
-                    <div class="absolute bg-gradient-to-r from-tertiary/50 h-full w-full bottom-0 hidden">
-                        <h1 class="font-bold text-4xl lg:text-6xl mb-4">Our Purpose</h1>
-                    </div>
+					<div class="absolute bg-gradient-to-r from-tertiary/50 h-full w-full bottom-0 hidden">
+						<h1 class="font-bold text-4xl lg:text-6xl mb-4">Our Purpose</h1>
+					</div>
 				</div>
 			</div>
 
-            <div class="flex flex-col w-full mb-20 items-center relative">
-                <h1 class="font-bold md:text-6xl bg-white px-4 text-tertiary">Vision & Mission</h1>
-                <hr class="h-2 w-12 bg-tertiary md:hidden" />
-                <hr class="h-px w-full bg-tertiary/20 hidden md:flex absolute bottom-1/2 -z-10">
-            </div>
+			<div class="flex flex-col w-full mb-20 items-center relative">
+				<h1 class="font-bold md:text-6xl bg-white px-4 text-tertiary">Vision & Mission</h1>
+				<hr class="h-2 w-12 bg-tertiary md:hidden" />
+				<hr class="h-px w-full bg-tertiary/20 hidden md:flex absolute bottom-1/2 -z-10" />
+			</div>
 
 			<div class="flex flex-col md:gap-12 px-4 2xl:px-0">
 				<div class="flex flex-col mb-32">
 					<div class="our-purpose">
-						<div class="flex flex-col md:flex-row gap-8">
+						<div class="flex flex-col md:flex-row gap-4 h-[50rem] md:h-96">
 							<div class="md:w-1/3">
 								<img src="/img/vision.JPG" class="w-full h-full object-cover" />
 							</div>
+
 							<div class="flex flex-col md:w-2/3">
-                                <div class="flex flex-col w-fit mb-4">
-                                    <h1 class="font-bold">Vision</h1>
-                                    <hr class="h-2 w-1/2 bg-tertiary" />
-                                </div>
-								<h5 class="font-semibold text-secondary mb-8">
-									PTDI STTD memiliki visi sebagai pusat pendidikan transportasi darat modern, unggul
-									dan profesional
-								</h5>
-								<div class="flex flex-col w-fit mb-4">
-                                    <h1 class="font-bold">Mission</h1>
-                                    <hr class="h-2 w-1/2 bg-tertiary" />
-                                </div>
-								<ol class="text-secondary font-semibold leading-relaxed">
-									<li>
-										Menyelenggarakan pendidikan tinggi vokasional di bidang transportasi darat yang
-										sesuai dengan perkembangan teknologi
-									</li>
-									<li>
-										Menyelenggarakan penelitian dalam rangka penerapan dan pengembangan ilmu
-										pengetahuan dan teknologi di bidang transportasi darat
-									</li>
-									<li>
-										Menyelenggarakan pengabdian kepada masyarakat di bidang transportasi darat
-									</li>
-									<li>
-										Menciptakan kehidupan kampus dengan dukungan sarana dan prasarana yang memadai,
-										humanis serta berwawasan lingkungan
-									</li>
-									<li>Menyelenggarakan tata kelola pendidikan yang profesional dan akuntabel</li>
-									<li>Membentuk SDM lulusan transportasi darat yang prima dan beretika</li>
-									<li>Mengembangkan kerjasama lembaga baik dalam maupun luar negeri</li>
-								</ol>
+								<div class="flex uppercase section-header">
+									<h6 class="cursor-pointer font-semibold py-2 min-w-40 text-center bg-tertiary/15">Vision</h6>
+									<h6 class="cursor-pointer font-semibold py-2 min-w-40 text-center">Mission</h6>
+								</div>
+								<div class="tabs-content show bg-tertiary/15">
+									<p class="text-secondary font-semibold leading-relaxed text-base">
+										PTDI STTD memiliki visi sebagai pusat pendidikan transportasi darat modern,
+										unggul dan profesional
+									</p>
+								</div>
+								<div class="tabs-content hide bg-tertiary/15">
+									<ol class="text-secondary font-semibold leading-relaxed text-base">
+										<li>
+											Menyelenggarakan pendidikan tinggi vokasional di bidang transportasi darat
+											yang sesuai dengan perkembangan teknologi
+										</li>
+										<li>
+											Menyelenggarakan penelitian dalam rangka penerapan dan pengembangan ilmu
+											pengetahuan dan teknologi di bidang transportasi darat
+										</li>
+										<li>
+											Menyelenggarakan pengabdian kepada masyarakat di bidang transportasi darat
+										</li>
+										<li>
+											Menciptakan kehidupan kampus dengan dukungan sarana dan prasarana yang
+											memadai, humanis serta berwawasan lingkungan
+										</li>
+										<li>Menyelenggarakan tata kelola pendidikan yang profesional dan akuntabel</li>
+										<li>Membentuk SDM lulusan transportasi darat yang prima dan beretika</li>
+										<li>Mengembangkan kerjasama lembaga baik dalam maupun luar negeri</li>
+									</ol>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
-				
-                
 			</div>
 		</div>
 
@@ -80,4 +78,32 @@
 
 	<script src="/js/navbarUtils.js"></script>
 	<script src="/js/lecturerUtils.js"></script>
+	<script>
+		const sectionHeader = document.querySelectorAll(".section-header h6");
+
+		let defaultIndex = 0;
+
+		sectionHeader.forEach((item, index) => {
+			item.addEventListener("mouseup", () => {
+
+				if (index != defaultIndex) {
+					sectionHeader[defaultIndex].classList.remove("bg-tertiary/15");
+					item.classList.add("bg-tertiary/15");
+				}
+
+
+				const targetContentContainer = document.querySelectorAll(".tabs-content");
+
+				if (index != defaultIndex) {
+					targetContentContainer[defaultIndex].classList.remove("show");
+					targetContentContainer[defaultIndex].classList.add("hide");
+
+					targetContentContainer[index].classList.remove("hide");
+					targetContentContainer[index].classList.add("show");
+					defaultIndex = index;
+				}
+
+			});
+		});
+	</script>
 </html>
