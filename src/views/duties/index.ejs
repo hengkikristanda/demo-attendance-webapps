@@ -8,19 +8,18 @@
 		<div class="max-w-screen-2xl mx-auto">
 			<div class="page-header w-full my-20">
 				<div class="w-full h-[30rem] relative">
-					<img src="/img/our-purpose.JPG" alt="" class="w-full h-full object-cover object-center" />
+					<img src="/img/main-building.jpg" alt="" class="w-full h-full object-cover object-center" />
+                    <div class="absolute w-full h-full bottom-0 bg-gray-800/50"></div>
 					<div
-						class="bg-tertiary text-danger p-6 w-full lg:w-2/5 absolute bottom-0 lg:bottom-1/4 lg:left-8 z-10">
-						<h1 class="font-bold text-4xl lg:text-6xl mb-4">Our Purpose</h1>
-					</div>
-					<div class="absolute bg-gradient-to-r from-tertiary/50 h-full w-full bottom-0 hidden">
-						<h1 class="font-bold text-4xl lg:text-6xl mb-4">Our Purpose</h1>
+						class="text-danger p-6 w-full lg:w-2/5 absolute bottom-0 lg:bottom-1/4 lg:left-8 z-10">
+						<h1 class="font-bold text-4xl lg:text-6xl mb-4">Our Duties</h1>
+                        <hr class="h-3 w-32 bg-tertiary" />
 					</div>
 				</div>
 			</div>
 
 			<div class="flex flex-col w-full mb-20 items-center relative gap-2">
-				<h1 class="font-bold md:text-6xl bg-white px-4 text-tertiary">Vision & Mission</h1>
+				<h1 class="font-bold md:text-6xl bg-white px-4 text-tertiary">Tugas & Fungsi</h1>
 				<hr class="h-2 w-20 bg-tertiary" />
 			</div>
 
@@ -29,40 +28,40 @@
 					<div class="our-purpose">
 						<div class="flex flex-col md:flex-row gap-4 h-[50rem] md:h-96">
 							<div class="md:w-1/3">
-								<img src="/img/vision.JPG" class="w-full h-full object-cover" />
+								<img src="/img/tugas-fungsi.jpg" class="w-full h-full object-cover" />
 							</div>
 
 							<div class="flex flex-col md:w-2/3">
 								<div class="flex uppercase section-header">
-									<h6 class="cursor-pointer font-semibold py-2 min-w-40 text-center bg-tertiary/15">Vision</h6>
-									<h6 class="cursor-pointer font-semibold py-2 min-w-40 text-center">Mission</h6>
+									<h6 class="cursor-pointer font-semibold py-2 min-w-40 text-center bg-tertiary/15">
+										Tugas
+									</h6>
+									<h6 class="cursor-pointer font-semibold py-2 min-w-40 text-center">Fungsi</h6>
 								</div>
 								<div class="tabs-content show bg-tertiary/15">
 									<p class="text-secondary font-semibold leading-relaxed text-base">
-										PTDI STTD memiliki visi sebagai pusat pendidikan transportasi darat modern,
-										unggul dan profesional
+										Sebagai salah satu UPT dari Badan Pengembangan Sumber Daya Manusia Perhubungan,
+										Sekolah Tinggi Transportasi Darat (STTD) mempunyai tugas menyelenggarakan
+										program pendidikan profesional di bidang transportasi darat.
 									</p>
 								</div>
 								<div class="tabs-content hide bg-tertiary/15">
 									<ol class="text-secondary font-semibold leading-relaxed text-base">
 										<li>
-											Menyelenggarakan pendidikan tinggi vokasional di bidang transportasi darat
-											yang sesuai dengan perkembangan teknologi
+											Menyelenggarakan pelaksanaan dan pengembangan pendidikan profesional
+											transportasi darat
 										</li>
 										<li>
-											Menyelenggarakan penelitian dalam rangka penerapan dan pengembangan ilmu
-											pengetahuan dan teknologi di bidang transportasi darat
+											Menyelenggarakan pelaksanaan penelitian teknologi terapan di bidang transportasi darat
 										</li>
 										<li>
-											Menyelenggarakan pengabdian kepada masyarakat di bidang transportasi darat
+											Menyelenggarakan pelaksanaan penelitian dan pengabdian kepada masyarakat
 										</li>
 										<li>
-											Menciptakan kehidupan kampus dengan dukungan sarana dan prasarana yang
-											memadai, humanis serta berwawasan lingkungan
+											Menyelenggarakan pengelolaan perpustakaan, laboratorium sarana dan prasarana
 										</li>
-										<li>Menyelenggarakan tata kelola pendidikan yang profesional dan akuntabel</li>
-										<li>Membentuk SDM lulusan transportasi darat yang prima dan beretika</li>
-										<li>Mengembangkan kerjasama lembaga baik dalam maupun luar negeri</li>
+										<li>Menyelenggarakan pembinaan civitas akademika dan hubungannya dengan lingkungan</li>
+										<li>Menyelenggarakan pengelolaan administrasi umum, akademik dan ketarunaan</li>
 									</ol>
 								</div>
 							</div>
@@ -84,12 +83,10 @@
 
 		sectionHeader.forEach((item, index) => {
 			item.addEventListener("mouseup", () => {
-
 				if (index != defaultIndex) {
 					sectionHeader[defaultIndex].classList.remove("bg-tertiary/15");
 					item.classList.add("bg-tertiary/15");
 				}
-
 
 				const targetContentContainer = document.querySelectorAll(".tabs-content");
 
@@ -101,7 +98,6 @@
 					targetContentContainer[index].classList.add("show");
 					defaultIndex = index;
 				}
-
 			});
 		});
 	</script>
