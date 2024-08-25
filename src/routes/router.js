@@ -546,6 +546,7 @@ router.get("/duties", (req, res) => {
 	});
 });
 
+
 function searchById(data, id) {
 	console.log("Search JSON by id: ", id);
 

@@ -9,9 +9,11 @@ dotenv.config();
 const port = process.env.PORT || 3000;
 
 const router = require("./src/routes/router");
+const pageRoutes = require("./src/routes/pageRoutes");
 
 app.use(cookieParser());
 app.use(router);
+app.use(pageRoutes);
 
 // Set the view engine to ejs
 app.set("view engine", "ejs");
