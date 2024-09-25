@@ -6,29 +6,13 @@ const path = require("path");
 const fs = require("fs");
 
 const siteMenuServices = require("../services/siteMenuServices");
+const CommonComponentServices = require("../services/commonComponentServices");
 
 const getOrganizationalStructure = (req, res) => {
 	let selectedLanguage = req.query.lang;
-	if (selectedLanguage == undefined) {
-		selectedLanguage = "id";
-	}
 
-	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
-		selectedLanguage = "id";
-
-	const translations = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
-
-	const footerTranslation = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/footer/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
+	const { translations, footerTranslation } =
+		CommonComponentServices.getCommonComponent(selectedLanguage);
 
 	res.locals.translations = translations;
 	res.locals.footerTranslation = footerTranslation;
@@ -39,6 +23,22 @@ const getOrganizationalStructure = (req, res) => {
 	});
 };
 
+const getOurLeaders = (req, res) => {
+	let selectedLanguage = req.query.lang;
+
+	const { translations, footerTranslation } =
+		CommonComponentServices.getCommonComponent(selectedLanguage);
+
+	res.locals.translations = translations;
+	res.locals.footerTranslation = footerTranslation;
+
+	res.render("ourLeaders/index", {
+		title: "PTDI STTD - Our Leaders",
+		selectedLanguage,
+	});
+};
+
 module.exports = {
 	getOrganizationalStructure,
+	getOurLeaders,
 };
