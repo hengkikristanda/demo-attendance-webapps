@@ -353,6 +353,9 @@ div::-webkit-scrollbar-thumb:hover {
 	a.text-link {
 		@apply text-primary hover:underline font-semibold;
 	}
+	a.text-link.primary {
+		@apply underline text-tertiary font-semibold py-0 px-4 md:px-0;
+	}
 	p.danger,
 	li.danger {
 		@apply text-danger;
@@ -1041,6 +1044,18 @@ a {
 
 .info-card__home:hover {
 	text-decoration: underline;
+}
+
+.basic-card {
+	@apply flex flex-col p-4 bg-tertiary/10 gap-2;
+}
+
+.basic-card > .title {
+	@apply text-tertiary font-bold;
+}
+
+.basic-card > .content {
+	@apply text-sm;
 }
 
 .article {

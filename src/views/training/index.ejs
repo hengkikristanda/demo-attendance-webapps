@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../sections/head') %>
+
+	<body>
+		<%- include('../sections/navbar') %>
+
+		<div class="max-w-screen-2xl mx-auto my-20">
+			<div class="page-header w-full my-20">
+				<div class="w-full h-[25rem] relative">
+					<img
+						src="/img/training/Diklat-2.jpeg"
+						alt=""
+						class="w-full h-full object-cover object-top" />
+					<div
+						class="absolute bg-gradient-to-r from-tertiary from-1% h-full w-full bottom-0 flex flex-col justify-center">
+						<h3 class="font-bold text-white w-full px-20">DIKLAT</h3>
+					</div>
+				</div>
+			</div>
+
+			<div class="flex flex-col w-full gap-16 reveal fade-right">
+				<div class="flex">
+					<div class="flex flex-col w-2/5 px-2">
+						<h1 class="text-secondary font-bold">DIKLAT</h1>
+						<hr class="h-2 w-1/4 bg-tertiary" />
+					</div>
+				</div>
+				<div class="flex flex-col-reverse md:flex-row gap-12">
+					<div class="w-full md:w-1/2 flex flex-col px-2">
+						<p class="text-secondary">
+							Di tengah dinamika perkembangan transportasi yang semakin pesat, Politeknik
+							Transportasi Darat Indonesia-STTD hadir sebagai lembaga pendidikan unggulan yang
+							berkomitmen untuk mencetak generasi profesional di bidang transportasi. Halaman ini,
+							khusus untuk program Diklat (Pendidikan dan Pelatihan), dirancang untuk memberikan
+							informasi lengkap dan terkini mengenai berbagai program pelatihan yang kami tawarkan.
+							Kami percaya bahwa pendidikan bukan hanya tentang teori, tetapi juga tentang
+							pengalaman praktis yang dapat mempersiapkan Anda menghadapi tantangan di dunia kerja.
+							Melalui program Diklat kami, peserta akan dibekali dengan keterampilan dan pengetahuan
+							yang relevan, mulai dari aspek teknis hingga manajerial dalam sektor transportasi.
+							Dengan semangat untuk inovasi dan profesionalisme, kami siap mendampingi Anda dalam
+							perjalanan menuju kesuksesan. Bergabunglah dengan kami dan jadilah bagian dari
+							transformasi dunia transportasi yang lebih baik!
+						</p>
+                        <a href="/training/details?lang=id" class="text-link primary">Pelajari lebih lanjut</a>
+					</div>
+					<div
+						class="w-full md:w-1/2 h-96 border border-tertiary/10 shadow-tertiary/10 shadow-2xl drop-shadow-lg">
+						<img src="/img/training/Diklat-1.jpeg" class="w-full h-full object-cover" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<%- include('../sections/footer') %> <%- include('../components/chatWidget') %>
+	</body>
+
+	<script src="/js/navbarUtils.js"></script>
+	<script src="/js/lecturerUtils.js"></script>
+	<script>
+		const sectionHeader = document.querySelectorAll(".section-header h6");
+
+		let defaultIndex = 0;
+
+		sectionHeader.forEach((item, index) => {
+			item.addEventListener("mouseup", () => {
+				if (index != defaultIndex) {
+					sectionHeader[defaultIndex].classList.remove("bg-tertiary/15");
+					item.classList.add("bg-tertiary/15");
+				}
+
+				const targetContentContainer = document.querySelectorAll(".tabs-content");
+
+				if (index != defaultIndex) {
+					targetContentContainer[defaultIndex].classList.remove("show");
+					targetContentContainer[defaultIndex].classList.add("hide");
+
+					targetContentContainer[index].classList.remove("hide");
+					targetContentContainer[index].classList.add("show");
+					defaultIndex = index;
+				}
+			});
+		});
+	</script>
+</html>

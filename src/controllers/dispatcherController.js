@@ -38,7 +38,39 @@ const getOurLeaders = (req, res) => {
 	});
 };
 
+const getTraining = (req, res) => {
+	let selectedLanguage = req.query.lang;
+
+	const { translations, footerTranslation } =
+		CommonComponentServices.getCommonComponent(selectedLanguage);
+
+	res.locals.translations = translations;
+	res.locals.footerTranslation = footerTranslation;
+
+	res.render("training/index", {
+		title: "PTDI STTD - Diklat",
+		selectedLanguage,
+	});
+};
+
+const getDetailTraining = (req, res) => {
+	let selectedLanguage = req.query.lang;
+
+	const { translations, footerTranslation } =
+		CommonComponentServices.getCommonComponent(selectedLanguage);
+
+	res.locals.translations = translations;
+	res.locals.footerTranslation = footerTranslation;
+
+	res.render("training/details/index", {
+		title: "PTDI STTD - Diklat",
+		selectedLanguage,
+	});
+};
+
 module.exports = {
 	getOrganizationalStructure,
 	getOurLeaders,
+	getTraining,
+	getDetailTraining
 };
