@@ -68,9 +68,25 @@ const getDetailTraining = (req, res) => {
 	});
 };
 
+const getTrainingRegistration = (req, res) => {
+	let selectedLanguage = req.query.lang;
+
+	const { translations, footerTranslation } =
+		CommonComponentServices.getCommonComponent(selectedLanguage);
+
+	res.locals.translations = translations;
+	res.locals.footerTranslation = footerTranslation;
+
+	res.render("training/registration/index", {
+		title: "PTDI STTD - Diklat",
+		selectedLanguage,
+	});
+};
+
 module.exports = {
 	getOrganizationalStructure,
 	getOurLeaders,
 	getTraining,
-	getDetailTraining
+	getDetailTraining,
+	getTrainingRegistration,
 };

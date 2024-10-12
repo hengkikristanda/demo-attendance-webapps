@@ -1192,36 +1192,36 @@ a {
 	transform: translateX(-15px);
 }
 */
-#commentForm {
+form {
 	gap: 2rem;
 }
-#commentForm div {
+form div {
 	display: flex;
 	flex-direction: column;
 	border-bottom: 1px solid var(--tertiary);
 }
 
-#commentForm label {
+form label {
 	color: var(--tertiary);
 }
 
-#commentForm input,
-#commentForm textarea {
+form input,
+form textarea {
 	background-color: white;
 	border: none;
 	box-shadow: none;
 	resize: none;
 }
 
-#commentForm input {
+form input {
 	height: 3rem;
 }
 
-#commentForm input:focus {
+form input:focus {
 	background-color: white;
 }
 
-#commentForm textarea:focus {
+form textarea:focus {
 	background-color: white;
 }
 
@@ -1465,3 +1465,4 @@ input::file-selector-button {
 	left: 50%;
 	z-index: 9;
 }
+

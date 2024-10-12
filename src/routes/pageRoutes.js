@@ -15,5 +15,6 @@ router.get("/organizational-structure", Dispatcher.getOrganizationalStructure);
 router.get("/our-leaders", Dispatcher.getOurLeaders);
 router.get("/training", Dispatcher.getTraining);
 router.get("/training/details", Dispatcher.getDetailTraining);
+router.get("/training/registration", Dispatcher.getTrainingRegistration);
 
 module.exports = router;
