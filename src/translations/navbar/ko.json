@@ -58,7 +58,7 @@
 					"subMenus": [
 						{
 							"label": "마케팅, 혁신 및 기술 석사",
-							"href": "/s2-pemasaran-inovasi-teknologi"
+							"href": "/post-graduate/marketing-innovation-technology"
 						},
 						{
 							"label": "안전 및 위험 공학 석사",
@@ -72,7 +72,7 @@
 				},
 				{
 					"label": "교수진",
-					"href": "/dosen"
+					"href": "/lecturers"
 				}
 			]
 		},
@@ -90,7 +90,7 @@
 			"subMenus": [
 				{
 					"label": "뉴스",
-					"href": "/berita"
+					"href": "/news"
 				},
 				{
 					"label": "PPID",

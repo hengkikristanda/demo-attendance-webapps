@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../sections/head') %>
+	<body>
+		<%- include('../../sections/navbar') %>
+
+		<div class="max-w-screen-2xl mx-auto">
+			<div class="page-header w-full my-20">
+				<div class="w-full h-[30rem] relative">
+					<img src="/img/our_people.jpeg" alt="" class="w-full h-full object-cover" />
+					<div class="absolute w-full h-full bottom-0 bg-gray-800/50"></div>
+					<h1
+						class="font-bold text-white sm:text-6xl px-2 md:px-12 w-full absolute bottom-1/4 md:bottom-3/4 z-10 uppercase">
+						<%=lecturerTranslation.title%>
+					</h1>
+					<div class="bg-tertiary absolute size-28 hidden md:flex bottom-2/3 z-0"></div>
+				</div>
+			</div>
+
+			<section>
+				<div
+					id="lecturerPageTitle"
+					class="flex flex-col w-full mb-20 items-center relative gap-2 px-4">
+					<h1 class="font-bold md:text-6xl bg-white text-tertiary text-center">
+						<%=lecturerTranslation.pageTitle%>
+					</h1>
+					<hr class="h-2 w-20 bg-tertiary" />
+					<h6 class="my-4 text-center"><%=lecturerTranslation.subTitle%></h6>
+				</div>
+
+				<div id="lecturerContainer" class="flex flex-col gap-6 mb-12"></div>
+
+				<div class="nav-buttons">
+					<button id="slideLeftButton" disabled>
+						<h4 class="bi bi-arrow-left-short"></h4>
+					</button>
+					<button id="slideRightButton" disabled>
+						<h4 class="bi bi-arrow-right-short"></h4>
+					</button>
+				</div>
+			</section>
+
+			<%- include('../../sections/footer') %> <%- include('../../components/chatWidget') %>
+		</div>
+	</body>
+
+	<script src="/js/navbarUtils.js"></script>
+	<script src="/js/onLoad.js"></script>
+	<script>
+		function paginateArray(items, currentPage, itemsPerPage) {
+			const startIndex = (currentPage - 1) * itemsPerPage;
+
+			const endIndex = startIndex + itemsPerPage;
+
+			const paginatedItems = items.slice(startIndex, endIndex);
+
+			return paginatedItems;
+		}
+
+		function disableArrow(targetButton) {
+			if (targetButton.disabled) {
+				targetButton.disabled = false;
+			} else {
+				targetButton.disabled = true;
+			}
+		}
+
+		function renderLecturer(contentData) {
+			let commentComponent = [];
+
+			let lecturerTranslation = <%- JSON.stringify(lecturerTranslation) %>;
+
+			for (let n=0; n<contentData.length; n++) {
+
+				let profExp = [`<div class="tabs-content show">`];
+
+				let isWorkEmpty = true;
+				contentData[n].detail.forEach((item) => {
+					if (item.type == 'work') {
+						isWorkEmpty = false;
+
+						profExp.push(
+							`<div class="flex flex-col px-4">`,
+								`<span class="font-bold text-lg">${item.jobTitle}</span>`,
+								`<span class="font-semibold text-sm">${item.organizationName}</span>`,
+								`<span class="text-sm">${item.startMonth} ${item.startYear} - ${item.endMonth} ${item.endYear}</span>`,
+							`</div>`
+						);
+					}
+
+				});
+
+				if (isWorkEmpty) {
+					profExp.push(`<p class="text-center font-bold">-</p>`);
+				}
+
+				profExp.push(`</div>`);
+
+				let educationBackground = [`<div class="tabs-content hide">`];
+
+				let isEducationEmpty = true;
+				contentData[n].detail.forEach((item) => {
+					if (item.type == 'education') {
+						isEducationEmpty = false;
+
+						educationBackground.push(
+							`<div class="flex flex-col px-4">`,
+								`<span class="font-bold text-lg">${item.jobTitle}</span>`,
+								`<span class="font-semibold text-sm">${item.organizationName}</span>`,
+								`<span class="text-sm">${item.startMonth} ${item.startYear} - ${item.endMonth} ${item.endYear}</span>`,
+							`</div>`
+						);
+					}
+
+
+				});
+				if (isEducationEmpty) {
+						educationBackground.push(`<p class="text-center font-bold">-</p>`);
+				}
+				educationBackground.push(`</div>`);
+
+				let researchActivities = [`<div class="tabs-content hide">`];
+
+				let isResearchEmpty = true;
+				contentData[n].detail.forEach((item) => {
+					if (item.type == 'research') {
+						isResearchEmpty = false;
+
+						researchActivities.push(
+							`<div class="flex flex-col px-4">`,
+								`<span class="font-semibold text-sm">${item.jobTitle}</span>`,
+							`</div>`
+						);
+					}
+				});
+				if (isResearchEmpty) {
+					researchActivities.push(`<p class="text-center font-bold">-</p>`);
+				}
+				researchActivities.push(`</div>`);
+
+				commentComponent.push(
+					`<div class="dosen-card-container reveal fade-right">`,
+						`<div class="max-w-72 md:max-w-96 h-96 md:max-h-96">`,
+							`<img src="${contentData[n].imageUrl}" class="w-full h-full object-cover rounded-l-lg" />`,
+						`</div>`,
+						`<div id="${contentData[n].id}" class="dosen-card-content-container">`,
+							`<div class="flex items-center md:items-start flex-col">`,
+								`<h3 class="font-bold">${contentData[n].fullName}</h3>`,
+								`<div class="flex flex-col items-center md:flex-row md:gap-4">`,
+									`<a
+										href="mailto:${contentData[n].emailAddress}"
+										class="flex p-0 gap-2 items-start text-tertiary text-lg font-semibold text-sm w-fit h-fit py-2">
+										<span class="bi bi-envelope"></span>
+										<span>${contentData[n].emailAddress}</span>`,
+									`</a>`,
+									`<a
+										href="${contentData[n].docUrl}"
+										target="_blank"
+										class="flex p-0 gap-2 items-start text-tertiary text-lg font-semibold text-sm w-fit h-fit py-2">
+										<span class="bi bi-person-circle"></span>
+										<span><%=lecturerTranslation.profileLabel%></span>`,
+									`</a>`,
+								`</div>`,
+							`</div>`,
+							`<div class="flex flex-col hidden md:flex">`,
+								`<div class="flex w-full items-end gap-2">`,
+									`<h6 class="tabs-lecturer active">${lecturerTranslation.sectionExperienceLabel}</h6>`,
+									`<h6 class="tabs-lecturer">${lecturerTranslation.sectionEducationLabel}</h6>`,
+									`<h6 class="tabs-lecturer">${lecturerTranslation.sectionResearchLabel}</h6>`,
+								`</div>`,
+								profExp.join(""),
+								educationBackground.join(""),
+								researchActivities.join(""),
+							`</div>`,
+						`</div>`,
+					`</div>`);
+			}
+
+			return commentComponent.join("");
+		}
+
+		function initNavigation(){
+			const tabsLecturer = document.querySelectorAll(".tabs-lecturer");
+			tabsLecturer.forEach((tabs, index) => {
+				tabs.addEventListener("mouseup", () => {
+					const targetParent = event.target.closest(".dosen-card-content-container");
+
+					const targetTabs = targetParent.querySelectorAll(".tabs-lecturer");
+					targetTabs.forEach((tabs) => {
+						tabs.classList.remove("active");
+					});
+
+					const clickedTabs = event.target;
+					clickedTabs.classList.add("active");
+
+					const targetContent = targetParent.querySelectorAll(".tabs-content");
+					const n = index % 3;
+
+					targetContent.forEach((tabContent, idx) => {
+						if (tabContent.classList.contains("show")) {
+							tabContent.classList.remove("show");
+							tabContent.classList.add("hide");
+						}
+						if (n == idx) {
+							tabContent.classList.remove("hide");
+							tabContent.classList.add("show");
+						}
+					});
+				});
+			});
+		}
+
+		let lecturerList = <%- JSON.stringify(lecturerList) %>;
+
+		let currentPage = 1;
+		let itemsPerPage = 5;
+		let numberOfPage = Math.ceil(lecturerList.length / itemsPerPage);
+
+		let currentPageItems = paginateArray(lecturerList, currentPage, itemsPerPage);
+
+		let renderedComments = renderLecturer(currentPageItems);
+		const lecturerContainer = document.getElementById("lecturerContainer");
+		lecturerContainer.innerHTML = renderedComments;
+		initNavigation();
+
+		const lecturerPageTitle = document.getElementById("lecturerPageTitle");
+
+		const slideLeftButton = document.getElementById("slideLeftButton");
+		const slideRightButton = document.getElementById("slideRightButton");
+
+		if (currentPage == 1) {
+			if (!slideLeftButton.disabled) {
+				slideLeftButton.disabled = true;
+			}
+			if (numberOfPage > 1 && slideRightButton.disabled) {
+				slideRightButton.disabled = false;
+			}
+		}
+
+
+		slideRightButton.addEventListener("mouseup", (ev) => {
+			if (currentPage < numberOfPage){
+				currentPage++;
+			}
+
+			if (currentPage == numberOfPage){
+				if (!slideRightButton.disabled)
+					slideRightButton.disabled = true;
+			}
+
+			if (slideLeftButton.disabled)
+					slideLeftButton.disabled = false;
+
+			let paginatedItems = paginateArray(lecturerList, currentPage, itemsPerPage);
+			renderedComments = renderLecturer(paginatedItems);
+			lecturerContainer.innerHTML = renderedComments;
+
+			lecturerPageTitle.scrollIntoView({
+					behavior: 'auto'
+				});
+
+			initNavigation();
+		})
+
+		slideLeftButton.addEventListener("mouseup", () => {
+			if (currentPage > 1){
+				currentPage--;
+			}
+
+			if (currentPage == 1){
+				if (!slideLeftButton.disabled)
+					slideLeftButton.disabled = true;
+			}
+
+			if (slideRightButton.disabled)
+					slideRightButton.disabled = false;
+
+			let paginatedItems = paginateArray(lecturerList, currentPage, itemsPerPage);
+			renderedComments = renderLecturer(paginatedItems);
+			lecturerContainer.innerHTML = '';
+			lecturerContainer.innerHTML = renderedComments;
+
+			lecturerPageTitle.scrollIntoView({
+				behavior: 'auto'
+			});
+
+			initNavigation();
+		})
+
+		
+	</script>
+</html>

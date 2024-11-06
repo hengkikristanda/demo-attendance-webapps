@@ -29,9 +29,13 @@ module.exports = {
 				secondary: "#393E46",
 				tertiary: "#00ADB5",
 				danger: "#EEEEEE",
+				line: "#cbd5e1",
+				info: "#6b7280",
 			},
 			maxWidth: {
 				"1/3": "33%",
+				"3/4": "75%",
+				"9/1": "90%",
 				10: "10px",
 				1920: "1920px",
 			},

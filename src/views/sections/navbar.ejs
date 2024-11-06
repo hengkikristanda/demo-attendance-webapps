@@ -1,6 +1,8 @@
 <nav class="navbar">
 	<div class="mx-auto flex justify-between items-center">
-		<a href="/?lang=<%= selectedLanguage %>" class="flex w-1/2 justify-start gap-4 items-center cursor-pointer p-0">
+		<a
+			href="/"
+			class="flex w-1/2 justify-start gap-4 items-center cursor-pointer p-0">
 			<img src="/img/logo-removebg.png" class="max-h-12 object-contain" />
 			<p class="text-secondary font-bold leading-4 hidden xl:inline">
 				<span class="text-xxs">POLITEKNIK</span><br />TRANSPORTASI DARAT INDONESIA
@@ -9,18 +11,24 @@
 		<div class="flex items-center hidden lg:flex gap-4">
 			<div class="menu">
 				<ul class="gap-6">
-					<% translations.menus.forEach((menu) => { %>
+					<% navBarTranslation.menus.forEach((menu) => { %>
 					<li class="nav-menu__label">
 						<p><%= menu.label %></p>
 						<ul>
 							<% menu.subMenus.forEach((subMenu) => { const className = (subMenu.subMenus !==
 							undefined) ? 'none' : 'link'; %>
 							<li class="<%= className %>">
-								<a class="w-full link" href="<%= subMenu.href %>?lang=<%= selectedLanguage %>"><%= subMenu.label %></a>
+								<a class="w-full link" href="<%= subMenu.href %>"
+									><%= subMenu.label %></a
+								>
 								<% if (subMenu.subMenus) { %>
 								<ul>
 									<% subMenu.subMenus.forEach((nestedMenu) => { %>
-									<li class="link"><a href="<%= nestedMenu.href %>?lang=<%= selectedLanguage %>"><%= nestedMenu.label %></a></li>
+									<li class="link">
+										<a href="<%= nestedMenu.href %>"
+											><%= nestedMenu.label %></a
+										>
+									</li>
 									<% }); %>
 								</ul>
 								<% } %>
@@ -32,13 +40,13 @@
 				</ul>
 			</div>
 			<div class="flex items-center gap-4 justify-between">
-				<a href="/search" class="bi bi-search text-xl hover:text-secondary"></a>
-				<a href="/login" class="btn success">Login</a>
+				<a href="/users/login" target="_blank" class="btn success">Login</a>
 				<div class="menu">
 					<ul>
 						<li class="nav-menu__label">
-							<!-- <i class="text-xl bi bi-translate"></i> -->
-							<div class="flex items-center h-10 w-10 p-2 bg-tertiary rounded-md"><img src="/img/flags/<%= selectedLanguage %>.png" class="w-full h-full" /></div>
+							<div class="flex items-center h-10 w-10 p-2 bg-tertiary rounded-md">
+								<img src="/img/flags/<%= selectedLanguage %>.png" class="w-full h-full" />
+							</div>
 							<ul class="dropdown_menu-6 drop-right">
 								<a href="?lang=id" class="flex gap-2 link">
 									<img src="/img/flags/id.png" class="max-w-4" />Bahasa Indonesia
@@ -63,21 +71,19 @@
 		</div>
 		<div class="flex lg:hidden items-center gap-4 justify-between">
 			<a href="/search" class="px-2 bi bi-search text-xl hover:text-secondary"></a>
-			<a href="/login" class="btn hidden sm:flex lg:hidden success">Login</a>
+			<a href="/users/login" target="_blank" class="btn hidden sm:flex lg:hidden success">Login</a>
 			<div class="navbar-mobile__language">
-				<div id="translation-icon__mobile" class="flex items-center h-10 w-10 p-2 bg-tertiary cursor-pointer">
+				<div
+					id="translation-icon__mobile"
+					class="flex items-center h-10 w-10 p-2 bg-tertiary cursor-pointer">
 					<img src="/img/flags/<%= selectedLanguage %>.png" class="w-full h-full" />
 				</div>
 				<ul>
 					<li>
-						<a href="?lang=id"
-							><img src="/img/flags/id.png" class="max-w-6" />Bahasa Indonesia</a
-						>
+						<a href="?lang=id"><img src="/img/flags/id.png" class="max-w-6" />Bahasa Indonesia</a>
 					</li>
 					<li>
-						<a href="?lang=en"
-							><img src="/img/flags/en.png" class="max-w-6" />English</a
-						>
+						<a href="?lang=en"><img src="/img/flags/en.png" class="max-w-6" />English</a>
 					</li>
 					<li>
 						<a href="?lang=zh"
@@ -98,33 +104,28 @@
 </nav>
 <nav id="navbar-mobile" class="navbar-mobile">
 	<ul class="flex flex-col pr-4 pt-6">
-		<a href="/login" class="btn success sm:hidden">Login</a>
-		<% translations.menus.forEach((menu) => { %>
+		<a href="/users/login" class="btn success sm:hidden">Login</a>
+		<% navBarTranslation.menus.forEach((menu) => { %>
 		<li class="navbar-mobile__label">
 			<p class="submenu"><%= menu.label %></p>
 			<ul class="hideDropdown">
-				<% menu.subMenus.forEach((subMenu) => { 
-					const isNestedMenu = (subMenu.subMenus !== undefined);
-					if (isNestedMenu) {
-				%>
-					<li>
-						<a href="#" class="submenu"><%= subMenu.label %></a>
-						<ul class="hideDropdown px-4">
-						<%
-							subMenu.subMenus.forEach((nestedMenu) => {
-						%>
-								<li><a href="<%= nestedMenu.href %>"><%= nestedMenu.label %></a></li>
-						<%
-							});
-						%>
-						</ul>
-					</li>
-				<%
-					} else {
-				%>
-				<li><a class="link" href="<%= subMenu.href %>?lang=<%= selectedLanguage %>"><%= subMenu.label %></a></li>
-				<% 	}
-				}); %>
+				<% menu.subMenus.forEach((subMenu) => { const isNestedMenu = (subMenu.subMenus !==
+				undefined); if (isNestedMenu) { %>
+				<li>
+					<a href="#" class="submenu"><%= subMenu.label %></a>
+					<ul class="hideDropdown px-4">
+						<% subMenu.subMenus.forEach((nestedMenu) => { %>
+						<li><a href="<%= nestedMenu.href %>"><%= nestedMenu.label %></a></li>
+						<% }); %>
+					</ul>
+				</li>
+				<% } else { %>
+				<li>
+					<a class="link" href="<%= subMenu.href %>"
+						><%= subMenu.label %></a
+					>
+				</li>
+				<% } }); %>
 			</ul>
 		</li>
 		<% }); %>

@@ -1,0 +1,43 @@
+<section id="lecturers">
+	<div class="flex flex-col md:px-16 gap-8">
+		<div class="flex justify-between items-end reveal fade-right">
+			<div class="flex gap-2">
+				<div class="bg-tertiary w-3"></div>
+				<h2 class="font-bold text-primary"><%= lecturers.section[selectedLanguage].title %></h2>
+			</div>
+			<a
+				href="/lecturers"
+				class="w-1/2 underline justify-end text-tertiary font-semibold py-0 px-4 md:px-0"
+				><%= lecturers.section[selectedLanguage].href %></a
+			>
+		</div>
+		<div class="slider-container__profile-card reveal fade-up with-delay">
+			<div class="profile-card-wrapper">
+				<div class="profile-card-container">
+					<% firstTenLecturer.forEach((lecture) => { %>
+					<div class="profile-card">
+						<div class="h-full w-2/6">
+							<img
+								src="<%= lecture.imageUrl %>"
+								alt=""
+								class="w-full h-full object-cover rounded-l-lg" />
+						</div>
+						<div class="w-4/6 py-4 px-2 rounded-r-lg">
+							<p class="font-bold"><%= lecture.fullName %></p>
+							<div class="flex gap-4 items-center text-tertiary">
+								<a
+									href="mailto:<%= lecture.emailAddress %>"
+									class="p-0 text-lg bi bi-envelope"></a>
+								<a
+									target="_blank"
+									href="<%= lecture.docUrl %>"
+									class="p-0 text-lg bi bi-person-circle"></a>
+							</div>
+						</div>
+					</div>
+					<% }); %>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

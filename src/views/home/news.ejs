@@ -1,0 +1,100 @@
+<section id="information">
+  <div class="flex flex-col md:px-16 gap-8">
+    <div class="flex justify-between items-end reveal fade-right">
+      <div class="flex gap-2 w-1/2 ">
+        <div class="bg-tertiary w-3"></div>
+        <h2 class="font-bold text-primary"><%= newsSectionTranslation.title %></h2>
+      </div>
+      <a href="/news" class="w-1/2 underline justify-end text-tertiary font-semibold py-0 px-4 md:px-0"><%= newsSectionTranslation.href %></a>
+    </div>
+
+    <div class="relative overflow-hidden hidden md:block reveal fade-up with-delay">
+      <div class="slides news-slides">
+        <% 
+          let numberOfrows = newsData.length;
+          let numberOfCardsPerPage = 4;
+          let numberOfPages = Math.ceil(numberOfrows/numberOfCardsPerPage);
+
+          for(let index=0; index<numberOfPages; index++) { 
+		    %>
+        <div class="slide news-slide">
+          <div class="flex w-full gap-4">
+            <% 
+          let startIndex = index * numberOfCardsPerPage;
+          let endIndex = numberOfCardsPerPage * (index + 1);
+
+			    for(let n=startIndex; (n<endIndex && n<numberOfrows); n++) { 
+			  %>
+            <a class="info-card__home w-1/4 " href="/news/<%= newsData[n].newsId %>">
+              <div class="info-card-img__container h-36 max-h-36">
+                <img src="<%= newsData[n].imageUrl %>" class="object-center" />
+              </div>
+              <p><%= newsData[n].title %></p>
+              <span><%= newsData[n].lastModified %></span>
+            </a>
+            <% } %>
+          </div>
+        </div>
+        <% } %>
+      </div>
+
+      <% 
+        let classHidden = "";
+        if (numberOfrows < 4) {
+          classHidden = "style=\"display:none\"";
+      %>
+      <% 
+        } 
+      %>
+      <div class="nav-buttons" <%-classHidden%>>
+        <button id="slideLeftButton">
+          <h4 class="bi bi-arrow-left-short"></h4>
+        </button>
+        <button id="slideRightButton">
+          <h4 class="bi bi-arrow-right-short"></h4>
+        </button>
+      </div>
+      
+
+    </div>
+
+  </div>
+</section>
+
+
+<script>
+  var newsSlidesContainer = document.querySelector(".news-slides");
+  var newsSlidesSm = document.querySelector(".news-slides-sm");
+
+  var slides = document.querySelectorAll(".news-slide");
+  var currentSlide = 0;
+  let currentPage = 1;
+  let next = 0;
+
+  let numberOfrows = <%= newsData.length %>;
+
+  function handleSlideNews(index) {
+    if (index >= 0 && index < slides.length) {
+      newsSlidesContainer.style.transform = `translateX(${-index * 100}%)`;
+      currentSlide = index;
+    }
+  }
+
+  const slideLeftButton = document.getElementById("slideLeftButton");
+  slideLeftButton.addEventListener("mouseup", () => {
+    if (currentPage > 1) {
+      next += 100;
+      newsSlidesSm.style.transform = `translateX(${next}%)`;
+      currentPage--;
+    }
+  })
+
+  const slideRightButton = document.getElementById("slideRightButton");
+  slideRightButton.addEventListener("mouseup", () => {
+    if (currentPage < numberOfrows) {
+      next -= 100;
+      newsSlidesSm.style.transform = `translateX(${next}%)`;
+      currentPage++;
+    }
+  })
+</script>

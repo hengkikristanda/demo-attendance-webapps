@@ -1,0 +1,232 @@
+/* Icon */
+.close-circle {
+	-webkit-mask: url("/img/native-icons/close-circle.svg") no-repeat center;
+	mask: url("/img/native-icons/close-circle.svg") no-repeat center;
+	height: 2rem;
+	width: 2rem;
+	display: inline-block;
+}
+
+.checkbox-circle {
+	-webkit-mask: url("/img/native-icons/checkbox-circle.svg") no-repeat center;
+	mask: url("/img/native-icons/checkbox-circle.svg") no-repeat center;
+	height: 2rem;
+	width: 2rem;
+	display: inline-block;
+}
+
+.notification {
+	-webkit-mask: url("/img/native-icons/notification-2.svg") no-repeat center;
+	mask: url("/img/native-icons/notification-2.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.account-circle {
+	-webkit-mask: url("/img/native-icons/account-circle.svg") no-repeat center;
+	mask: url("/img/native-icons/account-circle.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.settings-icon {
+	-webkit-mask: url("/img/native-icons/settings-2.svg") no-repeat center;
+	mask: url("/img/native-icons/settings-2.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.logout-circle {
+	-webkit-mask: url("/img/native-icons/logout-circle.svg") no-repeat center;
+	mask: url("/img/native-icons/logout-circle.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.mail-download {
+	-webkit-mask: url("/img/native-icons/mail-download.svg") no-repeat center;
+	mask: url("/img/native-icons/mail-download.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.menu-list {
+	-webkit-mask: url("/img/native-icons/menu.svg") no-repeat center;
+	mask: url("/img/native-icons/menu.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.file-text {
+	-webkit-mask: url("/img/native-icons/file-text.svg") no-repeat center;
+	mask: url("/img/native-icons/file-text.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.login-icon {
+	-webkit-mask: url("/img/native-icons/login-box.svg") no-repeat center;
+	mask: url("/img/native-icons/login-box.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.file-info {
+	-webkit-mask: url("/img/native-icons/file-info.svg") no-repeat center;
+	mask: url("/img/native-icons/file-info.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.rest-time {
+	-webkit-mask: url("/img/native-icons/rest-time.svg") no-repeat center;
+	mask: url("/img/native-icons/rest-time.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.home-6 {
+	-webkit-mask: url("/img/native-icons/home-6.svg") no-repeat center;
+	mask: url("/img/native-icons/home-6.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.inbox {
+	-webkit-mask: url("/img/native-icons/inbox.svg") no-repeat center;
+	mask: url("/img/native-icons/inbox.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.file-paper {
+	-webkit-mask: url("/img/native-icons/file-paper.svg") no-repeat center;
+	mask: url("/img/native-icons/file-paper.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.user-star {
+	-webkit-mask: url("/img/native-icons/user-star.svg") no-repeat center;
+	mask: url("/img/native-icons/user-star.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.delete-bin {
+	-webkit-mask: url("/img/native-icons/delete-bin.svg") no-repeat center;
+	mask: url("/img/native-icons/delete-bin.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.pencil-edit {
+	-webkit-mask: url("/img/native-icons/pencil.svg") no-repeat center;
+	mask: url("/img/native-icons/pencil.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.alert {
+	-webkit-mask: url("/img/native-icons/alert.svg") no-repeat center;
+	mask: url("/img/native-icons/alert.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.user-voice {
+	-webkit-mask: url("/img/native-icons/user-voice.svg") no-repeat center;
+	mask: url("/img/native-icons/user-voice.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.article-ico {
+	-webkit-mask: url("/img/native-icons/article.svg") no-repeat center;
+	mask: url("/img/native-icons/article.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.add-ico {
+	-webkit-mask: url("/img/native-icons/add.svg") no-repeat center;
+	mask: url("/img/native-icons/add.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.remix.info {
+	background-color: var(--info);
+	border-radius: 50%;
+}
+.remix.primary {
+	background-color: var(--primary);
+	border-radius: 50%;
+}
+.remix.secondary {
+	background-color: var(--secondary);
+	border-radius: 50%;
+}
+.remix.success {
+	background-color: #bbf7d0;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+}
+.remix.danger {
+	background-color: #fecaca;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+}
+
+.remix.white {
+	background-color: #ffffff;
+	border-radius: 50%;
+}
+
+
+.remix.danger-bold {
+	background-color: #991b1b;
+	border-radius: 50%;
+}
+
+.icon-xs {
+	width: 0.9rem;
+	height: 0.9rem;
+}
+
+.icon-sm {
+	width: 1rem;
+	height: 1rem;
+}
+
+.icon-md {
+	width: 1.4rem;
+	height: 1.4rem;
+}
+
+.icon-lg {
+	width: 1.8rem;
+	height: 1.8rem;
+}

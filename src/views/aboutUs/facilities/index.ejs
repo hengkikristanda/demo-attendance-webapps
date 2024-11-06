@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../sections/head') %>
+
+<body>
+  <%- include('../../sections/navbar') %>
+
+  <div class="max-w-screen-2xl mx-auto">
+
+    <div class="page-header w-full my-20">
+      <div class="w-full h-[30rem] relative">
+        <img src="/img/facilities/asrama-1.JPG" alt="" class="w-full h-full object-cover" />
+        <div class="absolute w-full h-full bottom-0 bg-gray-800/50"></div>
+        <h1
+          class="font-bold text-white sm:text-6xl px-2 md:px-12 w-full absolute bottom-1/4 md:bottom-3/4 z-10 uppercase">
+          <%=currentPage%>
+        </h1>
+        <div class="bg-tertiary absolute size-28 hidden md:flex bottom-2/3 z-0"></div>
+      </div>
+    </div>
+
+    <div class="flex flex-col mb-8 md:gap-12 px-4 2xl:px-0">
+      <div class="welcome-text__facilities">
+        <h1 class="font-bold text-tertiary md:text-6xl md:w-2/3">
+          <%=facilitiesTranslation.subTitle%>
+        </h1>
+        <span class="hidden md:block"></span>
+      </div>
+      <div class="flex flex-col md:flex-row gap-20">
+        <h6 class="md:w-1/2">
+          <%=facilitiesTranslation.paragraph%>
+        </h6>
+        <div class="flex flex-col md:w-1/2 gap-4">
+          <%
+          facilitiesTranslationContent.forEach((facility) => { %>
+          <div class="collapsible-section__facility">
+            <div class="flex items-center gap-3 mb-4 cursor-pointer">
+              <i class="bi bi-chevron-right"></i>
+              <h4><%=facility.name%></h4>
+            </div>
+            <p class="leading-6">
+              <%=facility.description%>
+            </p>
+          </div>
+          <%
+          });
+          %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col py-20 gap-8">
+    <div class="flex gap-2">
+      <div class="bg-tertiary w-3"></div>
+      <h1 class="font-bold text-primary"><%=facilitiesTranslation.galleryLabel%></h1>
+    </div>
+    <div class="grid grid-rows grid-cols-1 md:grid-cols-3 gap-2">
+      <%
+      facilitiesImagesList.forEach((facilityImage) => {
+      %>
+      <div class="hover-box">
+        <img src="<%=facilityImage.imageUrl%>" alt="" class="w-full h-full object-cover" />
+        <div class="absolute w-full text-white bottom-8 px-4">
+          <h1 class="bi bi-zoom-in text-center text-6xl w-full"></h1>
+        </div>
+        <span></span>
+      </div>
+      <%
+      });
+      %>
+      <!-- <div class="hover-box">
+        <img src="/img/facilities/facility-2-labs.JPG" alt="" class="w-full h-full object-cover" />
+        <div class="absolute w-full text-white bottom-8 px-4">
+          <h1 class="bi bi-zoom-in text-center text-6xl w-full"></h1>
+        </div>
+        <span></span>
+      </div>
+      <div class="hover-box">
+        <img src="/img/facilities/facility-polyclinic.jpeg" alt="" class="w-full h-full object-cover" />
+        <div class="absolute w-full text-white bottom-8 px-4">
+          <h1 class="bi bi-zoom-in text-center text-6xl w-full"></h1>
+        </div>
+        <span></span>
+      </div>
+      <div class="hover-box">
+        <img src="/img/facilities/facility-workshop-1.JPG" alt="" class="w-full h-full object-cover" />
+        <div class="absolute w-full text-white bottom-8 px-4">
+          <h1 class="bi bi-zoom-in text-center text-6xl w-full"></h1>
+        </div>
+        <span></span>
+      </div>
+      <div class="hover-box">
+        <img src="/img/facilities/facility-auditorium-giri.jpg" alt="" class="w-full h-full object-cover" />
+        <div class="absolute w-full text-white bottom-8 px-4">
+          <h1 class="bi bi-zoom-in text-center text-6xl w-full"></h1>
+        </div>
+        <span></span>
+      </div>
+      <div class="hover-box">
+        <img src="/img/facilities/facility-herjan-rectorate.jpg" alt="" class="w-full h-full object-cover" />
+        <div class="absolute w-full text-white bottom-8 px-4">
+          <h1 class="bi bi-zoom-in text-center text-6xl w-full"></h1>
+        </div>
+        <span></span>
+      </div> -->
+    </div>
+  </div>
+
+  <%- include('../../sections/footer') %> 
+  <%- include('../../components/chatWidget') %>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <!-- <div id="caption"></div> -->
+  </div>
+</body>
+
+<script src="/js/navbarUtils.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const welcomeText = document.querySelector(".welcome-text__facilities span");
+    welcomeText.style.width = "30rem";
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+
+    document.querySelectorAll('.hover-box').forEach(function(img) {
+      img.addEventListener('click', function() {
+        modal.style.display = "block";
+
+        const clickedElement = event.target;
+        const targetImage = clickedElement.closest('.hover-box').querySelector('img');
+        
+        modalImg.src = targetImage.src.replace('hover-box', 'large'); // Assuming you have large versions with a naming convention
+        // captionText.innerHTML = this.alt;
+      });
+    });
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+  });
+
+  const collapsibleClass = ".collapsible-section__facility";
+
+  const collapsible = document.querySelectorAll(collapsibleClass);
+  collapsible.forEach((item) => {
+    item.addEventListener("mouseup", () => {
+      const targetElement = event.target.closest(collapsibleClass);
+      if (targetElement) {
+        const targetCollapse = targetElement.querySelector("p");
+        const targetCollapseIcon = targetElement.querySelector("i");
+
+        if (targetCollapse.style.maxHeight && targetCollapse.style.maxHeight !== "0px") {
+          targetCollapse.style.maxHeight = "0px";
+          targetCollapse.style.marginBottom = "0px";
+          targetCollapseIcon.style.transform = "rotate(0deg)";
+        } else {
+          targetCollapse.style.maxHeight = targetCollapse.scrollHeight + "px";
+          targetCollapse.style.marginBottom = "1rem";
+          targetCollapseIcon.style.transform = "rotate(90deg)";
+        }
+      }
+    });
+  });
+</script>
+
+</html>

@@ -1,0 +1,56 @@
+{
+	"title": "Facilities",
+	"subTitle": "MODERN FACILITIES TO ENHANCE YOUR LEARNING EXPERIENCE",
+	"galleryLabel": "Gallery",
+	"paragraph": "Our campus offers state-of-the-art classrooms, fully equipped laboratories, and a comprehensive library designed to provide an optimal learning environment. Additionally, we offer a variety of recreational and fitness facilities, including a modern gym, sports fields, and a comfortable student lounge. Our goal is to create a holistic experience that supports both academic and personal growth. Explore the various facilities available to you and see how they contribute to a dynamic and vibrant campus life. Your success is our priority, and our facilities are here to support you every step of the way.",
+	"facilities": [
+		{
+			"name": "HERJAN KENASIN RECTORATE BUILDING",
+			"description": "The Herjan Kenasin Rectorate Building is a key administrative and leadership center at the Indonesian Land Transportation Polytechnic - STTD, Bekasi. This building not only serves as the office for campus leaders but also as a place for various administrative and strategic activities in developing academic and non-academic policies. As an administrative hub, the Herjan Kenasin Rectorate Building provides space for the management team and administrative staff to effectively run the campus. It also hosts important meetings between the leadership, faculty, staff, students, and external stakeholders, ensuring the alignment of campus objectives with its vision and mission in developing human resources in land transportation. It stands as a symbol of the strength and sustainability of PTDI-STTD, driving progress in education and innovation in land transportation."
+		},
+		{
+			"name": "GIRI S. HADIHARDJONO AUDITORIUM",
+			"description": "The Giri S. Hadihardjono Auditorium is a major landmark at the Indonesian Land Transportation Polytechnic - STTD, Bekasi. It serves as a venue for various academic and non-academic events, such as seminars, conferences, public lectures, and cultural activities. With modern facilities and large capacity, the auditorium offers an ideal setting for campus-wide events and community-based activities. It is also used for significant occasions like graduation ceremonies and social gatherings, symbolizing the pride of PTDI-STTD for its contribution to land transportation development in Indonesia."
+		},
+		{
+			"name": "GARUDA HALL",
+			"description": "Garuda Hall is one of the main facilities at the Indonesian Land Transportation Polytechnic - STTD, Bekasi, playing a vital role in supporting academic and non-academic activities. The name 'Garuda' symbolizes national pride and high aspirations. Garuda Hall is often used for public lectures, cultural performances, and large meetings, serving as a space for collaboration and inspiration in land transportation education. It is an important venue for fostering PTDI-STTD’s community spirit and academic growth."
+		},
+		{
+			"name": "ACADEMIC BUILDINGS",
+			"description": "The Academic Buildings at PTDI-STTD, Bekasi, are crucial for supporting academic activities in various land transportation disciplines. These buildings house the study programs for Land Transportation, Road Transport Management, Rail Transport Management, Automotive Engineering Technology, and Applied Masters programs. Each building is equipped with study rooms, faculty offices, laboratories, and classrooms to support teaching and learning activities, fostering collaboration between students, faculty, and staff in developing knowledge and skills in land transportation."
+		},
+		{
+			"name": "LIBRARY",
+			"description": "The library houses a wide range of books across various fields, including science, social studies, and general knowledge. Equipped with a modern management system, the library makes it easy to search for and borrow books. The library also offers access to online journals and e-books, expanding students' access to the latest academic resources in land transportation. It is integrated with the computer and language labs, providing a comprehensive learning environment."
+		},
+		{
+			"name": "SPORTS FACILITIES",
+			"description": "The sports facilities at PTDI-STTD include both indoor and outdoor areas. The indoor sports hall, Sugihardjo Sports Hall, features futsal, badminton, and volleyball courts, as well as a gym and spectator stands. Outdoor facilities include basketball, futsal, tennis, football fields, and an outdoor gym. These facilities support physical well-being and provide opportunities for various sports activities and competitions."
+		},
+		{
+			"name": "DORMITORIES",
+			"description": "PTDI-STTD provides dormitory facilities for students during their studies. The dorms include Maleo, Cendrawasih, Merak, Rajawali, Elang, Executive Dormitory, and Dadali Dormitory. Equipped with bedrooms, bathrooms, and study spaces, the dormitories offer a supportive environment for students to grow personally, academically, and socially."
+		},
+		{
+			"name": "LABORATORIES",
+			"description": "The laboratories at PTDI-STTD are designed with the latest technology and equipment to support practical learning and research in land transportation. Students can apply theoretical knowledge in practical settings, working on innovations in areas such as rail transportation, traffic management, and automotive technology. These labs are essential for preparing students for real-world challenges in the land transportation industry."
+		},
+		{
+			"name": "CLINIC",
+			"description": "The clinic at PTDI-STTD provides medical services to support the health and well-being of students, staff, and the surrounding community. With competent medical staff and modern equipment, the clinic offers basic health services and preventive care, ensuring the campus community can focus on their academic development while feeling secure in terms of their health."
+		},
+		{
+			"name": "WORKSHOP BUILDING",
+			"description": "The workshop building plays a critical role in PTDI-STTD’s practical curriculum, providing a space for students to apply theoretical knowledge in hands-on activities. It supports the development of technical skills necessary for careers in land transportation and serves as a hub for innovation and technological advancements."
+		},
+		{
+			"name": "CANTEEN",
+			"description": "The canteen is a vital facility that supports the daily life and well-being of the entire campus community. It offers a variety of food and drinks, serving as a social space for students, faculty, and staff to interact, relax, and recharge. The canteen contributes to the overall campus experience, promoting a balance between academic and personal well-being."
+		},
+		{
+			"name": "PRAYER FACILITIES",
+			"description": "The mosque at PTDI-STTD serves as a religious and spiritual center for the campus community. It provides a peaceful environment for daily prayers and religious activities, promoting the values of tolerance, respect, and diversity."
+		}
+	]
+}

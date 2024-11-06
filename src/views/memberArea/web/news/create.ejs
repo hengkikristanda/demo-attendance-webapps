@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<script
+		src="https://cdn.tiny.cloud/1/kvr8t3u1io6m2gtz7dwgok09rt6sfa2bjs7sevw9zfhqydl5/tinymce/7/tinymce.min.js"
+		referrerpolicy="origin"></script>
+	<script src="/js/tinymceConfig.js"></script>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card gap-8 mb-20">
+					<h1 class="title">Add a News</h1>
+					<form
+						method="POST"
+						id="addAlumniForm"
+						action="/member/web/news/add"
+						class="custom-form"
+						enctype="multipart/form-data">
+						<div class="flex flex-row gap-8 border-0">
+							<div class="flex flex-col w-full gap-8 border-0">
+								<div>
+									<label for="newsTitle">News Title</label>
+									<input
+										id="newsTitle"
+										name="newsTitle"
+										type="text"
+										placeholder="Write title here..."
+										maxlength="128"
+										value=""
+										required />
+								</div>
+								<div>
+									<label for="displayImage">Display images</label>
+									<span class="file-name text-sm" id="openBrowseFile">Click to upload image</span>
+									<input
+										name="displayImage"
+										type="file"
+										id="displayImage"
+										accept=".png, .jpg, .jpeg"
+										class="hidden" />
+								</div>
+								<div>
+									<label for="full name">News Content</label>
+									<textarea
+										id="myTextArea"
+										name="content"
+										placeholder="Write content here..."></textarea>
+								</div>
+								<div>
+									<label for="">News Status</label>
+									<select
+										id="newsStatus"
+										name="newsStatus"
+										class="border-0 border-b border-tertiary text-sm outline-none text-gray-700"
+										required>
+										<option selected="true" disabled="disabled" value="">
+											Save as Draft or Publish
+										</option>
+										<option value="draft">Save As Draft</option>
+										<option value="publish">Save and Publish</option>
+									</select>
+								</div>
+								<div class="flex flex-col md:flex-row border-0 gap-4">
+									<button class="btn success w-full md:w-fit" type="submit">Save</button>
+									<a
+										href="javascript:void(0);"
+										id="previewButton"
+										class="hover:bg-tertiary hover:text-white rounded-md text-center w-fit m-0 px-4 font-semibold underline"
+										>Preview</a
+									>
+									<a
+										href="/member/web/news"
+										class="hover:bg-red-800 hover:text-white rounded-md text-center w-fit m-0 px-4 font-semibold underline"
+										>Discard Changes</a
+									>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<%- include('../../commonSection/alertModal') %>
+	<script>
+		const openBrowseFile = document.getElementById("openBrowseFile");
+		const displayImage = document.getElementById("displayImage");
+
+		openBrowseFile.addEventListener("mouseup", () => {
+			displayImage.click();
+		});
+
+		// When the file input changes, update the displayed file name
+		displayImage.addEventListener("change", function () {
+			const fileName =
+				displayImage.files.length > 0 ? displayImage.files[0].name : "No file chosen";
+			openBrowseFile.textContent = fileName;
+		});
+
+		document.getElementById("previewButton").addEventListener("click", function () {
+			// Get the TinyMCE content
+			const content = tinymce.get("myTextArea").getContent();
+
+			// Get other form fields
+			const title = document.querySelector('input[name="newsTitle"]').value;
+			const status = document.querySelector('select[name="newsStatus"]').value;
+			const displayImage = document.querySelector('input[name="displayImage"]').files[0];
+
+			// Create a form data object to send to the server
+			const formData = new FormData();
+			formData.append("title", title);
+			formData.append("content", content);
+			formData.append("status", status);
+
+			if (displayImage) {
+				const reader = new FileReader();
+				reader.onload = function (e) {
+					// Append the image data URL to the formData
+					formData.append("imageDataUrl", e.target.result);
+
+					// Send the form data to the server
+					sendPreviewRequest(formData);
+				};
+
+				// Read the image file
+				reader.readAsDataURL(displayImage);
+			} else {
+				// If no image is selected, send the form data without image
+				sendPreviewRequest(formData);
+			}
+
+			// Function to send the form data to the preview route
+			function sendPreviewRequest(formData) {
+				fetch("/member/web/news/preview", {
+					method: "POST",
+					body: formData,
+				})
+					.then((response) => response.text())
+					.then((html) => {
+						// Open the preview in a new window
+						const previewWindow = window.open();
+						previewWindow.document.write(html);
+						previewWindow.document.close();
+					});
+			}
+		});
+	</script>
+</html>

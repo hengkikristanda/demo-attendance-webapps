@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../sections/head') %>
+
+	<body>
+		<%- include('../../sections/navbar') %>
+
+		<div class="max-w-screen-2xl mx-auto">
+			<section>
+				<div class="flex flex-col gap-6 px-4">
+						<%
+						if (typeof newsData !== 'undefined') {
+						%>
+							<div class="flex flex-col w-fit mt-20">
+								<h1 class="font-bold text-secondary"><%= newsSectionTranslation.title %></h1>
+								<hr class="h-2 w-1/2 bg-tertiary" />
+							</div>
+							<div class="grid grid-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-12 mb-24">
+						<%
+							newsData.forEach((news) => {
+							%>
+								<a class="info-card__home" href="/news/<%=news.id%>">
+									<div class="info-card-img__container h-36 max-h-36">
+										<img src="<%=news.imageUrl%>" class="object-center">
+									</div>
+									<p><%=news.title%></p>
+									<span><%=news.lastModified%></span>
+								</a>
+							<%
+							});
+							%>
+							</div>
+							<%
+						} else if (typeof publishedNews !== 'undefined') {
+						%>
+							<div class="flex flex-col mt-28 mb-20 mx-4 md:mx-16">
+								<h1 class="text-4xl md:text-5xl md:w-3/4 font-bold mb-2"><%= publishedNews.title %></h1>
+								<h6 class="mb-6 text-xs font-semibold"><%= publishedNews.lastModified %></h6>
+								<div class="flex">
+									<div class="flex md:justify-start md:w-3/4 max-h-[30rem]">
+										<% if (publishedNews.imageUrl) { %>
+										<img
+											src="<%= publishedNews.imageUrl %>"
+											alt=""
+											class="max-w-full object-contain object-center md:object-left" />
+										<% } else { %>
+										<div>No image uploaded.</div>
+										<% } %>
+									</div>
+								</div>
+								<div class="flex flex-col md:flex-row">
+									<div class="w-full md:w-3/4 article"><%- publishedNews.content %></div>
+									<div
+										class="flex md:flex-col w-full md:w-1/4 my-8 pl-12 border-l border-tertiary h-fit items-center md:items-start gap-4 md:gap-0">
+										<h6 class="text-sm font-semibold">Share this</h6>
+										<div class="flex gap-2">
+											<a href="#" class="text-lg p-0 text-tertiary bi bi-facebook"></a>
+											<a href="#" class="text-lg p-0 text-tertiary bi bi-twitter-x"></a>
+											<a href="#" class="text-lg p-0 text-tertiary bi bi-linkedin"></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						<%
+						}
+						%>
+					
+
+				</div>
+			</section>
+
+			<%- include('../../sections/footer') %> 
+            <%- include('../../components/chatWidget') %>
+		</div>
+	</body>
+
+	<script src="/js/navbarUtils.js"></script>
+	<script src="/js/CommonUtils.js"></script>
+</html>

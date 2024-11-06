@@ -58,7 +58,7 @@
 					"subMenus": [
 						{
 							"label": "Magister Pemasaran, Inovasi, dan Teknologi",
-							"href": "/s2-pemasaran-inovasi-teknologi"
+							"href": "/post-graduate/marketing-innovation-technology"
 						},
 						{
 							"label": "Magister Teknik Keselamatan dan Resiko",
@@ -72,7 +72,7 @@
 				},
 				{
 					"label": "Dosen",
-					"href": "/dosen"
+					"href": "/lecturers"
 				}
 			]
 		},
@@ -90,7 +90,7 @@
 			"subMenus": [
 				{
 					"label": "Berita",
-					"href": "/berita"
+					"href": "/news"
 				},
 				{
 					"label": "PPID",

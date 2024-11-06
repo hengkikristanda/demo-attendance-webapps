@@ -68,7 +68,7 @@ router.get("/", (req, res) => {
 	});
 });
 
-router.get("/s2-pemasaran-inovasi-teknologi", (req, res) => {
+router.get("//post-graduate/marketing-innovation-technologyi", (req, res) => {
 	let selectedLanguage = req.query.lang;
 	if (selectedLanguage == undefined) {
 		selectedLanguage = "id";
@@ -124,7 +124,7 @@ router.get("/s2-pemasaran-inovasi-teknologi", (req, res) => {
 	const study = translations.menus[1].subMenus[1].subMenus[1].label;
 	const pageTitle = `${department} - ${study}`;
 
-	res.render("akademik/s2-pemasaran-inovasi-teknologi", {
+	res.render("akademik//post-graduate/marketing-innovation-technologyi", {
 		title: pageTitle,
 		study,
 		selectedLanguage,

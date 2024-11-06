@@ -1,0 +1,34 @@
+<section id="alumnies">
+	<div class="flex flex-col md:px-16 gap-8 reveal fade-right">
+		<div class="flex justify-between items-end">
+			<div class="flex gap-2">
+				<div class="bg-tertiary w-3"></div>
+				<h1 class="font-semibold text-primary"><%= alumnies.title %></h1>
+			</div>
+			<a href="/alumni" class="underline text-tertiary font-semibold py-0 px-4 md:px-0">
+				<%= alumnies.href %>
+			</a>
+		</div>
+
+		<div class="grid grid-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-between reveal fade-up with-delay gap-12 md:gap-0">
+			
+
+
+			<%
+			firstFourAlumni.forEach((alumni) => {
+			
+			%>
+
+			<div class="flex flex-col items-center text-center">
+				<div class="w-56 mb-4">
+					<img src="<%= alumni.imageUrl %>" class="w-32 h-32 object-cover rounded-full mx-auto object-top">
+				</div>
+				<h6 class="font-bold text-secondary"><%= alumni.fullName %></h6>
+			</div>
+
+			<%
+			});
+			%>
+		</div>
+	</div>
+</section>

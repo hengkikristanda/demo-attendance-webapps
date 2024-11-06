@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card">
+					<div class="layout-card__header">
+						<div class="flex flex-col justify-between gap-4">
+							<h1 class="title">News</h1>
+							<% if (typeof responseMessage !== 'undefined') { %>
+							<p class="badge-admin <%= responseMessageClass %>"><%= responseMessage %></p>
+							<% } %>
+							<input id="searchInput" type="text" class="max-w-96" placeholder="Search news..." />
+							<div class="flex justify-between">
+								<a href="news/add" class="btn success group"
+									><i class="add-ico remix white icon-md group-hover:bg-tertiary"></i>Create News</a
+								>
+							</div>
+						</div>
+					</div>
+					<table id="newsTable" class="overflow-x-scroll editable table-auto">
+						<thead>
+							<tr>
+								<th class="action">&nbsp;</th>
+								<th class="title">Title</th>
+								<th class="date">Published Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% newsList.forEach((news) => { %>
+							<tr class="group">
+								<td class="action">
+									<a class="delete-row" id="<%=news.id%>"
+										><i class="delete-bin remix secondary icon-xs"></i
+									></a>
+									<a href="/member/web/news/<%=news.id%>/update"
+										><i class="pencil-edit remix secondary icon-xs"></i
+									></a>
+								</td>
+								<td class="title">
+									<p><%=news.title%></p>
+								</td>
+								<td class="date"><%=news.lastModified%></td>
+							</tr>
+							<% }); %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+	<%- include('../../commonSection/alertModal') %>
+	<script>
+		const newsTable = document.getElementById("newsTable");
+		const rows = document.querySelectorAll(".delete-row");
+		rows.forEach((row, index) => {
+			row.addEventListener("mouseup", () => openModal(index, `/member/web/news/${row.id}/delete`));
+		});
+
+		function filterTable() {
+			// Get the search input value
+			const input = document.getElementById("searchInput").value.toLowerCase();
+			const table = document.getElementById("newsTable");
+			const rows = table.getElementsByTagName("tr");
+
+			// Loop through all table rows (except the first, which contains headers)
+			for (let i = 1; i < rows.length; i++) {
+				let titleCell = rows[i].getElementsByTagName("td")[1];
+				let categoryCell = rows[i].getElementsByTagName("td")[2];
+				let dateCell = rows[i].getElementsByTagName("td")[3];
+
+				if (titleCell || categoryCell || dateCell) {
+					let titleText = titleCell.textContent.toLowerCase();
+					let categoryText = categoryCell.textContent.toLowerCase();
+					let dateText = dateCell.textContent.toLowerCase();
+
+					// If the text matches either the title or category, show the row, otherwise hide it
+					if (
+						titleText.includes(input) ||
+						categoryText.includes(input) ||
+						dateText.includes(input)
+					) {
+						rows[i].style.display = "";
+					} else {
+						rows[i].style.display = "none";
+					}
+				}
+			}
+		}
+
+		const searchInput = document.getElementById("searchInput");
+		searchInput.addEventListener("keyup", filterTable);
+	</script>
+</html>

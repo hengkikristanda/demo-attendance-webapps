@@ -1,0 +1,14 @@
+{
+	"title": "公共のコメント",
+	"subTitle": "皆様のご意見をお聞かせください！ご意見やレビューを共有していただくことで、皆様の体験をより良くしていきます。",
+	"nameLabel": "氏名",
+	"emailLabel": "メールアドレス",
+	"phoneLabel": "電話番号",
+	"commentLabel": "コメント",
+	"namePlaceholder": "あなたの氏名",
+	"emailPlaceholder": "あなたのメールアドレス",
+	"phonePlaceholder": "あなたの電話番号",
+	"commentPlaceholder": "ここにコメントを書いてください",
+	"submitLabel": "送信",
+	"yourCommentLabel": "コメント"
+}

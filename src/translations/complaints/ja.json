@@ -1,0 +1,21 @@
+{
+	"title": "苦情",
+	"subTitle": "皆様からのご意見をお聞かせください！皆様のフィードバックやレビューを共有していただくことで、体験を向上させるお手伝いができます。",
+	"nameLabel": "氏名",
+	"emailLabel": "メールアドレス",
+	"phoneLabel": "電話番号",
+	"complaintLabel": "苦情内容",
+	"namePlaceholder": "氏名",
+	"emailPlaceholder": "メールアドレス",
+	"phonePlaceholder": "電話番号",
+	"complaintPlaceholder": "ここに苦情内容を記入してください",
+	"attachmentFileLabel": "添付ファイル",
+	"selectFileLabel": "ファイルを選択",
+	"submitLabel": "送信",
+	"chatUs": "チャットでお問い合わせ",
+	"chatUsLabel": "フレンドリーなスタッフがサポートいたします。",
+	"visitUs": "訪問する",
+	"visitUsLabel": "キャンパスに遊びに来てください。",
+	"callUs": "お電話ください",
+	"callUsLabel": "月曜〜金曜、午前8時から午後5時まで。"
+}

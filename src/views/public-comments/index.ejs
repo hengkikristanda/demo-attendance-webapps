@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../sections/head') %>
+
+	<body>
+		<%- include('../sections/navbar') %>
+
+		<div class="max-w-screen-2xl mx-auto">
+			<div class="page-header w-full my-20"></div>
+
+			<section>
+				<div class="flex flex-col gap-6 px-4">
+					<% if (responseMessage) { %>
+					<h6 class="badge success"><%= responseMessage %></h6>
+					<% } %>
+					<div id="publicCommentTitle" class="flex flex-col w-fit">
+						<h1 class="font-bold text-secondary"><%= publicCommentsTranslation.title %></h1>
+						<hr class="h-2 w-1/2 bg-tertiary" />
+					</div>
+					<h5 class="text-secondary mb-8"><%= publicCommentsTranslation.subTitle %></h5>
+					<div class="flex flex-col md:flex-row justify-between gap-32">
+						<form
+							class="myform flex flex-col w-full md:w-1/2"
+							method="POST"
+							id="commentForm"
+							action="/public-comments">
+							<div>
+								<label for="full name"><%= publicCommentsTranslation.nameLabel %></label>
+								<input
+									name="fullName"
+									type="text"
+									placeholder="<%= publicCommentsTranslation.namePlaceholder %>"
+									maxlength="128"
+									required />
+							</div>
+							<div>
+								<label for="email address"><%= publicCommentsTranslation.emailLabel %></label>
+								<input
+									name="emailAddress"
+									type="email"
+									placeholder="<%= publicCommentsTranslation.emailPlaceholder %>"
+									maxlength="128"
+									required />
+							</div>
+							<div>
+								<label for="phone number"><%= publicCommentsTranslation.phoneLabel %></label>
+								<input
+									id="phoneNumber"
+									name="phoneNumber"
+									type="tel"
+									maxlength="16"
+									placeholder="<%= publicCommentsTranslation.phonePlaceholder %>"
+									required />
+							</div>
+							<div>
+								<label for="comment"><%= publicCommentsTranslation.commentLabel %></label>
+								<textarea
+									maxlength="250"
+									name="comment"
+									placeholder="<%= publicCommentsTranslation.commentPlaceholder %>"
+									required></textarea>
+							</div>
+							<button class="btn success w-full md:w-1/4" type="submit">
+								<%= publicCommentsTranslation.submitLabel %>
+							</button>
+						</form>
+						<div class="flex flex-col w-full md:w-1/2 gap-8">
+							<div class="flex flex-col items-start gap-4">
+								<div class="flex gap-2 md:hidden">
+									<div class="bg-tertiary w-3"></div>
+									<h2 class="font-bold text-primary">
+										<%= publicCommentsTranslation.yourCommentLabel %>
+									</h2>
+								</div>
+
+								<div id="commentContainer" class="flex flex-col gap-4 w-full"></div>
+
+								<div class="nav-buttons">
+									<button id="slideLeftButton" disabled>
+										<h4 class="bi bi-arrow-left-short"></h4>
+									</button>
+									<button id="slideRightButton" disabled>
+										<h4 class="bi bi-arrow-right-short"></h4>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<%- include('../sections/footer') %> <%- include('../components/chatWidget') %>
+		</div>
+	</body>
+
+	<script src="/js/navbarUtils.js"></script>
+	<script src="/js/CommonUtils.js"></script>
+	<script src="/js/public-comments/index.js"></script>
+
+	<script>
+
+		function paginateArray(items, currentPage, itemsPerPage) {
+			const startIndex = (currentPage - 1) * itemsPerPage;
+
+			const endIndex = startIndex + itemsPerPage;
+
+			const paginatedItems = items.slice(startIndex, endIndex);
+
+			return paginatedItems;
+		}
+
+		function renderComment(contentData) {
+			let commentComponent = [];
+
+			for (let n=0; n<contentData.length; n++) {
+				commentComponent.push(`<div class="flex flex-col bg-tertiary/5 rounded-md px-4 py-8 w-full shadow-md gap-4">`,
+											`<div class="flex justify-between items-end">`,
+												`<h5 class="font-bold text-tertiary">${contentData[n].fullName}</h5>`,
+												`<p class="text-primary text-xs">${contentData[n].createdDate}</p>`,
+											`</div>`,
+											`<p class="text-info">${contentData[n].commentText}</p>`,
+										`</div>`);
+			}
+
+			return commentComponent.join("");
+		}
+
+		function disableArrow(targetButton) {
+			if (targetButton.disabled) {
+				targetButton.disabled = false;
+			} else {
+				targetButton.disabled = true;
+			}
+		}
+
+		let commentsData = <%- JSON.stringify(commentsData) %>;
+
+		let currentPage = 1;
+		let itemsPerPage = 4;
+		let numberOfPage = Math.ceil(commentsData.length / itemsPerPage);
+
+		let currentPageItems = paginateArray(commentsData, currentPage, itemsPerPage);
+
+		let renderedComments = renderComment(currentPageItems);
+		const commentContainer = document.getElementById("commentContainer");
+		commentContainer.innerHTML = renderedComments;
+
+		const publicCommentTitle = document.getElementById("publicCommentTitle");
+
+		const slideLeftButton = document.getElementById("slideLeftButton");
+		const slideRightButton = document.getElementById("slideRightButton");
+
+		if (currentPage == 1) {
+			if (!slideLeftButton.disabled) {
+				slideLeftButton.disabled = true;
+			}
+			if (numberOfPage > 1 && slideRightButton.disabled) {
+				slideRightButton.disabled = false;
+			}
+		}
+
+
+		slideRightButton.addEventListener("mouseup", (ev) => {
+		if (currentPage < numberOfPage){
+			currentPage++;
+		}
+
+		if (currentPage == numberOfPage){
+			if (!slideRightButton.disabled)
+				slideRightButton.disabled = true;
+		}
+
+		if (slideLeftButton.disabled)
+				slideLeftButton.disabled = false;
+
+		let paginatedItems = paginateArray(commentsData, currentPage, itemsPerPage);
+		renderedComments = renderComment(paginatedItems);
+		commentContainer.innerHTML = renderedComments;
+
+		publicCommentTitle.scrollIntoView({
+				behavior: 'auto'
+			});
+		})
+
+		slideLeftButton.addEventListener("mouseup", () => {
+		if (currentPage > 1){
+			currentPage--;
+		}
+
+		if (currentPage == 1){
+			if (!slideLeftButton.disabled)
+				slideLeftButton.disabled = true;
+		}
+
+		if (slideRightButton.disabled)
+				slideRightButton.disabled = false;
+
+		let paginatedItems = paginateArray(commentsData, currentPage, itemsPerPage);
+		renderedComments = renderComment(paginatedItems);
+		commentContainer.innerHTML = '';
+		commentContainer.innerHTML = renderedComments;
+
+		publicCommentTitle.scrollIntoView({
+				behavior: 'auto'
+			});
+		})
+	</script>
+</html>

@@ -1,0 +1,21 @@
+{
+	"headerTitle": "History",
+	"pageTitle": "History of the Establishment of PTDI STTD",
+	"timeline": [
+		{
+			"date": "September, 1951",
+			"event": "Establishment of the Traffic Academy (ALL)",
+			"detail": "The Indonesian Land Transportation Polytechnic is a higher education institution under the Ministry of Transportation. The precursor to the Land Transportation College started with the establishment of the Traffic Academy (ALL) on September 8, 1951, by President Ir. H. Soekarno. Due to certain reasons, ALL was not operational or conducting activities in 1964."
+		},
+		{
+			"date": "December, 1980",
+			"event": "Reactivation of the Traffic Academy",
+			"detail": "Considering the growth of traffic, the development of road transportation technology, and the complexity of road traffic issues, the idea of reactivating the Traffic Academy emerged. On December 5, 1980, the Traffic Academy was reactivated under the name Road Traffic Transportation Expert Training and Education Center (BPL-ALLAJR), although it was still referred to as the Traffic Academy. BPL-ALLAJR only offered a Diploma III program for LLAJR experts."
+		},
+		{
+			"date": "March, 2000",
+			"event": "BPL-ALLAJR becomes STTD",
+			"detail": "In an effort to meet the need for higher qualifications of experts and the development of the existing education system, on March 10, 2000, with Presidential Decree No. 41 of 2000, BPL-ALLAJR was elevated to the status of Land Transportation College (STTD) and later upgraded to the Indonesian Land Transportation Polytechnic - STTD. This polytechnic offers 2 Diploma III programs, 2 Applied Bachelor programs, and 2 Applied Master programs."
+		}
+	]
+}

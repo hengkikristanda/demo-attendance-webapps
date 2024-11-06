@@ -58,11 +58,11 @@
 					"subMenus": [
 						{
 							"label": "Master in Marketing, Innovation and Technology",
-							"href": "/s2-pemasaran-inovasi-teknologi"
+							"href": "/post-graduate/marketing-innovation-technology"
 						},
 						{
 							"label": "Master in Safety and Risk Engineering",
-							"href": "/s2-teknik-keselamatan-resiko"
+							"href": "/post-graduate/safety-risk"
 						}
 					]
 				},
@@ -72,7 +72,7 @@
 				},
 				{
 					"label": "Lecturers",
-					"href": "/dosen"
+					"href": "/lecturers"
 				}
 			]
 		},
@@ -90,7 +90,7 @@
 			"subMenus": [
 				{
 					"label": "News",
-					"href": "/berita"
+					"href": "/news"
 				},
 				{
 					"label": "PPID",

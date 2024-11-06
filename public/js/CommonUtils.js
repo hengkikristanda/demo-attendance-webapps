@@ -249,3 +249,26 @@ function handleFilterTable(tableId) {
 	});
 }
 
+function enforceNumberInput() {
+	this.value = this.value.replace(/[^0-9]/g, "");
+}
+
+function enforceNumberInputOnCopyPaste(e) {
+	e.preventDefault();
+	let pastedText = (e.clipboardData || window.clipboardData).getData("text");
+	this.value = pastedText.replace(/[^0-9]/g, "");
+}
+
+function enforcePhoneNumber(input) {
+	// Remove any character that is not a digit
+	let cleaned = ("" + input.value).replace(/\D/g, "");
+
+	// Match the cleaned number to the pattern (XXX) XXX-XXXX
+	let match = cleaned.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
+
+	if (match) {
+		input.value = !match[2]
+			? match[1]
+			: "(" + match[1] + ") " + match[2] + (match[3] ? "-" + match[3] : "");
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"title": "投诉",
+	"subTitle": "我们很想听到您的意见！分享您的反馈和评论，帮助我们提升您的体验。",
+	"nameLabel": "全名",
+	"emailLabel": "电子邮件地址",
+	"phoneLabel": "电话号码",
+	"complaintLabel": "您的投诉",
+	"namePlaceholder": "您的全名",
+	"emailPlaceholder": "您的电子邮件地址",
+	"phonePlaceholder": "您的电话号码",
+	"complaintPlaceholder": "在此写下您的投诉",
+	"attachmentFileLabel": "附件文件",
+	"selectFileLabel": "选择文件",
+	"submitLabel": "提交",
+	"chatUs": "联系我们",
+	"chatUsLabel": "我们友好的团队随时为您提供帮助。",
+	"visitUs": "访问我们",
+	"visitUsLabel": "欢迎到我们的校园来打个招呼。",
+	"callUs": "致电我们",
+	"callUsLabel": "周一至周五，上午8点至下午5点。"
+}

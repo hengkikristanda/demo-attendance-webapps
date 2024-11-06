@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card gap-8">
+					<h1 class="title">Add New Alumni</h1>
+					<form
+						class="myform flex w-full"
+						method="POST"
+						id="addAlumniForm"
+						action="/member/web/alumni/add"
+						enctype="multipart/form-data">
+						<div id="alumniImageContainer" class="flex flex-col w-full md:w-fit border-0">
+							<div class="w-60 max-w-60 min-w-60 min-h-72 max-h-72 border-2 border-gray-300">
+								<img
+									id="alumniPhoto"
+									src="https://placehold.co/800x600"
+									alt=""
+									class="object-contain w-full h-full" />
+							</div>
+							<p
+								id="openBrowseFile"
+								class="text-center font-semibold text-tertiary underline cursor-pointer">
+								Click to change picture
+							</p>
+							<input id="profilePictureFile" name="profilePictureFile" type="file" class="hidden" />
+						</div>
+						<div class="flex flex-col w-full md:w-full gap-4 border-0">
+							<div>
+								<label for="full name">Full Name</label>
+								<input
+									name="fullName"
+									type="text"
+									placeholder="Alumni full name with academic title"
+									maxlength="128"
+									value=""
+									required />
+							</div>
+							<div>
+								<label for="email address">Year Class</label>
+								<input
+									name="generation"
+									type="text"
+									placeholder="Alumni year class"
+									maxlength="16"
+									value=""
+									required />
+							</div>
+							<div>
+								<label for="phone number">Current Job Position</label>
+								<input
+									id="phoneNumber"
+									name="jobPosition"
+									type="text"
+									placeholder="Alumni current job position"
+									maxlength="128"
+									value=""
+									required />
+							</div>
+							<div>
+								<label for="phone number">Display Order</label>
+								<input
+									id="displayOrder"
+									name="displayOrder"
+									type="text"
+									placeholder="Display Order"
+									maxlength="3"
+									size="3"
+									value=""
+									required />
+							</div>
+							<div class="flex flex-col md:flex-row border-0 gap-4">
+								<button class="btn success w-full md:w-fit" type="submit">Submit Changes</button>
+								<a
+									href="/member/web/alumni"
+									class="hover:bg-red-800 hover:text-white rounded-md text-center w-fit m-0 px-4 font-semibold underline"
+									>Discard Changes</a
+								>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="/js/CommonUtils.js"></script>
+	<script>
+		const openBrowseFile = document.getElementById("openBrowseFile");
+		const profilePictureFile = document.getElementById("profilePictureFile");
+		openBrowseFile.addEventListener("mouseup", () => {
+			profilePictureFile.click();
+		});
+		document.getElementById("profilePictureFile").addEventListener("change", function (event) {
+			const file = event.target.files[0];
+			if (file) {
+				const reader = new FileReader();
+				reader.onload = function (e) {
+					document.getElementById("alumniPhoto").src = e.target.result;
+				};
+				reader.readAsDataURL(file);
+			}
+		});
+		const displayOrder = document.getElementById("displayOrder");
+		displayOrder.addEventListener("input", enforceNumberInput);
+		displayOrder.addEventListener("paste", enforceNumberInputOnCopyPaste);
+	</script>
+</html>

@@ -1,0 +1,115 @@
+{
+	"title": "Diklat",
+	"paragraph": "<p>Di tengah dinamika perkembangan transportasi yang semakin pesat, Politeknik Transportasi Darat Indonesia-STTD hadir sebagai lembaga pendidikan unggulan yang berkomitmen untuk mencetak generasi profesional di bidang transportasi. Halaman ini, khusus untuk program Diklat (Pendidikan dan Pelatihan), dirancang untuk memberikan informasi lengkap dan terkini mengenai berbagai program pelatihan yang kami tawarkan. Kami percaya bahwa pendidikan bukan hanya tentang teori, tetapi juga tentang pengalaman praktis yang dapat mempersiapkan Anda menghadapi tantangan di dunia kerja. Melalui program Diklat kami, peserta akan dibekali dengan keterampilan dan pengetahuan yang relevan, mulai dari aspek teknis hingga manajerial dalam sektor transportasi. Dengan semangat untuk inovasi dan profesionalisme, kami siap mendampingi Anda dalam perjalanan menuju kesuksesan. Bergabunglah dengan kami dan jadilah bagian dari transformasi dunia transportasi yang lebih baik!</p>",
+	"cta": "informasi Pendaftaran",
+	"trainings": [
+		{
+			"title": "DIKLAT TEKNIS PENYUSUNAN ANDALALIN",
+			"description": "Mampu menyusun Dokumen Analisis Dampak Lalu Lintas."
+		},
+		{
+			"title": "DIKLAT TEKNIS PENILAIAN ANDALALIN",
+			"description": "Mampu Menilai Dokumen Analisis Dampak Lalu Lintas."
+		},
+		{
+			"title": "DIKLAT TEKNIS PENGELOLA APILL",
+			"description": "Mampu Melakukan Setting APILL dan Data Lalu Lintas."
+		},
+		{
+			"title": "DIKLAT TEKNIS MANAJEMEN SURVEY LALU LINTAS",
+			"description": "Mampu Mengumpulkan dan Mengolah Data Lalu Lintas."
+		},
+		{
+			"title": "DIKLAT TEKNIS PENGELOLA TERMINAL PENUMPANG",
+			"description": "Mampu Mengelola Terminal Angkutan Penumpang."
+		},
+		{
+			"title": "DIKLAT TEKNIS MANAJEMEN OPERASIONAL UPPKB",
+			"description": "Mampu Melakukan Penimbangan dan Menganalisis Hasil Penimbangan Kendaraan Bermotor."
+		},
+		{
+			"title": "DIKLAT TEKNIS MARKA JALAN",
+			"description": "Mampu Melakukan Aplikasi Marka Jalan."
+		},
+		{
+			"title": "DIKLAT TEKNIS RAMBU LALU LINTAS",
+			"description": "Mampu Merencanakan dan Membuat Rambu."
+		},
+		{
+			"title": "DIKLAT TEKNIS PENGEMUDI ANGKUTAN UMUM",
+			"description": "Mampu Mengemudi dan Menangani Penumpang Angkutan Umum."
+		},
+		{
+			"title": "DIKLAT TEKNIS MANAJEMEN ANGKUTAN UMUM",
+			"description": "Mampu Mengelola Operasional dan Bisnis Angkutan Umum."
+		},
+		{
+			"title": "DIKLAT TEKNIS PPNS POLA 200 JP (UNTUK PEJABAT STRUKTURAL)",
+			"description": "Mampu Melakukan Penyidik Pelanggaran LLAJ."
+		},
+		{
+			"title": "DIKLAT TEKNIS PPNS POLA 400 JP (UNTUK STAFF)",
+			"description": "Mampu Melakukan Penyidikan Pelanggaran LLAJ."
+		},
+		{
+			"title": "DIKLAT TEKNIS PEMBEKALAN KEPALA DINAS PERHUBUNGAN",
+			"description": "Mampu Menyusun Kebijakan Sektor Perhubungan."
+		},
+		{
+			"title": "DIKLAT TEKNIS PEMBEKALAN KEPALA BIDANG PERHUBUNGAN DARAT",
+			"description": "Mampu Menyusun Kebijakan Bidang Perhubungan Darat."
+		},
+		{
+			"title": "DIKLAT TEKNIS ORIENTASI LLAJ",
+			"description": "Mampu Memahami Tugas Pokok Fungsi Bidang LLAJ dengan baik."
+		},
+		{
+			"title": "DIKLAT TEKNIS PKB DASAR",
+			"description": "Mampu Mengelola Administrasi dan Pra Uji PKB, Mampu Melakukan Cek Fisik dan Visual Pengujian Kendaraan Bermotor."
+		},
+		{
+			"title": "DIKLAT TEKNIS PENGAWASAN DAN PENGENDALIAN LLAJ",
+			"description": "Mampu Mengatur dan Mengendalikan LLAJ."
+		},
+		{
+			"title": "DIKLAT TEKNIS JALUR DAN BANGUNAN KERETA API",
+			"description": "Mengetahui dan memahami peraturan perundangan di bidang jalur dan bangunan kereta api dan spesifikasi teknis jalur dan bangunan kereta api."
+		},
+		{
+			"title": "DIKLAT TEKNIS FASILITAS OPERASI KERETA API",
+			"description": "Mengetahui dan memahami peraturan perundangn di bidang fasilitas operasi kereta api dan spesifikasi teknis fasilitas operasi kereta api."
+		},
+		{
+			"title": "DIKLAT TEKNIS PERKERETAAPIAN BERPENGGERAK NON LISTRIK",
+			"description": "Memahami dan Mampu menjelaskan peraturan perundangan di bidang sarana kereta api berpenggerak non listrik dan spesifikasi teknis sarana perkeretaapian berpenggerak non listrik."
+		},
+		{
+			"title": "DIKLAT TEKNIS PENGUJIAN JALUR DAN BANGUNAN KERETA API PERTAMA",
+			"description": "Mengetahui dan memahami tata cara dan prosedur pengujian jalur dan bangunan kereta api."
+		},
+		{
+			"title": "DIKLAT TEKNIS PENGUJIAN FASILITAS OPERASI KERETA API PERTAMA",
+			"description": "Mengetahui dan memahami tata cara dan prosedur pengujian fasilitas operasi kereta api dan mengetahui serta memahami spesifikasi teknis fasilitas operasi kereta api."
+		},
+		{
+			"title": "DIKLAT TEKNIS PENGUJIAN SARANA PERKERETAAPIAN BERPENGGERAK NON LISTRIK PERTAMA",
+			"description": "Mampu menjelaskan dan menerapkan tata cara dan prosedur pengujian sarana perkeretaapian penggerak non listrik dan mampu menyusun perencanaan kegiatan pelaksanaan pengujian sarana perkeretaapian."
+		},
+		{
+			"title": "DIKLAT TEKNIS PENJAGA PERLINTASAN SEBIDANG KERETA API",
+			"description": "Mengetahui dan memahami tata cara pengoperasian peralatan pada perlintasan sebidang kereta api dan mengetahui serta memahami peraturan dalam mengatur arus lalu lintas jalan raya."
+		},
+		{
+			"title": "DIKLAT TEKNIS PENYEGARAN MASINIS PERKERETAAPIAN",
+			"description": "Mampu menjelaskan dan menerapkan peraturan perundangan dan mampu mengidentifikasi serta menjelaskan prasarana, sarana dan operasional perkeretaapian."
+		},
+		{
+			"title": "DIKLAT TEKNIS ORIENTASI PERKERETAAPIAN",
+			"description": "Mampu menjelaskan dan menerapkan peraturan perundangan dan mampu mengidentifikasi serta menjelaskan prasarana, sarana dan operasional perkeretaapian."
+		},
+		{
+			"title": "DIKLAT KHUSUS (sesuai kebutuhan STAKEHOLDER)",
+			"description": "Diklat Khusus pengemudi profesional, Diklat Khusus Pemeriksa kendaraan bermotor, Diklat Khusus lalu lintas dan angkutan jalan, Diklat Khusus pengawasan dan pengendalian lalu lintas, Diklat Khusus teknis lainnya yang diperlukan stake holder."
+		}
+	]
+}

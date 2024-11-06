@@ -11,70 +11,70 @@ const { LANGUAGE_CODE } = require("../utils/Constants");
 // Middleware to parse the body of POST requests
 router.use(express.urlencoded({ extended: true }));
 
-router.get("/", (req, res) => {
-	let selectedLanguage = req.query.lang;
-	if (selectedLanguage == undefined) {
-		selectedLanguage = "id";
-	}
+// router.get("/", (req, res) => {
+// 	let selectedLanguage = req.query.lang;
+// 	if (selectedLanguage == undefined) {
+// 		selectedLanguage = "id";
+// 	}
 
-	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
-		selectedLanguage = "id";
+// 	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
+// 		selectedLanguage = "id";
 
-	const translations = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
+// 	const translations = JSON.parse(
+// 		fs.readFileSync(
+// 			path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`),
+// 			"utf8"
+// 		)
+// 	);
 
-	const welcomeTranslation = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/home/welcome/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
+// 	const welcomeTranslation = JSON.parse(
+// 		fs.readFileSync(
+// 			path.join(__dirname, "../translations/home/welcome/", `${selectedLanguage}.json`),
+// 			"utf8"
+// 		)
+// 	);
 
-	const footerTranslation = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/footer/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
+// 	const footerTranslation = JSON.parse(
+// 		fs.readFileSync(
+// 			path.join(__dirname, "../translations/footer/", `${selectedLanguage}.json`),
+// 			"utf8"
+// 		)
+// 	);
 
-	const alumnies = JSON.parse(
-		fs.readFileSync(path.join(__dirname, "../translations/alumnies.json"), "utf8")
-	);
+// 	const alumnies = JSON.parse(
+// 		fs.readFileSync(path.join(__dirname, "../translations/alumnies.json"), "utf8")
+// 	);
 
-	const lecturers = JSON.parse(
-		fs.readFileSync(path.join(__dirname, "../translations/lecturers.json"), "utf8")
-	);
+// 	const lecturers = JSON.parse(
+// 		fs.readFileSync(path.join(__dirname, "../translations/lecturers.json"), "utf8")
+// 	);
 
-	const news = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/berita/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
+// 	const news = JSON.parse(
+// 		fs.readFileSync(
+// 			path.join(__dirname, "../translations/berita/", `${selectedLanguage}.json`),
+// 			"utf8"
+// 		)
+// 	);
 
-	const hero = JSON.parse(
-		fs.readFileSync(path.join(__dirname, "../translations/home-hero/", `homeHero.json`), "utf8")
-	);
+// 	const hero = JSON.parse(
+// 		fs.readFileSync(path.join(__dirname, "../translations/home-hero/", `homeHero.json`), "utf8")
+// 	);
 
-	res.locals.hero = hero[selectedLanguage];
-	res.locals.translations = translations;
-	res.locals.footerTranslation = footerTranslation;
-	res.locals.alumnies = alumnies;
-	res.locals.lecturers = lecturers;
-	res.locals.news = news;
+// 	res.locals.hero = hero[selectedLanguage];
+// 	res.locals.translations = translations;
+// 	res.locals.footerTranslation = footerTranslation;
+// 	res.locals.alumnies = alumnies;
+// 	res.locals.lecturers = lecturers;
+// 	res.locals.news = news;
 
-	res.render("index", {
-		title: "Attendance System - Home",
-		selectedLanguage,
-		welcome: welcomeTranslation,
-	});
-});
+// 	res.render("index", {
+// 		title: "Attendance System - Home",
+// 		selectedLanguage,
+// 		welcome: welcomeTranslation,
+// 	});
+// });
 
-router.get("/s2-pemasaran-inovasi-teknologi", (req, res) => {
+router.get("//post-graduate/marketing-innovation-technologyi", (req, res) => {
 	let selectedLanguage = req.query.lang;
 	if (selectedLanguage == undefined) {
 		selectedLanguage = "id";
@@ -130,7 +130,7 @@ router.get("/s2-pemasaran-inovasi-teknologi", (req, res) => {
 	const study = translations.menus[1].subMenus[1].subMenus[1].label;
 	const pageTitle = `${department} - ${study}`;
 
-	res.render("akademik/s2-pemasaran-inovasi-teknologi", {
+	res.render("akademik//post-graduate/marketing-innovation-technologyi", {
 		title: pageTitle,
 		study,
 		selectedLanguage,
@@ -139,48 +139,6 @@ router.get("/s2-pemasaran-inovasi-teknologi", (req, res) => {
 	});
 });
 
-router.get("/dosen", (req, res) => {
-	let selectedLanguage = req.query.lang;
-	let pageNumber = req.query.page;
-	if (selectedLanguage == undefined) {
-		selectedLanguage = "id";
-	}
-
-	if (pageNumber == undefined) {
-		pageNumber = 1;
-	}
-
-	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
-		selectedLanguage = "id";
-
-	const translations = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
-
-	const footerTranslation = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/footer/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
-
-	const detailDosen = JSON.parse(
-		fs.readFileSync(path.join(__dirname, "../translations/dosen/detailDosen.json"), "utf8")
-	);
-
-	res.locals.translations = translations;
-	res.locals.footerTranslation = footerTranslation;
-	res.locals.detailDosen = detailDosen;
-
-	res.render("dosen", {
-		title: "PTDI STTD - Dosen",
-		selectedLanguage,
-		pageNumber,
-	});
-});
 
 router.get("/comments", (req, res) => {
 	let selectedLanguage = req.query.lang;
@@ -220,44 +178,7 @@ router.get("/comments", (req, res) => {
 	});
 });
 
-router.get("/complaints", (req, res) => {
-	let selectedLanguage = req.query.lang;
-	let pageNumber = req.query.page;
-	if (selectedLanguage == undefined) {
-		selectedLanguage = "id";
-	}
-
-	if (pageNumber == undefined) {
-		pageNumber = 1;
-	}
-
-	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
-		selectedLanguage = "id";
-
-	const translations = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
-
-	const footerTranslation = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/footer/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
-
-	res.locals.translations = translations;
-	res.locals.footerTranslation = footerTranslation;
-
-	res.render("complaints", {
-		title: "PTDI STTD - Public Comment",
-		selectedLanguage,
-		pageNumber,
-	});
-});
-
+/* 
 router.get("/alumni", (req, res) => {
 	let selectedLanguage = req.query.lang;
 	let pageNumber = req.query.page;
@@ -299,7 +220,7 @@ router.get("/alumni", (req, res) => {
 		selectedLanguage,
 		pageNumber,
 	});
-});
+}); */
 
 router.get("/berita/:newsId?", (req, res) => {
 	let selectedLanguage = req.query.lang;
@@ -386,165 +307,10 @@ router.post("/login", (req, res) => {
 	res.redirect("/home-employee");
 });
 
-router.get("/facilities", (req, res) => {
-	let selectedLanguage = req.query.lang;
-	if (selectedLanguage == undefined) {
-		selectedLanguage = "id";
-	}
 
-	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
-		selectedLanguage = "id";
 
-	const translations = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
 
-	const footerTranslation = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/footer/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
 
-	res.locals.translations = translations;
-	res.locals.footerTranslation = footerTranslation;
-
-	res.render("facilities/overview", {
-		title: "PTDI STTD - Facilities",
-		selectedLanguage,
-	});
-});
-
-router.get("/history", (req, res) => {
-	let selectedLanguage = req.query.lang;
-	if (selectedLanguage == undefined) {
-		selectedLanguage = "id";
-	}
-
-	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
-		selectedLanguage = "id";
-
-	const translations = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
-
-	const footerTranslation = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/footer/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
-
-	res.locals.translations = translations;
-	res.locals.footerTranslation = footerTranslation;
-
-	res.render("aboutUs/history", {
-		title: "PTDI STTD - History",
-		selectedLanguage,
-	});
-});
-
-router.get("/our-purpose", (req, res) => {
-	let selectedLanguage = req.query.lang;
-	if (selectedLanguage == undefined) {
-		selectedLanguage = "id";
-	}
-
-	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
-		selectedLanguage = "id";
-
-	const translations = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
-
-	const footerTranslation = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/footer/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
-
-	res.locals.translations = translations;
-	res.locals.footerTranslation = footerTranslation;
-
-	res.render("ourPurpose/index", {
-		title: "PTDI STTD - Vision & Mission",
-		selectedLanguage,
-	});
-});
-
-router.get("/our-purpose", (req, res) => {
-	let selectedLanguage = req.query.lang;
-	if (selectedLanguage == undefined) {
-		selectedLanguage = "id";
-	}
-
-	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
-		selectedLanguage = "id";
-
-	const translations = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
-
-	const footerTranslation = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/footer/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
-
-	res.locals.translations = translations;
-	res.locals.footerTranslation = footerTranslation;
-
-	res.render("ourPurpose/index", {
-		title: "PTDI STTD - Vision & Mission",
-		selectedLanguage,
-	});
-});
-
-router.get("/duties", (req, res) => {
-	let selectedLanguage = req.query.lang;
-	if (selectedLanguage == undefined) {
-		selectedLanguage = "id";
-	}
-
-	if (!["en", "id", "zh", "ja", "ko"].includes(selectedLanguage.toLowerCase()))
-		selectedLanguage = "id";
-
-	const translations = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/navbar/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
-
-	const footerTranslation = JSON.parse(
-		fs.readFileSync(
-			path.join(__dirname, "../translations/footer/", `${selectedLanguage}.json`),
-			"utf8"
-		)
-	);
-
-	res.locals.translations = translations;
-	res.locals.footerTranslation = footerTranslation;
-
-	res.render("duties/index", {
-		title: "PTDI STTD - Tugas & Fungsi",
-		selectedLanguage,
-	});
-});
 
 
 function searchById(data, id) {

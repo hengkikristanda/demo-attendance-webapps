@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../sections/head') %>
+
+	<body>
+		<%- include('../sections/navbar') %>
+
+		<div class="max-w-screen-2xl mx-auto">
+			<div class="page-header w-full my-20"></div>
+
+			<section>
+				<div class="flex flex-col gap-6 px-4">
+					<div class="flex flex-col w-fit">
+						<h1 class="font-bold text-secondary"><%= complaintsTranslation.title %></h1>
+						<hr class="h-2 w-1/2 bg-tertiary" />
+					</div>
+					<h5 class="text-secondary mb-8">
+						<%= complaintsTranslation.subTitle %>
+					</h5>
+					<div class="flex flex-col md:flex-row justify-between gap-20 md:gap-32">
+						<form class="myform flex flex-col w-full md:w-1/2" method="POST" id="complaintForm" action="/complaints">
+							<div>
+								<label for=""><%= complaintsTranslation.nameLabel %></label>
+								<input name="fullName" type="text" placeholder="<%= complaintsTranslation.namePlaceholder %>" required/>
+							</div>
+							<div>
+								<label for=""><%= complaintsTranslation.emailLabel %></label>
+								<input  name="emailAddress" type="email" placeholder="<%= complaintsTranslation.emailPlaceholder %>" required/>
+							</div>
+							<div>
+								<label for=""><%= complaintsTranslation.phoneLabel %></label>
+								<input id="phoneNumber" name="phoneNumber" type="tel" placeholder="<%= complaintsTranslation.phonePlaceholder %>" required/>
+							</div>
+							<div>
+								<label for=""><%= complaintsTranslation.attachmentFileLabel %></label>
+                                <span class="file-name" id="fileName"><%= complaintsTranslation.selectFileLabel %></span>
+								<input name="attachedFile" type="file" id="fileInput" class="hidden" />
+							</div>
+							<div>
+								<label for=""><%= complaintsTranslation.complaintLabel %></label>
+								<textarea name="complaints" placeholder="<%= complaintsTranslation.complaintPlaceholder %>" required></textarea>
+							</div>
+							<button class="btn success w-full md:w-fit" type="submit"><%= complaintsTranslation.submitLabel %></button>
+						</form>
+						<div class="flex flex-col md:w-1/2 gap-8">
+							<div class="flex flex-col items-center md:hidden">
+								<hr class="w-full h-0.5 bg-tertiary" />
+								<h6 class="bg-white p-2 text-tertiary font-bold relative bottom-5">OR</h6>
+							</div>
+							<div class="flex items-start gap-3">
+								<h4 class="bi bi-chat text-tertiary"></h4>
+								<div class="flex flex-col">
+									<h5 class="font-bold text-tertiary"><%= complaintsTranslation.chatUs %></h5>
+									<p class="text-secondary mb-1"><%= complaintsTranslation.chatUsLabel %></p>
+									<p class="text-secondary font-bold"><% 
+                                        emails.forEach(email => {
+                                        %>
+                                            <%= email.value %>
+                                            <br/>
+                                        <%
+                                        }); 
+                                        %> 
+                                    </p>
+								</div>
+							</div>
+							<div class="flex items-start gap-3">
+								<h4 class="bi bi-geo-alt text-tertiary"></h4>
+								<div class="flex flex-col">
+									<h5 class="font-bold text-tertiary"><%= complaintsTranslation.visitUs %></h5>
+									<p class="text-secondary mb-1"><%= complaintsTranslation.visitUsLabel %></p>
+									<p class="text-secondary font-bold">
+										<%- companyInfo.address %>
+									</p>
+								</div>
+							</div>
+							<div class="flex items-start gap-3">
+								<h4 class="bi bi-telephone text-tertiary"></h4>
+								<div class="flex flex-col">
+									<h5 class="font-bold text-tertiary"><%= complaintsTranslation.callUs %></h5>
+									<p class="text-secondary mb-1"><%= complaintsTranslation.callUsLabel %></p>
+									<p class="text-secondary font-bold">
+                                        <% 
+                                            phoneNo.forEach(phoneNumber => {
+                                        %>
+                                            <%=phoneNumber.value %>
+                                        <%
+                                            }); 
+                                        %> 
+                                    </p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<%- include('../sections/footer') %> 
+            <%- include('../components/chatWidget') %>
+		</div>
+	</body>
+
+	<script src="/js/navbarUtils.js"></script>
+    <script src="/js/CommonUtils.js"></script>
+    <script src="/js/public-comments/index.js"></script>
+
+    <script>
+        // Get elements
+        const fileInput = document.getElementById('fileInput');
+        const fileNameDisplay = document.getElementById('fileName');
+
+        fileNameDisplay.addEventListener("mouseup", () => {
+            fileInput.click();
+        })
+
+        // When the file input changes, update the displayed file name
+        fileInput.addEventListener('change', function() {
+            const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'No file chosen';
+            fileNameDisplay.textContent = fileName;
+        });
+    </script>
+</html>

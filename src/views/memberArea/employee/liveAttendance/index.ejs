@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+
+	<style>
+		.blink-colon {
+			animation: blink 1s steps(2, start) infinite;
+		}
+
+		@keyframes blink {
+			50% {
+				opacity: 0;
+			}
+		}
+	</style>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card">
+					<div class="layout-card__header">
+						<form id="liveAttendanceForm" action="" method="POST">
+							<input type="hidden" id="clockedType" name="clockedType" />
+							<div class="flex justify-between border-b-0">
+								<h1 class="title">Live Attendance</h1>
+							</div>
+							<div
+								id="attendanceContainer"
+								class="flex flex-col bg-tertiary/5 rounded-md mx-auto px-4 py-8 w-fit items-center shadow-md gap-4 border-b-0">
+								<h6 class="font-bold">Live Attendance</h6>
+								<h1 class="font-semibold" id="clock"><span class="loader primary md"></span></h1>
+								<div id="date" class="text-sm border-b-0">Loading date...</div>
+								<div id="error"></div>
+								<div id="clockInOut" class="flex flex-col gap-6 mt-8 hidden border-b-0">
+									<button
+										id="clockInButton"
+										class="btn disabled w-full md:w-fit min-w-96"
+										type="button"
+										disabled>
+										Clock In
+									</button>
+									<button
+										id="clockOutButton"
+										class="btn disabled w-full md:w-fit min-w-96"
+										type="button"
+										disabled>
+										Clock Out
+									</button>
+								</div>
+								<input id="clockedTime" name="clockedTime" type="hidden" />
+								<input id="clockedLocation" name="clockedLocation" type="hidden" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const responseMessage = "<%= responseMessage %>";
+			if (responseMessage) {
+				const responseMessageClass = "<%= responseMessageClass %>";
+				displayResponseMessage(attendanceContainer, responseMessage, responseMessageClass);
+			}
+
+			const hasClockedIn = <%= hasClockedIn %>;
+			if (!hasClockedIn) {
+				enabledClockIn();
+			}
+
+			const hasClockedOut = <%= hasClockedOut %>;
+			if (hasClockedIn && !hasClockedOut) {
+				enabledClockOut();
+			}
+		});
+
+		let serverTime = null;
+		let tickInterval = null;
+
+		async function fetchGMTPlus7Time() {
+			try {
+				const response = await Promise.race([
+					fetch("https://worldtimeapi.org/api/timezone/Asia/Bangkok"),
+					new Promise((_, reject) =>
+						setTimeout(() => reject(new Error("Request timed out")), 5000)
+					),
+				]);
+
+				if (!response.ok) throw new Error("Network response was not ok");
+
+				const data = await response.json();
+				return new Date(data.datetime); // Convert API datetime to JavaScript Date object
+			} catch (error) {
+				console.error("Error fetching GMT+7 time:", error);
+				return null;
+			}
+		}
+
+		async function updateClock() {
+			const clockElement = document.getElementById("clock");
+			const dateElement = document.getElementById("date");
+			const errorElement = document.getElementById("error");
+
+			// Fetch the server time
+			serverTime = await fetchGMTPlus7Time();
+
+			if (serverTime) {
+				errorElement.innerHTML = ""; // Clear previous error
+				// updateDisplay();
+				updateDisplayTicking();
+
+				// Clear any previous interval to avoid multiple instances
+				clearInterval(tickInterval);
+				tickInterval = setInterval(() => {
+					serverTime.setSeconds(serverTime.getSeconds() + 1);
+					// updateDisplay();
+					updateDisplayTicking();
+				}, 1000);
+			} else {
+				// Display error message and retry link if time fetch fails
+				clockElement.textContent = "Error loading time";
+				dateElement.textContent = "Error loading date";
+				errorElement.innerHTML = '<a href="/member/live-attendance">Click to refresh</a>';
+			}
+		}
+
+		function updateDisplay() {
+			const clockElement = document.getElementById("clock");
+			const dateElement = document.getElementById("date");
+
+			if (!serverTime) return; // Avoid update if serverTime is null
+
+			const hours = serverTime.getHours().toString().padStart(2, "0");
+			const minutes = serverTime.getMinutes().toString().padStart(2, "0");
+			clockElement.textContent = `${hours}:${minutes}`;
+
+			// Show clock in/out buttons
+			document.querySelector("#clockInOut").classList.remove("hidden");
+
+			// Date display
+			const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+			const months = [
+				"January",
+				"February",
+				"March",
+				"April",
+				"May",
+				"June",
+				"July",
+				"August",
+				"September",
+				"October",
+				"November",
+				"December",
+			];
+			const dayName = days[serverTime.getDay()];
+			const day = serverTime.getDate().toString().padStart(2, "0");
+			const monthName = months[serverTime.getMonth()];
+			const year = serverTime.getFullYear();
+			dateElement.textContent = `${dayName}, ${day} ${monthName} ${year}`;
+		}
+
+		function updateDisplayTicking() {
+			const clockElement = document.getElementById("clock");
+			const dateElement = document.getElementById("date");
+
+			if (!serverTime) return;
+
+			const hours = serverTime.getHours().toString().padStart(2, "0");
+			const minutes = serverTime.getMinutes().toString().padStart(2, "0");
+
+			// Wrap the colon with a span for blinking effect
+			clockElement.innerHTML = `${hours}<span class="blink-colon">:</span>${minutes}`;
+
+			// Show clock in/out buttons
+			document.querySelector("#clockInOut").classList.remove("hidden");
+
+			// Date display
+			const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+			const months = [
+				"January",
+				"February",
+				"March",
+				"April",
+				"May",
+				"June",
+				"July",
+				"August",
+				"September",
+				"October",
+				"November",
+				"December",
+			];
+			const dayName = days[serverTime.getDay()];
+			const day = serverTime.getDate().toString().padStart(2, "0");
+			const monthName = months[serverTime.getMonth()];
+			const year = serverTime.getFullYear();
+			dateElement.textContent = `${dayName}, ${day} ${monthName} ${year}`;
+		}
+
+		function startClock() {
+			updateClock();
+			setInterval(updateClock, 60000); // Update every minute
+		}
+
+		window.onload = startClock;
+
+		const clockInButton = document.getElementById("clockInButton");
+		const clockOutButton = document.getElementById("clockOutButton");
+
+		async function getClockedLocation() {
+			// Check if geolocation is available
+			if (navigator.geolocation) {
+				try {
+					// Wrap getCurrentPosition in a Promise
+					const position = await new Promise((resolve, reject) => {
+						navigator.geolocation.getCurrentPosition(resolve, reject);
+					});
+
+					// Extract latitude and longitude
+					const latitude = position.coords.latitude;
+					const longitude = position.coords.longitude;
+					const location = document.getElementById("clockedLocation");
+
+					// Set the location value
+					location.value = `${latitude};${longitude}`;
+					return true;
+				} catch (error) {
+					return false;
+				}
+			}
+			return false;
+		}
+
+		// Example usage
+		(async () => {
+			const locationSet = await getClockedLocation();
+			console.log("Location set:", locationSet);
+		})();
+
+		async function getClockedTime() {
+			// Get current date and time
+			const currentDateTime = new Date();
+			const dateTimeString = currentDateTime.toLocaleString();
+
+			// Display DateTime
+			const clockedTime = document.getElementById("clockedTime");
+			clockedTime.value = `${dateTimeString}`;
+
+			return clockedTime != undefined && clockedTime.value != undefined && clockedTime.value != "";
+		}
+
+		function disabledClockIn() {
+			clockInButton.disabled = true;
+			clockInButton.classList.remove("success");
+			clockInButton.classList.add("disabled");
+		}
+
+		function enabledClockOut() {
+			clockOutButton.disabled = false;
+			clockOutButton.classList.remove("disabled");
+			clockOutButton.classList.add("success");
+		}
+
+		function enabledClockIn() {
+			clockInButton.disabled = false;
+			clockInButton.classList.remove("disabled");
+			clockInButton.classList.add("success");
+		}
+
+		function disabledClockOut() {
+			clockOutButton.disabled = true;
+			clockOutButton.classList.remove("success");
+			clockOutButton.classList.add("disabled");
+		}
+
+		function displayResponseMessage(attendanceContainer, message, className) {
+			const responseMessage = document.createElement("p");
+			responseMessage.classList.add("badge-admin", className, "w-full");
+			responseMessage.textContent = message;
+			attendanceContainer.insertBefore(responseMessage, attendanceContainer.firstChild);
+		}
+
+		async function handleClockedIn(ev) {
+			const clockedInfo = getClockedTime();
+			const attendanceContainer = document.getElementById("attendanceContainer");
+			if (!clockedInfo) {
+				displayResponseMessage(
+					attendanceContainer,
+					"Failed to Clock In. Please try again later",
+					"danger"
+				);
+			} else {
+				const clockedLocation = getClockedLocation();
+				if (!clockedLocation) {
+					displayResponseMessage(
+						attendanceContainer,
+						"Failed to Clock In. Please try again later",
+						"danger"
+					);
+				} else {
+					disabledClockIn();
+					document.getElementById("clockedType").value = "clockedIn";
+					document.getElementById("liveAttendanceForm").submit();
+				}
+			}
+		}
+
+		async function handleClockedOut(ev) {
+			const clockedInfo = getClockedTime();
+			const attendanceContainer = document.getElementById("attendanceContainer");
+			if (!clockedInfo) {
+				displayResponseMessage(
+					attendanceContainer,
+					"Failed to Clock Out. Please try again later",
+					"danger"
+				);
+			} else {
+				const clockedLocation = getClockedLocation();
+				if (!clockedLocation) {
+					displayResponseMessage(
+						attendanceContainer,
+						"Failed to Clock Out. Please try again later",
+						"danger"
+					);
+				} else {
+					disabledClockOut();
+					document.getElementById("clockedType").value = "clockedOut";
+					document.getElementById("liveAttendanceForm").submit();
+				}
+			}
+		}
+
+		clockInButton.addEventListener("mouseup", handleClockedIn);
+		clockOutButton.addEventListener("mouseup", handleClockedOut);
+	</script>
+</html>

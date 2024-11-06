@@ -1,0 +1,16 @@
+{
+	"title": "Diklat",
+	"trainingInformationLabel": "INFORMASI DIKLAT",
+	"registrationForm": {
+		"label": "FORM PENDAFTARAN",
+		"sectionProfile": "Profil Pendaftar",
+		"sectionInstance": "Instansi"
+	},
+	"registrationStatus": {
+		"label": "CEK STATUS PENDAFTARAN",
+		"info": "Lakukan pengecekan secara bertahap terkait permohonan yang telah diajukan. Pastikan NIK yang digunakan telah sesuai dengan data yang diajukan.",
+		"trainingLabel": "Nama Diklat",
+		"idCardLabel": "Nomor KTP",
+		"submitButton": "Cek Status"
+	}
+}

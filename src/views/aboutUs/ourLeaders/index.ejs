@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../sections/head') %>
+
+	<body>
+		<%- include('../../sections/navbar') %>
+
+		<div class="max-w-screen-2xl mx-auto">
+			<div class="page-header w-full my-20">
+				<div class="w-full h-[30rem] relative">
+					<img src="/img/our-purpose.JPG" alt="" class="w-full h-full object-cover" />
+					<div class="absolute w-full h-full bottom-0 bg-gray-800/50"></div>
+					<h1
+						class="font-bold text-white sm:text-6xl px-2 md:px-12 w-full absolute bottom-1/4 md:bottom-3/4 z-10 uppercase">
+						<%=currentPage%>
+					</h1>
+					<div class="bg-tertiary absolute size-28 hidden md:flex bottom-2/3 z-0"></div>
+				</div>
+			</div>
+
+			<div class="flex flex-col w-full mb-20 items-center relative gap-2">
+				<h1 class="font-bold md:text-6xl bg-white px-4 text-tertiary"><%=currentPage%></h1>
+				<hr class="h-2 w-20 bg-tertiary" />
+			</div>
+
+			<div class="flex flex-col items-center gap-20 pt-12 pb-40">
+				<div class="flex flex-col items-center w-full gap-8 reveal fade-right px-4 text-center">
+					<div>
+						<img
+							src="/img/leaders/avi-mukti-amin.jpeg"
+							alt=""
+							class="w-60 h-60 object-cover rounded-full shadow-lg mx-auto object-top" />
+					</div>
+					<div class="flex flex-col justify-center items-center">
+						<hr class="h-1 w-20 bg-tertiary" />
+						<h2 class="font-bold">Avi Mukti Amin, S.SIT, MT</h2>
+						<h6>Direktur Politeknik Transportasi Darat Indonesia - STTD</h6>
+					</div>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-3 w-full reveal fade-right px-4 text-center gap-20 md:gap-2">
+					<div class="flex flex-col items-center gap-8">
+						<div>
+							<img
+								src="/img/profile-picture-placeholder.jpeg"
+								alt=""
+								class="w-60 h-60 object-cover rounded-full shadow-lg mx-auto object-top" />
+						</div>
+						<div class="flex flex-col justify-center items-center text-center">
+							<hr class="h-1 w-20 bg-tertiary" />
+							<h2 class="font-bold">Sunaryo, S.Kom., M.SC</h2>
+							<h6>Wakil Direktur I</h6>
+						</div>
+					</div>
+					<div class="flex flex-col items-center gap-8">
+						<div>
+							<img
+								src="/img/leaders/hendrik-prasetiyo.jpeg"
+								alt=""
+								class="w-60 h-60 object-cover rounded-full shadow-lg mx-auto object-top" />
+						</div>
+						<div class="flex flex-col justify-center items-center">
+							<hr class="h-1 w-20 bg-tertiary" />
+							<h2 class="font-bold">Hendrik Prasetiyo, M.SC</h2>
+							<h6>Wakil Direktur II</h6>
+						</div>
+					</div>
+					<div class="flex flex-col items-center gap-8">
+						<div>
+							<img
+								src="/img/leaders/yus-rizal.jpeg"
+								alt=""
+								class="w-60 h-60 object-cover rounded-full shadow-lg mx-auto object-top" />
+						</div>
+						<div class="flex flex-col justify-center items-center">
+							<hr class="h-1 w-20 bg-tertiary" />
+							<h2 class="font-bold">IR. Yus Rizal, M.M</h2>
+							<h6>Wakil Direktur III</h6>
+						</div>
+					</div>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-3 w-full reveal fade-right px-4 text-center gap-20 md:gap-2">
+					<div class="flex flex-col items-center gap-8">
+						<div>
+							<img
+								src="/img/profile-picture-placeholder.jpeg"
+								alt=""
+								class="w-60 h-60 object-cover rounded-full shadow-lg mx-auto object-top" />
+						</div>
+						<div class="flex flex-col justify-center items-center">
+							<hr class="h-1 w-20 bg-tertiary" />
+							<h2 class="font-bold">Lusia Dewi, S.PSI, M.SC</h2>
+							<h6>Kepala Bagian Administrasi Akademik dan Ketarunaan</h6>
+						</div>
+					</div>
+					<div class="flex flex-col items-center gap-8">
+						<div>
+							<img
+								src="/img/leaders/doharman-lumban-tungkup.jpeg"
+								alt=""
+								class="w-60 h-60 object-cover rounded-full shadow-lg mx-auto object-top" />
+						</div>
+						<div class="flex flex-col justify-center items-center">
+							<hr class="h-1 w-20 bg-tertiary" />
+							<h2 class="font-bold">Doharman Lumban Tungkup, S.SIT, M.M</h2>
+							<h6>Kepala Bagian Keuangan dan Umum</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<%- include('../../sections/footer') %> 
+		<%- include('../../components/chatWidget') %>
+	</body>
+
+	<script src="/js/navbarUtils.js"></script>
+	<script src="/js/onLoad.js"></script>
+</html>

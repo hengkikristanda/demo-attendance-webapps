@@ -58,7 +58,7 @@
 					"subMenus": [
 						{
 							"label": "市场营销、创新和技术硕士",
-							"href": "/s2-pemasaran-inovasi-teknologi"
+							"href": "/post-graduate/marketing-innovation-technology"
 						},
 						{
 							"label": "安全与风险工程硕士",
@@ -72,7 +72,7 @@
 				},
 				{
 					"label": "讲师",
-					"href": "/dosen"
+					"href": "/lecturers"
 				}
 			]
 		},
@@ -90,7 +90,7 @@
 			"subMenus": [
 				{
 					"label": "新闻",
-					"href": "/berita"
+					"href": "/news"
 				},
 				{
 					"label": "PPID",

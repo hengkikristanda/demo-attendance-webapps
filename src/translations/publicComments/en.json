@@ -1,0 +1,14 @@
+{
+	"title": "Public Comment",
+	"subTitle": "We would love to hear from you! Share your feedback and reviews to help us improve your experience.",
+	"nameLabel": "Full Name",
+	"emailLabel": "Email Address",
+	"phoneLabel": "Phone Number",
+	"commentLabel": "Your Comment",
+	"namePlaceholder": "Your full name",
+	"emailPlaceholder": "Your email address",
+	"phonePlaceholder": "Your phone number",
+	"commentPlaceholder": "Write your comment here",
+	"submitLabel": "Submit",
+	"yourCommentLabel": "Comments"
+}

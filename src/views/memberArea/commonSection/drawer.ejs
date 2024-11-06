@@ -1,0 +1,132 @@
+<nav id="drawerAdmin" class="drawer-admin bg-white">
+	<div class="drawer-admin__container">
+		<div class="drawer-menu__container">
+			<p class="group-menu_label">Dashboard</p>
+			<hr class="hidden" />
+			<a href="/member/dashboard" class="drawer-menu group">
+				<i class="home-6 remix secondary icon-md group-hover:bg-white"></i>
+				<h6 class="menu-label group-hover:text-white">Home</h6>
+			</a>
+			<a href="/member/inbox" class="drawer-menu group">
+				<i class="inbox remix secondary icon-md group-hover:bg-white"></i>
+				<h6 class="menu-label group-hover:text-white">inbox</h6>
+			</a>
+		</div>
+		<div class="drawer-menu__container">
+			<p class="group-menu_label">Employee</p>
+			<hr class="hidden" />
+			<a href="/member/live-attendance" class="drawer-menu group">
+				<i class="login-icon remix secondary icon-md group-hover:bg-white"></i>
+				<h6 class="menu-label group-hover:text-white">Live Attendance</h6>
+			</a>
+			<a href="/member/log-attendance" class="drawer-menu group">
+				<i class="file-info remix secondary icon-md group-hover:bg-white"></i>
+				<h6 class="menu-label group-hover:text-white">Attendance Log</h6>
+			</a>
+			<a href="/member/report-attendance" class="drawer-menu group">
+				<i class="file-text remix secondary icon-md group-hover:bg-white"></i>
+				<h6 class="menu-label group-hover:text-white">Attendance Report</h6>
+			</a>
+		</div>
+		<div class="drawer-menu__container">
+			<p class="group-menu_label">Web Admin</p>
+			<hr class="hidden" />
+			<a href="/member/web/alumni" class="drawer-menu group">
+				<i class="user-star remix secondary icon-md group-hover:bg-white"></i>
+				<h6 class="menu-label group-hover:text-white">Alumni</h6>
+			</a>
+			<a href="/member/web/lecturer" class="drawer-menu group">
+				<i class="user-voice remix secondary icon-md group-hover:bg-white"></i>
+				<h6 class="menu-label group-hover:text-white">Lecturer</h6>
+			</a>
+			<a href="/member/web/news" class="drawer-menu group">
+				<i class="article-ico remix secondary icon-md group-hover:bg-white"></i>
+				<h6 class="menu-label group-hover:text-white">News</h6>
+			</a>
+		</div>
+	</div>
+</nav>
+<script>
+	const drawerToggle = document.querySelector("#drawerToggle");
+	const drawerAdminNav = document.querySelector("#drawerAdmin");
+	const drawerAdmin = drawerAdminNav.querySelectorAll("h6");
+	const drawerSection = document.querySelectorAll("#drawerAdmin p");
+
+	drawerToggle.addEventListener("mouseup", () => {
+		const screenWidth = window.innerWidth;
+		if (screenWidth > 600) {
+			drawerAdmin.forEach((item) => {
+				if (item.classList.contains("hidden")) item.classList.remove("hidden");
+				else item.classList.add("hidden");
+			});
+
+			drawerSection.forEach((item) => {
+				const itemLine = item.nextElementSibling;
+
+				if (item.classList.contains("hidden")) {
+					item.classList.remove("hidden");
+					itemLine.classList.add("hidden");
+				} else {
+					item.classList.add("hidden");
+					itemLine.classList.remove("hidden");
+				}
+			});
+		} else {
+			const sidebarAdminContainer = document.querySelector(".drawer-admin__container");
+
+			if (sidebarAdminContainer.style.transform === "translateX(-100%)") {
+				// If the div is hidden, show it
+				sidebarAdminContainer.style.transform = "translateX(0)";
+			} else {
+				// If the div is visible, hide it
+				sidebarAdminContainer.style.transform = "translateX(-100%)";
+			}
+		}
+	});
+
+	window.addEventListener("resize", function () {
+		const width = window.innerWidth;
+
+		if (width < 600) {
+			resetState();
+			const sidebarAdminContainer = document.querySelector(".drawer-admin__container");
+			// if (sidebarAdminContainer.style.transform === "translateX(0)") {
+			sidebarAdminContainer.style.transform = "translateX(-100%)";
+			// }
+		} else if (width >= 600) {
+			const sidebarAdminContainer = document.querySelector(".drawer-admin__container");
+			// if (sidebarAdminContainer.style.transform === "translateX(-100%)") {
+			sidebarAdminContainer.style.transform = "translateX(0)";
+			// }
+		}
+	});
+
+	function resetState() {
+		drawerAdmin.forEach((item) => {
+			item.classList.remove("hidden");
+		});
+
+		drawerSection.forEach((item) => {
+			const itemLine = item.nextElementSibling;
+
+			item.classList.remove("hidden");
+			itemLine.classList.add("hidden");
+		});
+	}
+
+	var currentPath = window.location.pathname;
+
+	const drawerUrl = document.querySelectorAll(".drawer-admin__container a");
+	drawerUrl.forEach((item) => {
+		var url = new URL(item.href);
+		var pathAfterDomain = url.pathname;
+
+		if (pathAfterDomain === currentPath) {
+			item.classList.add("selected");
+		} else {
+			const pathSegments = currentPath.split("/").filter(Boolean); // filter(Boolean) removes empty segments
+			const firstThreeSegments = "/" + pathSegments.slice(0, 3).join("/");
+			if (pathAfterDomain == firstThreeSegments) item.classList.add("selected");
+		}
+	});
+</script>

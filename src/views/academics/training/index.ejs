@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../sections/head') %>
+
+	<body>
+		<%- include('../../sections/navbar') %>
+
+		<div class="max-w-screen-2xl mx-auto my-20">
+			<div class="page-header w-full my-20">
+				<div class="w-full h-[30rem] relative">
+					<img src="/img/training/Diklat-2.jpeg" alt="" class="w-full h-full object-cover" />
+					<div class="absolute w-full h-full bottom-0 bg-gray-800/50"></div>
+					<h1
+						class="font-bold text-white sm:text-6xl px-2 md:px-12 w-full absolute bottom-1/4 md:bottom-3/4 z-10 uppercase">
+						<%=trainingTranslation.title%>
+					</h1>
+					<div class="bg-tertiary absolute size-28 hidden md:flex bottom-2/3 z-0"></div>
+				</div>
+			</div>
+			<div class="flex flex-col mb-8 md:gap-12 px-4 2xl:px-0">
+				<div class="welcome-text__training">
+					<h1 class="font-bold text-tertiary md:text-6xl md:w-2/3"><%=trainingTranslation.title%></h1>
+					<span class="md:block"></span>
+				</div>
+				<div class="flex flex-col md:flex-row gap-20">
+					<h6 class="md:w-1/2">
+						<%-trainingTranslation.paragraph%>
+					</h6>
+					<div class="flex flex-col md:w-1/2 gap-4">
+					<%
+					trainingTranslation.trainings.forEach((training) => {
+					%>
+						<div class="collapsible-section__facility">
+							<div class="flex items-center gap-3 mb-4 cursor-pointer">
+								<i class="bi bi-chevron-right"></i>
+								<h4><%=training.title%></h4>
+							</div>
+							<p class="leading-6"><%=training.description%></p>
+						</div>						
+					<%
+					});
+					%>
+					</div>
+				</div>
+				<a href="/training/registration" class="flex items-center p-0 mx-auto">
+					<div
+						class="flex items-center justify-center w-16 h-16 bg-tertiary rounded-full text-white text-2xl p-0 border-8 border-white z-10">
+						<i class="bi bi-vector-pen"></i>
+					</div>
+					<h5 class="bg-tertiary text-white py-2 px-12 rounded-md relative right-5">
+						<%=trainingTranslation.cta%>
+					</h5>
+				</a>
+			</div>
+		</div>
+
+		<%- include('../../sections/footer') %> <%- include('../../components/chatWidget') %>
+	</body>
+
+	<script src="/js/navbarUtils.js"></script>
+	<script src="/js/lecturerUtils.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const welcomeText = document.querySelector(".welcome-text__training span");
+			welcomeText.style.width = "30rem";
+
+			const sectionHeader = document.querySelectorAll(".section-header h6");
+
+			let defaultIndex = 0;
+
+			sectionHeader.forEach((item, index) => {
+				item.addEventListener("mouseup", () => {
+					if (index != defaultIndex) {
+						sectionHeader[defaultIndex].classList.remove("bg-tertiary/15");
+						item.classList.add("bg-tertiary/15");
+					}
+
+					const targetContentContainer = document.querySelectorAll(".tabs-content");
+
+					if (index != defaultIndex) {
+						targetContentContainer[defaultIndex].classList.remove("show");
+						targetContentContainer[defaultIndex].classList.add("hide");
+
+						targetContentContainer[index].classList.remove("hide");
+						targetContentContainer[index].classList.add("show");
+						defaultIndex = index;
+					}
+				});
+			});
+
+			const collapsibleClass = ".collapsible-section__facility";
+
+			const collapsible = document.querySelectorAll(collapsibleClass);
+			collapsible.forEach((item) => {
+				item.addEventListener("mouseup", () => {
+					const targetElement = event.target.closest(collapsibleClass);
+					if (targetElement) {
+						const targetCollapse = targetElement.querySelector("p");
+						const targetCollapseIcon = targetElement.querySelector("i");
+
+						if (targetCollapse.style.maxHeight && targetCollapse.style.maxHeight !== "0px") {
+							targetCollapse.style.maxHeight = "0px";
+							targetCollapse.style.marginBottom = "0px";
+							targetCollapseIcon.style.transform = "rotate(0deg)";
+						} else {
+							targetCollapse.style.maxHeight = targetCollapse.scrollHeight + "px";
+							targetCollapse.style.marginBottom = "1rem";
+							targetCollapseIcon.style.transform = "rotate(90deg)";
+						}
+					}
+				});
+			});
+		});
+	</script>
+</html>

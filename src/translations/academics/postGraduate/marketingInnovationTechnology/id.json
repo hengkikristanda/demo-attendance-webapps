@@ -1,0 +1,34 @@
+{
+	"sectionOverview": {
+		"label": "TINJAUAN",
+		"title": "Teknik Keselamatan dan Risiko",
+		"paragraph": "Program Magister Teknik Keselamatan dan Risiko dirancang untuk membekali mahasiswa dengan pengetahuan dan keterampilan lanjutan dalam mengidentifikasi, menganalisis, dan mengurangi risiko di berbagai industri. Program ini menawarkan kurikulum yang komprehensif yang mencakup bidang-bidang utama seperti penilaian bahaya, manajemen risiko, protokol keselamatan, dan kepatuhan terhadap peraturan. Mahasiswa akan belajar menerapkan prinsip-prinsip teknik untuk meningkatkan keselamatan dan mengurangi risiko dalam sistem yang kompleks. Melalui kombinasi dari perkuliahan teoretis, laboratorium praktis, dan proyek dunia nyata, lulusan akan siap memimpin inisiatif keselamatan dan mendorong inovasi dalam teknik keselamatan. Program ini sangat ideal bagi mereka yang mencari karir di bidang konsultasi keselamatan, manajemen risiko, dan peran teknik keselamatan di sektor-sektor seperti manufaktur, konstruksi, energi, dan kesehatan.",
+		"studyPlan": {
+			"label": "RENCANA STUDI",
+			"content": [
+				{
+					"label": "Durasi",
+					"value": "4 Tahun"
+				},
+				{
+					"label": "Gelar",
+					"value": "Sarjana Terapan Transportasi"
+				},
+				{
+					"label": "Akreditasi",
+					"value": "Sangat Baik"
+				}
+			]
+		}
+	},
+	"sectionStudentActivities": {
+		"label": "KEGIATAN MAHASISWA",
+		"title": "Kegiatan Mahasiswa",
+		"paragraph": "Di universitas kami, kami percaya bahwa pendidikan yang seimbang tidak hanya berlangsung di dalam kelas. Program Kegiatan Mahasiswa kami menawarkan berbagai peluang ekstrakurikuler yang beragam yang sesuai dengan berbagai minat dan hasrat. Dari klub akademik dan organisasi profesional hingga komunitas budaya dan olahraga rekreasi, ada sesuatu untuk semua orang. Mahasiswa dapat bergabung dengan tim debat, berpartisipasi dalam proyek layanan masyarakat, atau mengeksplorasi kreativitas melalui kelompok seni dan musik. Kampus kami juga menyelenggarakan berbagai acara sepanjang tahun, termasuk lokakarya, seminar, festival budaya, dan kompetisi olahraga. Kegiatan-kegiatan ini memberikan pengalaman berharga, membantu mahasiswa mengembangkan keterampilan kepemimpinan dan kerja tim, serta membina komunitas kampus yang dinamis. Apakah Anda ingin memperkaya resume, bertemu orang baru, atau sekadar bersenang-senang, program Kegiatan Mahasiswa kami memiliki sesuatu yang bisa ditawarkan."
+	},
+	"sectionCareerImpact": {
+		"label": "DAMPAK KARIR",
+		"title": "Dampak Karir",
+		"paragraph": "Universitas kami berdedikasi untuk memastikan bahwa lulusan kami siap untuk menjalani karir yang sukses dan berpengaruh. Program Dampak Karir dirancang untuk menyediakan sumber daya, dukungan, dan peluang yang dibutuhkan mahasiswa untuk unggul di dunia profesional. Melalui konseling karir yang dipersonalisasi, koneksi industri, dan lokakarya yang komprehensif, mahasiswa mendapatkan wawasan berharga tentang perencanaan dan pengembangan karir. Kami menawarkan sesi penyusunan resume, persiapan wawancara, dan acara jejaring yang menghubungkan mahasiswa dengan calon pemberi kerja dan alumni. Kemitraan kuat kami dengan perusahaan terkemuka di berbagai sektor memberikan kesempatan magang eksklusif dan penempatan kerja. Selain itu, pameran karir dan acara rekrutmen di kampus kami adalah platform di mana mahasiswa dapat memamerkan bakat mereka kepada pemberi kerja terbaik. Dengan pendekatan proaktif terhadap kesiapan karir, kami memberdayakan mahasiswa kami untuk mencapai tujuan profesional mereka dan memberikan kontribusi yang berarti di bidang yang mereka pilih."
+	}
+}

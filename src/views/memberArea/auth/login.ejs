@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../commonSection/header') %>
+
+	<body>
+		<div class="login-container">
+			<form class="myform" id="loginForm" action="/users/login" method="POST">
+				<div class="login-box border-b-0">
+					<div class="img-container">
+						<img src="/img/logo-removebg-preview.png" />
+						<h1>Welcome</h1>
+					</div>
+					<% if (typeof errorMessage !== 'undefined') { %>
+					<p class="badge-admin <%= responseMessageClass %>"><%= errorMessage %></p>
+					<% } %>
+					<div class="input-group__icon">
+						<input
+							id="inputUserName"
+							type="text"
+							placeholder="Username"
+							name="userName"
+							maxlength="20"
+							required />
+					</div>
+					<div class="input-group__icon">
+						<input
+							id="inputPassword"
+							name="password"
+							type="password"
+							placeholder="Password"
+							maxlength="32"
+							required
+							autocomplete="off" />
+						<h6 class="bi bi-eye-slash action-icon hidden"></h6>
+					</div>
+					<button id="buttonLogin" type="submit" class="btn success w-full">LOGIN</button>
+					<a href="/users/forgot-password">Forgot Username / Password?</a>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

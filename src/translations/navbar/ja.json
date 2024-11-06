@@ -58,7 +58,7 @@
 					"subMenus": [
 						{
 							"label": "マーケティング、イノベーション、テクノロジーの修士号",
-							"href": "/s2-pemasaran-inovasi-teknologi"
+							"href": "/post-graduate/marketing-innovation-technology"
 						},
 						{
 							"label": "安全およびリスク工学の修士号",
@@ -72,7 +72,7 @@
 				},
 				{
 					"label": "講師",
-					"href": "/dosen"
+					"href": "/lecturers"
 				}
 			]
 		},
@@ -90,7 +90,7 @@
 			"subMenus": [
 				{
 					"label": "ニュース",
-					"href": "/berita"
+					"href": "/news"
 				},
 				{
 					"label": "PPID",

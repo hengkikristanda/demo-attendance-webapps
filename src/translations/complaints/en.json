@@ -1,0 +1,21 @@
+{
+	"title": "Complaints",
+	"subTitle": "We'd love to hear from you! Share your feedback and reviews to help us enhance your experience.",
+	"nameLabel": "Full Name",
+	"emailLabel": "Email Address",
+	"phoneLabel": "Phone Number",
+	"complaintLabel": "Your Complaint",
+	"namePlaceholder": "Your full name",
+	"emailPlaceholder": "Your email address",
+	"phonePlaceholder": "Your phone number",
+	"complaintPlaceholder": "Write your complaint here",
+	"attachmentFileLabel": "Attachment File",
+	"selectFileLabel": "Select File",
+	"submitLabel": "Submit",
+	"chatUs": "Chat to us",
+	"chatUsLabel": "Our friendly team is here to help.",
+	"visitUs": "Visit us",
+	"visitUsLabel": "Come say hello at our campus.",
+	"callUs": "Call us",
+	"callUsLabel": "Mon-Fri from 8am to 5pm."
+}

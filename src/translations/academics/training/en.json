@@ -1,0 +1,115 @@
+{
+	"title": "Education and Training",
+	"paragraph": "<p>Amid the rapid dynamics of transportation development, the Indonesian Land Transportation Polytechnic-STTD stands as a leading educational institution committed to shaping the next generation of professionals in the field of transportation. This page, dedicated to the Education and Training (Diklat) program, is designed to provide complete and up-to-date information about the various training programs we offer. We believe that education is not just about theory, but also about practical experience that can prepare you to face challenges in the workforce. Through our training programs, participants will be equipped with relevant skills and knowledge, from technical aspects to managerial expertise in the transportation sector. With a spirit of innovation and professionalism, we are ready to accompany you on your journey to success. Join us and be part of the transformation for a better transportation world!<br/></p>",
+	"cta": "Registration Information",
+	"trainings": [
+		{
+			"title": "TECHNICAL TRAINING ON ANDALALIN DOCUMENT PREPARATION",
+			"description": "Able to prepare Traffic Impact Analysis Documents."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON ANDALALIN DOCUMENT ASSESSMENT",
+			"description": "Able to assess Traffic Impact Analysis Documents."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON APILL MANAGEMENT",
+			"description": "Able to configure APILL and Traffic Data."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON TRAFFIC SURVEY MANAGEMENT",
+			"description": "Able to collect and process Traffic Data."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON PASSENGER TERMINAL MANAGEMENT",
+			"description": "Able to manage Passenger Transport Terminals."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON UPPKB OPERATIONAL MANAGEMENT",
+			"description": "Able to weigh and analyze vehicle weighing results."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON ROAD MARKINGS",
+			"description": "Able to apply road markings."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON TRAFFIC SIGNS",
+			"description": "Able to plan and create traffic signs."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON PUBLIC TRANSPORT DRIVING",
+			"description": "Able to drive and handle passengers in public transport."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON PUBLIC TRANSPORT MANAGEMENT",
+			"description": "Able to manage public transport operations and business."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON PPNS 200 JP SCHEME (FOR STRUCTURAL OFFICIALS)",
+			"description": "Able to investigate Traffic Violations."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON PPNS 400 JP SCHEME (FOR STAFF)",
+			"description": "Able to investigate Traffic Violations."
+		},
+		{
+			"title": "TECHNICAL TRAINING FOR TRANSPORTATION DEPARTMENT HEADS",
+			"description": "Able to formulate transportation sector policies."
+		},
+		{
+			"title": "TECHNICAL TRAINING FOR GROUND TRANSPORTATION DIVISION HEADS",
+			"description": "Able to formulate policies in the field of ground transportation."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON LLAJ ORIENTATION",
+			"description": "Able to understand the main tasks and functions in the field of LLAJ."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON BASIC VEHICLE TESTING (PKB)",
+			"description": "Able to manage PKB administration and pre-inspections, and able to conduct physical and visual vehicle testing."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON LLAJ SUPERVISION AND CONTROL",
+			"description": "Able to regulate and control LLAJ."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON RAILWAY TRACK AND BUILDINGS",
+			"description": "Understanding regulations and technical specifications for railway tracks and buildings."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON RAILWAY OPERATION FACILITIES",
+			"description": "Understanding regulations and technical specifications for railway operation facilities."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON NON-ELECTRIC RAILWAY VEHICLES",
+			"description": "Understanding regulations and technical specifications for non-electric railway vehicles."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON FIRST RAILWAY TRACK AND BUILDING INSPECTION",
+			"description": "Understanding the procedures for testing railway tracks and buildings."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON FIRST RAILWAY OPERATION FACILITY INSPECTION",
+			"description": "Understanding the procedures for testing railway operation facilities and technical specifications."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON FIRST NON-ELECTRIC RAILWAY VEHICLE INSPECTION",
+			"description": "Able to explain and apply the procedures for testing non-electric railway vehicles and plan the testing activities."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON RAILWAY LEVEL CROSSING ATTENDANTS",
+			"description": "Understanding how to operate equipment at railway level crossings and manage road traffic flow."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON REFRESHER COURSE FOR RAILWAY ENGINEERS",
+			"description": "Able to explain and apply railway regulations and identify infrastructure, vehicles, and railway operations."
+		},
+		{
+			"title": "TECHNICAL TRAINING ON RAILWAY ORIENTATION",
+			"description": "Able to explain and apply railway regulations and identify infrastructure, vehicles, and railway operations."
+		},
+		{
+			"title": "SPECIAL TRAINING (based on STAKEHOLDER needs)",
+			"description": "Special training for professional drivers, vehicle inspectors, road and transport officials, traffic supervision and control, and other technical trainings required by stakeholders."
+		}
+	]
+}

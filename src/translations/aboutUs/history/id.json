@@ -1,0 +1,21 @@
+{
+	"headerTitle": "Sejarah",
+	"pageTitle": "Sejarah Berdirinya PTDI STTD",
+	"timeline": [
+		{
+			"date": "September, 1951",
+			"event": "Berdirinya Akademi Lalu Lintas(ALL)",
+			"detail": "Politeknik Transportasi Darat Indonesia adalah perguruan tinggi kedinasan yang bernaung dibawah Kementerian Perhubungan. Cikal bakal Sekolah Tinggi Transportasi Darat bermula dari didirikannya Akademi Lalu Lintas (ALL) pada tanggal 8 September 1951 oleh Presiden Ir. H. Soekarno. Dengan alasan tertentu pada tahun 1964, ALL tidak dioperasikan atau tidak melakukan kegiatan."
+		},
+		{
+			"date": "Desember, 1980",
+			"event": "Reaktivasi Akademi Lalu Lintas",
+			"detail": "Dengan mempertimbangkan pertumbuhan lalu lintas, perkembangan teknologi transportasi jalan dan kompleksitas permasalahan lalu lintas jalan lahirlah gagasan untuk mengaktifkan kembali Akademi Lalu Lintas. Pada tanggal 5 Desember 1980, Akademi Lalu Lintas diaktifkan kembali dengan nama Balai Pendidikan dan Latihan Ahli Lalu Lintas Angkutan Jalan Raya (BPL-ALLAJR), tetapi masih disebut - sebut dengan nama Akademi Lalu Lintas. BPL-ALLAJR hanya menyelenggarakan program Diploma III Ahli LLAJR."
+		},
+		{
+			"date": "Maret, 2000",
+			"event": "BPL-ALLAJR menjadi STTD",
+			"detail": "Sebagai upaya untuk memenuhi kebutuhan kualifikasi tenaga ahli yang lebih tinggi serta perkembangan sistem pendidikan yang ada maka pada tanggal 10 Maret 2000, dengan Kepres No.41 Tahun 2000 status BPL-ALLAJR ditingkatkan menjadi Sekolah Tinggi Transportasi Darat (STTD) dan ditingkatkan kembali menjadi Politeknik Transportasi Darat Indonesia - STTD. Politeknik ini menyelenggarakan 2 Program Diploma III, 2 Program Sarjana Terapan, dan 2 Program Magister Terapan."
+		}
+	]
+}
