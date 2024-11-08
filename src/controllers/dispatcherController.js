@@ -1728,9 +1728,10 @@ const getLecturers = async (req, res) => {
 		id: lecturer.id,
 		fullName: lecturer["full_name"],
 		emailAddress: lecturer["email_address"],
-		docUrl: `/lecturer-cv/${lecturer["doc_id"]}.${lecturer["doc_type"].split("/")[1]}`,
+		docUrl: `/docs/lecturer-cv/${lecturer["doc_id"]}.${lecturer["doc_type"].split("/")[1]}`,
 		imageUrl: `/img/lecturer/${lecturer["image_id"]}.${lecturer["image_type"].split("/")[1]}`,
 	}));
+
 
 	// Use Promise.all to wait for all the details to resolve
 	lecturerList = await Promise.all(
