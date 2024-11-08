@@ -1225,8 +1225,10 @@ const getHistory = async (req, res) => {
 		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
 
 	// Set the language preference in a cookie
+	CommonUtils.logWithTime(`user selectedLanguage: ${selectedLanguage}`);
 	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
 	CommonUtils.logWithTime(`After changing cookies: ${req.cookies.language}`);
+	CommonUtils.logWithTime(`After changing cookies user selectedLanguage: ${selectedLanguage}`);
 
 	// Load translations
 	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
