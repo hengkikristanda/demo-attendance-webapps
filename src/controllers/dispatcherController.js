@@ -1305,7 +1305,6 @@ const getHistory = async (req, res) => {
 		};
 	}
 
-	res.locals.navBarTranslation = navBarTranslation;
 	res.locals.footerTranslation = footerTranslation;
 
 	res.locals.emails = emails;
@@ -1322,6 +1321,7 @@ const getHistory = async (req, res) => {
 	res.render("aboutUs/history/index", {
 		title: `${pageTitle} ${currentPage[selectedLanguage]}`,
 		selectedLanguage,
+		navBarTranslation,
 	});
 };
 
