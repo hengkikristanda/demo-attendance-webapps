@@ -37,19 +37,19 @@
 					"subMenus": [
 						{
 							"label": "D-III 公路运输管理",
-							"href": "/d3-manajemen-transportasi-jalan"
+							"href": "/undergraduate/associate-road-transportation-management"
 						},
 						{
 							"label": "D-III 铁路运输管理",
-							"href": "/d3-manajemen-transportasi-kereta"
+							"href": "/undergraduate/associate-railway-transportation-management"
 						},
 						{
 							"label": "应用陆路运输管理学士",
-							"href": "/d4-manajemen-transportasi-darat"
+							"href": "/undergraduate/applied-bachelor-land-transportation-management"
 						},
 						{
 							"label": "应用汽车工程技术学士",
-							"href": "/d4-teknologi-rekayasa-otomotif"
+							"href": "/undergraduate/applied-bachelor-automotive-engineering-technology"
 						}
 					]
 				},
@@ -58,11 +58,11 @@
 					"subMenus": [
 						{
 							"label": "市场营销、创新和技术硕士",
-							"href": "/post-graduate/marketing-innovation-technology"
+							"href": "/postgraduate/marketing-innovation-technology"
 						},
 						{
 							"label": "安全与风险工程硕士",
-							"href": "/s2-teknik-keselamatan-resiko"
+							"href": "/postgraduate/safety-risk-engineering"
 						}
 					]
 				},
@@ -94,7 +94,7 @@
 				},
 				{
 					"label": "PPID",
-					"href": "/ppid"
+					"href": "https://ptdisttd.ac.id/halaman-ppid"
 				}
 			]
 		}

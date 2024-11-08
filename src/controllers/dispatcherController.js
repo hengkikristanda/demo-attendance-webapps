@@ -834,6 +834,109 @@ const getPostGraduateMarketingInnovationTechnology = async (req, res) => {
 	});
 };
 
+const getSafetyRiskEngineering = async (req, res) => {
+	const currentPage = {
+		id: "Magister Teknik Keselamatan dan Resiko",
+		en: "Master in Safety and Risk Engineering",
+		ja: "安全およびリスク工学の修士号",
+		ko: "안전 및 위험 공학 석사",
+		zh: "安全与风险工程硕士",
+	};
+
+	// Get the language from the query parameter or use the language from the cookie if it exists
+	let selectedLanguage = req.query.lang
+		? LanguageService.getUserPreferredLanguage(req.query.lang)
+		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
+
+	// Set the language preference in a cookie
+	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
+
+	// Load translations
+	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
+	const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
+
+	const studyTranslation = TranslationService.getTranslation(
+		"academics/postGraduate/marketingInnovationTechnology",
+		selectedLanguage
+	);
+
+	// Redirect only if `lang` query parameter is present
+	if (req.query.lang) {
+		const cleanUrl = req.originalUrl.split("?")[0]; // Remove query parameters
+		return res.redirect(cleanUrl); // Redirect to the clean URL
+	}
+
+	const emails = [];
+	const phoneNo = [];
+	const instagram = [];
+	const youtube = [];
+	const facebook = [];
+	const whatsapp = [];
+
+	const contactInfo = await ContactInfoService.findAll();
+	for (let n = 0; n < contactInfo.length; n++) {
+		if (contactInfo[n].channel.toLowerCase() === "email") {
+			emails.push({
+				label: contactInfo[n].label,
+				value: contactInfo[n].value,
+			});
+		} else if (contactInfo[n].channel.toLowerCase() === "phone") {
+			phoneNo.push({
+				label: contactInfo[n].label,
+				value: contactInfo[n].value,
+			});
+		} else if (contactInfo[n].channel.toLowerCase() === "instagram") {
+			instagram.push({
+				label: contactInfo[n].label,
+				value: contactInfo[n].value,
+			});
+		} else if (contactInfo[n].channel.toLowerCase() === "youtube") {
+			youtube.push({
+				label: contactInfo[n].label,
+				value: contactInfo[n].value,
+			});
+		} else if (contactInfo[n].channel.toLowerCase() === "facebook") {
+			facebook.push({
+				label: contactInfo[n].label,
+				value: contactInfo[n].value,
+			});
+		} else if (contactInfo[n].channel.toLowerCase() === "whatsapp") {
+			whatsapp.push({
+				label: contactInfo[n].label,
+				value: contactInfo[n].value,
+			});
+		}
+	}
+
+	let companyInfo = {};
+
+	const companyProfile = await CompanyProfileService.findAll();
+	for (let n = 0; n < companyProfile.length; n++) {
+		companyInfo = {
+			address: companyProfile[n].address,
+		};
+	}
+
+	res.locals.navBarTranslation = navBarTranslation;
+	res.locals.footerTranslation = footerTranslation;
+	res.locals.studyTranslation = studyTranslation;
+
+	res.locals.emails = emails;
+	res.locals.phoneNo = phoneNo;
+	res.locals.instagram = instagram;
+	res.locals.youtube = youtube;
+	res.locals.whatsapp = whatsapp;
+	res.locals.facebook = facebook;
+	res.locals.companyInfo = companyInfo;
+
+	// Render the index page
+	res.render("academics/postGraduate/safetyRiskEngineering", {
+		title: `${pageTitle} ${currentPage[selectedLanguage]}`,
+		currentPage: currentPage[selectedLanguage],
+		selectedLanguage,
+	});
+};
+
 const getPublicComments = async (req, res) => {
 	const currentPage = {
 		id: "Komentar Publik",
@@ -1704,4 +1807,5 @@ module.exports = {
 	getFacilities,
 	getLecturers,
 	getPostGraduateMarketingInnovationTechnology,
+	getSafetyRiskEngineering,
 };

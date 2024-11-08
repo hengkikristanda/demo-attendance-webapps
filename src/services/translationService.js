@@ -50,4 +50,5 @@ async function translateHtmlContent(htmlContent, lang) {
 module.exports = {
 	getTranslation,
 	translateHtmlContent,
+	translateText,
 };

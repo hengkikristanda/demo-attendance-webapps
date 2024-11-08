@@ -1095,6 +1095,13 @@ a {
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
+.btn.sm {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 /* text */
 
 h1.title {
@@ -1548,6 +1555,10 @@ p.danger,
   margin-top: 4rem;
 }
 
+.mt-20 {
+  margin-top: 5rem;
+}
+
 .mt-28 {
   margin-top: 7rem;
 }
@@ -1566,10 +1577,6 @@ p.danger,
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mt-20 {
-  margin-top: 5rem;
 }
 
 .block {
@@ -1662,6 +1669,10 @@ p.danger,
   height: 15rem;
 }
 
+.h-72 {
+  height: 18rem;
+}
+
 .h-8 {
   height: 2rem;
 }
@@ -1693,6 +1704,11 @@ p.danger,
 
 .h-full {
   height: 100%;
+}
+
+.h-max {
+  height: -moz-max-content;
+  height: max-content;
 }
 
 .max-h-12 {
@@ -2244,6 +2260,11 @@ p.danger,
   background-color: rgb(34 40 49 / var(--tw-bg-opacity));
 }
 
+.bg-red-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+
 .bg-secondary {
   --tw-bg-opacity: 1;
   background-color: rgb(57 62 70 / var(--tw-bg-opacity));
@@ -2290,6 +2311,11 @@ p.danger,
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-red-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {
@@ -2681,7 +2707,7 @@ p.danger,
 
 textarea {
   /* @apply shadow border rounded w-full min-h-28 max-h-28 py-2 px-3 text-gray-700 leading-tight focus:border-primary focus:border-2 focus:outline-none focus:ring-0; */
-  max-height: 7rem;
+  /* @apply shadow w-full outline-none border-gray-300 rounded focus:outline-none focus:ring-0 min-h-28 max-h-28 leading-tight focus:bg-primary/10 focus:border-primary; */
   min-height: 7rem;
   width: 100%;
   border-radius: 0.25rem;
@@ -4057,6 +4083,24 @@ a {
   box-shadow: none;
 }
 
+.custom-form-normal input,
+.custom-form-normal textarea {
+  background-color: white;
+  resize: none;
+  /* Prevents resizing of the textarea */
+}
+
+.custom-form-normal input {
+  height: 3rem;
+}
+
+.custom-form-normal input:focus,
+.custom-form-normal textarea:focus {
+  border: 1px solid var(--tertiary);
+  outline: none;
+  box-shadow: none;
+}
+
 input::file-selector-button {
   background-color: white;
   text-decoration: underline;
@@ -4726,6 +4770,10 @@ input::file-selector-button {
 
 .hover\:bg-tertiary\/50:hover {
   background-color: rgb(0 173 181 / 0.5);
+}
+
+.hover\:font-semibold:hover {
+  font-weight: 600;
 }
 
 .hover\:text-primary:hover {

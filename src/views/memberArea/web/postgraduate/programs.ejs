@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card gap-8">
+					<div class="flex flex-col">
+						<h1 class="title"><%=studyProgramName%></h1>
+					</div>
+					<form
+						class="custom-form-normal flex w-full"
+						method="POST"
+						id="studyProgramForm"
+						action="/member/web/postgraduate/studyProgram/update"
+						enctype="multipart/form-data">
+						<div class="flex flex-col w-full gap-4 border-0">
+							<div class="flex flex-col w-full border border-gray-300 p-4 rounded gap-8 mb-6 bg-tertiary/10">
+								<input
+									type="hidden"
+									id="studyProgramId"
+									name="studyProgramId"
+									value="<%=studyProgramData.id%>" />
+								<div class="flex gap-2">
+									<div class="bg-tertiary w-1"></div>
+									<div class="flex flex-col">
+										<h4 class="font-bold text-primary">Program Studi</h4>
+									</div>
+								</div>
+								<div class="flex w-full gap-4">
+									<div class="w-1/2">
+										<label for="Durasi">Durasi</label>
+										<input
+											name="duration"
+											type="text"
+											placeholder="Durasi"
+											maxlength="128"
+											value="<%=studyProgramData.duration%>"
+											required />
+									</div>
+									<div class="w-1/2">
+										<label for="Gelar">Gelar</label>
+										<input
+											name="degree"
+											type="text"
+											placeholder="Gelar"
+											maxlength="128"
+											value="<%=studyProgramData.degree%>"
+											required />
+									</div>
+								</div>
+								<div class="flex w-full gap-4">
+									<div class="w-1/2">
+										<label for="Akreditasi">Akreditasi</label>
+										<input
+											name="accreditation"
+											type="text"
+											placeholder="Akreditasi"
+											maxlength="128"
+											value="<%=studyProgramData.accreditation%>"
+											required />
+									</div>
+									<div class="w-1/2">
+										<label for="Dokumen Akreditasi">Dokumen Akreditasi</label>
+										<span class="file-name text-sm underline" id="accreditationDocumentDisplayName">
+											<% if (studyProgramData.originalFileName) { %> <%=
+											studyProgramData.originalFileName %> <% } else { %> Click to upload
+											Accreditation document <% } %>
+										</span>
+										<input
+											name="documentFile"
+											type="file"
+											id="documentFile"
+											accept=".pdf"
+											value=""
+											class="hidden" />
+									</div>
+								</div>
+
+								<div class="flex flex-col md:flex-row border-0 gap-4">
+									<button class="btn success w-full md:w-fit" type="submit">Submit Changes</button>
+									<a
+										href="/member/web/postgraduate"
+										class="hover:bg-red-800 hover:text-white rounded-md text-center w-fit m-0 px-4 font-semibold underline"
+										>Discard Changes</a
+									>
+								</div>
+							</div>
+						</div>
+					</form>
+
+					<% sectionList.forEach((section) => { %>
+
+					<form
+						class="section-form custom-form-normal flex w-full"
+						method="POST"
+						id="<%=section.id%>"
+						action="/member/web/postgraduate/section/update"
+						enctype="multipart/form-data">
+						<div class="flex flex-col w-full gap-4 mb-6 bg-tertiary/10">
+							<input type="hidden" id="sectionId" name="sectionId" value="<%=section.id%>" />
+							<div class="flex flex-col border border-gray-300 p-4 rounded gap-4">
+								<div class="flex gap-2">
+									<div class="bg-tertiary w-1"></div>
+									<div class="flex flex-col">
+										<h4 class="font-bold text-primary"><%=section.type%></h4>
+									</div>
+								</div>
+								<div>
+									<label for="Title">Title</label>
+									<input
+										name="sectionTitle"
+										type="text"
+										placeholder="Title..."
+										maxlength="128"
+										value="<%=section.title%>"
+										required />
+								</div>
+								<div>
+									<label for="displayImage">Display images</label>
+									<span class="file-name text-sm open-browse-image">
+										<% if (section.originalFileName) { %> <%=
+											section.originalFileName %> <% } else { %> Click to upload
+											Display Image <% } %>
+									</span>
+									<input
+										name="displayImage"
+										type="file"
+										accept=".png, .jpg, .jpeg"
+										class="displayImage hidden" />
+								</div>
+								<div>
+									<label for="Description">Description</label>
+									<textarea
+										name="description"
+										style="max-height: 12rem; min-height: 12rem"
+										class="text-primary text-sm">
+<%=section.content%></textarea
+									>
+								</div>
+
+								<div class="flex flex-col md:flex-row border-0 gap-4">
+									<button class="btn success w-full md:w-fit" type="submit">Submit Changes</button>
+									<a
+										href="/member/web/postgraduate"
+										class="hover:bg-red-800 hover:text-white rounded-md text-center w-fit m-0 px-4 font-semibold underline"
+										>Discard Changes</a
+									>
+								</div>
+							</div>
+						</div>
+					</form>
+					<% }); %>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script>
+		const documentFile = document.getElementById("documentFile");
+		const openBrowseFile = document.getElementById("accreditationDocumentDisplayName");
+		openBrowseFile.addEventListener("mouseup", () => {
+			documentFile.click();
+		});
+
+		documentFile.addEventListener("change", function () {
+			const fileName =
+				documentFile.files.length > 0 ? documentFile.files[0].name : "No file chosen";
+			openBrowseFile.textContent = fileName;
+		});
+
+		const sectionForm = document.querySelectorAll(".section-form");
+		sectionForm.forEach((form) => {
+			const displayImage = form.querySelector(".displayImage");
+			const openBrowseImage = form.querySelector(".open-browse-image");
+
+			openBrowseImage.addEventListener("mouseup", () => {
+				displayImage.click();
+			});
+
+			displayImage.addEventListener("change", function () {
+				const fileName =
+					displayImage.files.length > 0 ? displayImage.files[0].name : "No file chosen";
+				openBrowseImage.textContent = fileName;
+			});
+		});
+	</script>
+</html>

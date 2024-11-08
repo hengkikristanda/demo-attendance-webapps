@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card">
+					<div class="layout-card__header">
+						<div class="flex flex-col justify-between gap-4">
+							<h1 class="title">Pasca Sarjana</h1>
+							<% if (typeof responseMessage !== 'undefined') { %>
+							<p class="badge-admin <%= responseMessageClass %>"><%= responseMessage %></p>
+							<% } %>
+						</div>
+					</div>
+					<table id="postgraduateTable" class="overflow-x-scroll editable table-auto">
+						<thead>
+							<tr>
+								<th class="title">Program Pasca Sarjana</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% programs.forEach((program) => { %>
+							<tr class="group">
+								<td class="title">
+									<a
+										href="/member/web/postgraduate/<%=program.id%>"
+										class="text-tertiary underline hover:font-semibold"
+										><%=program.name%></a
+									>
+								</td>
+							</tr>
+							<% }); %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

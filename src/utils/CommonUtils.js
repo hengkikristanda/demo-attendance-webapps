@@ -85,9 +85,15 @@ function getOriginalFileNameWithExt(fileName, mimeType) {
 	}
 }
 
+function formatDocumentName(name) {
+	// Replace all non-alphanumeric characters and separators (dot, comma, spaces, etc.) with a hyphen
+	return name.replace(/[.,\s-]+/g, "-").toLowerCase();
+}
+
 module.exports = {
 	formatDateToLongString,
 	getMonthName,
 	getOriginalFileNameWithExt,
 	formatDateTimeToLongString,
+	formatDocumentName,
 };

@@ -224,7 +224,8 @@ div::-webkit-scrollbar-thumb:hover {
 @layer utilities {
 	textarea {
 		/* @apply shadow border rounded w-full min-h-28 max-h-28 py-2 px-3 text-gray-700 leading-tight focus:border-primary focus:border-2 focus:outline-none focus:ring-0; */
-		@apply shadow w-full outline-none border-gray-300 rounded focus:outline-none focus:ring-0 min-h-28 max-h-28 leading-tight focus:bg-primary/10 focus:border-primary;
+		/* @apply shadow w-full outline-none border-gray-300 rounded focus:outline-none focus:ring-0 min-h-28 max-h-28 leading-tight focus:bg-primary/10 focus:border-primary; */
+		@apply shadow w-full outline-none border-gray-300 rounded focus:outline-none focus:ring-0 min-h-28 leading-tight focus:bg-primary/10 focus:border-primary;
 	}
 	input[type="text"],
 	input[type="email"],
@@ -349,6 +350,9 @@ div::-webkit-scrollbar-thumb:hover {
 	}
 	.btn.disabled {
 		@apply bg-gray-300 cursor-auto;
+	}
+	.btn.sm {
+		@apply py-1 text-sm;
 	}
 
 	/* text */
@@ -1256,6 +1260,25 @@ a {
 .custom-form input:focus,
 .custom-form textarea:focus {
 	border-bottom: 1px solid var(--tertiary);
+	outline: none;
+	box-shadow: none;
+}
+
+
+
+.custom-form-normal input,
+.custom-form-normal textarea {
+	background-color: white;
+	resize: none; /* Prevents resizing of the textarea */
+}
+
+.custom-form-normal input {
+	height: 3rem;
+}
+
+.custom-form-normal input:focus,
+.custom-form-normal textarea:focus {
+	border: 1px solid var(--tertiary);
 	outline: none;
 	box-shadow: none;
 }

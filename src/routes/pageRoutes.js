@@ -5,6 +5,7 @@ const path = require("path");
 const fs = require("fs");
 const multer = require("multer");
 const combinedUpload = require("../config/multerCombinedConfig");
+const documentUpload = require("../config/multerDocumentConfig");
 const imageUpload = require("../config/multerImageConfig");
 const verifyToken = require("../middlewares/verifyToken");
 
@@ -18,6 +19,10 @@ const AttendanceController = require("../controllers/employee/attendanceControll
 const AlumniAdminController = require("../controllers/webAdmin/AlumniAdminController");
 const LecturerAdminController = require("../controllers/webAdmin/LecturerAdminController");
 const NewsAdminController = require("../controllers/webAdmin/NewsAdminController");
+const PostGraduateAdminController = require("../controllers/webAdmin/PostGraduateAdminController");
+
+const Undergraduate = require("../controllers/UndergraduateController");
+const Postgraduate = require("../controllers/PostgraduateController");
 
 const NewsController = require("../controllers/web/news/newsController");
 
@@ -81,10 +86,34 @@ router.get("/lecturers", Dispatcher.getLecturers);
 router.get("/training", Dispatcher.getTraining);
 router.get("/training/registration", Dispatcher.getTrainingRegistration);
 
+//Academics Under Graduate
 router.get(
-	"/post-graduate/marketing-innovation-technology",
-	Dispatcher.getPostGraduateMarketingInnovationTechnology
+	"/undergraduate/associate-road-transportation-management",
+	Undergraduate.getAssociateRoadTransportationManagement
 );
+
+router.get(
+	"/undergraduate/associate-railway-transportation-management",
+	Undergraduate.getAssociateRailwayTransportationManagement
+);
+
+router.get(
+	"/undergraduate/applied-bachelor-land-transportation-management",
+	Undergraduate.getAppliedBachelorLandTransportationManagement
+);
+
+router.get(
+	"/undergraduate/applied-bachelor-automotive-engineering-technology",
+	Undergraduate.getAppliedBachelorAutomotiveEngineeringTechnology
+);
+
+//Academics Post Graduate
+router.get(
+	"/postgraduate/marketing-innovation-technology",
+	Postgraduate.getPostGraduateMarketingInnovationTechnology
+);
+
+router.get("/postgraduate/safety-risk-engineering", Postgraduate.getSafetyRiskEngineering);
 
 //Member Login
 router.get("/users/login", AccountDispatcher.getLogin);
@@ -155,7 +184,33 @@ router.post(
 	NewsAdminController.previewNews
 );
 
-router.post("/member/web/news/add", upload.single("displayImage"), verifyToken, NewsAdminController.postCreateNews);
+router.post(
+	"/member/web/news/add",
+	upload.single("displayImage"),
+	verifyToken,
+	NewsAdminController.postCreateNews
+);
 router.get("/member/web/news/:newsId/delete", verifyToken, NewsAdminController.deleteNews);
+
+// Post Graduate
+router.get("/member/web/postgraduate", verifyToken, PostGraduateAdminController.getPostgraduate);
+router.get(
+	"/member/web/postgraduate/:webPageId",
+	verifyToken,
+	PostGraduateAdminController.getPostgraduateProgram
+);
+router.post(
+	"/member/web/postgraduate/studyProgram/update",
+	verifyToken,
+	documentUpload.single("documentFile"),
+	PostGraduateAdminController.putUpdatePostgraduateProgram
+);
+
+router.post(
+	"/member/web/postgraduate/section/update",
+	verifyToken,
+	imageUpload.single("displayImage"),
+	PostGraduateAdminController.putUpdatePostgraduateProgramSection
+);
 
 module.exports = router;

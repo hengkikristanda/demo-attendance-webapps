@@ -37,19 +37,19 @@
 					"subMenus": [
 						{
 							"label": "D-III Road Transportation Management",
-							"href": "/d3-manajemen-transportasi-jalan"
+							"href": "/undergraduate/associate-road-transportation-management"
 						},
 						{
 							"label": "D-III Railway Transportation Management",
-							"href": "/d3-manajemen-transportasi-kereta"
+							"href": "/undergraduate/associate-railway-transportation-management"
 						},
 						{
 							"label": "Bachelor of Applied Land Transportation Management",
-							"href": "/d4-manajemen-transportasi-darat"
+							"href": "/undergraduate/applied-bachelor-land-transportation-management"
 						},
 						{
 							"label": "Bachelor of Applied Automotive Engineering Technology",
-							"href": "/d4-teknologi-rekayasa-otomotif"
+							"href": "/undergraduate/applied-bachelor-automotive-engineering-technology"
 						}
 					]
 				},
@@ -58,11 +58,11 @@
 					"subMenus": [
 						{
 							"label": "Master in Marketing, Innovation and Technology",
-							"href": "/post-graduate/marketing-innovation-technology"
+							"href": "/postgraduate/marketing-innovation-technology"
 						},
 						{
 							"label": "Master in Safety and Risk Engineering",
-							"href": "/post-graduate/safety-risk"
+							"href": "/postgraduate/safety-risk-engineering"
 						}
 					]
 				},
@@ -94,7 +94,7 @@
 				},
 				{
 					"label": "PPID",
-					"href": "/ppid"
+					"href": "https://ptdisttd.ac.id/halaman-ppid"
 				}
 			]
 		}

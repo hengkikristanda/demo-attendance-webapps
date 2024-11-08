@@ -175,6 +175,24 @@
 	mask-size: contain; /* or cover */
 }
 
+.menu-book {
+	-webkit-mask: url("/img/native-icons/menu-book.svg") no-repeat center;
+	mask: url("/img/native-icons/menu-book.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+
+.more-horiz {
+	-webkit-mask: url("/img/native-icons/more-horiz.svg") no-repeat center;
+	mask: url("/img/native-icons/more-horiz.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+
 .remix.info {
 	background-color: var(--info);
 	border-radius: 50%;
