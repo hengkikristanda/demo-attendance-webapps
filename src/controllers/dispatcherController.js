@@ -1240,7 +1240,7 @@ const getHistory = async (req, res) => {
 	CommonUtils.logWithTime(`selectedLanguage: ${selectedLanguage}`);
 
 	// Load translations
-	const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
+	const footerTranslation = await TranslationService.getTranslation("footer", selectedLanguage);
 
 	// Redirect only if `lang` query parameter is present
 	if (req.query.lang) {
@@ -1248,7 +1248,7 @@ const getHistory = async (req, res) => {
 		return res.redirect(cleanUrl); // Redirect to the clean URL
 	}
 
-	const ourHistoryTranslation = TranslationService.getTranslation(
+	const ourHistoryTranslation = await TranslationService.getTranslation(
 		"aboutUs/history",
 		selectedLanguage
 	);
