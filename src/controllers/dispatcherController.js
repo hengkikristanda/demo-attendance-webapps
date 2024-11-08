@@ -40,7 +40,7 @@ const getHome = async (req, res) => {
 		zh: "主页",
 	};
 
-	let selectedLanguage = req.query.lang;
+	let selectedLanguage = await req.query.lang;
 	if (selectedLanguage) {
 		console.log("1. selectedLanguage: " + selectedLanguage);
 		selectedLanguage = LanguageService.getUserPreferredLanguage(req.query.lang);
