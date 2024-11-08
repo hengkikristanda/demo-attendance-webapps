@@ -47,10 +47,10 @@ const getHome = async (req, res) => {
 		? await LanguageService.getUserPreferredLanguage(req.query.lang)
 		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
 
-	res.clearCookie("language", { path: "/" });
+	res.cookie("language", selectedLanguage, { maxAge: 900000, secure: false, path: "/" });
 
 	// Set the validated language preference in a cookie
-	res.cookie("language", selectedLanguage, { maxAge: 900000, secure: true, path: "/" }); // Temporarily remove httpOnly for testing
+	// res.cookie("language", selectedLanguage, { maxAge: 900000, secure: true, path: "/" }); // Temporarily remove httpOnly for testing
 
 	console.log("Existing language cookie:", req.cookies.language);
 	console.log("Selected language:", selectedLanguage);
