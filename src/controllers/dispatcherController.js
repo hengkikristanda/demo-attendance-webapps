@@ -53,7 +53,12 @@ const getHome = async (req, res) => {
 	let isCookiesSet = false;
 	for (let n = 0; n < 5 && !isCookiesSet; n++) {
 		console.log("Enforce cookie: Attempt " + (n + 1));
+		console.log("req.cookies.language: " + req.cookies.language);
+		console.log("selectedLanguage: " + selectedLanguage);
+		let r = req.cookies.language != selectedLanguage;
+		console.log("R: " + r);
 		if (req.cookies.language != selectedLanguage) {
+			console.log("Attempt " + (n + 1));
 			res.cookie("language", selectedLanguage, { maxAge: 900000, secure: true, path: "/" }); // Temporarily remove httpOnly for testing
 			isCookiesSet = true;
 			console.log("cookie is set");
