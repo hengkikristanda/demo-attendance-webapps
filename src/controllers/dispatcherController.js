@@ -1234,6 +1234,8 @@ const getHistory = async (req, res) => {
 		`After setting session userPreferredLanguage: ${req.session.userPreferredLanguage}`
 	);
 
+	selectedLanguage = req.session.userPreferredLanguage;
+
 	// Load translations
 	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
 	const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
