@@ -90,7 +90,19 @@ function formatDocumentName(name) {
 	return name.replace(/[.,\s-]+/g, "-").toLowerCase();
 }
 
+function logWithTime(message) {
+	const timestamp = new Date().toLocaleString();
+
+	// Get the caller function name from the stack trace
+	const stack = new Error().stack;
+	const caller = stack.split("\n")[2].trim(); // Get the caller line
+	const functionName = caller.match(/at (.+) \(/)?.[1] || "Anonymous";
+
+	console.log(`[${timestamp}] [${functionName}] ${message}`);
+}
+
 module.exports = {
+	logWithTime,
 	formatDateToLongString,
 	getMonthName,
 	getOriginalFileNameWithExt,
