@@ -1321,8 +1321,9 @@ const getHistory = async (req, res) => {
 		selectedLanguage
 	);
 
+	console.log("READ THISS::::");
 	const r = await TranslationService.getTranslation2("navbar", selectedLanguage);
-	console.log(r);
+	console.log("RESULT: " + r);
 
 	// Render the index page
 	res.render("aboutUs/history/index", {
