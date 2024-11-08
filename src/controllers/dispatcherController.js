@@ -46,7 +46,7 @@ const getHome = async (req, res) => {
 		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
 
 	// Set the language preference in a cookie
-	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
+	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true, secure: true, path: '/' });
 
 	// Load translations
 	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
