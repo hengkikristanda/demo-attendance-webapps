@@ -1234,7 +1234,9 @@ const getHistory = async (req, res) => {
 		`After setting session userPreferredLanguage: ${req.session.userPreferredLanguage}`
 	);
 
+	CommonUtils.logWithTime("Getting selectedLanguage from session");
 	selectedLanguage = req.session.userPreferredLanguage;
+	CommonUtils.logWithTime(`selectedLanguage: ${selectedLanguage}`);
 
 	// Load translations
 	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
