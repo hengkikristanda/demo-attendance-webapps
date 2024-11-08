@@ -20,7 +20,10 @@ const getTranslation = async (targetComponent, selectedLanguage) => {
 		`${selectedLanguage}.json`
 	);
 	delete require.cache[require.resolve(filePath)];
-	return JSON.parse(fs.readFileSync(filePath));
+
+	const result = fs.readFileSync(filePath);
+
+	return await JSON.parse(result);
 };
 
 async function translateText(text, targetLang = "en") {
