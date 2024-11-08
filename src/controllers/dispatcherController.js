@@ -1240,6 +1240,7 @@ const getHistory = async (req, res) => {
 
 	// Load translations
 	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
+	console.log("Translation result: " + navBarTranslation);
 	const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
 
 	// Redirect only if `lang` query parameter is present
