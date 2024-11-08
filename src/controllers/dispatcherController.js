@@ -20,6 +20,7 @@ const PublicCommentsService = require("../services/PublicCommentsService");
 const FacilitiesTranslationService = require("../services/FacilitiesTranslationService");
 const FacilitiesImagesService = require("../services/FacilitiesImagesService");
 const LecturerDetailService = require("../services/Lecturer/LecturerDetailService");
+const { RFC_2822 } = require("moment-timezone");
 
 const responseMessage = {
 	id: "Terima kasih atas komentar Anda! Kami menghargai masukan Anda dan akan segera meninjaunya.",
@@ -1316,6 +1317,9 @@ const getHistory = async (req, res) => {
 	res.locals.ourHistoryTranslation = ourHistoryTranslation;
 
 	res.locals.navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
+
+	const r = TranslationService.getTranslation("navbar", selectedLanguage);
+	console.log(r);
 
 	// Render the index page
 	res.render("aboutUs/history/index", {
