@@ -1239,8 +1239,6 @@ const getHistory = async (req, res) => {
 	CommonUtils.logWithTime(`selectedLanguage: ${selectedLanguage}`);
 
 	// Load translations
-	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
-	console.log("Translation result: " + navBarTranslation);
 	const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
 
 	// Redirect only if `lang` query parameter is present
@@ -1317,11 +1315,12 @@ const getHistory = async (req, res) => {
 
 	res.locals.ourHistoryTranslation = ourHistoryTranslation;
 
+	res.locals.navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
+
 	// Render the index page
 	res.render("aboutUs/history/index", {
 		title: `${pageTitle} ${currentPage[selectedLanguage]}`,
 		selectedLanguage,
-		navBarTranslation,
 	});
 };
 

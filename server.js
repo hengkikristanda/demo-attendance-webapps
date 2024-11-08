@@ -16,7 +16,7 @@ const pageRoutes = require("./src/routes/pageRoutes");
 
 // Set the view engine to ejs
 app.set("view engine", "ejs");
-
+app.set("view cache", false);
 // Set the directory for the EJS templates
 app.set("views", "./src/views");
 
