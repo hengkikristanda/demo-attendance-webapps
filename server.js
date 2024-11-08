@@ -25,7 +25,7 @@ app.use(
 		secret: "PwQidkDwoPs", // Replace with your secret key
 		resave: false,
 		saveUninitialized: true,
-		cookie: { secure: true }, // Set to true if using HTTPS
+		cookie: { secure: false }, // Set to true if using HTTPS
 	})
 );
 app.use(flash());
@@ -36,7 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.use(cookieParser());
-app.use(router);
+// app.use(router);
 app.use(pageRoutes);
 
 // app.listen(port, () => {

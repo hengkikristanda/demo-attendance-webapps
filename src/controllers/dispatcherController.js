@@ -1213,27 +1213,26 @@ const getHistory = async (req, res) => {
 	};
 
 	console.log(`Incoming request to ${req.originalUrl}`);
-	const uniqueId = Math.random().toString(36).substring(7); // Unique identifier for each call
+	const uniqueId = Math.random().toString(36).substring(7);
 	console.log(`MASUK - Request ID: ${uniqueId}`);
 
-	CommonUtils.logWithTime(`req.query.lang: ${req.query.lang}`);
-	CommonUtils.logWithTime(`initial cookies: ${req.cookies.language}`);
 	CommonUtils.logWithTime(
 		`initial session userPreferredLanguage: ${req.session.userPreferredLanguage}`
 	);
 
-	// Get the language from the query parameter or use the language from the cookie if it exists
+	// Determine selected language, with fallback to cookie or default
 	let selectedLanguage = req.query.lang
 		? LanguageService.getUserPreferredLanguage(req.query.lang)
-		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
+		: req.cookies.language || "en";
 
-	// Set the language preference in a cookie
-	CommonUtils.logWithTime(`user selectedLanguage: ${selectedLanguage}`);
+	// Set selected language in the cookie and session if not already set
 	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
 	req.session.userPreferredLanguage = selectedLanguage;
-	CommonUtils.logWithTime(`After changing cookies: ${req.cookies.language}`);
-	CommonUtils.logWithTime(`After changing cookies user selectedLanguage: ${selectedLanguage}`);
-	CommonUtils.logWithTime(`After set sesssion: ${req.session.userPreferredLanguage}`);
+
+	CommonUtils.logWithTime(`user selectedLanguage: ${selectedLanguage}`);
+	CommonUtils.logWithTime(
+		`After setting session userPreferredLanguage: ${req.session.userPreferredLanguage}`
+	);
 
 	// Load translations
 	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
