@@ -279,38 +279,32 @@ const putUpdateLecturer = async (req, res) => {
 		const educationBackgroundItems = JSON.parse(req.body.educationBackgroundItems);
 		const researchActivityItems = JSON.parse(req.body.researchActivityItems);
 
+		const newLecturer = {
+			full_name: fullName,
+			email_address: emailAddress,
+			pos,
+			profesionalExperienceItems,
+			educationBackgroundItems,
+			researchActivityItems,
+		};
+
 		const imageFile = req.files["profilePictureFile"] ? req.files["profilePictureFile"][0] : null;
 
 		// Check if image was uploaded
 		let uploadedImagePath = null;
 		if (imageFile) {
 			uploadedImagePath = imageFile.path; // Get the uploaded file path
+			newLecturer.uploadedImagePath = uploadedImagePath;
 		}
-
-		console.log(`uploadedImagePath: ${uploadedImagePath}`);
 
 		const documentFile = req.files["documentFile"] ? req.files["documentFile"][0] : null;
 		// Check if image was uploaded
 		let uploadedDocumentPath = null;
 		if (documentFile) {
 			uploadedDocumentPath = documentFile.path; // Get the uploaded file path
+			newLecturer.uploadedDocumentPath = uploadedDocumentPath;
+			newLecturer.originalDocumentName = documentFile.originalname;
 		}
-
-		console.log(`uploadedDocumentPath: ${uploadedDocumentPath}`);
-
-		const newLecturer = {
-			full_name: fullName,
-			email_address: emailAddress,
-			pos,
-			uploadedImagePath,
-			uploadedDocumentPath,
-			originalDocumentName: documentFile.originalname,
-			profesionalExperienceItems,
-			educationBackgroundItems,
-			researchActivityItems,
-		};
-
-		console.log(newLecturer);
 
 		const updatedLecturer = await LecturerService.updateLecturer(lecturerId, newLecturer);
 
