@@ -40,7 +40,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.use(cookieParser());
-app.use(router);
+// app.use(router);
 app.use(pageRoutes);
 
 // app.listen(port, () => {

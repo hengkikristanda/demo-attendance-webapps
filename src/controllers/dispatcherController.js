@@ -40,31 +40,13 @@ const getHome = async (req, res) => {
 		zh: "主页",
 	};
 
-	// let selectedLanguage = await req.query.lang;
-	const languageCode = req.query.lang || "id";
-
-	const selectedLanguage = await LanguageService.getUserPreferredLanguage(languageCode);
-	console.log(`selectedLanguage: ${selectedLanguage}`);
-
-	/* if (selectedLanguage) {
-		console.log("1. selectedLanguage: " + selectedLanguage);
-		selectedLanguage = await LanguageService.getUserPreferredLanguage(req.query.lang);
-	} else {
-		console.log("2. selectedLanguage: " + selectedLanguage);
-		selectedLanguage = req.cookies.language;
-		if (!selectedLanguage) {
-			console.log("3. selectedLanguage: " + selectedLanguage);
-			selectedLanguage = "EN";
-		}
-	} */
-
 	// Get the language from the query parameter or use the language from the cookie if it exists
-	// let selectedLanguage = req.query.lang
-	// 	? LanguageService.getUserPreferredLanguage(req.query.lang)
-	// 	: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
+	let selectedLanguage = req.query.lang
+		? await LanguageService.getUserPreferredLanguage(req.query.lang)
+		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
 
 	// Set the language preference in a cookie
-	// res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
+	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
 
 	// Load translations
 	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
@@ -1685,10 +1667,6 @@ const getLecturers = async (req, res) => {
 	);
 
 	// Redirect only if `lang` query parameter is present
-	if (req.query.lang) {
-		const cleanUrl = req.originalUrl.split("?")[0]; // Remove query parameters
-		return res.redirect(cleanUrl); // Redirect to the clean URL
-	}
 
 	const emails = [];
 	const phoneNo = [];

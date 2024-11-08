@@ -1,7 +1,7 @@
 const { logWithTime } = require("../utils/CommonUtils");
 
 const getUserPreferredLanguage = async (selectedLanguage) => {
-	logWithTime("Changing User Preferred Language to: " + selectedLanguage);
+	await logWithTime("Changing User Preferred Language to: " + selectedLanguage);
 
 	if (
 		!selectedLanguage ||
