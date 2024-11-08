@@ -4,7 +4,7 @@ const translate = require("translate-google");
 const { JSDOM } = require("jsdom");
 const { ta } = require("translate-google/languages");
 
-const getTranslation = (targetComponent, selectedLanguage) => {
+const getTranslation = async (targetComponent, selectedLanguage) => {
 	console.log("Target Component: " + targetComponent);
 	console.log("selectedLanguage: " + selectedLanguage);
 	/* return JSON.parse(

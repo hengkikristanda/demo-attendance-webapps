@@ -1316,9 +1316,9 @@ const getHistory = async (req, res) => {
 
 	res.locals.ourHistoryTranslation = ourHistoryTranslation;
 
-	res.locals.navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
+	res.locals.navBarTranslation = await TranslationService.getTranslation("navbar", selectedLanguage);
 
-	const r = TranslationService.getTranslation("navbar", selectedLanguage);
+	const r = await TranslationService.getTranslation("navbar", selectedLanguage);
 	console.log(r);
 
 	// Render the index page
