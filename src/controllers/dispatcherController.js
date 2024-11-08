@@ -43,7 +43,7 @@ const getHome = async (req, res) => {
 	let selectedLanguage = await req.query.lang;
 	if (selectedLanguage) {
 		console.log("1. selectedLanguage: " + selectedLanguage);
-		selectedLanguage = LanguageService.getUserPreferredLanguage(req.query.lang);
+		selectedLanguage = await LanguageService.getUserPreferredLanguage(req.query.lang);
 	} else {
 		console.log("2. selectedLanguage: " + selectedLanguage);
 		selectedLanguage = req.cookies.language;
