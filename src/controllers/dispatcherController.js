@@ -42,11 +42,13 @@ const getHome = async (req, res) => {
 
 	// Get the language from the query parameter or use the language from the cookie if it exists
 	let selectedLanguage = req.query.lang
-		? LanguageService.getUserPreferredLanguage(req.query.lang)
+		? await LanguageService.getUserPreferredLanguage(req.query.lang)
 		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
 
-	// Set the language preference in a cookie
-	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true, secure: true, path: '/' });
+	res.clearCookie("language", { path: "/" });
+
+	// Set the validated language preference in a cookie
+	res.cookie("language", selectedLanguage, { maxAge: 900000, secure: true, path: "/" }); // Temporarily remove httpOnly for testing
 
 	// Load translations
 	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
@@ -1731,7 +1733,6 @@ const getLecturers = async (req, res) => {
 		docUrl: `/docs/lecturer-cv/${lecturer["doc_id"]}.${lecturer["doc_type"].split("/")[1]}`,
 		imageUrl: `/img/lecturer/${lecturer["image_id"]}.${lecturer["image_type"].split("/")[1]}`,
 	}));
-
 
 	// Use Promise.all to wait for all the details to resolve
 	lecturerList = await Promise.all(
