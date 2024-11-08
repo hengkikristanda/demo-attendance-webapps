@@ -1215,7 +1215,7 @@ const getHistory = async (req, res) => {
 	console.log(`Incoming request to ${req.originalUrl}`);
 	const uniqueId = Math.random().toString(36).substring(7); // Unique identifier for each call
 	console.log(`MASUK - Request ID: ${uniqueId}`);
-	console.log(`req.cookies.language: ${req.cookies.language}`);
+	console.log(`req.cookies.language 1: ${req.cookies.language}`);
 
 	// Get the language from the query parameter or use the language from the cookie if it exists
 	let selectedLanguage = req.query.lang
@@ -1224,6 +1224,7 @@ const getHistory = async (req, res) => {
 
 	// Set the language preference in a cookie
 	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
+	console.log(`req.cookies.language 2: ${req.cookies.language}`);
 
 	// Load translations
 	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
