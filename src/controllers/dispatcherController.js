@@ -40,6 +40,10 @@ const getHome = async (req, res) => {
 		zh: "主页",
 	};
 
+	console.log(`Incoming request to ${req.originalUrl}`);
+	const uniqueId = Math.random().toString(36).substring(7); // Unique identifier for each call
+	console.log(`MASUK - Request ID: ${uniqueId}`);
+
 	// Get the language from the query parameter or use the language from the cookie if it exists
 	let selectedLanguage = req.query.lang
 		? await LanguageService.getUserPreferredLanguage(req.query.lang)
