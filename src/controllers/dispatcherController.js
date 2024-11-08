@@ -40,6 +40,8 @@ const getHome = async (req, res) => {
 		zh: "主页",
 	};
 
+	console.log("Existing language cookie:", req.cookies.language);
+
 	// Get the language from the query parameter or use the language from the cookie if it exists
 	let selectedLanguage = req.query.lang
 		? await LanguageService.getUserPreferredLanguage(req.query.lang)
@@ -49,6 +51,9 @@ const getHome = async (req, res) => {
 
 	// Set the validated language preference in a cookie
 	res.cookie("language", selectedLanguage, { maxAge: 900000, secure: true, path: "/" }); // Temporarily remove httpOnly for testing
+
+	console.log("Existing language cookie:", req.cookies.language);
+	console.log("Selected language:", selectedLanguage);
 
 	// Load translations
 	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
