@@ -1,7 +1,7 @@
 <nav class="navbar">
 	<div class="mx-auto flex justify-between items-center">
 		<a
-			href="/"
+			href="/?lang=<%= selectedLanguage %>"
 			class="flex w-1/2 justify-start gap-4 items-center cursor-pointer p-0">
 			<img src="/img/logo-removebg.png" class="max-h-12 object-contain" />
 			<p class="text-secondary font-bold leading-4 hidden xl:inline">
@@ -18,14 +18,14 @@
 							<% menu.subMenus.forEach((subMenu) => { const className = (subMenu.subMenus !==
 							undefined) ? 'none' : 'link'; %>
 							<li class="<%= className %>">
-								<a class="w-full link" href="<%= subMenu.href %>"
+								<a class="w-full link" href="<%= subMenu.href %>?lang=<%= selectedLanguage %>"
 									><%= subMenu.label %></a
 								>
 								<% if (subMenu.subMenus) { %>
 								<ul>
 									<% subMenu.subMenus.forEach((nestedMenu) => { %>
 									<li class="link">
-										<a href="<%= nestedMenu.href %>"
+										<a href="<%= nestedMenu.href %>?lang=<%= selectedLanguage %>"
 											><%= nestedMenu.label %></a
 										>
 									</li>
@@ -121,7 +121,7 @@
 				</li>
 				<% } else { %>
 				<li>
-					<a class="link" href="<%= subMenu.href %>"
+					<a class="link" href="<%= subMenu.href %>?lang=<%= selectedLanguage %>"
 						><%= subMenu.label %></a
 					>
 				</li>

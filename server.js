@@ -30,17 +30,13 @@ app.use(
 );
 app.use(flash());
 app.use(express.json());
-app.use((req, res, next) => {
-	res.locals.message = req.flash("message");
-	next();
-});
 
 // Middleware to serve static files (e.g., CSS, JavaScript, images)
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.use(cookieParser());
-// app.use(router);
+app.use(router);
 app.use(pageRoutes);
 
 // app.listen(port, () => {
