@@ -40,37 +40,23 @@ const getHome = async (req, res) => {
 		zh: "主页",
 	};
 
-	console.log("Existing language cookie:", req.cookies.language);
+	console.log("selectedLanguage1: " + selectedLanguage);
 
 	// Get the language from the query parameter or use the language from the cookie if it exists
 	let selectedLanguage = req.query.lang
-		? await LanguageService.getUserPreferredLanguage(req.query.lang)
+		? LanguageService.getUserPreferredLanguage(req.query.lang)
 		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
 
-	// Set the validated language preference in a cookie
-	res.cookie("language", selectedLanguage, { maxAge: 900000, secure: true, path: "/" }); // Temporarily remove httpOnly for testing
+	// Set the language preference in a cookie
+	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
 
-	let isCookiesSet = false;
-	for (let n = 0; n < 5 && !isCookiesSet; n++) {
-		console.log("Enforce cookie: Attempt " + (n + 1));
-		console.log("req.cookies.language: " + req.cookies.language);
-		console.log("selectedLanguage: " + selectedLanguage);
-		let r = req.cookies.language != selectedLanguage;
-		console.log("R: " + r);
-		if (req.cookies.language != selectedLanguage) {
-			console.log("Attempt " + (n + 1));
-			res.cookie("language", selectedLanguage, { maxAge: 900000, secure: true, path: "/" }); // Temporarily remove httpOnly for testing
-			isCookiesSet = true;
-			console.log("cookie is set");
-		}
-	}
-
-	console.log("Existing language cookie:", req.cookies.language);
-	console.log("Selected language:", selectedLanguage);
+	console.log("selectedLanguage2: " + selectedLanguage);
 
 	// Load translations
 	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
 	const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
+
+	console.log("selectedLanguage3: " + selectedLanguage);
 
 	const welcomeTranslation = TranslationService.getTranslation("home/welcome", selectedLanguage);
 	const talkToUsTranslation = TranslationService.getTranslation("home/talkToUs", selectedLanguage);
