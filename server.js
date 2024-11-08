@@ -25,7 +25,7 @@ app.use(
 		secret: "PwQidkDwoPs", // Replace with your secret key
 		resave: false,
 		saveUninitialized: true,
-		cookie: { secure: false }, // Set to true if using HTTPS
+		cookie: { secure: true }, // Set to true if using HTTPS
 	})
 );
 app.use(flash());

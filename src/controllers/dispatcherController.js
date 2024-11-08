@@ -1218,7 +1218,9 @@ const getHistory = async (req, res) => {
 
 	CommonUtils.logWithTime(`req.query.lang: ${req.query.lang}`);
 	CommonUtils.logWithTime(`initial cookies: ${req.cookies.language}`);
-	CommonUtils.logWithTime(`initial cookies temp: ${req.cookies.temp}`);
+	CommonUtils.logWithTime(
+		`initial session userPreferredLanguage: ${req.session.userPreferredLanguage}`
+	);
 
 	// Get the language from the query parameter or use the language from the cookie if it exists
 	let selectedLanguage = req.query.lang
@@ -1228,10 +1230,10 @@ const getHistory = async (req, res) => {
 	// Set the language preference in a cookie
 	CommonUtils.logWithTime(`user selectedLanguage: ${selectedLanguage}`);
 	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
-	res.cookie("temp", selectedLanguage, { maxAge: 900000, httpOnly: true });
+	req.session.userPreferredLanguage = selectedLanguage;
 	CommonUtils.logWithTime(`After changing cookies: ${req.cookies.language}`);
 	CommonUtils.logWithTime(`After changing cookies user selectedLanguage: ${selectedLanguage}`);
-	CommonUtils.logWithTime(`initial cookies temp: ${req.cookies.temp}`);
+	CommonUtils.logWithTime(`After set sesssion: ${req.session.userPreferredLanguage}`);
 
 	// Load translations
 	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
