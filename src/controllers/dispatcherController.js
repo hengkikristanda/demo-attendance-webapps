@@ -20,7 +20,6 @@ const PublicCommentsService = require("../services/PublicCommentsService");
 const FacilitiesTranslationService = require("../services/FacilitiesTranslationService");
 const FacilitiesImagesService = require("../services/FacilitiesImagesService");
 const LecturerDetailService = require("../services/Lecturer/LecturerDetailService");
-const { RFC_2822 } = require("moment-timezone");
 
 const responseMessage = {
 	id: "Terima kasih atas komentar Anda! Kami menghargai masukan Anda dan akan segera meninjaunya.",
@@ -41,9 +40,6 @@ const getHome = async (req, res) => {
 		zh: "主页",
 	};
 
-	console.log(`Incoming request to ${req.originalUrl}`);
-	const uniqueId = Math.random().toString(36).substring(7); // Unique identifier for each call
-	console.log(`MASUK - Request ID: ${uniqueId}`);
 
 	// Get the language from the query parameter or use the language from the cookie if it exists
 	let selectedLanguage = req.query.lang
@@ -1205,137 +1201,107 @@ const getComplaints = async (req, res) => {
 };
 
 const getHistory = async (req, res) => {
-	try {
-		const currentPage = {
-			id: "Sejarah Kami",
-			en: "Our History",
-			ja: "私たちの歴史",
-			ko: "우리의 역사",
-			zh: "我们的历史",
-		};
+	const currentPage = {
+		id: "Sejarah Kami",
+		en: "Our History",
+		ja: "私たちの歴史",
+		ko: "우리의 역사",
+		zh: "我们的历史",
+	};
 
-		console.log(`Incoming request to ${req.originalUrl}`);
-		const uniqueId = Math.random().toString(36).substring(7);
-		console.log(`MASUK - Request ID: ${uniqueId}`);
 
-		CommonUtils.logWithTime(
-			`initial session userPreferredLanguage: ${req.session.userPreferredLanguage}`
-		);
+	// Determine selected language, with fallback to cookie or default
+	let selectedLanguage = req.query.lang
+		? LanguageService.getUserPreferredLanguage(req.query.lang)
+		: req.cookies.language || "en";
 
-		// Determine selected language, with fallback to cookie or default
-		let selectedLanguage = req.query.lang
-			? LanguageService.getUserPreferredLanguage(req.query.lang)
-			: req.cookies.language || "en";
+	// Set selected language in the cookie and session if not already set
+	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
 
-		// Set selected language in the cookie and session if not already set
-		res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
-		req.session.userPreferredLanguage = selectedLanguage;
+	// Load translations
+	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
+	const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
 
-		CommonUtils.logWithTime(`user selectedLanguage: ${selectedLanguage}`);
-		CommonUtils.logWithTime(
-			`After setting session userPreferredLanguage: ${req.session.userPreferredLanguage}`
-		);
-
-		CommonUtils.logWithTime("Getting selectedLanguage from session");
-		selectedLanguage = req.session.userPreferredLanguage;
-		CommonUtils.logWithTime(`selectedLanguage: ${selectedLanguage}`);
-
-		// Load translations
-		const footerTranslation = await TranslationService.getTranslation("footer", selectedLanguage);
-
-		// Redirect only if `lang` query parameter is present
-		if (req.query.lang) {
-			const cleanUrl = req.originalUrl.split("?")[0]; // Remove query parameters
-			return res.redirect(cleanUrl); // Redirect to the clean URL
-		}
-
-		const ourHistoryTranslation = await TranslationService.getTranslation(
-			"aboutUs/history",
-			selectedLanguage
-		);
-
-		const emails = [];
-		const phoneNo = [];
-		const instagram = [];
-		const youtube = [];
-		const facebook = [];
-		const whatsapp = [];
-
-		const contactInfo = await ContactInfoService.findAll();
-		for (let n = 0; n < contactInfo.length; n++) {
-			if (contactInfo[n].channel.toLowerCase() === "email") {
-				emails.push({
-					label: contactInfo[n].label,
-					value: contactInfo[n].value,
-				});
-			} else if (contactInfo[n].channel.toLowerCase() === "phone") {
-				phoneNo.push({
-					label: contactInfo[n].label,
-					value: contactInfo[n].value,
-				});
-			} else if (contactInfo[n].channel.toLowerCase() === "instagram") {
-				instagram.push({
-					label: contactInfo[n].label,
-					value: contactInfo[n].value,
-				});
-			} else if (contactInfo[n].channel.toLowerCase() === "youtube") {
-				youtube.push({
-					label: contactInfo[n].label,
-					value: contactInfo[n].value,
-				});
-			} else if (contactInfo[n].channel.toLowerCase() === "facebook") {
-				facebook.push({
-					label: contactInfo[n].label,
-					value: contactInfo[n].value,
-				});
-			} else if (contactInfo[n].channel.toLowerCase() === "whatsapp") {
-				whatsapp.push({
-					label: contactInfo[n].label,
-					value: contactInfo[n].value,
-				});
-			}
-		}
-
-		let companyInfo = {};
-
-		const companyProfile = await CompanyProfileService.findAll();
-		for (let n = 0; n < companyProfile.length; n++) {
-			companyInfo = {
-				address: companyProfile[n].address,
-			};
-		}
-
-		res.locals.footerTranslation = footerTranslation;
-
-		res.locals.emails = emails;
-		res.locals.phoneNo = phoneNo;
-		res.locals.instagram = instagram;
-		res.locals.youtube = youtube;
-		res.locals.whatsapp = whatsapp;
-		res.locals.facebook = facebook;
-		res.locals.companyInfo = companyInfo;
-
-		res.locals.ourHistoryTranslation = ourHistoryTranslation;
-
-		res.locals.navBarTranslation = await TranslationService.getTranslation(
-			"navbar",
-			selectedLanguage
-		);
-
-		console.log("READ THISS::::");
-		const translations = await TranslationService.getTranslation2("navbar", selectedLanguage);
-
-		console.log("Translations:", JSON.stringify(translations, null, 2));
-
-		// Render the index page
-		res.render("aboutUs/history/index", {
-			title: `${pageTitle} ${currentPage[selectedLanguage]}`,
-			selectedLanguage,
-		});
-	} catch (error) {
-		console.error("Error during rendering:", error);
-		res.status(500).send("Internal Server Error");
+	// Redirect only if `lang` query parameter is present
+	if (req.query.lang) {
+		const cleanUrl = req.originalUrl.split("?")[0]; // Remove query parameters
+		return res.redirect(cleanUrl); // Redirect to the clean URL
 	}
+
+	const ourHistoryTranslation = TranslationService.getTranslation(
+		"aboutUs/history",
+		selectedLanguage
+	);
+
+	const emails = [];
+	const phoneNo = [];
+	const instagram = [];
+	const youtube = [];
+	const facebook = [];
+	const whatsapp = [];
+
+	const contactInfo = await ContactInfoService.findAll();
+	for (let n = 0; n < contactInfo.length; n++) {
+		if (contactInfo[n].channel.toLowerCase() === "email") {
+			emails.push({
+				label: contactInfo[n].label,
+				value: contactInfo[n].value,
+			});
+		} else if (contactInfo[n].channel.toLowerCase() === "phone") {
+			phoneNo.push({
+				label: contactInfo[n].label,
+				value: contactInfo[n].value,
+			});
+		} else if (contactInfo[n].channel.toLowerCase() === "instagram") {
+			instagram.push({
+				label: contactInfo[n].label,
+				value: contactInfo[n].value,
+			});
+		} else if (contactInfo[n].channel.toLowerCase() === "youtube") {
+			youtube.push({
+				label: contactInfo[n].label,
+				value: contactInfo[n].value,
+			});
+		} else if (contactInfo[n].channel.toLowerCase() === "facebook") {
+			facebook.push({
+				label: contactInfo[n].label,
+				value: contactInfo[n].value,
+			});
+		} else if (contactInfo[n].channel.toLowerCase() === "whatsapp") {
+			whatsapp.push({
+				label: contactInfo[n].label,
+				value: contactInfo[n].value,
+			});
+		}
+	}
+
+	let companyInfo = {};
+
+	const companyProfile = await CompanyProfileService.findAll();
+	for (let n = 0; n < companyProfile.length; n++) {
+		companyInfo = {
+			address: companyProfile[n].address,
+		};
+	}
+
+	res.locals.navBarTranslation = navBarTranslation;
+	res.locals.footerTranslation = footerTranslation;
+
+	res.locals.emails = emails;
+	res.locals.phoneNo = phoneNo;
+	res.locals.instagram = instagram;
+	res.locals.youtube = youtube;
+	res.locals.whatsapp = whatsapp;
+	res.locals.facebook = facebook;
+	res.locals.companyInfo = companyInfo;
+
+	res.locals.ourHistoryTranslation = ourHistoryTranslation;
+
+	// Render the index page
+	res.render("aboutUs/history/index", {
+		title: `${pageTitle} ${currentPage[selectedLanguage]}`,
+		selectedLanguage,
+	});
 };
 
 const getDuties = async (req, res) => {

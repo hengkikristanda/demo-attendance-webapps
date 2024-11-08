@@ -4,7 +4,7 @@ const translate = require("translate-google");
 const { JSDOM } = require("jsdom");
 const { ta } = require("translate-google/languages");
 
-const getTranslation = async (targetComponent, selectedLanguage) => {
+const getTranslation = (targetComponent, selectedLanguage) => {
 	console.log("Target Component: " + targetComponent);
 	console.log("selectedLanguage: " + selectedLanguage);
 	/* return JSON.parse(
@@ -20,28 +20,7 @@ const getTranslation = async (targetComponent, selectedLanguage) => {
 		`${selectedLanguage}.json`
 	);
 	delete require.cache[require.resolve(filePath)];
-
-	const result = fs.readFileSync(filePath);
-
-	return await JSON.parse(result);
-};
-
-const getTranslation2 = (targetComponent, selectedLanguage) => {
-	console.log("Target Component: " + targetComponent);
-	console.log("Selected Language: " + selectedLanguage);
-
-	// Construct the path to the JavaScript translation file
-	const filePath = path.join(
-		__dirname,
-		`../translations/${targetComponent}`,
-		`${selectedLanguage}.js`
-	);
-
-	// Dynamically load the translation module
-	delete require.cache[require.resolve(filePath)]; // Ensure the latest file is loaded each time
-
-	const translations = require(filePath);
-	return translations;
+	return JSON.parse(fs.readFileSync(filePath));
 };
 
 async function translateText(text, targetLang = "en") {
@@ -82,5 +61,4 @@ module.exports = {
 	getTranslation,
 	translateHtmlContent,
 	translateText,
-	getTranslation2,
 };
