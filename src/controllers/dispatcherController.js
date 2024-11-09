@@ -53,16 +53,12 @@ const getHome = async (req, res) => {
 	// const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
 
 	console.log("Detected language:", req.language);
-	const testi18n = req.t("footer:connectWithUs");
-	console.log("Translation for 'connectWithUs': " + testi18n);
-
+	selectedLanguage = req.language;
 	const footerTranslation = {
 		location: req.t("footer:location"),
 		contactUs: req.t("footer:contactUs"),
 		connectWithUs: req.t("footer:connectWithUs"),
 	};
-
-	console.log(footerTranslation);
 
 	const welcomeTranslation = TranslationService.getTranslation("home/welcome", selectedLanguage);
 	const talkToUsTranslation = TranslationService.getTranslation("home/talkToUs", selectedLanguage);
