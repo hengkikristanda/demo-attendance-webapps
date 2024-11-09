@@ -40,18 +40,29 @@ const getHome = async (req, res) => {
 		zh: "主页",
 	};
 
-
 	// Get the language from the query parameter or use the language from the cookie if it exists
 	let selectedLanguage = req.query.lang
 		? await LanguageService.getUserPreferredLanguage(req.query.lang)
 		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
 
 	// Set the language preference in a cookie
-	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
+	// res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
 
 	// Load translations
 	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
-	const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
+	// const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
+
+	console.log("Detected language:", req.language);
+	const testi18n = req.t("footer:connectWithUs");
+	console.log("Translation for 'connectWithUs': " + testi18n);
+
+	const footerTranslation = {
+		location: req.t("footer:location"),
+		contactUs: req.t("footer:contactUs"),
+		connectWithUs: req.t("footer:connectWithUs"),
+	};
+
+	console.log(footerTranslation);
 
 	const welcomeTranslation = TranslationService.getTranslation("home/welcome", selectedLanguage);
 	const talkToUsTranslation = TranslationService.getTranslation("home/talkToUs", selectedLanguage);
@@ -1208,7 +1219,6 @@ const getHistory = async (req, res) => {
 		ko: "우리의 역사",
 		zh: "我们的历史",
 	};
-
 
 	// Determine selected language, with fallback to cookie or default
 	let selectedLanguage = req.query.lang

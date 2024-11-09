@@ -1,7 +1,7 @@
 <nav class="navbar">
 	<div class="mx-auto flex justify-between items-center">
 		<a
-			href="/?lang=<%= selectedLanguage %>"
+			href="/?lng=<%= selectedLanguage %>"
 			class="flex w-1/2 justify-start gap-4 items-center cursor-pointer p-0">
 			<img src="/img/logo-removebg.png" class="max-h-12 object-contain" />
 			<p class="text-secondary font-bold leading-4 hidden xl:inline">
@@ -18,14 +18,14 @@
 							<% menu.subMenus.forEach((subMenu) => { const className = (subMenu.subMenus !==
 							undefined) ? 'none' : 'link'; %>
 							<li class="<%= className %>">
-								<a class="w-full link" href="<%= subMenu.href %>?lang=<%= selectedLanguage %>"
+								<a class="w-full link" href="<%= subMenu.href %>?lng=<%= selectedLanguage %>"
 									><%= subMenu.label %></a
 								>
 								<% if (subMenu.subMenus) { %>
 								<ul>
 									<% subMenu.subMenus.forEach((nestedMenu) => { %>
 									<li class="link">
-										<a href="<%= nestedMenu.href %>?lang=<%= selectedLanguage %>"
+										<a href="<%= nestedMenu.href %>?lng=<%= selectedLanguage %>"
 											><%= nestedMenu.label %></a
 										>
 									</li>
@@ -48,19 +48,19 @@
 								<img src="/img/flags/<%= selectedLanguage %>.png" class="w-full h-full" />
 							</div>
 							<ul class="dropdown_menu-6 drop-right">
-								<a href="?lang=id" class="flex gap-2 link">
+								<a href="?lng=id" class="flex gap-2 link">
 									<img src="/img/flags/id.png" class="max-w-4" />Bahasa Indonesia
 								</a>
-								<a href="?lang=en" class="flex gap-2 link"
+								<a href="?lng=en" class="flex gap-2 link"
 									><img src="/img/flags/en.png" class="max-w-4" />English</a
 								>
-								<a href="?lang=zh" class="flex gap-2 link"
+								<a href="?lng=zh" class="flex gap-2 link"
 									><img src="/img/flags/zh.png" class="max-w-4" />Chinese (Simplified)</a
 								>
-								<a href="?lang=ko" class="flex gap-2 link"
+								<a href="?lng=ko" class="flex gap-2 link"
 									><img src="/img/flags/ko.png" class="max-w-4" />Korean</a
 								>
-								<a href="?lang=ja" class="flex gap-2 link"
+								<a href="?lng=ja" class="flex gap-2 link"
 									><img src="/img/flags/ja.png" class="max-w-4" />Japanese</a
 								>
 							</ul>
@@ -80,21 +80,21 @@
 				</div>
 				<ul>
 					<li>
-						<a href="?lang=id"><img src="/img/flags/id.png" class="max-w-6" />Bahasa Indonesia</a>
+						<a href="?lng=id"><img src="/img/flags/id.png" class="max-w-6" />Bahasa Indonesia</a>
 					</li>
 					<li>
-						<a href="?lang=en"><img src="/img/flags/en.png" class="max-w-6" />English</a>
+						<a href="?lng=en"><img src="/img/flags/en.png" class="max-w-6" />English</a>
 					</li>
 					<li>
-						<a href="?lang=zh"
+						<a href="?lng=zh"
 							><img src="/img/flags/zh.png" class="max-w-6" />Chinese (Simplified)</a
 						>
 					</li>
 					<li>
-						<a href="?lang=ko"><img src="/img/flags/ko.png" class="max-w-6" />Korean</a>
+						<a href="?lng=ko"><img src="/img/flags/ko.png" class="max-w-6" />Korean</a>
 					</li>
 					<li>
-						<a href="?lang=ja"><img src="/img/flags/ja.png" class="max-w-6" />Japanese</a>
+						<a href="?lng=ja"><img src="/img/flags/ja.png" class="max-w-6" />Japanese</a>
 					</li>
 				</ul>
 			</div>
@@ -121,7 +121,7 @@
 				</li>
 				<% } else { %>
 				<li>
-					<a class="link" href="<%= subMenu.href %>?lang=<%= selectedLanguage %>"
+					<a class="link" href="<%= subMenu.href %>?lng=<%= selectedLanguage %>"
 						><%= subMenu.label %></a
 					>
 				</li>

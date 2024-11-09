@@ -8,7 +8,7 @@
 					</div>
 					<div
 						class="md:w-3/4 flex flex-col items-center md:items-start text-center md:text-start gap-2">
-						<h6 class="font-semibold"><%= footerTranslation.label[0] %></h6>
+						<h6 class="font-semibold"><%= footerTranslation.location %></h6>
 						<hr class="w-12 border-4 border-tertiary" />
 						<p class="text-sm leading-relaxed"><%- companyInfo.address %></p>
 					</div>
@@ -26,7 +26,7 @@
 				class="flex flex-col items-center md:items-start gap-8 md:gap-4 md:flex-row justify-between">
 				<div
 					class="flex flex-col items-center md:items-start w-1/2 text-center md:text-start gap-4 md:gap-2">
-					<h6 class="font-semibold"><%= footerTranslation.label[1] %></h6>
+					<h6 class="font-semibold"><%= footerTranslation.contactUs %></h6>
 					<hr class="w-12 border-4 border-tertiary" />
 					<div class="flex flex-col text-sm gap-2">
 						<% phoneNo.forEach(phoneNumber => { %>
@@ -39,7 +39,7 @@
 				</div>
 				<div
 					class="flex flex-col items-center md:items-start w-full text-center md:text-start gap-4 md:gap-2">
-					<h6 class="font-semibold"><%= footerTranslation.label[2] %></h6>
+					<h6 class="font-semibold"><%= footerTranslation.connectWithUs %></h6>
 					<hr class="w-12 border-4 border-tertiary" />
 					<div class="grid grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 text-sm">
 						<% instagram.forEach(ig => { %>

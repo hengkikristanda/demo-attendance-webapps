@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 const verifyToken = (req, res, next) => {
 	const token = req.cookies.auth;
-
+	console.log(token);
 	if (!token) {
 		console.log("Token not available");
 		return res.status(403).redirect("/users/login?error=forbidden");

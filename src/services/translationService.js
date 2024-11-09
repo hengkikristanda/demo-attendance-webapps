@@ -5,8 +5,6 @@ const { JSDOM } = require("jsdom");
 const { ta } = require("translate-google/languages");
 
 const getTranslation = (targetComponent, selectedLanguage) => {
-	console.log("Target Component: " + targetComponent);
-	console.log("selectedLanguage: " + selectedLanguage);
 	/* return JSON.parse(
 		fs.readFileSync(
 			path.join(__dirname, `../translations/${targetComponent}/`, `${selectedLanguage}.json`),
