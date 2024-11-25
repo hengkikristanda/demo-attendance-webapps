@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middlewares/verifyToken");
 
-const AccountDispatcher = require("../controllers/AccountDispatcher");
+const AccountDispatcher = require("../controllers/AccountsDispatcher");
 
 router.use(express.urlencoded({ extended: true }));
 
