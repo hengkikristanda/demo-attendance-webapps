@@ -32,7 +32,7 @@ const LecturerController = require("../controllers/LecturerController");
 const Dispatcher = require("../controllers/DispatchersController");
 const AccountsDispatcher = require("../controllers/AccountsDispatcher");
 
-const DashboardController = require("../controllers/dashboard/DashboardController");
+const DashboardController = require("../controllers/dashboard/DashboardsController");
 const AttendanceController = require("../controllers/employee/attendanceController");
 const AlumniAdminController = require("../controllers/webAdmin/AlumniAdminController");
 const LecturerAdminController = require("../controllers/webAdmin/LecturerAdminController");
