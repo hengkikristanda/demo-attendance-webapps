@@ -13,7 +13,7 @@ const currentPage = {
 };
 
 const getPublicComments = async (req, res) => {
-	// try {
+	try {
 		const selectedLanguage = req.language;
 
 		res.locals.publicCommentsTranslation = await CommonComponentServices.getPublicComment(req);
@@ -49,16 +49,15 @@ const getPublicComments = async (req, res) => {
 			selectedLanguage,
 			alertMessage: alertMessage[0],
 		});
-	// } catch (error) {
-	// 	console.log("=====ERROR:");
-	// 	console.log(error);
-	// 	req.flash("alertMessage");
-	// 	req.flash("alertMessage", {
-	// 		message: "Something went wrong, please try again in a few minutes.",
-	// 		className: "danger",
-	// 	});
-	// 	return res.redirect("/error");
-	// }
+	} catch (error) {
+		console.log(error);
+		req.flash("alertMessage");
+		req.flash("alertMessage", {
+			message: "Something went wrong, please try again in a few minutes.",
+			className: "danger",
+		});
+		return res.redirect("/error");
+	}
 };
 
 const postCreatePublicComment = async (req, res) => {

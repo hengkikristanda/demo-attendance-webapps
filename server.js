@@ -94,6 +94,7 @@ Promise.all([i18nextInit, sequelizeInit])
 		app.use(cmsRoutes);
 		app.use((err, req, res, next) => {
 			console.error("EJS Rendering Error:", err.message);
+			console.log(err.message);
 
 			// Redirect to the error page with a 500 status code or any other appropriate response code
 			res.redirect(`/error/500`);
