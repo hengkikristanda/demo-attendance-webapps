@@ -172,6 +172,65 @@ const getHistoryHero = async (req) => {
 	};
 };
 
+const getMarketingInnovationTechnologyHeroSection = async (req) => {
+	await logging(req.language);
+
+	return {
+		title: req.t("marketingInnovationTechnologyHeroSection:title"),
+	};
+};
+
+const getMarketingInnovationTechnologyGroupSection = async (req) => {
+	await logging(req.language);
+
+	return {
+		overview: req.t("marketingInnovationTechnologyGroupSection:overview"),
+		studentActivities: req.t("marketingInnovationTechnologyGroupSection:studentActivities"),
+		careerImpact: req.t("marketingInnovationTechnologyGroupSection:careerImpact"),
+	};
+};
+
+const getMarketingInnovationTechnologySummarySection = async (req) => {
+	await logging(req.language);
+
+	return {
+		title: req.t("marketingInnovationTechnologySummarySection:title"),
+		durationLabel: req.t("marketingInnovationTechnologySummarySection:durationLabel"),
+		durationValue: req.t("marketingInnovationTechnologySummarySection:durationValue"),
+		degreeLabel: req.t("marketingInnovationTechnologySummarySection:degreeLabel"),
+		degreeValue: req.t("marketingInnovationTechnologySummarySection:degreeValue"),
+		accreditationLabel: req.t("marketingInnovationTechnologySummarySection:accreditationLabel"),
+		accreditationValue: req.t("marketingInnovationTechnologySummarySection:accreditationValue"),
+	};
+};
+
+const getMarketingInnovationTechnologyOverviewSection = async (req) => {
+	await logging(req.language);
+
+	return {
+		title: req.t("marketingInnovationTechnologyOverviewSection:title"),
+		content: req.t("marketingInnovationTechnologyOverviewSection:content"),
+	};
+};
+
+const getMarketingInnovationTechnologyStudentActivitiesSection = async (req) => {
+	await logging(req.language);
+
+	return {
+		title: req.t("marketingInnovationTechnologyStudentActivitiesSection:title"),
+		content: req.t("marketingInnovationTechnologyStudentActivitiesSection:content"),
+	};
+};
+
+const getMarketingInnovationTechnologyCareerImpactSection = async (req) => {
+	await logging(req.language);
+
+	return {
+		title: req.t("marketingInnovationTechnologyCareerImpactSection:title"),
+		content: req.t("marketingInnovationTechnologyCareerImpactSection:content"),
+	};
+};
+
 const getDutiesHero = async (req) => {
 	await logging(req.language);
 
@@ -323,4 +382,10 @@ module.exports = {
 	getTrainingSection,
 	getPublicComment,
 	getAlumni,
+	getMarketingInnovationTechnologyHeroSection,
+	getMarketingInnovationTechnologyGroupSection,
+	getMarketingInnovationTechnologySummarySection,
+	getMarketingInnovationTechnologyOverviewSection,
+	getMarketingInnovationTechnologyStudentActivitiesSection,
+	getMarketingInnovationTechnologyCareerImpactSection,
 };

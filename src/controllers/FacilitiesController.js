@@ -45,8 +45,6 @@ const getFacilities = async (req, res) => {
 			}
 		}
 
-		console.log(imagesSectionList)
-
 		res.locals.heroSectionListData = heroSectionList;
 		res.locals.imagesSectionListData = imagesSectionList;
 

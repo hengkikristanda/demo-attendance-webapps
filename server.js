@@ -45,6 +45,12 @@ const i18nextInit = new Promise((resolve, reject) => {
 					"training",
 					"publicComment",
 					"alumni",
+					"marketingInnovationTechnologyHeroSection",
+					"marketingInnovationTechnologyGroupSection",
+					"marketingInnovationTechnologySummarySection",
+					"marketingInnovationTechnologyOverviewSection",
+					"marketingInnovationTechnologyStudentActivitiesSection",
+					"marketingInnovationTechnologyCareerImpactSection",
 				],
 				detection: {
 					order: ["querystring", "cookie"],
@@ -97,7 +103,7 @@ Promise.all([i18nextInit, sequelizeInit])
 			console.log(err.message);
 
 			// Redirect to the error page with a 500 status code or any other appropriate response code
-			res.redirect(`/error/500`);
+			res.redirect(`/error`);
 		});
 
 		app.listen(port, () => {

@@ -1611,6 +1611,10 @@ p.danger,
   top: 3.5rem;
 }
 
+.bottom-1\/2 {
+  bottom: 50%;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -5276,6 +5280,14 @@ input::file-selector-button {
 
   .md\:top-1\/2 {
     top: 50%;
+  }
+
+  .md\:bottom-1\/4 {
+    bottom: 25%;
+  }
+
+  .md\:bottom-1\/2 {
+    bottom: 50%;
   }
 
   .md\:mx-0 {
