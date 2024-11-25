@@ -63,6 +63,12 @@ const i18nextInit = new Promise((resolve, reject) => {
 					"d3TransportasiJalanOverviewSection",
 					"d3TransportasiJalanStudentActivitiesSection",
 					"d3TransportasiJalanCareerImpactSection",
+					"d3TransportasiKeretaApiHeroSection",
+					"d3TransportasiKeretaApiGroupSection",
+					"d3TransportasiKeretaApiSummarySection",
+					"d3TransportasiKeretaApiOverviewSection",
+					"d3TransportasiKeretaApiStudentActivitiesSection",
+					"d3TransportasiKeretaApiCareerImpactSection",
 				],
 				detection: {
 					order: ["querystring", "cookie"],
