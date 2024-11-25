@@ -1,4 +1,4 @@
-const CommonComponentServices = require("../services/CommonComponentServices");
+const CommonComponentServices = require("../services/CommonsComponentServices");
 const SectionContentService = require("../services/SectionContent/SectionContentService");
 const TabListItemService = require("../services/TabList/TabListItemService");
 const { WEB_PAGE_TITLE } = require("../utils/Constants");
