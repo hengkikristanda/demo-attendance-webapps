@@ -7,7 +7,7 @@ const LanguageService = require("../../../services/languageService");
 
 const { WEB_PAGE_TITLE } = require("../../../utils/Constants");
 
-const CommonComponentServices = require("../../../services/CommonComponentServices");
+const CommonComponentServices = require("../../../services/CommonsComponentServices");
 
 const currentPage = {
 	id: "Berita Terbaru",

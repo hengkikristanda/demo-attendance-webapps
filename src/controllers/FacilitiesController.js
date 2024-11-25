@@ -2,7 +2,7 @@ const WebPageService = require("../services/WebPageService");
 const HeroSectionService = require("../services/HeroSectionService");
 const AccordionContentService = require("../services/AccordionContentService");
 
-const CommonComponentServices = require("../services/CommonComponentServices");
+const CommonComponentServices = require("../services/CommonsComponentServices");
 const CommonUtils = require("../utils/CommonUtils");
 const SectionContentService = require("../services/SectionContent/SectionContentService");
 const SectionImagesService = require("../services/SectionImagesService/SectionImagesService");
