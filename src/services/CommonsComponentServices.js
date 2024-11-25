@@ -231,6 +231,70 @@ const getMarketingInnovationTechnologyCareerImpactSection = async (req) => {
 	};
 };
 
+
+
+
+
+const getSafetyRiskEngHeroSection = async (req) => {
+	await logging(req.language);
+
+	return {
+		title: req.t("SafetyRiskEngHeroSection:title"),
+	};
+};
+
+const getSafetyRiskEngGroupSection = async (req) => {
+	await logging(req.language);
+
+	return {
+		overview: req.t("SafetyRiskEngGroupSection:overview"),
+		studentActivities: req.t("SafetyRiskEngGroupSection:studentActivities"),
+		careerImpact: req.t("SafetyRiskEngGroupSection:careerImpact"),
+	};
+};
+
+const getSafetyRiskEngSummarySection = async (req) => {
+	await logging(req.language);
+
+	return {
+		title: req.t("SafetyRiskEngSummarySection:title"),
+		durationLabel: req.t("SafetyRiskEngSummarySection:durationLabel"),
+		durationValue: req.t("SafetyRiskEngSummarySection:durationValue"),
+		degreeLabel: req.t("SafetyRiskEngSummarySection:degreeLabel"),
+		degreeValue: req.t("SafetyRiskEngSummarySection:degreeValue"),
+		accreditationLabel: req.t("SafetyRiskEngSummarySection:accreditationLabel"),
+		accreditationValue: req.t("SafetyRiskEngSummarySection:accreditationValue"),
+	};
+};
+
+const getSafetyRiskEngOverviewSection = async (req) => {
+	await logging(req.language);
+
+	return {
+		title: req.t("SafetyRiskEngOverviewSection:title"),
+		content: req.t("SafetyRiskEngOverviewSection:content"),
+	};
+};
+
+const getSafetyRiskEngStudentActivitiesSection = async (req) => {
+	await logging(req.language);
+
+	return {
+		title: req.t("SafetyRiskEngStudentActivitiesSection:title"),
+		content: req.t("SafetyRiskEngStudentActivitiesSection:content"),
+	};
+};
+
+const getSafetyRiskEngCareerImpactSection = async (req) => {
+	await logging(req.language);
+
+	return {
+		title: req.t("SafetyRiskEngCareerImpactSection:title"),
+		content: req.t("SafetyRiskEngCareerImpactSection:content"),
+	};
+};
+
+
 const getDutiesHero = async (req) => {
 	await logging(req.language);
 
@@ -388,4 +452,10 @@ module.exports = {
 	getMarketingInnovationTechnologyOverviewSection,
 	getMarketingInnovationTechnologyStudentActivitiesSection,
 	getMarketingInnovationTechnologyCareerImpactSection,
+	getSafetyRiskEngHeroSection,
+	getSafetyRiskEngGroupSection,
+	getSafetyRiskEngSummarySection,
+	getSafetyRiskEngOverviewSection,
+	getSafetyRiskEngStudentActivitiesSection,
+	getSafetyRiskEngCareerImpactSection,
 };

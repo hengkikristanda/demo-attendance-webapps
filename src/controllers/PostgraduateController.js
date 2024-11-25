@@ -74,34 +74,6 @@ const getPostGraduateMarketingInnovationTechnology = async (req, res) => {
 
 		res.locals.careerImpactSection = careerImpactSection;
 
-		// const studyTranslation = TranslationService.getTranslation(
-		// 	"academics/postGraduate/marketingInnovationTechnology",
-		// 	selectedLanguage
-		// );
-
-		// let studyProgramData = await StudyProgramService.findTranslationByLang(
-		// 	"7097127d-9d0c-11ef-b867-9e406641108e",
-		// 	selectedLanguage
-		// );
-
-		// if (!studyProgramData) {
-		// 	studyProgramData = await StudyProgramService.findInViewById(
-		// 		"7097127d-9d0c-11ef-b867-9e406641108e"
-		// 	);
-		// }
-
-		// studyProgramData.documentUrl = `/docs/postgraduate/accreditations/${
-		// 	studyProgramData.accreditation_document
-		// }.${studyProgramData.mime_type.split("/")[1]}`;
-
-		// let sectionContentTranslationList;
-		// if (selectedLanguage.toLowerCase() != "id") {
-		// 	sectionContentTranslationList = await SectionContentService.findAllTranslationInViewByWebPageId(
-		// 		"e69c8961-9cda-11ef-b867-9e406641108e",
-		// 		selectedLanguage
-		// 	);
-		// }
-
 		// Render the index page
 		return res.render("academics/postGraduate/marketingInnovationTechnology/index", {
 			title: `${WEB_PAGE_TITLE} ${currentPage[selectedLanguage]}`,
@@ -114,150 +86,52 @@ const getPostGraduateMarketingInnovationTechnology = async (req, res) => {
 };
 
 const getSafetyRiskEngineering = async (req, res) => {
-	const currentPage = {
-		id: "Magister Teknik Keselamatan dan Resiko",
-		en: "Master in Safety and Risk Engineering",
-		ja: "安全およびリスク工学の修士号",
-		ko: "안전 및 위험 공학 석사",
-		zh: "安全与风险工程硕士",
-	};
+	try {
+		const selectedLanguage = req.language;
 
-	// Get the language from the query parameter or use the language from the cookie if it exists
-	let selectedLanguage = req.query.lang
-		? LanguageService.getUserPreferredLanguage(req.query.lang)
-		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
+		// Common components
+		const navBarMenuList = await CommonsComponentServices.getWebMenu(req.language);
+		res.locals.webMenuList = navBarMenuList;
+		res.locals.footerTranslation = await CommonsComponentServices.getFooter(req);
+		res.locals.contactInfo = await CommonsComponentServices.getContactInfo();
+		res.locals.companyInfo = await CommonsComponentServices.getCompanyInfo();
 
-	// Set the language preference in a cookie
-	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
+		const heroSection = await CommonsComponentServices.getSafetyRiskEngHeroSection(req);
 
-	// Load translations
-	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
-	const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
+		res.locals.heroSection = heroSection;
 
-	const studyTranslation = TranslationService.getTranslation(
-		"academics/postGraduate/marketingInnovationTechnology",
-		selectedLanguage
-	);
+		const groupSection = await CommonsComponentServices.getSafetyRiskEngGroupSection(req);
 
-	// Redirect only if `lang` query parameter is present
-	if (req.query.lang) {
-		const cleanUrl = req.originalUrl.split("?")[0]; // Remove query parameters
-		return res.redirect(cleanUrl); // Redirect to the clean URL
-	}
+		res.locals.groupSection = groupSection;
 
-	const emails = [];
-	const phoneNo = [];
-	const instagram = [];
-	const youtube = [];
-	const facebook = [];
-	const whatsapp = [];
+		const summarySection = await CommonsComponentServices.getSafetyRiskEngSummarySection(req);
 
-	const contactInfo = await ContactInfoService.findAll();
-	for (let n = 0; n < contactInfo.length; n++) {
-		if (contactInfo[n].channel.toLowerCase() === "email") {
-			emails.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "phone") {
-			phoneNo.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "instagram") {
-			instagram.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "youtube") {
-			youtube.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "facebook") {
-			facebook.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "whatsapp") {
-			whatsapp.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		}
-	}
+		res.locals.summarySection = summarySection;
 
-	let companyInfo = {};
+		const overviewSection = await CommonsComponentServices.getSafetyRiskEngOverviewSection(req);
 
-	const companyProfile = await CompanyProfileService.findAll();
-	for (let n = 0; n < companyProfile.length; n++) {
-		companyInfo = {
-			address: companyProfile[n].address,
-		};
-	}
+		res.locals.overviewSection = overviewSection;
 
-	let studyProgramData = await StudyProgramService.findTranslationByLang(
-		"7097127d-9d0c-11ef-b867-9e406641108e",
-		selectedLanguage
-	);
+		const studentActivitiesSection =
+			await CommonsComponentServices.getSafetyRiskEngStudentActivitiesSection(req);
 
-	if (!studyProgramData) {
-		studyProgramData = await StudyProgramService.findInViewById(
-			"7097127d-9d0c-11ef-b867-9e406641108e"
+		res.locals.studentActivitiesSection = studentActivitiesSection;
+
+		const careerImpactSection = await CommonsComponentServices.getSafetyRiskEngCareerImpactSection(
+			req
 		);
+
+		res.locals.careerImpactSection = careerImpactSection;
+
+		// Render the index page
+		return res.render("academics/postGraduate/safetyRiskEngineering/index", {
+			title: `${WEB_PAGE_TITLE} ${currentPage[selectedLanguage]}`,
+			selectedLanguage,
+		});
+	} catch (error) {
+		console.log(error);
 	}
-
-	studyProgramData.documentUrl = `/docs/postgraduate/accreditations/${
-		studyProgramData.accreditation_document
-	}.${studyProgramData.mime_type.split("/")[1]}`;
-
-	let sectionContentTranslationList;
-	if (selectedLanguage.toLowerCase() != "id") {
-		sectionContentTranslationList = await SectionContentService.findAllTranslationInViewByWebPageId(
-			"25d7a4c4-9d12-11ef-b867-9e406641108e",
-			selectedLanguage
-		);
-	}
-
-	if (!sectionContentTranslationList) {
-		sectionContentTranslationList = await SectionContentService.findAllInViewByWebPageId(
-			"25d7a4c4-9d12-11ef-b867-9e406641108e"
-		);
-	}
-
-	const sectionData = {};
-
-	sectionContentTranslationList.forEach((item) => {
-		const fileExtension = item.mime_type ? item.mime_type.split("/")[1] : null;
-		const imageUrl = item.image_id && fileExtension ? `${item.image_id}.${fileExtension}` : null;
-
-		sectionData[item.type] = {
-			...item,
-			imageUrl: `/img/sections/${imageUrl}`, // Add the imageUrl key to each item
-		};
-	});
-
-	res.locals.navBarTranslation = navBarTranslation;
-	res.locals.footerTranslation = footerTranslation;
-	res.locals.studyTranslation = studyTranslation;
-
-	res.locals.emails = emails;
-	res.locals.phoneNo = phoneNo;
-	res.locals.instagram = instagram;
-	res.locals.youtube = youtube;
-	res.locals.whatsapp = whatsapp;
-	res.locals.facebook = facebook;
-	res.locals.companyInfo = companyInfo;
-
-	// Render the index page
-	res.render("academics/postGraduate/safetyRiskEngineering", {
-		title: `${pageTitle} ${currentPage[selectedLanguage]}`,
-		currentPage: currentPage[selectedLanguage],
-		selectedLanguage,
-		studyProgramData,
-		sectionContentTranslationList,
-		sectionData,
-	});
+	return res.redirect("/error");
 };
 
 module.exports = {
