@@ -27,7 +27,6 @@ const getHome = async (req, res) => {
 		res.locals.webMenuList = navBarMenuList;
 		res.locals.footerTranslation = await CommonComponentServices.getFooter(req);
 		const r = await CommonComponentServices.getContactInfo();
-		console.log(r);
 		res.locals.contactInfo = r;
 		res.locals.companyInfo = await CommonComponentServices.getCompanyInfo();
 
@@ -42,11 +41,15 @@ const getHome = async (req, res) => {
 			);
 		}
 
-		res.locals.sectionList = await CommonComponentServices.groupByType(homeSectionList, (item) => {
+		const rx = await CommonComponentServices.groupByType(homeSectionList, (item) => {
 			if (item.image_id && item.mime_type) {
 				item.imageUrl = `/img/sections/${item.image_id}.${item.mime_type.split("/")[1]}`;
 			}
 		});
+
+		console.log(rx)
+
+		res.locals.sectionList = rx;
 
 		// Talk to Us Section
 		res.locals.complaintMenu = navBarMenuList.find((menu) => menu.url === "/complaints");
