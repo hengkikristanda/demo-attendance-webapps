@@ -50,6 +50,8 @@ const getPublicComments = async (req, res) => {
 			alertMessage: alertMessage[0],
 		});
 	} catch (error) {
+		console.log("=====ERROR:");
+		console.log(error);
 		req.flash("alertMessage");
 		req.flash("alertMessage", {
 			message: "Something went wrong, please try again in a few minutes.",
@@ -76,8 +78,7 @@ const postCreatePublicComment = async (req, res) => {
 
 		req.flash("alertMessage");
 		req.flash("alertMessage", {
-			message:
-				"Thank you for submitting your comment.",
+			message: "Thank you for submitting your comment.",
 			className: "success",
 		});
 	} catch (error) {
