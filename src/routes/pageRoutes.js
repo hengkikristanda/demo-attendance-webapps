@@ -24,7 +24,7 @@ const OrganizationalStructureControllers = require("../controllers/Organizationa
 const LeadersControllers = require("../controllers/LeadersControllers");
 const FacilitiesController = require("../controllers/FacilitiesController");
 //Complaint
-const ComplaintControllers = require("../controllers/complaintControllers");
+const ComplaintControllers = require("../controllers/ComplaintsController");
 //Academics
 const TrainingController = require("../controllers/TrainingController");
 const LecturerController = require("../controllers/LecturerController");
