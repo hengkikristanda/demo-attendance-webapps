@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 
 const siteMenuServices = require("../services/siteMenuServices");
-const CommonComponentServices = require("../services/CommonsComponentServices");
+const CommonsComponentServices = require("../services/CommonsComponentServices");
 const LanguageService = require("../services/languageService");
 const TranslationService = require("../services/translationService");
 const ContactInfoService = require("../services/ContactInfoService");
@@ -21,109 +21,78 @@ const FacilitiesTranslationService = require("../services/FacilitiesTranslationS
 const FacilitiesImagesService = require("../services/FacilitiesImagesService");
 const LecturerDetailService = require("../services/Lecturer/LecturerDetailService");
 
-const pageTitle = "PTDI STTD - ";
+const { WEB_PAGE_TITLE } = require("../utils/Constants");
 
 const getAssociateRoadTransportationManagement = async (req, res) => {
 	const currentPage = {
 		id: "D-III Manajemen Transportasi Jalan",
-		en: "D-III Road Transportation Management",
-		ja: "D-III 道路輸送管理",
-		ko: "D-III 도로 운송 관리",
-		zh: "D-III 公路运输管理",
+		EN: "Diploma III Road Transport Management",
+		JA: "道路輸送管理学科 (D-III)",
+		KO: "도로교통관리학과 (D-III)",
+		ZH: "道路运输管理学 (D-III)",
 	};
+	try {
+		const selectedLanguage = req.language;
 
-	// Get the language from the query parameter or use the language from the cookie if it exists
-	let selectedLanguage = req.query.lang
-		? LanguageService.getUserPreferredLanguage(req.query.lang)
-		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
+		// Common components
+		const navBarMenuList = await CommonsComponentServices.getWebMenu(req.language);
+		res.locals.webMenuList = navBarMenuList;
+		res.locals.footerTranslation = await CommonsComponentServices.getFooter(req);
+		res.locals.contactInfo = await CommonsComponentServices.getContactInfo();
+		res.locals.companyInfo = await CommonsComponentServices.getCompanyInfo();
 
-	// Set the language preference in a cookie
-	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
+		const heroSection = await CommonsComponentServices.getAcademicsHeroSection(
+			req,
+			"d3TransportasiJalanHeroSection"
+		);
 
-	// Load translations
-	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
-	const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
+		res.locals.heroSection = heroSection;
 
-	const studyTranslation = TranslationService.getTranslation(
-		"academics/postGraduate/marketingInnovationTechnology",
-		selectedLanguage
-	);
+		const groupSection = await CommonsComponentServices.getAcademicsGroupSection(
+			req,
+			"d3TransportasiJalanGroupSection"
+		);
 
-	// Redirect only if `lang` query parameter is present
-	if (req.query.lang) {
-		const cleanUrl = req.originalUrl.split("?")[0]; // Remove query parameters
-		return res.redirect(cleanUrl); // Redirect to the clean URL
+		res.locals.groupSection = groupSection;
+
+		const summarySection = await CommonsComponentServices.getAcademicsSummarySection(
+			req,
+			"d3TransportasiJalanSummarySection"
+		);
+
+		res.locals.summarySection = summarySection;
+
+		const overviewSection = await CommonsComponentServices.getAcademicsOverviewSection(
+			req,
+			"d3TransportasiJalanOverviewSection"
+		);
+
+		res.locals.overviewSection = overviewSection;
+
+		const studentActivitiesSection =
+			await CommonsComponentServices.getAcademicsStudentActivitiesSection(
+				req,
+				"d3TransportasiJalanStudentActivitiesSection"
+			);
+
+		res.locals.studentActivitiesSection = studentActivitiesSection;
+
+		const careerImpactSection = await CommonsComponentServices.getAcademicsCareerImpactSection(
+			req,
+			"d3TransportasiJalanCareerImpactSection"
+		);
+
+		res.locals.careerImpactSection = careerImpactSection;
+
+		// Render the index page
+		return res.render("academics/underGraduate/associateRoadTransportationManagement/index", {
+			title: `${WEB_PAGE_TITLE} ${currentPage[selectedLanguage]}`,
+			selectedLanguage,
+		});
+	} catch (error) {
+		console.log(error);
 	}
-
-	const emails = [];
-	const phoneNo = [];
-	const instagram = [];
-	const youtube = [];
-	const facebook = [];
-	const whatsapp = [];
-
-	const contactInfo = await ContactInfoService.findAll();
-	for (let n = 0; n < contactInfo.length; n++) {
-		if (contactInfo[n].channel.toLowerCase() === "email") {
-			emails.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "phone") {
-			phoneNo.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "instagram") {
-			instagram.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "youtube") {
-			youtube.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "facebook") {
-			facebook.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "whatsapp") {
-			whatsapp.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		}
-	}
-
-	let companyInfo = {};
-
-	const companyProfile = await CompanyProfileService.findAll();
-	for (let n = 0; n < companyProfile.length; n++) {
-		companyInfo = {
-			address: companyProfile[n].address,
-		};
-	}
-
-	res.locals.navBarTranslation = navBarTranslation;
-	res.locals.footerTranslation = footerTranslation;
-	res.locals.studyTranslation = studyTranslation;
-
-	res.locals.emails = emails;
-	res.locals.phoneNo = phoneNo;
-	res.locals.instagram = instagram;
-	res.locals.youtube = youtube;
-	res.locals.whatsapp = whatsapp;
-	res.locals.facebook = facebook;
-	res.locals.companyInfo = companyInfo;
-
-	// Render the index page
-	res.render("academics/underGraduate/associateRoadTransportationManagement", {
-		title: `${pageTitle} ${currentPage[selectedLanguage]}`,
-		currentPage: currentPage[selectedLanguage],
-		selectedLanguage,
-	});
+	return res.redirect("/error");
 };
 
 const getAssociateRailwayTransportationManagement = async (req, res) => {
@@ -436,8 +405,8 @@ const getAppliedBachelorAutomotiveEngineeringTechnology = async (req, res) => {
 };
 
 module.exports = {
-    getAssociateRoadTransportationManagement,
-    getAssociateRailwayTransportationManagement,
-    getAppliedBachelorLandTransportationManagement,
-    getAppliedBachelorAutomotiveEngineeringTechnology
+	getAssociateRoadTransportationManagement,
+	getAssociateRailwayTransportationManagement,
+	getAppliedBachelorLandTransportationManagement,
+	getAppliedBachelorAutomotiveEngineeringTechnology,
 };

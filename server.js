@@ -57,6 +57,12 @@ const i18nextInit = new Promise((resolve, reject) => {
 					"SafetyRiskEngOverviewSection",
 					"SafetyRiskEngStudentActivitiesSection",
 					"SafetyRiskEngCareerImpactSection",
+					"d3TransportasiJalanHeroSection",
+					"d3TransportasiJalanGroupSection",
+					"d3TransportasiJalanSummarySection",
+					"d3TransportasiJalanOverviewSection",
+					"d3TransportasiJalanStudentActivitiesSection",
+					"d3TransportasiJalanCareerImpactSection",
 				],
 				detection: {
 					order: ["querystring", "cookie"],

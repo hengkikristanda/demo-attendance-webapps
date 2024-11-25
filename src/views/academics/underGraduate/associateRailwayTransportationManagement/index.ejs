@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../../sections/head') %>
+
+	<body>
+		<%- include('../../../sections/navbar') %>
+		<div class="max-w-screen-2xl mx-auto">
+			<%- include('./heroSection') %>
+
+			<section>
+				<div class="flex flex-col w-full gap-16">
+					<div class="flex justify-evenly border-b border-gray-300">
+						<h6
+							class="nav-btn cursor-pointer w-1/3 py-4 text-center hover-effect bg-tertiary/30 font-semibold">
+							<%=groupSection.overview%>
+						</h6>
+						<h6 class="nav-btn cursor-pointer w-1/3 py-4 text-center hover-effect font-semibold">
+							<%=groupSection.studentActivities%>
+						</h6>
+						<h6 class="nav-btn cursor-pointer w-1/3 py-4 text-center hover-effect font-semibold">
+							<%=groupSection.careerImpact%>
+						</h6>
+					</div>
+					<div id="overview" class="nav-btn_content flex flex-col w-full gap-16 reveal fade-right">
+						<div class="flex">
+							<div class="flex flex-col w-2/5 px-2">
+								<h1 class="text-secondary font-bold"><%=summarySection.title%></h1>
+								<hr class="h-2 w-1/4 bg-tertiary" />
+							</div>
+							<div class="flex justify-evenly py-4 bg-tertiary/10 w-full">
+								<div class="flex flex-col border-r-2 border-white w-1/3 py-8 px-8">
+									<h3 class="text-tertiary font-bold"><%=summarySection.durationLabel%></h3>
+									<p><%=summarySection.durationValue%></p>
+								</div>
+								<div class="flex flex-col border-r-2 border-white w-1/3 py-8 px-8">
+									<h3 class="text-tertiary font-bold"><%=summarySection.degreeLabel%></h3>
+									<p><%=summarySection.degreeValue%></p>
+								</div>
+								<div class="flex flex-col border-r-2 border-white w-1/3 py-8 px-8">
+									<a
+										href="/docs/postgraduate/accreditations/8f417060-440d-4481-a871-18ca7766c28c.pdf"
+										target="_blank"
+										class="text-tertiary font-bold text-2xl p-0 m-0 underline">
+										<%=summarySection.accreditationLabel%>
+									</a>
+									<p><%=summarySection.accreditationValue%></p>
+								</div>
+							</div>
+						</div>
+						<div class="flex gap-12">
+							<div class="flex flex-col w-1/2 my-12 px-2 gap-4">
+								<h3 class="font-bold uppercase text-tertiary"><%=overviewSection.title%></h3>
+								<p class="text-secondary"><%=overviewSection.content%></p>
+							</div>
+							<div
+								class="w-1/2 h-96 border border-tertiary/10 shadow-tertiary/10 shadow-2xl drop-shadow-lg">
+								<img
+									src="/img/sections/41067c84-1be4-412e-987a-6d30267770b0.JPG"
+									class="w-full h-full object-cover" />
+							</div>
+						</div>
+					</div>
+					<div
+						id="studentActivity"
+						class="nav-btn_content flex flex-col w-full gap-16 hidden reveal fade-right">
+						<div class="flex flex-col-reverse md:flex-row md:items-start gap-12">
+							<div class="flex flex-col md:w-1/2 my-12 md:my-0 px-2 gap-4">
+								<h3 class="font-bold uppercase text-tertiary">
+									<%=studentActivitiesSection.title%>
+								</h3>
+								<p class="text-secondary"><%=studentActivitiesSection.content%></p>
+							</div>
+							<div
+								class="md:w-1/2 h-96 border border-tertiary/10 shadow-tertiary/10 shadow-2xl drop-shadow-lg">
+								<img
+									src="/img/sections/d8001bb5-139a-4281-88ac-94e4fbaa284d.jpg"
+									class="w-full h-full object-cover" />
+							</div>
+						</div>
+					</div>
+					<div
+						id="careerImpact"
+						class="nav-btn_content flex flex-col w-full gap-16 hidden reveal fade-right">
+						<div class="flex flex-col-reverse md:flex-row md:items-start gap-12">
+							<div class="flex flex-col md:w-1/2 my-12 md:my-0 px-2 gap-4">
+								<h3 class="font-bold uppercase text-tertiary"><%=careerImpactSection.title%></h3>
+								<p class="text-secondary"><%=careerImpactSection.content%></p>
+							</div>
+							<div
+								class="md:w-1/2 h-96 border border-tertiary/10 shadow-tertiary/10 shadow-2xl drop-shadow-lg">
+								<img
+									src="/img/sections/098bb58d-27db-480b-a510-cfa1d20f965c.jpg"
+									class="w-full h-full object-cover" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<%- include('../../../sections/footer') %> <%- include('../../../components/chatWidget') %>
+		</div>
+	</body>
+	<script src="/js/navbarUtils.js"></script>
+	<script src="/js/onLoad.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			function reveal() {
+				var reveals = document.querySelectorAll(".reveal");
+
+				for (var i = 0; i < reveals.length; i++) {
+					var windowHeight = window.innerHeight;
+					var elementTop = reveals[i].getBoundingClientRect().top;
+					var elementVisible = 150;
+
+					if (elementTop < windowHeight - elementVisible) {
+						reveals[i].classList.add("active");
+					} /* else {
+                    reveals[i].classList.remove("active");
+                } */
+				}
+			}
+
+			window.addEventListener("scroll", reveal);
+		});
+
+		const navBtn = document.querySelectorAll(".nav-btn ");
+		navBtn.forEach((btn, index) => {
+			btn.addEventListener("mouseup", () => {
+				const targetContent = document.querySelectorAll(".nav-btn_content");
+
+				targetContent.forEach((content, idx) => {
+					if (index == idx) {
+						content.classList.remove("hidden");
+					} else {
+						content.classList.add("hidden");
+					}
+				});
+
+				navBtn.forEach((btn, idx) => {
+					if (index == idx) {
+						btn.classList.add("bg-tertiary/30");
+					} else {
+						btn.classList.remove("bg-tertiary/30");
+					}
+				});
+			});
+		});
+	</script>
+</html>

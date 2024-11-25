@@ -231,10 +231,6 @@ const getMarketingInnovationTechnologyCareerImpactSection = async (req) => {
 	};
 };
 
-
-
-
-
 const getSafetyRiskEngHeroSection = async (req) => {
 	await logging(req.language);
 
@@ -294,6 +290,64 @@ const getSafetyRiskEngCareerImpactSection = async (req) => {
 	};
 };
 
+const getAcademicsHeroSection = async (req, filename) => {
+	await logging(req.language);
+
+	return {
+		title: req.t(`${filename}:title`),
+	};
+};
+
+const getAcademicsGroupSection = async (req, filename) => {
+	await logging(req.language);
+
+	return {
+		overview: req.t(`${filename}:overview`),
+		studentActivities: req.t(`${filename}:studentActivities`),
+		careerImpact: req.t(`${filename}:careerImpact`),
+	};
+};
+
+const getAcademicsSummarySection = async (req, filename) => {
+	await logging(req.language);
+
+	return {
+		title: req.t(`${filename}:title`),
+		durationLabel: req.t(`${filename}:durationLabel`),
+		durationValue: req.t(`${filename}:durationValue`),
+		degreeLabel: req.t(`${filename}:degreeLabel`),
+		degreeValue: req.t(`${filename}:degreeValue`),
+		accreditationLabel: req.t(`${filename}:accreditationLabel`),
+		accreditationValue: req.t(`${filename}:accreditationValue`),
+	};
+};
+
+const getAcademicsOverviewSection = async (req, filename) => {
+	await logging(req.language);
+
+	return {
+		title: req.t(`${filename}:title`),
+		content: req.t(`${filename}:content`),
+	};
+};
+
+const getAcademicsStudentActivitiesSection = async (req, filename) => {
+	await logging(req.language);
+
+	return {
+		title: req.t(`${filename}:title`),
+		content: req.t(`${filename}:content`),
+	};
+};
+
+const getAcademicsCareerImpactSection = async (req, filename) => {
+	await logging(req.language);
+
+	return {
+		title: req.t(`${filename}:title`),
+		content: req.t(`${filename}:content`),
+	};
+};
 
 const getDutiesHero = async (req) => {
 	await logging(req.language);
@@ -458,4 +512,10 @@ module.exports = {
 	getSafetyRiskEngOverviewSection,
 	getSafetyRiskEngStudentActivitiesSection,
 	getSafetyRiskEngCareerImpactSection,
+	getAcademicsHeroSection,
+	getAcademicsGroupSection,
+	getAcademicsSummarySection,
+	getAcademicsOverviewSection,
+	getAcademicsStudentActivitiesSection,
+	getAcademicsCareerImpactSection,
 };
