@@ -1,4 +1,4 @@
-const CommonComponentServices = require("../services/CommonsComponentServices");
+const CommonComponentServices = require("../services/CommonComponentServices");
 const AlumniService = require("../services/AlumniService");
 const LecturerService = require("../services/Lecturer/LecturerService");
 const LecturerDetailService = require("../services/Lecturer/LecturerDetailService");

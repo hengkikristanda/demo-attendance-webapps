@@ -1,4 +1,4 @@
-const CommonComponentServices = require("../services/CommonsComponentServices");
+const CommonComponentServices = require("../services/CommonComponentServices");
 const LeadersService = require("../services/Leaders/LeadersService");
 const { WEB_PAGE_TITLE } = require("../utils/Constants");
 

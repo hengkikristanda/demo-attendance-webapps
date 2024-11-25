@@ -1,4 +1,4 @@
-const CommonComponentServices = require("../services/CommonsComponentServices");
+const CommonComponentServices = require("../services/CommonComponentServices");
 const AlumniService = require("../services/AlumniService");
 const LecturerService = require("../services/Lecturer/LecturerService");
 const NewsService = require("../services/NewsService");
@@ -27,6 +27,7 @@ const getHome = async (req, res) => {
 		res.locals.webMenuList = navBarMenuList;
 		res.locals.footerTranslation = await CommonComponentServices.getFooter(req);
 		const r = await CommonComponentServices.getContactInfo();
+		console.log(r);
 		res.locals.contactInfo = r;
 		res.locals.companyInfo = await CommonComponentServices.getCompanyInfo();
 
@@ -41,15 +42,13 @@ const getHome = async (req, res) => {
 			);
 		}
 
-		const rx = await CommonComponentServices.groupByType(homeSectionList, (item) => {
+		console.log(homeSectionList);
+
+		res.locals.sectionList = await CommonComponentServices.groupByType(homeSectionList, (item) => {
 			if (item.image_id && item.mime_type) {
 				item.imageUrl = `/img/sections/${item.image_id}.${item.mime_type.split("/")[1]}`;
 			}
 		});
-
-		console.log(rx)
-
-		res.locals.sectionList = rx;
 
 		// Talk to Us Section
 		res.locals.complaintMenu = navBarMenuList.find((menu) => menu.url === "/complaints");

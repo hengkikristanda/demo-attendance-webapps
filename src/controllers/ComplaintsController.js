@@ -1,4 +1,4 @@
-const CommonComponentServices = require("../services/CommonsComponentServices");
+const CommonComponentServices = require("../services/CommonComponentServices");
 const { WEB_PAGE_TITLE } = require("../utils/Constants");
 const { VALIDATION_ERROR_CODE } = require("../utils/Constants");
 const CommonUtils = require("../utils/CommonUtils");

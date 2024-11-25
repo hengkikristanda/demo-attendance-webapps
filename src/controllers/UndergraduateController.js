@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 
 const siteMenuServices = require("../services/siteMenuServices");
-const CommonComponentServices = require("../services/CommonsComponentServices");
+const CommonComponentServices = require("../services/CommonComponentServices");
 const LanguageService = require("../services/languageService");
 const TranslationService = require("../services/translationService");
 const ContactInfoService = require("../services/ContactInfoService");
