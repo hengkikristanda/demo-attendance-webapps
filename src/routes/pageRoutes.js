@@ -29,8 +29,8 @@ const ComplaintControllers = require("../controllers/ComplaintsController");
 const TrainingController = require("../controllers/TrainingController");
 const LecturerController = require("../controllers/LecturerController");
 
-const Dispatcher = require("../controllers/dispatcherController");
-const AccountDispatcher = require("../controllers/AccountDispatcher");
+const Dispatcher = require("../controllers/DispatchersController");
+const AccountsDispatcher = require("../controllers/AccountsDispatcher");
 
 const DashboardController = require("../controllers/dashboard/DashboardController");
 const AttendanceController = require("../controllers/employee/attendanceController");
@@ -149,11 +149,11 @@ router.get(
 router.get("/postgraduate/safety-risk-engineering", Postgraduate.getSafetyRiskEngineering);
 
 //Member Login
-router.get("/users/login", AccountDispatcher.getLogin);
-router.post("/users/login", AccountDispatcher.postLogin);
-router.get("/users/forgot-password", AccountDispatcher.getResetPassword);
-router.post("/users/register", AccountDispatcher.postRegisterUser);
-router.get("/users/logout", verifyToken, AccountDispatcher.logout);
+router.get("/users/login", AccountsDispatcher.getLogin);
+router.post("/users/login", AccountsDispatcher.postLogin);
+router.get("/users/forgot-password", AccountsDispatcher.getResetPassword);
+router.post("/users/register", AccountsDispatcher.postRegisterUser);
+router.get("/users/logout", verifyToken, AccountsDispatcher.logout);
 
 //Member area Dashboard
 router.get("/member/dashboard", verifyToken, DashboardController.getDashboard);
