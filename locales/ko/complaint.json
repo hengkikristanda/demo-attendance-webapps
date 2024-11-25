@@ -1,0 +1,21 @@
+{
+	"title": "불만",
+	"subTitle": "여러분의 의견을 듣고 싶습니다! 여러분의 피드백과 리뷰를 공유해 주시면 저희가 경험을 향상시키는 데 도움이 됩니다.",
+	"nameLabel": "성명",
+	"emailLabel": "이메일 주소",
+	"phoneLabel": "전화번호",
+	"complaintLabel": "귀하의 불만",
+	"namePlaceholder": "성명",
+	"emailPlaceholder": "이메일 주소",
+	"phonePlaceholder": "전화번호",
+	"complaintPlaceholder": "여기에 불만 사항을 적어주세요",
+	"attachmentFileLabel": "첨부 파일",
+	"selectFileLabel": "파일 선택",
+	"submitLabel": "제출",
+	"chatUs": "채팅하기",
+	"chatUsLabel": "친절한 팀이 도와드리겠습니다.",
+	"visitUs": "방문하기",
+	"visitUsLabel": "캠퍼스에 방문하여 인사하세요.",
+	"callUs": "전화하기",
+	"callUsLabel": "월~금 오전 8시부터 오후 5시까지."
+}

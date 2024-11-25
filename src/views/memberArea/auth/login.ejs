@@ -10,8 +10,8 @@
 						<img src="/img/logo-removebg-preview.png" />
 						<h1>Welcome</h1>
 					</div>
-					<% if (typeof errorMessage !== 'undefined') { %>
-					<p class="badge-admin <%= responseMessageClass %>"><%= errorMessage %></p>
+					<% if (alertMessage) { %>
+					<p class="alert-badge <%=alertMessage.className%>"><%= alertMessage.message %></p>
 					<% } %>
 					<div class="input-group__icon">
 						<input
@@ -33,10 +33,14 @@
 							autocomplete="off" />
 						<h6 class="bi bi-eye-slash action-icon hidden"></h6>
 					</div>
-					<button id="buttonLogin" type="submit" class="btn success w-full">LOGIN</button>
+					<button id="signInButton" type="submit" class="btn success w-full">
+						<p>LOGIN</p>
+					</button>
 					<a href="/users/forgot-password">Forgot Username / Password?</a>
 				</div>
 			</form>
 		</div>
 	</body>
+	<script src="/js/CommonUtils.js"></script>
+	<script src="/js/login-page/index.js"></script>
 </html>

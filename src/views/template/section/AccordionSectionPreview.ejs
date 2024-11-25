@@ -1,0 +1,50 @@
+<div class="flex flex-col md:gap-12 px-4 2xl:px-0">
+	<div class="welcome-text__facilities">
+		<h1 id="placeholder-input_heading" class="font-bold text-tertiary md:text-6xl md:w-2/3">
+			MODERN FACILITIES TO BOOST YOUR LEARNING EXPERIENCE
+		</h1>
+		<span class="hidden md:block"></span>
+	</div>
+	<div class="flex flex-col md:flex-row gap-20">
+		<h6 id="contentPlaceholder" class="md:w-1/2">
+			Our campus boasts cutting-edge classrooms, fully equipped laboratories, and extensive
+			libraries designed to provide an optimal learning environment. Additionally, we offer various
+			recreational and wellness facilities, including a modern gym, sports fields, and comfortable
+			student lounges. Our goal is to create a well-rounded experience that caters to both academic
+			and personal growth. Explore the diverse range of facilities available to you and see how they
+			contribute to a vibrant and dynamic campus life. Your success is our priority, and our
+			facilities are here to support you every step of the way.
+		</h6>
+		<div id="collapsibleSectionFacilityContainer" class="flex flex-col md:w-1/2 gap-4">
+		</div>
+	</div>
+</div>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const welcomeText = document.querySelector(".welcome-text__facilities span");
+		welcomeText.style.width = "30rem";
+
+		const collapsibleClass = ".collapsible-section__facility";
+
+		const collapsible = document.querySelectorAll(collapsibleClass);
+		collapsible.forEach((item) => {
+			item.addEventListener("mouseup", () => {
+				const targetElement = event.target.closest(collapsibleClass);
+				if (targetElement) {
+					const targetCollapse = targetElement.querySelector("p");
+					const targetCollapseIcon = targetElement.querySelector("i");
+
+					if (targetCollapse.style.maxHeight && targetCollapse.style.maxHeight !== "0px") {
+						targetCollapse.style.maxHeight = "0px";
+						targetCollapse.style.marginBottom = "0px";
+						targetCollapseIcon.style.transform = "rotate(0deg)";
+					} else {
+						targetCollapse.style.maxHeight = targetCollapse.scrollHeight + "px";
+						targetCollapse.style.marginBottom = "1rem";
+						targetCollapseIcon.style.transform = "rotate(90deg)";
+					}
+				}
+			});
+		});
+	});
+</script>

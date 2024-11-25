@@ -19,42 +19,43 @@
 			</div>
 			<div class="flex flex-col mb-8 md:gap-12 px-4 2xl:px-0">
 				<div class="welcome-text__training">
-					<h1 class="font-bold text-tertiary md:text-6xl md:w-2/3"><%=trainingTranslation.title%></h1>
+					<h1 class="font-bold text-tertiary md:text-6xl md:w-2/3"><%=trainingTranslation.header%></h1>
 					<span class="md:block"></span>
 				</div>
 				<div class="flex flex-col md:flex-row gap-20">
 					<h6 class="md:w-1/2">
-						<%-trainingTranslation.paragraph%>
+					<%-trainingTranslation.content%>
 					</h6>
 					<div class="flex flex-col md:w-1/2 gap-4">
 					<%
-					trainingTranslation.trainings.forEach((training) => {
+					trainingCategoryTranslation.forEach((training) => {
 					%>
 						<div class="collapsible-section__facility">
 							<div class="flex items-center gap-3 mb-4 cursor-pointer">
 								<i class="bi bi-chevron-right"></i>
 								<h4><%=training.title%></h4>
 							</div>
-							<p class="leading-6"><%=training.description%></p>
+							<p class="leading-6"><%=training.content%></p>
 						</div>						
 					<%
 					});
 					%>
 					</div>
 				</div>
-				<a href="/training/registration" class="flex items-center p-0 mx-auto">
+				<a href="https://training.ptdisttd.ac.id/" class="flex items-center p-0 mx-auto">
 					<div
 						class="flex items-center justify-center w-16 h-16 bg-tertiary rounded-full text-white text-2xl p-0 border-8 border-white z-10">
 						<i class="bi bi-vector-pen"></i>
 					</div>
 					<h5 class="bg-tertiary text-white py-2 px-12 rounded-md relative right-5">
-						<%=trainingTranslation.cta%>
+						<%=ctaButtonLabel%>
 					</h5>
 				</a>
 			</div>
 		</div>
 
-		<%- include('../../sections/footer') %> <%- include('../../components/chatWidget') %>
+		<%- include('../../sections/footer') %> 
+		<%- include('../../components/chatWidget') %>
 	</body>
 
 	<script src="/js/navbarUtils.js"></script>

@@ -9,6 +9,8 @@ const i18next = require("i18next");
 const Backend = require("i18next-fs-backend");
 const i18nextMiddleware = require("i18next-http-middleware");
 const pageRoutes = require("./src/routes/pageRoutes");
+const cmsRoutes = require("./src/routes/cmsRoutes.js");
+const authRoutes = require("./src/routes/authRoutes.js");
 
 dotenv.config();
 
@@ -27,8 +29,21 @@ const i18nextInit = new Promise((resolve, reject) => {
 				fallbackLng: "id",
 				supportedLngs: ["id", "en", "ja", "ko", "zh"],
 				preload: ["id"],
-				defaultNS: "navbar",
-				ns: ["navbar", "footer"],
+				defaultNS: "footer",
+				ns: [
+					"footer",
+					"alumniesSection",
+					"lecturerSection",
+					"newsSection",
+					"homeHero",
+					"historyHero",
+					"complaint",
+					"dutiesHero",
+					"ourPurposeHero",
+					"organizationalStructure",
+					"ourLeadersHero",
+					"training",
+				],
 				detection: {
 					order: ["querystring", "cookie"],
 					caches: ["cookie"],
@@ -72,7 +87,15 @@ Promise.all([i18nextInit, sequelizeInit])
 		app.use(express.json());
 		app.use(bodyParser.urlencoded({ extended: true }));
 		app.use(express.static("public"));
+		app.use(authRoutes);
 		app.use(pageRoutes);
+		app.use(cmsRoutes);
+		app.use((err, req, res, next) => {
+			console.error("EJS Rendering Error:", err.message);
+
+			// Redirect to the error page with a 500 status code or any other appropriate response code
+			res.redirect(`/error/500`);
+		});
 
 		app.listen(port, () => {
 			console.log(`Server is running on port ${port}`);

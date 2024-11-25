@@ -6,15 +6,33 @@ const fs = require("fs");
 const multer = require("multer");
 const combinedUpload = require("../config/multerCombinedConfig");
 const documentUpload = require("../config/multerDocumentConfig");
+const docImageUpload = require("../config/multerDocImageConfig");
+const complaintFileUpload = require("../config/multerComplaintFileConfig");
 const imageUpload = require("../config/multerImageConfig");
 const verifyToken = require("../middlewares/verifyToken");
+const uploadErrorHandler = require("../middlewares/uploadErrorHandler");
 
 const { v4: uuidv4 } = require("uuid"); // Import uuidv4
 
-const Dispatcher = require("../controllers/dispatcherController");
-const AccountDispatcher = require("../controllers/accountDispatcher");
+//Home
+const HomeControllers = require("../controllers/homeControllers");
+//About Us
+const HistoryControllers = require("../controllers/HistoryControllers");
+const DutiesControllers = require("../controllers/DutiesControllers");
+const OurPurposeControllers = require("../controllers/OurPurposeControllers");
+const OrganizationalStructureControllers = require("../controllers/OrganizationalStructureControllers");
+const LeadersControllers = require("../controllers/LeadersControllers");
+const FacilitiesController = require("../controllers/FacilitiesController");
+//Complaint
+const ComplaintControllers = require("../controllers/complaintControllers");
+//Academics
+const TrainingController = require("../controllers/TrainingController");
+const LecturerController = require("../controllers/LecturerController");
 
-const DashboardController = require("../controllers/dashboard/dashboardController");
+const Dispatcher = require("../controllers/dispatcherController");
+const AccountDispatcher = require("../controllers/AccountDispatcher");
+
+const DashboardController = require("../controllers/dashboard/DashboardController");
 const AttendanceController = require("../controllers/employee/attendanceController");
 const AlumniAdminController = require("../controllers/webAdmin/AlumniAdminController");
 const LecturerAdminController = require("../controllers/webAdmin/LecturerAdminController");
@@ -49,8 +67,34 @@ const upload = multer({ storage: storage });
 
 router.use(express.urlencoded({ extended: true }));
 
+router.get("/error", Dispatcher.getErrorPage2);
+
 // Home Page / Index
-router.get("/", Dispatcher.getHome);
+router.get("/", HomeControllers.getHome);
+
+// About Us
+router.get("/history", HistoryControllers.getHistory);
+router.get("/duties", DutiesControllers.getDuties);
+router.get("/our-purpose", OurPurposeControllers.getOurPurpose);
+router.get(
+	"/organizational-structure",
+	OrganizationalStructureControllers.getOrganizationalStructure
+);
+router.get("/our-leaders", LeadersControllers.getLeaders);
+router.get("/facilities", FacilitiesController.getFacilities);
+
+// Complaint
+router.get("/complaints", ComplaintControllers.getComplaints);
+router.post(
+	"/complaints",
+	(req, res, next) => {
+		req.redirectOnError = "/complaints"; // Set the redirect path for this route
+		next();
+	},
+	complaintFileUpload.single("complaintFile"),
+	uploadErrorHandler,
+	ComplaintControllers.postCreateComplaint
+);
 
 router.get("/alumni", Dispatcher.getAlumni);
 router.get("/public-comments", Dispatcher.getPublicComments);
@@ -67,23 +111,12 @@ router.post(
 	Dispatcher.submitComment
 );
 
-router.get("/complaints", Dispatcher.getComplaints);
-
 // News
 router.get("/news/:newsId?", NewsController.getNews);
 
-// About Us
-router.get("/history", Dispatcher.getHistory);
-router.get("/duties", Dispatcher.getDuties);
-router.get("/our-purpose", Dispatcher.getOurPurpose);
-router.get("/organizational-structure", Dispatcher.getOrganizationalStructure);
-router.get("/our-leaders", Dispatcher.getOurLeaders);
-router.get("/facilities", Dispatcher.getFacilities);
-
 //Academics
-router.get("/lecturers", Dispatcher.getLecturers);
-
-router.get("/training", Dispatcher.getTraining);
+router.get("/lecturers", LecturerController.getLecturers);
+router.get("/training", TrainingController.getTraining);
 router.get("/training/registration", Dispatcher.getTrainingRegistration);
 
 //Academics Under Graduate
@@ -212,5 +245,11 @@ router.post(
 	imageUpload.single("displayImage"),
 	PostGraduateAdminController.putUpdatePostgraduateProgramSection
 );
+
+router.get("/test/template", (req, res) => {
+	console.log("Masuk");
+	res.render("template", {
+	});
+});
 
 module.exports = router;

@@ -1,24 +1,43 @@
 <div
 	id="chatWidget"
 	class="flex flex-col items-center w-16 h-fit py-2 bg-tertiary/75 rounded-md fixed bottom-1/4 right-0 gap-1 backdrop-blur-sm shadow-md shadow-gray-500">
-	<% emails.forEach(email => { 
-		if (email.label.toLowerCase() == 'email humas') { 
-	%>
-		<a href="mailto:<%= email.value %>" target="_blank" class="p-0 w-full rounded-md">
-			<h2 class="w-full hover:text-primary text-center text-danger bi bi-envelope-at"></h2>
-		</a>
-	
-	<% 
-		}
-	}); 
-	%>
-	<div class="w-full border border-danger"></div>
 
-	<% whatsapp.forEach(wa => { %>
-		<a href="https://wa.me/<%=wa.value%>" target="_blank" class="p-0 w-full rounded-md">
-			<h2 class="w-full hover:text-primary text-center text-danger bi bi-whatsapp"></h2>
-		</a>
-	<% }); %>
+<%
+	if (contactInfo["whatsapps"]) {
+		contactInfo["whatsapps"].forEach((wa, index) => {
+			if (wa.pinned == 1) {
+				if (index > 0) {
+%>
+					<div class="w-full border border-danger"></div>
+<%
+				}
+%>
+				<a href="https://wa.me/<%=wa.value%>" target="_blank" class="p-0 w-full rounded-md">
+					<h2 class="w-full hover:text-primary text-center text-danger bi bi-whatsapp"></h2>
+				</a>
+<%
+			}
+		});
+	}
+%>
 
-	
+<%
+	if (contactInfo["email"]) {
+		contactInfo["email"].forEach((email, index) => {
+			if (email.pinned == 1) {
+				if (index > 0) {
+%>
+					<div class="w-full border border-danger"></div>
+<%
+				}
+%>
+				<a href="mailto:<%= email.value %>" target="_blank" class="p-0 w-full rounded-md">
+					<h2 class="w-full hover:text-primary text-center text-danger bi bi-envelope-at"></h2>
+				</a>
+<%
+			}
+		});
+	}
+%>
+
 </div>

@@ -225,16 +225,12 @@ const postCreateLecturer = async (req, res) => {
 			uploadedImagePath = imageFile.path; // Get the uploaded file path
 		}
 
-		console.log(`uploadedImagePath: ${uploadedImagePath}`);
-
 		const documentFile = req.files["documentFile"] ? req.files["documentFile"][0] : null;
 		// Check if image was uploaded
 		let uploadedDocumentPath = null;
 		if (documentFile) {
 			uploadedDocumentPath = documentFile.path; // Get the uploaded file path
 		}
-
-		console.log(`uploadedDocumentPath: ${uploadedDocumentPath}`);
 
 		const newLecturer = {
 			full_name: fullName,

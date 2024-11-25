@@ -3,9 +3,9 @@
     <div class="flex justify-between items-end reveal fade-right">
       <div class="flex gap-2 w-1/2 ">
         <div class="bg-tertiary w-3"></div>
-        <h2 class="font-bold text-primary"><%= newsSectionTranslation.title %></h2>
+        <h2 class="font-bold text-primary"><%= latestNewsSection.latestNews %></h2>
       </div>
-      <a href="/news" class="w-1/2 underline justify-end text-tertiary font-semibold py-0 px-4 md:px-0"><%= newsSectionTranslation.href %></a>
+      <a href="<%=latestNewsMenu.url%>" class="w-1/2 underline justify-end text-tertiary font-semibold py-0 px-4 md:px-0"><%= latestNewsSection.seeMore %></a>
     </div>
 
     <div class="relative overflow-hidden hidden md:block reveal fade-up with-delay">

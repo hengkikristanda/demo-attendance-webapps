@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16 bg-gray-100">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card mb-12">
+					<div class="layout-card__header">
+						<div class="flex justify-between">
+							<h1 class="title">Add Call to Actions Sections</h1>
+						</div>
+						<% if (alertMessage) { %>
+						<p class="alert-badge <%=alertMessage.className%>"><%=alertMessage.message%></p>
+						<% } %>
+					</div>
+					<form
+						class="custom-form"
+						method="POST"
+						id="addSectionsForm"
+						enctype="multipart/form-data"
+						action="/member/components/section-cta/add">
+						<div class="container-card w-full mb-4">
+							<div class="flex gap-4 w-full">
+								<div id="sectionInputContainer" class="flex flex-col gap-4 border-0">
+									<div>
+										<label for="Section Heading">Section Heading</label>
+										<input
+											id="sectionHeading"
+											name="sectionHeading"
+											type="text"
+											maxlength="512"
+											size="75"
+											required />
+									</div>
+									<div>
+										<label for="Button Label 1">Label for Button 1</label>
+										<input
+											id="buttonLabel1"
+											name="buttonLabel1"
+											type="text"
+											maxlength="512"
+											size="75"
+											required />
+									</div>
+									<div>
+										<label for="Button Label 1 Link">Hyperlink for Button 1</label>
+										<input
+											id="buttonLabel1Link"
+											name="buttonLabel1Link"
+											type="url"
+											placeholder="https://example.com"
+											maxlength="512"
+											size="75"
+											required />
+									</div>
+									<div>
+										<label for="Button Label 2">Label for Button 2</label>
+										<input
+											id="buttonLabel2"
+											name="buttonLabel2"
+											type="text"
+											maxlength="512"
+											size="75"
+											required />
+									</div>
+									<div>
+										<label for="Button Label 2 Link">Hyperlink for Button 2</label>
+										<input
+											id="buttonLabel2Link"
+											name="buttonLabel2Link"
+											placeholder="https://example.com"
+											type="url"
+											maxlength="512"
+											size="75"
+											required />
+									</div>
+									<div>
+										<label for="Section Content">Content</label>
+										<textarea
+											rows="10"
+											id="sectionContent"
+											name="sectionContent"
+											required></textarea>
+									</div>
+									<div>
+										<label for="Section Image">Section Image</label>
+										<span class="file-name" id="fileName">Click to browse file</span>
+										<input
+											id="sectionDisplayImageFile"
+											name="sectionDisplayImageFile"
+											type="file"
+											class="hidden"
+											accept=".png, .jpg, .jpeg, .pdf" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-card gap-6">
+							<button type="submit" class="btn success">Save</button>
+							<a href="#" id="previewChangesButton" class="text-link primary">Preview Changes</a>
+							<a href="/member/components/section-cta" class="text-link danger-bold"
+								>Discard Changes</a
+							>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="container-card flex-col w-full mb-4">
+		</div>
+	</body>
+
+	<!-- Modal -->
+	<div
+		id="previewModal"
+		class="fixed z-50 inset-0 hidden bg-gray-900 bg-opacity-75 flex items-center justify-center py-8">
+		<div class="bg-white rounded-lg shadow-lg p-6 w-full max-h-full overflow-y-scroll">
+			<h3 class="text-info font-semibold mb-4">Preview</h3>
+			<%- include('../../../template/section/CtaSectionPreview') %>
+			<a href="#" class="text-link danger-bold text-lg close-modal">Close</a>
+		</div>
+	</div>
+
+	<script>
+		const sectionDisplayImageFile = document.getElementById("sectionDisplayImageFile");
+
+		sectionDisplayImageFile.addEventListener("change", function (event) {
+			const file = event.target.files[0];
+			if (file) {
+				const reader = new FileReader();
+				reader.onload = function (e) {
+					document.getElementById("imagePlaceholder").src = e.target.result;
+				};
+				reader.readAsDataURL(file);
+			}
+		});
+
+		const contentPlaceholder = document.querySelector("#contentPlaceholder");
+		const placeholderInput = document.querySelectorAll(".placeholder-input");
+		const sectionInputContainer = document.querySelector("#sectionInputContainer");
+		const inputElement = sectionInputContainer.querySelectorAll("input[type='text']");
+		inputElement.forEach((item, index) => {
+			item.addEventListener("input", () => {
+				placeholderInput[index].textContent = item.value;
+			});
+		});
+
+		const placeholderUrl = document.querySelectorAll(".placeholder-url");
+		const inputElementUrl = sectionInputContainer.querySelectorAll("input[type='url']");
+		inputElementUrl.forEach((item, index) => {
+			item.addEventListener("input", () => {
+				placeholderUrl[index].href = item.value;
+			});
+		});
+
+		const sectionContent = document.getElementById("sectionContent");
+		sectionContent.addEventListener("input", () => {
+			const textWithLineBreaks = event.target.value.replace(/\n/g, "<br>").replace(/- /g, "• ");
+			contentPlaceholder.innerHTML = textWithLineBreaks;
+		});
+
+		const fileNameDisplay = document.getElementById("fileName");
+
+		fileNameDisplay.addEventListener("mouseup", () => {
+			sectionDisplayImageFile.click();
+		});
+
+		// When the file input changes, update the displayed file name
+		sectionDisplayImageFile.addEventListener("change", function () {
+			const fileName =
+				sectionDisplayImageFile.files.length > 0
+					? sectionDisplayImageFile.files[0].name
+					: "No file chosen";
+			fileNameDisplay.textContent = fileName;
+		});
+
+		function openModal(index) {
+			document.getElementById("previewModal").classList.remove("hidden");
+		}
+		function closeModal() {
+			document.getElementById("previewModal").classList.add("hidden");
+		}
+
+		const previewChangesButton = document.getElementById("previewChangesButton");
+		previewChangesButton.addEventListener("mouseup", openModal);
+
+		const closeModalButton = document.querySelectorAll(".close-modal");
+		closeModalButton.forEach((closeButton) => {
+			closeButton.addEventListener("mouseup", closeModal);
+		});
+	</script>
+</html>

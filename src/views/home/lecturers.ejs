@@ -3,12 +3,12 @@
 		<div class="flex justify-between items-end reveal fade-right">
 			<div class="flex gap-2">
 				<div class="bg-tertiary w-3"></div>
-				<h2 class="font-bold text-primary"><%= lecturers.section[selectedLanguage].title %></h2>
+				<h2 class="font-bold text-primary"><%= lecturerSection.lecturer %></h2>
 			</div>
 			<a
-				href="/lecturers"
+				href="<%=lecturerMenu.url%>"
 				class="w-1/2 underline justify-end text-tertiary font-semibold py-0 px-4 md:px-0"
-				><%= lecturers.section[selectedLanguage].href %></a
+				><%= lecturerSection.seeMore %></a
 			>
 		</div>
 		<div class="slider-container__profile-card reveal fade-up with-delay">

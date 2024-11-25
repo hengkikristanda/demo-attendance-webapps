@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16 bg-gray-100">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card">
+					<div class="layout-card__header">
+						<div class="flex justify-between">
+							<h1 class="title">Update Header</h1>
+						</div>
+						<h6 class="font-semibold text-secondary">Update Facilities Web Page Header</h6>
+						<% if (alertMessage) { %>
+							<p class="alert-badge <%=alertMessage.className%>"><%=alertMessage.message%></p>
+						<% } %>
+					</div>
+
+					<form
+						class="custom-form flex w-full mb-6"
+						method="POST"
+						id="updateFacilitiesHeaderForm"
+						action="/member/web/facilities/header"
+						enctype="multipart/form-data">
+						<div class="flex flex-col w-full border-0 gap-6">
+							<%- include('../../commonSection/webHeroSection') %>
+							<div>
+								<label for="Page Header">Page Header Title</label>
+								<input
+									id="pageHeaderTitle"
+									name="pageHeaderTitle"
+									type="text"
+									placeholder="Page Header"
+									maxlength="64"
+									value="<%=heroSectionData.title%>"
+									required />
+							</div>
+							<div>
+								<label for="Page Sub Header">Page Sub Header</label>
+								<input
+									id="pageSubHeaderTitle"
+									name="pageSubHeaderTitle"
+									type="text"
+									placeholder="Page Sub Header"
+									maxlength="256"
+									value="<%=heroSectionData.subtitle%>" />
+							</div>
+							<div class="flex flex-col md:flex-row border-0 gap-4">
+								<button class="btn success w-full md:w-fit" type="submit">Submit Changes</button>
+								<a
+									href="/member/web/facilities"
+									class="hover:bg-red-800 hover:text-white rounded-md text-center w-fit m-0 px-4 font-semibold underline"
+									>Discard Changes</a
+								>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<%- include('../../commonSection/alertModal') %>
+</html>

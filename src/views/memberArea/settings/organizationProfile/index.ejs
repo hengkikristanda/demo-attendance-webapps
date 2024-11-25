@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16 bg-gray-100">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card mb-12">
+					<div class="layout-card__header">
+						<div class="flex justify-between">
+							<h1 class="title">Organization Profile</h1>
+						</div>
+						<% if (alertMessage) { %>
+						<p class="alert-badge <%=alertMessage.className%>"><%=alertMessage.message%></p>
+						<% } %>
+					</div>
+					<form
+						class="custom-form"
+						method="POST"
+						id="updateOrganizationForm"
+						enctype="multipart/form-data"
+						action="/member/settings/organization-profile/<%=companyProfile.id%>/update">
+						<div class="flex gap-4">
+							<div class="container-card mb-4 w-3/5">
+								<div class="flex gap-4 w-full">
+									<div id="organizationInputContainer" class="flex flex-col gap-4 border-0">
+										<div>
+											<label for="Organization Name">Organization Official Name</label>
+											<input
+												id="organizationName"
+												name="organizationName"
+												type="text"
+												maxlength="512"
+												placeholder="e.g: Politeknik Transportasi Darat Indonesia"
+												size="75"
+												value="<%=companyProfile.official_name%>"
+												required />
+										</div>
+										<div>
+											<label for="Organization Name">Short Name</label>
+											<input
+												id="organizationShortName"
+												name="organizationShortName"
+												type="text"
+												placeholder="e.g: PTDI STTD"
+												maxlength="512"
+												value="<%=companyProfile.short_name%>"
+												size="75"
+												required />
+										</div>
+										<div>
+											<label for="Organization Address">Address</label>
+											<textarea
+												rows="5"
+												id="organizationAddress"
+												name="organizationAddress"
+												required></textarea>
+										</div>
+										<div>
+											<label for="Organization Logo">Logo</label>
+											<span class="file-name" id="fileName">
+                                                <%
+                                                if (companyProfile.imageUrl) {
+                                                %>
+                                                    <%=companyProfile.original_filename%>
+                                                <%
+                                                } else {
+                                                %>
+                                                    Click to browse file
+                                                <%
+                                                }
+                                                %>
+                                                
+                                            </span>
+											<input
+												id="logoImageFile"
+												name="logoImageFile"
+												type="file"
+												class="hidden"
+												accept=".png, .jpg, .jpeg, .pdf" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="container-card mb-4 w-2/5">
+								<div class="flex gap-4 w-full">
+									<div id="contactInputContainer" class="flex flex-col gap-4 border-0 w-full">
+										<div class="flex justify-between items-center">
+											<label for="Contact Info" class="text-start">Contact Info</label>
+											<label id="addContactLink" class="text-link">Add Contact</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-card gap-6">
+							<button type="submit" class="btn success">Save Changes</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<div
+		id="addContactModal"
+		class="fixed z-50 inset-0 hidden bg-gray-900 bg-opacity-75 flex items-center justify-center py-8">
+		<div class="bg-white rounded-lg shadow-lg p-6 w-fit min-w-96 max-h-full overflow-y-scroll">
+			<div class="flex justify-between">
+				<h2 id="modalTitle" class="text-xl font-bold mb-4">Add Contact</h2>
+				<h1 class="close-modal cursor-pointer bi-x p-2 rounded hover:bg-gray-500"></h1>
+			</div>
+
+			<div id="modal-content" class="flex flex-col gap-12">
+				<div class="flex flex-col gap-4">
+					<p id="addContactValidationMessage" class="alert-badge hidden"></p>
+					<div id="modalInputContainer" class="flex flex-col w-full gap-4 border-0">
+						<div>
+							<label for="Contact Type">Contact Type</label>
+							<div class="custom-select-container">
+								<select class="custom-select" id="contactType">
+									<option value="" disabled selected>Select contact type</option>
+									<option value="email">Email</option>
+									<option value="facebook">Facebook</option>
+									<option value="instagram">Instagram</option>
+									<option value="linkedin">LinkedIn</option>
+									<option value="telephone">Phone</option>
+									<option value="whatsapps">Whatsapps</option>
+									<option value="youtube">YouTube</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label for="Contact Label">Label</label>
+							<input
+								id="contactLabel"
+								name="contactLabel"
+								type="text"
+								placeholder="e.g: Instagram PTDI STTD Official"
+								maxlength="512"
+								size="75"
+								required />
+						</div>
+						<div>
+							<label for="Contact URL or Phone Number">URL / Phone Number</label>
+							<input
+								id="contactValue"
+								name="contactValue"
+								placeholder="e.g: https://www.instagram.com/ptdi.sttd.official/ or (021) 8254640"
+								type="text"
+								maxlength="512"
+								size="75"
+								required />
+						</div>
+						<div>
+							<div id="widgetChannel" class="flex justify-start gap-2 hidden">
+								<input id="pin" type="checkbox" required />
+								<label for="Live Chat or Email" class="w-fit">Set as Live Chat</label>
+							</div>
+						</div>
+						<div class="flex border-0 gap-4 justify-end">
+							<button id="addContactInfoButton" type="button" class="btn success w-full md:w-fit">
+								<p>Add Section</p>
+							</button>
+							<button id="closeModalButton" type="button" class="btn info w-full md:w-fit">
+								Close
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/js/HandleValidation.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+
+            const contactIcon = {
+				email: "/img/email.PNG",
+				facebook: "/img/facebook.PNG",
+				instagram: "/img/instagram.PNG",
+				linkedin: "/img/linkedin.PNG",
+				telephone: "/img/telephone.PNG",
+				whatsapps: "/img/whatsapps.PNG",
+				youtube: "/img/youtube.PNG",
+			};
+
+            const contactType = document.getElementById("contactType");
+			const contactLabel = document.getElementById("contactLabel");
+			const contactValue = document.getElementById("contactValue");
+			const pin = document.getElementById("pin");
+
+			let contactListIndex = 0;
+
+			const addOrganizationForm = document.getElementById("addOrganizationForm");
+			const contactInputContainer = document.getElementById("contactInputContainer");
+			const widgetChannel = document.getElementById("widgetChannel");
+
+			const fileInput = document.getElementById("logoImageFile");
+			const fileNameDisplay = document.getElementById("fileName");
+
+			const addContactLink = document.getElementById("addContactLink");
+
+			const addContactModal = document.getElementById("addContactModal");
+
+			const addContactInfoButton = document.getElementById("addContactInfoButton");
+			const closeModalButton = document.getElementById("closeModalButton");
+
+			fileNameDisplay.addEventListener("click", () => {
+				fileInput.click();
+			});
+
+			fileInput.addEventListener("change", function () {
+				const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : "No file chosen";
+				fileNameDisplay.textContent = fileName;
+			});
+
+			function handleAddContact() {
+				if (hasEmpty([contactType.value, contactLabel.value, contactValue.value])) {
+					const addContactValidationMessage = document.getElementById(
+						"addContactValidationMessage"
+					);
+
+					displayValidationResult(
+						addContactValidationMessage,
+						"Contact Type, Label, and URL/Phone Number are required!",
+						"danger"
+					);
+					return;
+				}
+
+				const contactInfoContainer = document.createElement("div");
+				contactInfoContainer.classList.add("contact-info_container");
+				contactInfoContainer.id = contactListIndex;
+
+				const contactInfoImage = document.createElement("img");
+				contactInfoImage.src = contactIcon[contactType.value];
+
+                const contactInfoImageContainer = document.createElement("div");
+				contactInfoImageContainer.classList.add("contact-info_img_container");
+				contactInfoImageContainer.appendChild(contactInfoImage);
+
+				const contactInfoLabelContainer = document.createElement("div");
+				contactInfoLabelContainer.classList.add("contact-info_label_container");
+
+				const contactInfoLabel = document.createElement("p");
+				contactInfoLabel.classList.add("text-xs", "font-semibold", "line-clamp-2");
+				contactInfoLabel.textContent = contactLabel.value;
+
+				const contactInfoValue = document.createElement("p");
+				contactInfoValue.classList.add("text-xxs", "line-clamp-2");
+				contactInfoValue.textContent = contactValue.value;
+
+				contactInfoLabelContainer.appendChild(contactInfoLabel);
+				contactInfoLabelContainer.appendChild(contactInfoValue);
+
+                const contactInfoIconContainer = document.createElement("div");
+				contactInfoIconContainer.classList.add("contact-info_icon_container");
+
+                if (pin.checked) {
+					const pinIcon = document.createElement("i");
+					pinIcon.classList.add("pushpin", "remix", "icon-md", "primary");
+					contactInfoIconContainer.appendChild(pinIcon);
+				}
+
+				const contactInfoRemoveIcon = document.createElement("i");
+				contactInfoRemoveIcon.classList.add(
+					"close-circle",
+					"remix",
+					"icon-md",
+					"danger-bold",
+					"cursor-pointer"
+				);
+                contactInfoIconContainer.appendChild(contactInfoRemoveIcon);
+
+				contactInfoContainer.appendChild(contactInfoImageContainer);
+                contactInfoContainer.appendChild(contactInfoLabelContainer);
+                contactInfoContainer.appendChild(contactInfoIconContainer);
+                contactInputContainer.appendChild(contactInfoContainer)
+
+				contactInfoRemoveIcon.addEventListener("click", () => {
+					contactInfoContainer.remove();
+					document.getElementById("contactInfoHiddenInput_" + contactInfoContainer.id).remove();
+				});
+
+				const contactInfoHiddenInput = document.createElement("input");
+				contactInfoHiddenInput.id = "contactInfoHiddenInput_" + contactListIndex;
+				contactInfoHiddenInput.name = "contactInfo";
+				contactInfoHiddenInput.type = "hidden";
+				contactInfoHiddenInput.setAttribute("data-contact-type", contactType.value);
+				contactInfoHiddenInput.setAttribute("data-contact-url", contactValue.value);
+				contactInfoHiddenInput.value = `${contactType.value};${contactLabel.value};${contactValue.value};${pin.checked}`;
+
+				contactInputContainer.appendChild(contactInfoHiddenInput);
+				contactListIndex++;
+				closeModal();
+			}
+
+			function handleOnChange_contactType(ev) {
+				const selectedContactType = ev.target.value;
+				if (selectedContactType === "whatsapps" || selectedContactType === "email") {
+					widgetChannel.classList.remove("hidden");
+					widgetChannel.querySelector("label").textContent = "Pin to Widget(Live Chat/Email)";
+				} else {
+					if (!widgetChannel.classList.contains("hidden")) widgetChannel.classList.add("hidden");
+				}
+			}
+
+			function openModal() {
+				addContactModal.classList.remove("hidden");
+			}
+
+			function closeModal() {
+				cleanUpValues([contactType, contactLabel, contactValue, pin]);
+				addContactValidationMessage.classList.add("hidden");
+				addContactModal.classList.add("hidden");
+				widgetChannel.classList.add("hidden");
+			}
+
+			function loadContactList(label, value, type, id, isPinned) {
+				const contactInfoContainer = document.createElement("div");
+				contactInfoContainer.classList.add("contact-info_container");
+				contactInfoContainer.id = id;
+
+				const contactInfoImage = document.createElement("img");
+				contactInfoImage.src = contactIcon[type];
+
+                const contactInfoImageContainer = document.createElement("div");
+				contactInfoImageContainer.classList.add("contact-info_img_container");
+				contactInfoImageContainer.appendChild(contactInfoImage);
+
+				const contactInfoLabelContainer = document.createElement("div");
+				contactInfoLabelContainer.classList.add("contact-info_label_container");
+
+				const contactInfoLabel = document.createElement("p");
+				contactInfoLabel.classList.add("text-xs", "font-semibold", "line-clamp-2");
+				contactInfoLabel.textContent = label;
+
+				const contactInfoValue = document.createElement("p");
+				contactInfoValue.classList.add("text-xxs", "line-clamp-2");
+				contactInfoValue.textContent = value;
+
+				contactInfoLabelContainer.appendChild(contactInfoLabel);
+				contactInfoLabelContainer.appendChild(contactInfoValue);
+
+                const contactInfoIconContainer = document.createElement("div");
+				contactInfoIconContainer.classList.add("contact-info_icon_container");
+                
+                const pinned = isPinned === 1 ? true : false;
+
+                if (pinned) {
+					const pinIcon = document.createElement("i");
+					pinIcon.classList.add("pushpin", "remix", "icon-md", "primary");
+					contactInfoIconContainer.appendChild(pinIcon);
+				}
+
+				const contactInfoRemoveIcon = document.createElement("i");
+				contactInfoRemoveIcon.classList.add(
+					"close-circle",
+					"remix",
+					"icon-md",
+					"danger-bold",
+					"cursor-pointer"
+				);
+                contactInfoIconContainer.appendChild(contactInfoRemoveIcon);
+
+				contactInfoContainer.appendChild(contactInfoImageContainer);
+                contactInfoContainer.appendChild(contactInfoLabelContainer);
+                contactInfoContainer.appendChild(contactInfoIconContainer);
+                contactInputContainer.appendChild(contactInfoContainer)
+
+				contactInfoRemoveIcon.addEventListener("click", () => {
+					contactInfoContainer.remove();
+					document.getElementById("contactInfoHiddenInput_" + contactInfoContainer.id).remove();
+				});
+
+				const contactInfoHiddenInput = document.createElement("input");
+				contactInfoHiddenInput.id = "contactInfoHiddenInput_" + contactInfoContainer.id;
+				contactInfoHiddenInput.name = "contactInfo";
+				contactInfoHiddenInput.type = "hidden";
+				contactInfoHiddenInput.setAttribute("data-contact-type", type);
+				contactInfoHiddenInput.setAttribute("data-contact-url", value);
+                contactInfoHiddenInput.value = `${type};${label};${value};${pinned}`;
+
+				contactInputContainer.appendChild(contactInfoHiddenInput);
+			}
+
+            function onLoad() {
+				const companyAddress = `<%- JSON.stringify(companyProfile.address) %>`;
+
+				const organizationAddress = document.getElementById("organizationAddress");
+				organizationAddress.value = companyAddress
+					.replace(/<br\s*\/?>/gi, "\n")
+					.replace(/^"|"$/g, "");
+
+                const contactInfoListData = <%- JSON.stringify(contactInfoListData) %>;
+                contactInfoListData.forEach((item) => loadContactList(item.label, item.value, item.channel, item.id, item.pinned));
+
+			}
+
+            onLoad();
+
+			addContactLink.addEventListener("mouseup", openModal);
+			closeModalButton.addEventListener("mouseup", closeModal);
+
+			addContactInfoButton.addEventListener("mouseup", handleAddContact);
+
+			contactType.addEventListener("change", handleOnChange_contactType);
+		});
+	</script>
+</html>

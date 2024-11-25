@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16 bg-gray-100">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card mb-12">
+					<div class="layout-card__header">
+						<div class="flex justify-between">
+							<h1 class="title">Update Gallery Sections</h1>
+						</div>
+						<% if (alertMessage) { %>
+						<p class="alert-badge <%=alertMessage.className%>"><%=alertMessage.message%></p>
+						<% } %>
+					</div>
+					<form
+						class="custom-form"
+						method="POST"
+						id="updateGallerySectionsForm"
+						enctype="multipart/form-data"
+						action="/member/components/section-gallery/<%=existingSectionData.id%>/update">
+						<div class="container-card w-full mb-4">
+							<div class="flex gap-4 w-full">
+								<input type="hidden" id="removedImageId" name="removedImageId" />
+								<div id="sectionInputContainer" class="flex flex-col gap-4 border-0">
+									<div>
+										<label for="Section Heading">Section Heading</label>
+										<input
+											id="sectionHeading"
+											name="sectionHeading"
+											type="text"
+											maxlength="512"
+											size="75"
+											value="<%=existingSectionData.title_id%>"
+											required />
+									</div>
+									<div>
+										<label for="Section Image">Images</label>
+
+										<div id="smallThumbnailContainer" class="small-thumbnail-container">
+											<% imageListData.forEach((imageItem) => { %>
+											<div id="<%=imageItem.id%>" class="small-thumbnail group">
+												<div class="small-thumbnail-hover-box">
+													<i class="close-circle remix icon-lg danger-bold"></i>
+												</div>
+												<img src="<%=imageItem.imageUrl%>" />
+											</div>
+											<% }); %>
+										</div>
+
+										<span class="file-name" id="fileName">Click to browse file</span>
+										<input
+											id="sectionDisplayImageFile"
+											name="sectionDisplayImageFile"
+											type="file"
+											class="hidden"
+											accept=".png, .jpg, .jpeg, .pdf" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-card gap-6">
+							<button type="submit" class="btn success">Save</button>
+							<a href="/member/components/section-gallery" class="text-link danger-bold"
+								>Discard Changes</a
+							>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const removedImageId = [];
+			const fileInput = document.getElementById("sectionDisplayImageFile");
+			const fileNameDisplay = document.getElementById("fileName");
+
+			// Open file input when "Click to browse file" is clicked
+			fileNameDisplay.addEventListener("click", () => {
+				fileInput.click();
+			});
+
+			fileInput.addEventListener("change", function () {
+				const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : "No file chosen";
+				fileNameDisplay.textContent = fileName;
+			});
+
+			function removeImage(imageContainer) {
+				removedImageId.push(imageContainer.id);
+				imageContainer.remove();
+				document.getElementById("removedImageId").value = removedImageId;
+			}
+
+			const smallThumbnail = document.querySelectorAll(".small-thumbnail");
+			smallThumbnail.forEach((imageContainer) => {
+				imageContainer.addEventListener("mouseup", () => removeImage(imageContainer));
+			});
+
+			/*
+			const fileInput = document.getElementById("sectionDisplayImageFile");
+			const thumbnailContainer = document.getElementById("smallThumbnailContainer");
+			const fileNameDisplay = document.getElementById("fileName");
+			const uploadedFiles = []; // To store references to selected files
+
+			// Handle file selection
+			fileInput.addEventListener("change", (event) => {
+				const files = Array.from(event.target.files);
+				const maxFileSize = 5 * 1024 * 1024; // 5MB in bytes
+				const maxFiles = 5; // Maximum allowed files
+				const currentUploads = thumbnailContainer.querySelectorAll(".small-thumbnail").length;
+
+				files.forEach((file) => {
+					if (currentUploads + uploadedFiles.length >= maxFiles) {
+						alert("You can only upload up to 5 files.");
+						return;
+					}
+
+					if (file.size > maxFileSize) {
+						alert(`The file "${file.name}" exceeds 5MB. Please upload a smaller file.`);
+						return;
+					}
+
+					// Add file to uploadedFiles array
+					uploadedFiles.push(file);
+
+					// Display thumbnail
+					if (thumbnailContainer.classList.contains("hidden")) {
+						thumbnailContainer.classList.remove("hidden");
+					}
+
+					const thumbnail = document.createElement("div");
+					thumbnail.classList.add("small-thumbnail", "group");
+
+					const closeIcon = document.createElement("i");
+					closeIcon.classList.add("close-circle", "remix", "icon-lg", "danger-bold");
+
+					const hoverBox = document.createElement("div");
+					hoverBox.classList.add("small-thumbnail-hover-box");
+					hoverBox.appendChild(closeIcon);
+
+					const uploadedImage = document.createElement("img");
+					uploadedImage.src = URL.createObjectURL(file);
+					uploadedImage.alt = file.name;
+
+					thumbnail.appendChild(hoverBox);
+					thumbnail.appendChild(uploadedImage);
+					thumbnailContainer.appendChild(thumbnail);
+
+					// Remove file on click
+					closeIcon.addEventListener("click", () => {
+						const index = uploadedFiles.indexOf(file);
+						if (index > -1) {
+							uploadedFiles.splice(index, 1);
+						}
+						thumbnailContainer.removeChild(thumbnail);
+
+						if (uploadedFiles.length === 0) {
+							thumbnailContainer.classList.add("hidden");
+						}
+					});
+				});
+
+				resetFileInput(); // Reset input so the same file can be selected again
+			});
+
+			// Open file input when "Click to browse file" is clicked
+			fileNameDisplay.addEventListener("click", () => {
+				fileInput.click();
+			});
+
+			// Reset file input
+			function resetFileInput() {
+				fileInput.value = ""; // Allow selecting the same file again
+			}
+
+			// Handle form submission
+			document.getElementById("addGallerySectionsForm").addEventListener("submit", (event) => {
+				const formData = new FormData(event.target);
+
+				// Add selected files to FormData
+				uploadedFiles.forEach((file) => {
+					formData.append("sectionDisplayImageFile", file);
+				});
+
+				// Submit form via fetch
+				fetch(event.target.action, {
+					method: "POST",
+					body: formData,
+				})
+					.then((response) => {
+						if (response.ok) {
+							alert("Files uploaded successfully!");
+							location.reload(); // Reload the page upon success
+						} else {
+							alert("File upload failed.");
+						}
+					})
+					.catch((error) => {
+						console.error("Upload error:", error);
+						alert("An error occurred while uploading files.");
+					});
+
+				event.preventDefault(); // Prevent default form submission
+			});
+
+			*/
+		});
+	</script>
+</html>

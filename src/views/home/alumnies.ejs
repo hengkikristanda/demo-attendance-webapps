@@ -3,17 +3,15 @@
 		<div class="flex justify-between items-end">
 			<div class="flex gap-2">
 				<div class="bg-tertiary w-3"></div>
-				<h1 class="font-semibold text-primary"><%= alumnies.title %></h1>
+				<h1 class="font-semibold text-primary"><%= alumniesSection.alumni %></h1>
 			</div>
-			<a href="/alumni" class="underline text-tertiary font-semibold py-0 px-4 md:px-0">
-				<%= alumnies.href %>
+			<a href="<%=alumniMenu.url%>" class="underline text-tertiary font-semibold py-0 px-4 md:px-0">
+				<%= alumniesSection.seeMore %>
 			</a>
 		</div>
 
 		<div class="grid grid-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-between reveal fade-up with-delay gap-12 md:gap-0">
 			
-
-
 			<%
 			firstFourAlumni.forEach((alumni) => {
 			

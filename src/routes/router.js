@@ -139,7 +139,6 @@ router.get("//post-graduate/marketing-innovation-technologyi", (req, res) => {
 	});
 });
 
-
 router.get("/comments", (req, res) => {
 	let selectedLanguage = req.query.lang;
 	let pageNumber = req.query.page;
@@ -302,16 +301,6 @@ router.get("/absensi", (req, res) => {
 });
 
 router.post("/absensi", (req, res) => {});
-
-router.post("/login", (req, res) => {
-	res.redirect("/home-employee");
-});
-
-
-
-
-
-
 
 function searchById(data, id) {
 	console.log("Search JSON by id: ", id);

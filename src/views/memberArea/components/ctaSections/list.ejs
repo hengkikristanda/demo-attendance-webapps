@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16 bg-gray-100">
+			<%- include('../../commonSection/drawer') %>
+            <div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card mb-12">
+					<div class="layout-card__header">
+						<div class="flex justify-between">
+							<h1 class="title">Call to Action Sections</h1>
+						</div>
+						<% if (alertMessage) { %>
+						<p class="alert-badge <%=alertMessage.className%>"><%=alertMessage.message%></p>
+						<% } %>
+					</div>
+					<div class="container-card w-full">
+						<table class="overflow-x-scroll editable table-auto">
+							<thead>
+								<tr>
+									<th class="title">Section Name</th>
+									<th>&nbsp;</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+								sectionList.forEach((section) => {
+								%>
+								<tr>
+									<td class="w-full">
+										<a href="/member/components/section-cta/<%=section.id%>/update" class="row-link"><%=section.heading%></a>
+									</td>
+									<td class="w-fit">
+										<div class="flex justify-center items-center">
+											<a href="/member/components/section-cta/<%=section.id%>/delete" class="row-link group hover:bg-tertiary rounded p-4">
+												<i class="delete-bin remix icon-sm bg-secondary group-hover:bg-white"></i>
+											</a>
+										</div>
+									</td>
+								</tr>
+								<%
+								});
+								%>
+							</tbody>
+						</table>
+					</div>
+					<div class="container-card justify-between">
+						<a href="/member/components/section-cta/add" class="btn success">Add New Section</a>
+						<div class="paging">
+							<a class="group" href="#"><i class="left-s remix bg-tertiary group-hover:bg-white icon-md"></i></a>
+							<a href="#">1</a>
+							<a href="#" class="active">2</a>
+							<a href="#">3</a>
+							<a class="group" href="#"><i class="right-s remix bg-tertiary group-hover:bg-white icon-md"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

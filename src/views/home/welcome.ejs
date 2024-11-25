@@ -3,16 +3,16 @@
     <div class="flex gap-2 reveal fade-right">
       <div class="bg-tertiary w-3"></div>
       <div class="flex flex-col">
-        <h1 class="font-bold text-primary"><%- welcome.title %></h1>
-        <h6 class="text-primary"><%- welcome.subTitle %></h6>
+        <h1 class="font-bold text-primary"><%- sectionList["WELCOME"].title %></h1>
+        <h6 class="text-primary"><%- sectionList["WELCOME"].subtitle %></h6>
       </div>
     </div>
     <div class="flex flex-col lg:flex-row justify-between gap-8 reveal fade-up with-delay">
       <div class="mx-auto min-w-80 min-h-80 w-2/5 h-80 relative">
-        <img src="/img/front_gate.JPG" class="w-full h-full shadow-2xl shadow-secondary/30 drop-shadow-2xl object-cover" />
+        <img src="<%=sectionList['WELCOME'].imageUrl%>" class="w-full h-full shadow-2xl shadow-secondary/30 drop-shadow-2xl object-cover" />
       </div>
       <div class="w-full lg:w-3/5 px-4 md:px-0">
-        <%- welcome.paragraph %>
+        <%- sectionList["WELCOME"].content %>
       </div>
     </div>
   </div>

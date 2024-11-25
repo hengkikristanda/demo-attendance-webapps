@@ -100,12 +100,6 @@ const postCreateAlumni = async (req, res) => {
 			uploadedImagePath = req.file.path; // Get the uploaded file path
 		}
 
-		// Log data for debugging (in a real app, you'd save this to a database)
-		console.log("Full Name:", fullName);
-		console.log("Generation:", generation);
-		console.log("Job Position:", jobPosition);
-		console.log("Uploaded Image Path:", uploadedImagePath);
-
 		const newAlumni = {
 			full_name: fullName,
 			generation,

@@ -11,7 +11,7 @@
 					<div class="absolute w-full h-full bottom-0 bg-gray-800/50"></div>
 					<h1
 						class="font-bold text-white sm:text-6xl px-2 md:px-12 w-full absolute bottom-1/4 md:bottom-3/4 z-10 uppercase">
-						<%=lecturerTranslation.title%>
+						<%=lecturerSectionTranslation.title%>
 					</h1>
 					<div class="bg-tertiary absolute size-28 hidden md:flex bottom-2/3 z-0"></div>
 				</div>
@@ -22,10 +22,10 @@
 					id="lecturerPageTitle"
 					class="flex flex-col w-full mb-20 items-center relative gap-2 px-4">
 					<h1 class="font-bold md:text-6xl bg-white text-tertiary text-center">
-						<%=lecturerTranslation.pageTitle%>
+						<%=lecturerSectionTranslation.heading%>
 					</h1>
 					<hr class="h-2 w-20 bg-tertiary" />
-					<h6 class="my-4 text-center"><%=lecturerTranslation.subTitle%></h6>
+					<h6 class="my-4 text-center"><%=lecturerSectionTranslation.content%></h6>
 				</div>
 
 				<div id="lecturerContainer" class="flex flex-col gap-6 mb-12"></div>
@@ -68,7 +68,7 @@
 		function renderLecturer(contentData) {
 			let commentComponent = [];
 
-			let lecturerTranslation = <%- JSON.stringify(lecturerTranslation) %>;
+			let lecturerTranslation = <%- JSON.stringify(lecturerSectionTranslation) %>;
 
 			for (let n=0; n<contentData.length; n++) {
 
@@ -158,7 +158,7 @@
 										target="_blank"
 										class="flex p-0 gap-2 items-start text-tertiary text-lg font-semibold text-sm w-fit h-fit py-2">
 										<span class="bi bi-person-circle"></span>
-										<span><%=lecturerTranslation.profileLabel%></span>`,
+										<span><%=lecturerSectionTranslation.profileLabel%></span>`,
 									`</a>`,
 								`</div>`,
 							`</div>`,

@@ -1,12 +1,9 @@
-const express = require("express");
 const bcrypt = require("bcryptjs");
-const axios = require("axios");
-const multer = require("multer");
-const { v4: uuidv4 } = require("uuid");
-const router = express.Router();
-const path = require("path");
 const jwt = require("jsonwebtoken");
-const fs = require("fs");
+const { WEB_PAGE_TITLE } = require("../utils/Constants");
+
+const UserService = require("../services/UserService");
+const EmailService = require("../services/EmailService/EmailService");
 
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 const JWT_EXPIRES_IN = "1h"; // Token expiration time (e.g., 1 hour)F
@@ -14,22 +11,25 @@ const JWT_EXPIRES_IN = "1h"; // Token expiration time (e.g., 1 hour)F
 const User = require("../model/Users/Users");
 
 const getLogin = async (req, res) => {
-	const error = req.query.error;
-
-	if (error === "forbidden") {
-		res.locals.errorMessage = "Your session has expired. Please log in again to continue.";
-		res.locals.responseMessageClass = "danger";
-	}
+	const alertMessage = req.flash("alertMessage");
 
 	res.render("memberArea/auth/login", {
-		title: "PTDI STTD Account",
+		title: `${WEB_PAGE_TITLE} - Login`,
+		alertMessage: alertMessage[0],
 	});
 };
 
 const getResetPassword = async (req, res) => {
-	res.render("memberArea/auth/forgotPassword", {
-		title: "PTDI STTD - Reset Password",
-	});
+	try {
+		const alertMessage = req.flash("alertMessage");
+		return res.render("memberArea/auth/forgotPassword", {
+			title: `${WEB_PAGE_TITLE} - Reset Password`,
+			alertMessage: alertMessage[0],
+		});
+	} catch (error) {
+		req.flash("alertMessage");
+		return res.redirect("/error");
+	}
 };
 
 const postRegisterUser = async (req, res) => {
@@ -37,8 +37,6 @@ const postRegisterUser = async (req, res) => {
 
 	try {
 		// Check if username or email already exists
-
-		console.log(username);
 
 		const existingUser = await User.findOne({ where: { email } });
 		if (existingUser) {
@@ -80,31 +78,52 @@ const postRegisterUser = async (req, res) => {
 };
 
 const postLogin = async (req, res) => {
-	const { userName, password } = req.body;
-
-	if (!userName || !password) {
-		return res.status(400).render("memberArea/auth/login", {
-			title: "PTDI STTD Account",
-			errorMessage: "Please enter both username and password",
-		});
-	}
+	let message = "Unable to login. Please try again later.";
 
 	try {
+		req.flash("alertMessage");
+
+		const { userName, password } = req.body;
+
+		if (!userName || !password) {
+			message = "Please enter both username and password";
+			throw new Error("Invalid Input");
+		}
+
 		// Find the user by username
 		const user = await User.findOne({ where: { userName } });
-		const isMatch = user ? await bcrypt.compare(password, user.encoded_password) : false;
-
-		// If user doesn't exist or password doesn't match, send an error
-		if (!user || !isMatch) {
-			return res.status(400).render("memberArea/auth/login", {
-				title: "PTDI STTD Account",
-				errorMessage: "Invalid username or password",
-			});
+		if (!user) {
+			message = "Invalid Username/password";
+			throw new Error("Invalid Credential");
 		}
+
+		if (user.is_active == 0) {
+			message = "Your account has been locked!";
+			throw new Error("Invalid Credential");
+		}
+
+		const isMatch = user ? await bcrypt.compare(password, user.encoded_password) : false;
+		if (!isMatch) {
+			message = "Invalid Username/password";
+
+			let failedLoginAttempt = user.failed_login_attempt + 1;
+			if (failedLoginAttempt >= 3) {
+				user.is_active = 0;
+				message = "Your account has been locked!";
+			}
+			user.failed_login_attempt = failedLoginAttempt;
+			await UserService.updateLoginAttempt(user);
+
+			throw new Error("Invalid Credential");
+		}
+
+		user.failed_login_attempt = 0;
+		user.is_active = 1;
+		await UserService.updateLoginAttempt(user);
 
 		// Generate JWT token
 		const token = jwt.sign(
-			{ userId: user.id, userName: user.userName }, // Payload
+			{ userId: user.id, userName: user.userName, userRole: user.role }, // Payload
 			JWT_SECRET,
 			{ expiresIn: JWT_EXPIRES_IN }
 		);
@@ -118,28 +137,95 @@ const postLogin = async (req, res) => {
 		return res.redirect("/member/dashboard");
 	} catch (error) {
 		console.error(error);
-		return res.status(500).render("memberArea/auth/login", {
-			title: "PTDI STTD Account",
-			errorMessage: "An unexpected error occurred. Please try again later.",
+		req.flash("alertMessage", {
+			message,
+			className: "danger",
 		});
+		return res.redirect("/users/login");
+	}
+};
+
+const postRequestResetPassword = async (req, res) => {
+	let message = "Unable to reset your password. Please try again later.";
+
+	try {
+		const { userName } = req.body;
+
+		if (!userName) {
+			message = "Please enter username";
+			throw new Error("Invalid Input");
+		}
+
+		// Find the user by username
+		const user = await User.findOne({ where: { userName } });
+		if (user) {
+			const newPassword = UserService.generateRandomPassword();
+			console.log("New Password: " + newPassword);
+			const result = resetPassword(user, newPassword);
+			if (!result) {
+				throw new Error("Failed to reset password");
+			}
+			await EmailService.sendNewPasswordEmail(user.email, newPassword);
+		}
+
+		message =
+			"Check your email! If your account exists, you’ll receive instructions on how to reset your password shortly.";
+
+		req.flash("alertMessage", {
+			message,
+			className: "success",
+		});
+
+		return res.redirect("/users/login");
+	} catch (error) {
+		console.error(error);
+		req.flash("alertMessage", {
+			message,
+			className: "danger",
+		});
+		return res.redirect("/users/forgot-password");
 	}
 };
 
 const logout = async (req, res) => {
-	res.clearCookie("auth"); // Clear JWT token from cookie
-	const errorMessage = "You have successfully logged out";
-	const responseMessageClass = "success";
-
-	res.render("memberArea/auth/login", {
-		title: "PTDI STTD Account",
-		errorMessage,
-		responseMessageClass,
-	});
+	try {
+		res.clearCookie("auth"); // Clear JWT token from cookie
+		req.flash("alertMessage", {
+			message: "You have successfully logged out",
+			className: "success",
+		});
+		return res.redirect("/users/login");
+	} catch (error) {
+		req.flash("alertMessage");
+		req.flash("alertMessage", {
+			message: "Logout Failed, please try again in a few minutes.",
+			className: "danger",
+			actionLink: "/member/dashboard",
+		});
+		return res.redirect("/error");
+	}
 };
+
+async function resetPassword(user, newPassword) {
+	try {
+		const salt = await bcrypt.genSalt(10);
+		const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+		user.encoded_password = hashedPassword;
+		await user.save();
+
+		console.log("Password reset successfully");
+		return true;
+	} catch (error) {
+		console.error("Error resetting password:", error);
+	}
+	return false;
+}
 
 module.exports = {
 	getLogin,
 	getResetPassword,
+	postRequestResetPassword,
 	postRegisterUser,
 	postLogin,
 	logout,

@@ -1,3 +1,9 @@
+const sanitizeHtml = require("sanitize-html");
+const fs = require("fs-extra"); // Import fs-extra for file handling
+const path = require("path");
+
+const projectRoot = path.resolve(__dirname, "../../");
+
 function formatDateToLongString(date, langCode) {
 	const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
 
@@ -85,6 +91,10 @@ function getOriginalFileNameWithExt(fileName, mimeType) {
 	}
 }
 
+function getFileNameWithoutExtension(filename) {
+	return filename.replace(/\.[^/.]+$/, "");
+}
+
 function formatDocumentName(name) {
 	// Replace all non-alphanumeric characters and separators (dot, comma, spaces, etc.) with a hyphen
 	return name.replace(/[.,\s-]+/g, "-").toLowerCase();
@@ -102,6 +112,57 @@ async function logWithTime(message) {
 	console.log(`[${timestampWithMs}] [${functionName}] ${message}`);
 }
 
+function sanitizeContent(content) {
+	return sanitizeHtml(content, {
+		allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img", "h1", "h2"]), // Add extra tags if needed
+		allowedAttributes: {
+			a: ["href", "name", "target"],
+			img: ["src", "alt"],
+		},
+		allowedIframeHostnames: ["www.youtube.com"], // Allow YouTube iframes if needed
+	});
+}
+
+function getImageUrl(data, filePath) {
+	if (data.image_id) {
+		data.imageUrl = `${filePath}/${data.image_id}.${data["mime_type"].split("/")[1]}`;
+	} else {
+		data.imageUrl = `https://placehold.co/600x400?text=No+Image+Available`;
+	}
+	return data;
+}
+
+async function handleUploadedFile(uploadedFile, prefix, uploadedDir) {
+	// 1. Get the file name
+	const fileNameWithoutExt = path.parse(uploadedFile.path).name;
+
+	// 2. Get the uuid
+	const id = path.basename(fileNameWithoutExt).replace(prefix, "");
+
+	// 3. Format original filename
+	const originalFileNameWithoutExt = getFileNameWithoutExtension(uploadedFile.originalname);
+	const fileExtension = uploadedFile.originalname.split(".").pop();
+
+	const formattedOriginalFileName =
+		formatDocumentName(originalFileNameWithoutExt) + "." + fileExtension;
+
+	const newFileName = path.basename(uploadedFile.path).replace(prefix, "");
+	const targetDir = path.join(projectRoot, uploadedDir);
+	const targetPath = path.join(targetDir, newFileName);
+
+	// Ensure target directory exists and move (rename) the file to the target folder with a new name
+	await fs.ensureDir(targetDir); // Ensure the target directory exists
+	await fs.copy(uploadedFile.path, targetPath); // Copy file to the target folder
+
+	console.log("File copied and renamed to:", targetPath);
+
+	return {
+		id,
+		original_filename: formattedOriginalFileName,
+		mime_type: `image/${path.extname(newFileName).replace(".", "")}`,
+	};
+}
+
 module.exports = {
 	logWithTime,
 	formatDateToLongString,
@@ -109,4 +170,7 @@ module.exports = {
 	getOriginalFileNameWithExt,
 	formatDateTimeToLongString,
 	formatDocumentName,
+	sanitizeContent,
+	getImageUrl,
+	handleUploadedFile,
 };

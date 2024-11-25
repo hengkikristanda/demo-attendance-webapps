@@ -2,8 +2,6 @@
 .close-circle {
 	-webkit-mask: url("/img/native-icons/close-circle.svg") no-repeat center;
 	mask: url("/img/native-icons/close-circle.svg") no-repeat center;
-	height: 2rem;
-	width: 2rem;
 	display: inline-block;
 }
 
@@ -143,7 +141,7 @@
 	mask-size: contain; /* or cover */
 }
 
-.alert {
+.alert-remix {
 	-webkit-mask: url("/img/native-icons/alert.svg") no-repeat center;
 	mask: url("/img/native-icons/alert.svg") no-repeat center;
 	display: inline-block;
@@ -174,6 +172,13 @@
 	-webkit-mask-size: contain; /* or cover */
 	mask-size: contain; /* or cover */
 }
+.add-circle {
+	-webkit-mask: url("/img/native-icons/add.svg") no-repeat center;
+	mask: url("/img/native-icons/add.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
 
 .menu-book {
 	-webkit-mask: url("/img/native-icons/menu-book.svg") no-repeat center;
@@ -183,7 +188,6 @@
 	mask-size: contain; /* or cover */
 }
 
-
 .more-horiz {
 	-webkit-mask: url("/img/native-icons/more-horiz.svg") no-repeat center;
 	mask: url("/img/native-icons/more-horiz.svg") no-repeat center;
@@ -192,6 +196,141 @@
 	mask-size: contain; /* or cover */
 }
 
+.honor-of-kings {
+	-webkit-mask: url("/img/native-icons/honor-of-kings.svg") no-repeat center;
+	mask: url("/img/native-icons/honor-of-kings.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.briefcase {
+	-webkit-mask: url("/img/native-icons/briefcase.svg") no-repeat center;
+	mask: url("/img/native-icons/briefcase.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.image-ico {
+	-webkit-mask: url("/img/native-icons/image-ico.svg") no-repeat center;
+	mask: url("/img/native-icons/image-ico.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.image-ico-add {
+	-webkit-mask: url("/img/native-icons/image-ico-add.svg") no-repeat center;
+	mask: url("/img/native-icons/image-ico-add.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.building-2 {
+	-webkit-mask: url("/img/native-icons/building-2.svg") no-repeat center;
+	mask: url("/img/native-icons/building-2.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.accordion-ico {
+	-webkit-mask: url("/img/native-icons/accordion-ico.svg") no-repeat center;
+	mask: url("/img/native-icons/accordion-ico.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.layout-ico {
+	-webkit-mask: url("/img/native-icons/layout-ico.svg") no-repeat center;
+	mask: url("/img/native-icons/layout-ico.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.layout-left {
+	-webkit-mask: url("/img/native-icons/layout-left.svg") no-repeat center;
+	mask: url("/img/native-icons/layout-left.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.layout-top-ico {
+	-webkit-mask: url("/img/native-icons/layout-top-ico.svg") no-repeat center;
+	mask: url("/img/native-icons/layout-top-ico.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.left-s {
+	-webkit-mask: url("/img/native-icons/left-s.svg") no-repeat center;
+	mask: url("/img/native-icons/left-s.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.right-s {
+	-webkit-mask: url("/img/native-icons/right-s.svg") no-repeat center;
+	mask: url("/img/native-icons/right-s.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.chat-3 {
+	-webkit-mask: url("/img/native-icons/chat-3.svg") no-repeat center;
+	mask: url("/img/native-icons/chat-3.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.feedback-ico {
+	-webkit-mask: url("/img/native-icons/feedback-ico.svg") no-repeat center;
+	mask: url("/img/native-icons/feedback-ico.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.organization-chart {
+	-webkit-mask: url("/img/native-icons/organization-chart.svg") no-repeat center;
+	mask: url("/img/native-icons/organization-chart.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.user-settings {
+	-webkit-mask: url("/img/native-icons/user-settings.svg") no-repeat center;
+	mask: url("/img/native-icons/user-settings.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.facebook-box {
+	-webkit-mask: url("/img/native-icons/facebook-box.svg") no-repeat center;
+	mask: url("/img/native-icons/facebook-box.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
+
+.pushpin {
+	-webkit-mask: url("/img/native-icons/pushpin.svg") no-repeat center;
+	mask: url("/img/native-icons/pushpin.svg") no-repeat center;
+	display: inline-block;
+	-webkit-mask-size: contain; /* or cover */
+	mask-size: contain; /* or cover */
+}
 
 .remix.info {
 	background-color: var(--info);
@@ -203,6 +342,10 @@
 }
 .remix.secondary {
 	background-color: var(--secondary);
+	border-radius: 50%;
+}
+.remix.tertiary {
+	background-color: var(--tertiary);
 	border-radius: 50%;
 }
 .remix.success {
@@ -223,6 +366,10 @@
 	border-radius: 50%;
 }
 
+.remix.line {
+	background-color: #cbd5e1;
+	border-radius: 50%;
+}
 
 .remix.danger-bold {
 	background-color: #991b1b;
@@ -247,4 +394,19 @@
 .icon-lg {
 	width: 1.8rem;
 	height: 1.8rem;
+}
+
+.icon-xl {
+	width: 2.2rem;
+	height: 2.2rem;
+}
+
+.icon-2xl {
+	width: 2.8rem;
+	height: 2.8rem;
+}
+
+.icon-full {
+	width: 10rem;
+	height: 10rem;
 }

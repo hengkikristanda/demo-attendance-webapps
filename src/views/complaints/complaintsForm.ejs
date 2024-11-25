@@ -1,0 +1,92 @@
+<form
+	class="myform flex flex-col w-full md:w-1/2"
+	method="POST"
+	id="complaintForm"
+	enctype="multipart/form-data"
+	action="/complaints">
+	<div>
+		<label for=""><%= complaintsTranslation.nameLabel %></label>
+		<input
+			name="fullName"
+			type="text"
+			placeholder="<%= complaintsTranslation.namePlaceholder %>"
+			required />
+	</div>
+	<div>
+		<label for=""><%= complaintsTranslation.emailLabel %></label>
+		<input
+			name="emailAddress"
+			type="email"
+			placeholder="<%= complaintsTranslation.emailPlaceholder %>"
+			required />
+	</div>
+	<div>
+		<label for=""><%= complaintsTranslation.phoneLabel %></label>
+		<input
+			id="phoneNumber"
+			name="phoneNumber"
+			type="tel"
+			placeholder="<%= complaintsTranslation.phonePlaceholder %>"
+			required />
+	</div>
+	<div>
+		<label for=""><%= complaintsTranslation.attachmentFileLabel %></label>
+		<span class="file-name" id="fileName"><%= complaintsTranslation.selectFileLabel %></span>
+		<input
+			name="complaintFile"
+			type="file"
+			id="fileInput"
+			class="hidden"
+			accept=".png, .jpg, .jpeg, .pdf" />
+	</div>
+	<div>
+		<label for=""><%= complaintsTranslation.complaintLabel %></label>
+		<textarea
+			name="complaints"
+			placeholder="<%= complaintsTranslation.complaintPlaceholder %>"
+			required></textarea>
+	</div>
+	<button id="submitComplaintButton" class="btn success" type="submit">
+		<p><%= complaintsTranslation.submitLabel %></p>
+	</button>
+</form>
+<script src="/js/CommonUtils.js"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		window.addEventListener("pageshow", function () {
+			document.getElementById("submitComplaintButton").disabled = false;
+		});
+
+		const phoneNumber = document.getElementById("phoneNumber");
+		phoneNumber.addEventListener("input", enforceNumberInput);
+		phoneNumber.addEventListener("paste", enforceNumberInputOnCopyPaste);
+
+		// Get elements
+		const fileInput = document.getElementById("fileInput");
+		const fileNameDisplay = document.getElementById("fileName");
+
+		fileNameDisplay.addEventListener("mouseup", () => {
+			fileInput.click();
+		});
+
+		// When the file input changes, update the displayed file name
+		fileInput.addEventListener("change", function () {
+			const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : "No file chosen";
+			fileNameDisplay.textContent = fileName;
+		});
+
+		handleButtonState_onClick("complaintForm", "submitComplaintButton");
+
+		/* document.getElementById("complaintForm").addEventListener("submit", function (event) {
+			event.preventDefault();
+
+
+			handleButtonState_onClick
+
+			if (this.checkValidity()) {
+				disabledButton_loading("submitComplaintButton");
+				this.submit();
+			}
+		}); */
+	});
+</script>

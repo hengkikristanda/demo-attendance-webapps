@@ -11,23 +11,23 @@
 		<div class="flex items-center hidden lg:flex gap-4">
 			<div class="menu">
 				<ul class="gap-6">
-					<% navBarTranslation.menus.forEach((menu) => { %>
+					<% webMenuList.forEach((menu) => { 
+						if (menu.order != null) {						
+					%>
 					<li class="nav-menu__label">
 						<p><%= menu.label %></p>
+						<% if (menu.submenus.length > 0) { %>
 						<ul>
-							<% menu.subMenus.forEach((subMenu) => { const className = (subMenu.subMenus !==
-							undefined) ? 'none' : 'link'; %>
+							<% menu.submenus.forEach((subMenu) => { 
+								const className = (subMenu.submenus && subMenu.submenus.length > 0) ? 'none' : 'link'; 
+							%>
 							<li class="<%= className %>">
-								<a class="w-full link" href="<%= subMenu.href %>?lng=<%= selectedLanguage %>"
-									><%= subMenu.label %></a
-								>
-								<% if (subMenu.subMenus) { %>
+								<a class="w-full link" href="<%= subMenu.url %>?lng=<%= selectedLanguage %>"><%= subMenu.label %></a>
+								<% if (subMenu.submenus) { %>
 								<ul>
-									<% subMenu.subMenus.forEach((nestedMenu) => { %>
+									<% subMenu.submenus.forEach((nestedMenu) => { %>
 									<li class="link">
-										<a href="<%= nestedMenu.href %>?lng=<%= selectedLanguage %>"
-											><%= nestedMenu.label %></a
-										>
+										<a href="<%= nestedMenu.url %>?lng=<%= selectedLanguage %>"><%= nestedMenu.label %></a>
 									</li>
 									<% }); %>
 								</ul>
@@ -35,8 +35,12 @@
 							</li>
 							<% }); %>
 						</ul>
+						<% } %>
 					</li>
-					<% }); %>
+					<% 
+						}
+					}); 
+					%>
 				</ul>
 			</div>
 			<div class="flex items-center gap-4 justify-between">
@@ -105,29 +109,37 @@
 <nav id="navbar-mobile" class="navbar-mobile">
 	<ul class="flex flex-col pr-4 pt-6">
 		<a href="/users/login" class="btn success sm:hidden">Login</a>
-		<% navBarTranslation.menus.forEach((menu) => { %>
+		<% webMenuList.forEach((menu) => { 
+			if (menu.order != null) {	
+		%>
 		<li class="navbar-mobile__label">
 			<p class="submenu"><%= menu.label %></p>
 			<ul class="hideDropdown">
-				<% menu.subMenus.forEach((subMenu) => { const isNestedMenu = (subMenu.subMenus !==
-				undefined); if (isNestedMenu) { %>
+				<% 
+				menu.submenus.forEach((subMenu) => { 
+					const isNestedMenu = (subMenu.subMenus !== undefined); 
+					if (isNestedMenu) { 
+				%>
 				<li>
 					<a href="#" class="submenu"><%= subMenu.label %></a>
 					<ul class="hideDropdown px-4">
 						<% subMenu.subMenus.forEach((nestedMenu) => { %>
-						<li><a href="<%= nestedMenu.href %>"><%= nestedMenu.label %></a></li>
+						<li><a href="<%= nestedMenu.url %>"><%= nestedMenu.label %></a></li>
 						<% }); %>
 					</ul>
 				</li>
 				<% } else { %>
 				<li>
-					<a class="link" href="<%= subMenu.href %>?lng=<%= selectedLanguage %>"
+					<a class="link" href="<%= subMenu.url %>?lng=<%= selectedLanguage %>"
 						><%= subMenu.label %></a
 					>
 				</li>
 				<% } }); %>
 			</ul>
 		</li>
-		<% }); %>
+		<% 
+			}
+		}); 
+		%>
 	</ul>
 </nav>

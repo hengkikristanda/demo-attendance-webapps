@@ -1,0 +1,21 @@
+{
+	"title": "Keluhan",
+	"subTitle": "Kami ingin mendengar dari Anda! Bagikan masukan dan ulasan Anda untuk membantu kami meningkatkan pengalaman Anda.",
+	"nameLabel": "Nama Lengkap",
+	"emailLabel": "Alamat Email",
+	"phoneLabel": "Nomor Telepon",
+	"complaintLabel": "Keluhan anda",
+	"namePlaceholder": "Nama lengkap anda",
+	"emailPlaceholder": "Alamat email anda",
+	"phonePlaceholder": "Nomor telepon anda",
+	"complaintPlaceholder": "Tulis keluhan anda disini",
+	"attachmentFileLabel": "Lampiran File",
+	"selectFileLabel": "Pilih File",
+	"submitLabel": "Kirim",
+	"chatUs": "Chat dengan kami",
+	"chatUsLabel": "Tim ramah kami siap membantu.",
+	"visitUs": "Kunjungi kami",
+	"visitUsLabel": "Datang dan sapa kami di kampus.",
+	"callUs": "Hubungi kami",
+	"callUsLabel": "Senin-Jumat dari jam 8 pagi hingga 5 sore."
+}

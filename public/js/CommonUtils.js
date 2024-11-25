@@ -1,30 +1,51 @@
 // 2
+function LoaderSpinner() {
+	const loaderComponent = document.createElement("span");
+	loaderComponent.classList.add("loader");
+	return loaderComponent;
+}
+
 function disabledButton_loading(buttonId) {
 	const targetButton = document.getElementById(buttonId);
 	targetButton.disabled = true;
+	targetButton.classList.remove("success");
 	targetButton.classList.add("disabled");
-	targetButton.textContent = "";
+	const buttonLabel = targetButton.querySelector("p");
+	buttonLabel.classList.add("hidden");
 	targetButton.appendChild(LoaderSpinner());
 }
 
 // 1
 function handleButtonState_onClick(targetFormId, buttonId) {
 	const targetButton = document.getElementById(buttonId);
-	targetButton.addEventListener("mouseup", () => {
-		const targetForm = document.getElementById(targetFormId);
-		const isFormValid = targetForm.reportValidity();
-		if (isFormValid) targetForm.submit();
-	});
+	if (targetButton) {
+		targetButton.addEventListener("mouseup", () => {
+			const targetForm = document.getElementById(targetFormId);
+
+			if (targetForm) {
+				const isFormValid = targetForm.reportValidity();
+				if (isFormValid) {
+					disabledButton_loading(buttonId);
+					targetForm.submit();
+				}
+			}
+		});
+	}
 }
 
 // 1
-function handleButtonState_onFormSubmit(targetForm, buttonId) {
+function handleButtonState_onFormSubmit(targetForm, buttonId, callBack) {
 	const loginForm = document.getElementById(targetForm);
-	loginForm.addEventListener("submit", (event) => {
-		event.preventDefault();
-		disabledButton_loading(buttonId);
-		loginForm.submit();
-	});
+	if (loginForm) {
+		loginForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+			disabledButton_loading(buttonId);
+			if (callBack) {
+				callBack();
+			}
+			loginForm.submit();
+		});
+	}
 }
 
 // 1

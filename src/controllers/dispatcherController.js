@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 
 const siteMenuServices = require("../services/siteMenuServices");
-const CommonComponentServices = require("../services/commonComponentServices");
+const CommonComponentServices = require("../services/CommonComponentServices");
 const LanguageService = require("../services/languageService");
 const TranslationService = require("../services/translationService");
 const ContactInfoService = require("../services/ContactInfoService");
@@ -20,6 +20,8 @@ const PublicCommentsService = require("../services/PublicCommentsService");
 const FacilitiesTranslationService = require("../services/FacilitiesTranslationService");
 const FacilitiesImagesService = require("../services/FacilitiesImagesService");
 const LecturerDetailService = require("../services/Lecturer/LecturerDetailService");
+const SectionContentService = require("../services/SectionContent/SectionContentService");
+const CONSTANT = require("../utils/Constants");
 
 const responseMessage = {
 	id: "Terima kasih atas komentar Anda! Kami menghargai masukan Anda dan akan segera meninjaunya.",
@@ -29,198 +31,35 @@ const responseMessage = {
 	zh: "感谢您的评论！我们非常重视您的反馈，并会尽快审阅。",
 };
 
-const pageTitle = "PTDI STTD - ";
+let pageTitle = "PTDI STTD - ";
 
-const getHome = async (req, res) => {
-	const currentPage = {
-		id: "Beranda",
-		en: "Home",
-		ja: "ホーム",
-		ko: "홈",
-		zh: "主页",
-	};
-
-	// Get the language from the query parameter or use the language from the cookie if it exists
-	let selectedLanguage = req.query.lang
-		? await LanguageService.getUserPreferredLanguage(req.query.lang)
-		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
-
-	// Set the language preference in a cookie
-	// res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
-
-	// Load translations
-	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
-	// const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
-
-	console.log("Detected language:", req.language);
-	selectedLanguage = req.language;
-	const footerTranslation = {
-		location: req.t("footer:location"),
-		contactUs: req.t("footer:contactUs"),
-		connectWithUs: req.t("footer:connectWithUs"),
-	};
-
-	const welcomeTranslation = TranslationService.getTranslation("home/welcome", selectedLanguage);
-	const talkToUsTranslation = TranslationService.getTranslation("home/talkToUs", selectedLanguage);
-
-	const alumnies = TranslationService.getTranslation("home/alumnies", selectedLanguage);
-
-	const lecturers = JSON.parse(
-		fs.readFileSync(path.join(__dirname, "../translations/lecturers.json"), "utf8")
-	);
-	const newsSectionTranslation = TranslationService.getTranslation("home/news", selectedLanguage);
-
-	const hero = JSON.parse(
-		fs.readFileSync(path.join(__dirname, "../translations/home-hero/", `homeHero.json`), "utf8")
-	);
-
-	// Redirect only if `lang` query parameter is present
-	if (req.query.lang) {
-		const cleanUrl = req.originalUrl.split("?")[0]; // Remove query parameters
-		return res.redirect(cleanUrl); // Redirect to the clean URL
+const getErrorPage = async (req, res) => {
+	let responseCode = req.params.responseCode;
+	let httpStatusMessage = "Something went wrong";
+	if (responseCode) {
+		if (responseCode == "404") {
+			httpStatusMessage = "Page Not Found";
+		} else if (responseCode == "504") {
+			httpStatusMessage = "Website under maintenance";
+		} else {
+			responseCode = "500";
+		}
+	} else {
+		responseCode = "500";
 	}
 
-	const emails = [];
-	const phoneNo = [];
-	const instagram = [];
-	const youtube = [];
-	const facebook = [];
-	const whatsapp = [];
-
-	const contactInfo = await ContactInfoService.findAll();
-	for (let n = 0; n < contactInfo.length; n++) {
-		if (contactInfo[n].channel.toLowerCase() === "email") {
-			emails.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "phone") {
-			phoneNo.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "instagram") {
-			instagram.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "youtube") {
-			youtube.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "facebook") {
-			facebook.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "whatsapp") {
-			whatsapp.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		}
-	}
-
-	let companyInfo = {};
-
-	const companyProfile = await CompanyProfileService.findAll();
-	for (let n = 0; n < companyProfile.length; n++) {
-		companyInfo = {
-			officialName: companyProfile[n].officialName,
-			shortName: companyProfile[n].shortName,
-			address: companyProfile[n].address,
-		};
-	}
-
-	const alumniList = (await AlumniService.findAllAlumniView()).slice(0, 4);
-
-	// Map the desired attribute (e.g., name) to a new object
-	const firstFourAlumni = alumniList.map((alumni) => ({
-		id: alumni.id,
-		fullName: alumni["full_name"],
-		generation: alumni.generation,
-		job: alumni["job_position"],
-		pos: alumni.pos,
-		imageUrl: `/img/alumnies/${alumni["image_id"]}.${alumni["mime_type"].split("/")[1]}`,
-		mimeType: alumni["mime_type"],
-	}));
-
-	const lecturerList = (await LecturerService.findAllLecturerView("pos")).slice(0, 10);
-	const firstTenLecturer = lecturerList.map((lecturer) => {
-		const result = {
-			id: lecturer.id,
-			fullName: lecturer["full_name"],
-			emailAddress: lecturer["email_address"],
-			experience: lecturer["experience"],
-			research: lecturer["research"],
-			education: lecturer["education"],
-		};
-
-		// docUrl: `/lecturer-cv/${lecturer["doc_id"]}.${lecturer["doc_type"].split("/")[1]}`,
-		// imageUrl: `/img/lecturer/${lecturer["image_id"]}.${lecturer["image_type"].split("/")[1]}`,
-
-		if (
-			lecturer["doc_id"] != undefined &&
-			lecturer["doc_id"] != null &&
-			lecturer["doc_type"] != undefined &&
-			lecturer["doc_type"] != null
-		) {
-			result.docUrl = `/docs/lecturer-cv/${lecturer["doc_id"]}.${
-				lecturer["doc_type"].split("/")[1]
-			}`;
-		}
-
-		if (
-			lecturer["image_id"] != undefined &&
-			lecturer["image_id"] != null &&
-			lecturer["image_type"] != undefined &&
-			lecturer["image_type"] != null
-		) {
-			result.imageUrl = `/img/lecturer/${lecturer["image_id"]}.${
-				lecturer["image_type"].split("/")[1]
-			}`;
-		}
-
-		return result;
+	res.render("error", {
+		title: "PTDI STTD",
+		httpStatusMessage,
+		responseCode,
 	});
+};
 
-	const newsList = await NewsService.findAllPublishedNews(selectedLanguage);
-	const newsData = newsList.map((item) => ({
-		newsId: item["id"],
-		title: item["title"],
-		lastModified: CommonUtils.formatDateTimeToLongString(item["last_modified"], selectedLanguage),
-		lang: item["lang"] ? item["lang"] : "ID",
-		imageUrl: `/img/news/${item["display_image_id"]}.${item["mime_type"].split("/")[1]}`,
-	}));
-
-	// Store variables in `res.locals`
-	res.locals.hero = hero[selectedLanguage];
-	res.locals.navBarTranslation = navBarTranslation;
-	res.locals.footerTranslation = footerTranslation;
-	res.locals.talkToUsTranslation = talkToUsTranslation;
-	res.locals.alumnies = alumnies;
-	res.locals.lecturers = lecturers;
-	res.locals.newsSectionTranslation = newsSectionTranslation;
-	res.locals.newsData = newsData;
-
-	res.locals.emails = emails;
-	res.locals.phoneNo = phoneNo;
-	res.locals.instagram = instagram;
-	res.locals.youtube = youtube;
-	res.locals.whatsapp = whatsapp;
-	res.locals.facebook = facebook;
-	res.locals.companyInfo = companyInfo;
-
-	res.locals.firstFourAlumni = firstFourAlumni;
-	res.locals.firstTenLecturer = firstTenLecturer;
-
-	// Render the index page
-	res.render("home/index", {
-		title: `${pageTitle} ${currentPage[selectedLanguage]}`,
-		currentPage: currentPage[selectedLanguage],
-		selectedLanguage,
-		welcome: welcomeTranslation,
+const getErrorPage2 = async (req, res) => {
+	const alertMessage = req.flash("alertMessage");
+	res.render("error", {
+		title: "PTDI STTD",
+		alertMessage: alertMessage[0], // Pass the message to the view
 	});
 };
 
@@ -333,103 +172,6 @@ const getAlumni = async (req, res) => {
 
 	// Render the index page
 	res.render("alumni/index", {
-		title: `${pageTitle} ${currentPage[selectedLanguage]}`,
-		currentPage: currentPage[selectedLanguage],
-		selectedLanguage,
-	});
-};
-
-const getOrganizationalStructure = async (req, res) => {
-	const currentPage = {
-		id: "Struktur Organisasi",
-		en: "Organizational Structure",
-		ja: "組織構造",
-		ko: "조직 구조",
-		zh: "组织结构",
-	};
-
-	// Get the language from the query parameter or use the language from the cookie if it exists
-	let selectedLanguage = req.query.lang
-		? LanguageService.getUserPreferredLanguage(req.query.lang)
-		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
-
-	// Set the language preference in a cookie
-	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
-
-	// Load translations
-	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
-	const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
-
-	// Redirect only if `lang` query parameter is present
-	if (req.query.lang) {
-		const cleanUrl = req.originalUrl.split("?")[0]; // Remove query parameters
-		return res.redirect(cleanUrl); // Redirect to the clean URL
-	}
-
-	const emails = [];
-	const phoneNo = [];
-	const instagram = [];
-	const youtube = [];
-	const facebook = [];
-	const whatsapp = [];
-
-	const contactInfo = await ContactInfoService.findAll();
-	for (let n = 0; n < contactInfo.length; n++) {
-		if (contactInfo[n].channel.toLowerCase() === "email") {
-			emails.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "phone") {
-			phoneNo.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "instagram") {
-			instagram.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "youtube") {
-			youtube.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "facebook") {
-			facebook.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "whatsapp") {
-			whatsapp.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		}
-	}
-
-	let companyInfo = {};
-
-	const companyProfile = await CompanyProfileService.findAll();
-	for (let n = 0; n < companyProfile.length; n++) {
-		companyInfo = {
-			address: companyProfile[n].address,
-		};
-	}
-
-	res.locals.navBarTranslation = navBarTranslation;
-	res.locals.footerTranslation = footerTranslation;
-
-	res.locals.emails = emails;
-	res.locals.phoneNo = phoneNo;
-	res.locals.instagram = instagram;
-	res.locals.youtube = youtube;
-	res.locals.whatsapp = whatsapp;
-	res.locals.facebook = facebook;
-	res.locals.companyInfo = companyInfo;
-
-	// Render the index page
-	res.render("aboutUs/organizationalStructure/index", {
 		title: `${pageTitle} ${currentPage[selectedLanguage]}`,
 		currentPage: currentPage[selectedLanguage],
 		selectedLanguage,
@@ -1098,115 +840,6 @@ const submitComment = async (req, res) => {
 	}
 };
 
-const getComplaints = async (req, res) => {
-	const currentPage = {
-		id: "Keluhan",
-		en: "Complaint",
-		ja: "苦情",
-		ko: "불만",
-		zh: "投诉",
-	};
-
-	// Get the language from the query parameter or use the language from the cookie if it exists
-	let selectedLanguage = req.query.lang
-		? LanguageService.getUserPreferredLanguage(req.query.lang)
-		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
-
-	// Set the language preference in a cookie
-	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
-
-	// Load translations
-	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
-	const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
-
-	// Redirect only if `lang` query parameter is present
-	if (req.query.lang) {
-		const cleanUrl = req.originalUrl.split("?")[0]; // Remove query parameters
-		return res.redirect(cleanUrl); // Redirect to the clean URL
-	}
-
-	const complaintsTranslation = TranslationService.getTranslation("complaints", selectedLanguage);
-
-	const emails = [];
-	const phoneNo = [];
-	const instagram = [];
-	const youtube = [];
-	const facebook = [];
-	const whatsapp = [];
-
-	const contactInfo = await ContactInfoService.findAll();
-	for (let n = 0; n < contactInfo.length; n++) {
-		if (contactInfo[n].channel.toLowerCase() === "email") {
-			emails.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "phone") {
-			phoneNo.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "instagram") {
-			instagram.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "youtube") {
-			youtube.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "facebook") {
-			facebook.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "whatsapp") {
-			whatsapp.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		}
-	}
-
-	let companyInfo = {};
-
-	const companyProfile = await CompanyProfileService.findAll();
-	for (let n = 0; n < companyProfile.length; n++) {
-		companyInfo = {
-			address: companyProfile[n].address,
-		};
-	}
-
-	res.locals.navBarTranslation = navBarTranslation;
-	res.locals.footerTranslation = footerTranslation;
-
-	res.locals.emails = emails;
-	res.locals.phoneNo = phoneNo;
-	res.locals.instagram = instagram;
-	res.locals.youtube = youtube;
-	res.locals.whatsapp = whatsapp;
-	res.locals.facebook = facebook;
-	res.locals.companyInfo = companyInfo;
-
-	res.locals.complaintsTranslation = complaintsTranslation;
-
-	if (req.session.error == undefined) {
-		res.locals.responseMessage = "";
-	} else if (req.session.error) {
-		res.locals.responseMessage = "Failed submit comment. Please try again later.";
-	} else {
-		res.locals.responseMessage = responseMessage[selectedLanguage];
-	}
-
-	// Render the index page
-	res.render("complaints/index", {
-		title: `${pageTitle} ${currentPage[selectedLanguage]}`,
-		currentPage: currentPage[selectedLanguage],
-		selectedLanguage,
-	});
-};
-
 const getHistory = async (req, res) => {
 	const currentPage = {
 		id: "Sejarah Kami",
@@ -1305,209 +938,6 @@ const getHistory = async (req, res) => {
 
 	// Render the index page
 	res.render("aboutUs/history/index", {
-		title: `${pageTitle} ${currentPage[selectedLanguage]}`,
-		selectedLanguage,
-	});
-};
-
-const getDuties = async (req, res) => {
-	const currentPage = {
-		id: "Tugas & Fungsi",
-		en: "Duties & Functions",
-		ja: "任務と機能",
-		ko: "임무 및 기능",
-		zh: "职责与功能",
-	};
-
-	// Get the language from the query parameter or use the language from the cookie if it exists
-	let selectedLanguage = req.query.lang
-		? LanguageService.getUserPreferredLanguage(req.query.lang)
-		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
-
-	// Set the language preference in a cookie
-	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
-
-	// Load translations
-	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
-	const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
-
-	// Redirect only if `lang` query parameter is present
-	if (req.query.lang) {
-		const cleanUrl = req.originalUrl.split("?")[0]; // Remove query parameters
-		return res.redirect(cleanUrl); // Redirect to the clean URL
-	}
-
-	const dutiesTranslation = TranslationService.getTranslation("aboutUs/duties", selectedLanguage);
-
-	const emails = [];
-	const phoneNo = [];
-	const instagram = [];
-	const youtube = [];
-	const facebook = [];
-	const whatsapp = [];
-
-	const contactInfo = await ContactInfoService.findAll();
-	for (let n = 0; n < contactInfo.length; n++) {
-		if (contactInfo[n].channel.toLowerCase() === "email") {
-			emails.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "phone") {
-			phoneNo.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "instagram") {
-			instagram.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "youtube") {
-			youtube.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "facebook") {
-			facebook.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "whatsapp") {
-			whatsapp.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		}
-	}
-
-	let companyInfo = {};
-
-	const companyProfile = await CompanyProfileService.findAll();
-	for (let n = 0; n < companyProfile.length; n++) {
-		companyInfo = {
-			address: companyProfile[n].address,
-		};
-	}
-
-	res.locals.navBarTranslation = navBarTranslation;
-	res.locals.footerTranslation = footerTranslation;
-
-	res.locals.emails = emails;
-	res.locals.phoneNo = phoneNo;
-	res.locals.instagram = instagram;
-	res.locals.youtube = youtube;
-	res.locals.whatsapp = whatsapp;
-	res.locals.facebook = facebook;
-	res.locals.companyInfo = companyInfo;
-
-	res.locals.dutiesTranslation = dutiesTranslation;
-
-	// Render the index page
-	res.render("aboutUs/duties/index", {
-		title: `${pageTitle} ${currentPage[selectedLanguage]}`,
-		selectedLanguage,
-	});
-};
-
-const getOurPurpose = async (req, res) => {
-	const currentPage = {
-		id: "Visi & Misi",
-		en: "Vision & Mission",
-		ja: "ビジョンとミッション",
-		ko: "비전 및 사명",
-		zh: "愿景与使命",
-	};
-
-	// Get the language from the query parameter or use the language from the cookie if it exists
-	let selectedLanguage = req.query.lang
-		? LanguageService.getUserPreferredLanguage(req.query.lang)
-		: req.cookies.language || "en"; // Default to 'en' if no cookie or query param
-
-	// Set the language preference in a cookie
-	res.cookie("language", selectedLanguage, { maxAge: 900000, httpOnly: true });
-
-	// Load translations
-	const navBarTranslation = TranslationService.getTranslation("navbar", selectedLanguage);
-	const footerTranslation = TranslationService.getTranslation("footer", selectedLanguage);
-
-	// Redirect only if `lang` query parameter is present
-	if (req.query.lang) {
-		const cleanUrl = req.originalUrl.split("?")[0]; // Remove query parameters
-		return res.redirect(cleanUrl); // Redirect to the clean URL
-	}
-
-	const ourPurposeTranslation = TranslationService.getTranslation(
-		"aboutUs/ourPurpose",
-		selectedLanguage
-	);
-
-	const emails = [];
-	const phoneNo = [];
-	const instagram = [];
-	const youtube = [];
-	const facebook = [];
-	const whatsapp = [];
-
-	const contactInfo = await ContactInfoService.findAll();
-	for (let n = 0; n < contactInfo.length; n++) {
-		if (contactInfo[n].channel.toLowerCase() === "email") {
-			emails.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "phone") {
-			phoneNo.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "instagram") {
-			instagram.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "youtube") {
-			youtube.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "facebook") {
-			facebook.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		} else if (contactInfo[n].channel.toLowerCase() === "whatsapp") {
-			whatsapp.push({
-				label: contactInfo[n].label,
-				value: contactInfo[n].value,
-			});
-		}
-	}
-
-	let companyInfo = {};
-
-	const companyProfile = await CompanyProfileService.findAll();
-	for (let n = 0; n < companyProfile.length; n++) {
-		companyInfo = {
-			address: companyProfile[n].address,
-		};
-	}
-
-	res.locals.navBarTranslation = navBarTranslation;
-	res.locals.footerTranslation = footerTranslation;
-
-	res.locals.emails = emails;
-	res.locals.phoneNo = phoneNo;
-	res.locals.instagram = instagram;
-	res.locals.youtube = youtube;
-	res.locals.whatsapp = whatsapp;
-	res.locals.facebook = facebook;
-	res.locals.companyInfo = companyInfo;
-
-	res.locals.ourPurposeTranslation = ourPurposeTranslation;
-
-	// Render the index page
-	res.render("aboutUs/ourPurpose/index", {
 		title: `${pageTitle} ${currentPage[selectedLanguage]}`,
 		selectedLanguage,
 	});
@@ -1796,20 +1226,17 @@ const getLecturers = async (req, res) => {
 };
 
 module.exports = {
-	getHome,
 	getAlumni,
-	getOrganizationalStructure,
 	getOurLeaders,
 	getTraining,
 	getTrainingRegistration,
 	getPublicComments,
 	submitComment,
-	getComplaints,
 	getHistory,
-	getDuties,
-	getOurPurpose,
 	getFacilities,
 	getLecturers,
 	getPostGraduateMarketingInnovationTechnology,
 	getSafetyRiskEngineering,
+	getErrorPage,
+	getErrorPage2,
 };

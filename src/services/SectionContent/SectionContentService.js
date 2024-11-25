@@ -11,6 +11,15 @@ const {
 
 const SectionContentTranslationView = require("../../model/SectionContent/SectionContentTranslationView");
 
+const findInViewById = async (id) => {
+	try {
+		return SectionContentView.findByPk(id, { raw: true });
+	} catch (error) {
+		console.log(error);
+		throw new Error("Error Fetching SectionView for id: " + id);
+	}
+};
+
 const findAllByWebPageId = async (webPageId) => {
 	try {
 		return SectionContent.findAll({
@@ -182,4 +191,5 @@ module.exports = {
 	updateSectionContent,
 	findAllTranslationInViewByWebPageId,
 	findAllByWebPageId,
+	findInViewById
 };

@@ -1,0 +1,38 @@
+<div class="page-header w-full group hover:cursor-pointer mb-6">
+	<div id="openBrowseFile" class="w-full h-[30rem] relative">
+		<img
+			id="pageHeaderImage"
+			src="<%=heroSectionData.imageUrl%>"
+			alt=""
+			class="w-full h-full object-cover" />
+		<input id="pageHeaderImageFile" name="pageHeaderImageFile" type="file" class="hidden" />
+		<div
+			class="absolute w-full h-20 bottom-0 bg-gray-800 hidden group-hover:flex items-center justify-center text-lg text-white">
+			<i class="pencil-edit remix white icon-md"></i>
+			Click to Change Picture
+		</div>
+		<div class="absolute w-full h-full bottom-0 bg-gray-800/50"></div>
+		<div class="px-2 md:px-12 w-full absolute bottom-1/4 md:bottom-2/3 z-10">
+			<h1 class="font-bold text-white sm:text-6xl uppercase"><%=heroSectionData.title%></h1>
+			<h4 class="text-white"><%=heroSectionData.subtitle%></h4>
+		</div>
+		<div class="bg-tertiary absolute size-28 hidden md:flex bottom-2/3 z-0"></div>
+	</div>
+</div>
+<script>
+	const openBrowseFile = document.getElementById("openBrowseFile");
+	const pageHeaderImage = document.getElementById("pageHeaderImageFile");
+	openBrowseFile.addEventListener("mouseup", () => {
+		pageHeaderImageFile.click();
+	});
+	document.getElementById("pageHeaderImageFile").addEventListener("change", function (event) {
+		const file = event.target.files[0];
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = function (e) {
+				document.getElementById("pageHeaderImage").src = e.target.result;
+			};
+			reader.readAsDataURL(file);
+		}
+	});
+</script>

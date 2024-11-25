@@ -6,55 +6,48 @@
 		<%- include('../../sections/navbar') %>
 
 		<div class="max-w-screen-2xl mx-auto">
-			<div class="page-header w-full my-20">
-				<div class="w-full h-[30rem] relative">
-					<img src="/img/main-building.jpg" alt="" class="w-full h-full object-cover" />
-                    <div class="absolute w-full h-full bottom-0 bg-gray-800/50"></div>
-					<h1
-						class="font-bold text-white sm:text-6xl px-2 md:px-12 w-full absolute bottom-1/4 md:bottom-3/4 z-10 uppercase">
-						<%=dutiesTranslation.headerTitle%>
-					</h1>
-					<div class="bg-tertiary absolute size-28 hidden md:flex bottom-2/3 z-0"></div>
-				</div>
-			</div>
+			<%- include('./dutiesHero') %>
 
 			<div class="flex flex-col w-full mb-20 items-center relative gap-2">
-				<h1 class="font-bold md:text-6xl bg-white px-4 text-tertiary"><%=dutiesTranslation.headerTitle%></h1>
+				<h1 class="font-bold md:text-6xl bg-white px-4 text-tertiary">
+					<%=dutiesHero.dutiesFunctions%>
+				</h1>
 				<hr class="h-2 w-20 bg-tertiary" />
 			</div>
 
-            <div class="flex flex-col md:gap-12 px-4 2xl:px-0">
+			<div class="flex flex-col md:gap-12 px-4 2xl:px-0">
 				<div class="flex flex-col mb-32">
 					<div class="our-purpose">
 						<div class="flex flex-col md:flex-row gap-8 h-[50rem] md:h-96">
 							<div class="md:w-1/2">
-								<img src="/img/tugas-fungsi.jpg" class="w-full h-full object-cover backdrop-blur-sm shadow-xl shadow-gray-500 rounded" />
+								<img
+									src="/img/tugas-fungsi.jpg"
+									class="w-full h-full object-cover backdrop-blur-sm shadow-xl shadow-gray-500 rounded" />
 							</div>
-
-							<div class="flex flex-col md:w-2/3">
-								<div class="flex uppercase section-header">
-									<h6 class="cursor-pointer font-semibold py-4 min-w-40 text-center bg-tertiary/15">
-										<%=dutiesTranslation.dutiesLabel%>
-									</h6>
-									<h6 class="cursor-pointer font-semibold py-4 min-w-40 text-center"><%=dutiesTranslation.functionLabel%></h6>
+							<div class="flex flex-col md:w-1/2">
+								<div class="flex w-fit justify-evenly gap-4 tablist">
+									<% tabListItems.forEach((item, index) => { 
+										let activeClass = '';
+										if (index == 0) {
+											activeClass = 'active';
+										}
+									%> 
+										<div class="tablist-item group <%=activeClass%>">
+											<p><%=item.title%></p>
+										</div>
+									<% }); %>
 								</div>
-								<div class="tabs-content show bg-tertiary/15">
-									<p class="text-secondary leading-relaxed text-base px-6 py-4">
-										<%=dutiesTranslation.duties%>
-									</p>
-								</div>
-								<div class="tabs-content hide bg-tertiary/15">
-									<ol class="text-secondary leading-relaxed text-base px-10 py-4">
-                                        <%
-                                        dutiesTranslation.functions.forEach((duty) => {
-                                        %>
-										<li>
-											<%=duty%>
-										</li>
-                                        <%
-                                        })
-                                        %>
-									</ol>
+								<div class="tablist-content">
+									<% tabListItems.forEach((item, index) => { 
+										let hiddenClass = '';
+										if (index > 0) {
+											hiddenClass = 'hidden';
+										}
+									%> 
+										<div class="tablist-content-item <%=hiddenClass%>">
+											<%-item.content%>
+										</div>
+									<% }); %>
 								</div>
 							</div>
 						</div>
@@ -63,10 +56,33 @@
 			</div>
 		</div>
 
-		<%- include('../../sections/footer') %>
-        <%- include('../../components/chatWidget') %>
+		<%- include('../../sections/footer') %> 
+		<%- include('../../components/chatWidget') %>
 	</body>
 
 	<script src="/js/navbarUtils.js"></script>
-    <script src="/js/aboutUs/duties/index.js"></script>
+
+	<script>
+		const tabListItem = document.querySelectorAll(".tablist-item");
+		const tabListContentItem = document.querySelectorAll(".tablist-content-item");
+
+		tabListItem.forEach((item, index) => {
+			item.addEventListener("mouseup", () => {
+				resetTabListState();
+				if (tabListContentItem[index].classList.contains("hidden")) {
+					tabListContentItem[index].classList.remove("hidden");
+				}
+				tabListItem[index].classList.add("active");
+			});
+		});
+
+		function resetTabListState() {
+			tabListContentItem.forEach((item) => {
+				item.classList.add("hidden");
+			});
+			tabListItem.forEach((item) => {
+				item.classList.remove("active");
+			});
+		}
+	</script>
 </html>

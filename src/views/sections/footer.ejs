@@ -10,7 +10,7 @@
 						class="md:w-3/4 flex flex-col items-center md:items-start text-center md:text-start gap-2">
 						<h6 class="font-semibold"><%= footerTranslation.location %></h6>
 						<hr class="w-12 border-4 border-tertiary" />
-						<p class="text-sm leading-relaxed"><%- companyInfo.address %></p>
+						<p class="text-sm leading-relaxed"><%- companyInfo.address.replace(/\n/g, "<br>"); %></p>
 					</div>
 				</div>
 				<div class="w-full h-96 md:h-72 md:px-0">
@@ -29,12 +29,20 @@
 					<h6 class="font-semibold"><%= footerTranslation.contactUs %></h6>
 					<hr class="w-12 border-4 border-tertiary" />
 					<div class="flex flex-col text-sm gap-2">
-						<% phoneNo.forEach(phoneNumber => { %>
-							<p><%= phoneNumber.value %></p>
-						<% }); %> 
-						<% emails.forEach(email => { %>
+						<% 
+							if (contactInfo["telephone"]) {
+								contactInfo["telephone"].forEach(phoneNumber => { %>
+								<p><%= phoneNumber.value %></p>
+						<% 		}); 
+							}
+						%> 
+						<% 
+							if (contactInfo["email"]) {
+								contactInfo["email"].forEach(email => { %>
 							<p><%= email.value %></p>
-						<% }); %>
+						<% 		}); 
+							}
+						%>
 					</div>
 				</div>
 				<div
@@ -42,19 +50,38 @@
 					<h6 class="font-semibold"><%= footerTranslation.connectWithUs %></h6>
 					<hr class="w-12 border-4 border-tertiary" />
 					<div class="grid grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 text-sm">
-						<% instagram.forEach(ig => { %>
+						<% 
+							if (contactInfo["instagram"]) {
+								contactInfo["instagram"].forEach(ig => { 
+						%>
 						<a href="<%= ig.value %>" target="_blank" class="flex max-w-20 p-0">
 							<img src="/img/instagram.png" class="w-full h-full" />
 						</a>
-						<% }); %> <% youtube.forEach(yt => { %>
+						<%
+								}); 
+							}
+						%> 
+						<% 
+							if (contactInfo["youtube"]) {
+								contactInfo["youtube"].forEach(yt => { 
+						%>
 						<a href="<%= yt.value %>" target="_blank" class="flex max-w-20 p-0">
 							<img src="/img/youtube.png" class="w-full h-full" />
 						</a>
-						<% }); %> <% facebook.forEach(fb => { %>
-						<a href="<%= fb.value %>" target="_blank" class="flex max-w-20 p-0">
+						<% 
+								}); 
+							}
+						%> 
+						<% 
+							if (contactInfo["facebook"]) {
+								contactInfo["facebook"].forEach(fb => { 
+						%>
+						<a href="<%=fb.value%>" target="_blank" class="flex max-w-20 p-0">
 							<img src="/img/facebook.png" class="w-full h-full" />
 						</a>
-						<% }); %>
+						<% 		});
+							}
+						 %>
 					</div>
 				</div>
 			</div>

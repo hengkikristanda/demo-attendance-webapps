@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../../config/database");
+const { v4: uuidv4 } = require("uuid"); // Import uuidv4
 
 const Facilities = sequelize.define(
 	"Facilities",
@@ -9,6 +10,7 @@ const Facilities = sequelize.define(
 			allowNull: false,
 			primaryKey: true,
 			unique: true,
+			defaultValue: () => uuidv4(),
 		},
 		name: {
 			type: DataTypes.STRING,

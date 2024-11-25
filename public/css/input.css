@@ -17,6 +17,7 @@
 		--danger: #eeeeee;
 		--info: #6b7280;
 		--line: #cbd5e1;
+		--success: #166534;
 	}
 	a {
 		padding: 0;
@@ -55,6 +56,10 @@ label,
 p,
 a {
 	font-size: 0.875rem;
+}
+
+label.text-link {
+	@apply text-tertiary hover:cursor-pointer hover:underline hover:font-semibold font-normal text-xxs text-end;
 }
 
 section {
@@ -307,7 +312,7 @@ div::-webkit-scrollbar-thumb:hover {
 	} */
 
 	.navbar {
-		@apply bg-white p-4 fixed top-0 w-full max-w-screen-2xl z-50 2xl:px-0;
+		@apply bg-white p-4 fixed top-0 w-full max-w-screen-2xl z-50 2xl:px-0 border-b border-tertiary/20 backdrop-blur-lg bg-white/30;
 	}
 
 	.sidebar {
@@ -328,7 +333,7 @@ div::-webkit-scrollbar-thumb:hover {
 
 	/* button */
 	.btn {
-		@apply bg-primary hover:bg-secondary text-white font-semibold py-2 px-4 rounded text-sm flex w-full sm:w-fit justify-center;
+		@apply bg-primary hover:bg-secondary text-white font-semibold min-w-20 py-2 px-4 rounded text-sm flex w-full sm:w-fit justify-center items-center;
 	}
 	.btn.secondary {
 		@apply bg-secondary border border-secondary hover:bg-white hover:text-secondary font-semibold py-2 px-4 rounded;
@@ -349,7 +354,7 @@ div::-webkit-scrollbar-thumb:hover {
 		@apply flex justify-center sm:justify-between sm:w-fit gap-2 items-center;
 	}
 	.btn.disabled {
-		@apply bg-gray-300 cursor-auto;
+		@apply bg-gray-300 cursor-auto border-gray-300 hover:bg-gray-300;
 	}
 	.btn.sm {
 		@apply py-1 text-sm;
@@ -371,6 +376,10 @@ div::-webkit-scrollbar-thumb:hover {
 	p.danger,
 	li.danger {
 		@apply text-danger;
+	}
+
+	.row-link {
+		@apply hover:underline font-semibold text-tertiary m-0 p-0 h-4;
 	}
 
 	/* Badge */
@@ -396,17 +405,31 @@ div::-webkit-scrollbar-thumb:hover {
 		@apply pl-1;
 	}
 
+	/* Alert */
+	.alert-badge {
+		/* @apply border px-2.5 py-2 rounded mb-2; */
+		@apply border px-2.5 py-2 rounded-lg mb-2;
+	}
+	.alert-badge.success {
+		@apply border-green-500 bg-green-100 text-green-700;
+	}
+	.alert-badge.danger {
+		@apply border-red-500 bg-red-100 text-red-700;
+	}
+
 	/* common style */
 	.block {
 		@apply w-full;
 	}
 
-	/* Container */
-	.container-card {
-		@apply mx-auto bg-white shadow-md rounded px-4 pt-4 pb-32 mb-4;
+	.paging {
+		@apply flex gap-2;
 	}
-	.container-card > h2 {
-		@apply mb-4 text-xl font-bold text-gray-900;
+	.paging a {
+		@apply hover:bg-tertiary rounded text-center px-4 py-2 text-tertiary hover:text-white font-semibold cursor-pointer;
+	}
+	.paging a.active {
+		@apply bg-tertiary text-white;
 	}
 
 	/* Form */
@@ -471,6 +494,40 @@ div::-webkit-scrollbar-thumb:hover {
 	}
 	.dosen-card-content-container {
 		@apply flex flex-col w-full py-2 px-0 md:px-6 rounded-r-lg;
+	}
+
+	.tablist {
+		@apply flex w-fit justify-evenly gap-4;
+	}
+
+	.tablist-item {
+		@apply cursor-pointer w-fit px-12 py-4 text-center font-semibold border-b-4 border-tertiary/0 hover:border-tertiary hover:text-tertiary;
+	}
+	.tablist-item.active {
+		@apply bg-tertiary/10;
+	}
+	.tablist-item.active > i {
+		@apply bg-tertiary;
+	}
+	.tablist-item.active > p {
+		@apply text-tertiary border-tertiary;
+	}
+	.tablist-content {
+		@apply flex flex-col w-full p-8 bg-tertiary/10 rounded-md shadow-md leading-relaxed text-secondary;
+	}
+
+	.small-thumbnail-container {
+		@apply flex gap-4 mb-4;
+	}
+
+	.small-thumbnail {
+		@apply size-40 rounded hover:cursor-pointer relative overflow-hidden flex justify-center items-center;
+	}
+	.small-thumbnail-hover-box {
+		@apply w-full h-full bg-line/50 absolute left-0 top-0 hidden group-hover:flex justify-end items-start;
+	}
+	.small-thumbnail img {
+		@apply object-cover w-full h-full;
 	}
 }
 
@@ -1246,11 +1303,12 @@ a {
 .custom-form input,
 .custom-form textarea {
 	background-color: white;
-	border: none; /* Removes the border */
-	outline: none; /* Removes any outline (e.g., focus outline) */
+	/* border: none; */
+	/* outline: none;  */
 	box-shadow: none; /* Removes any shadow applied by the browser */
 	resize: none; /* Prevents resizing of the textarea */
-	border-bottom: 1px solid var(--tertiary);
+	/* border-bottom: 1px solid var(--tertiary); */
+	color: var(--secondary);
 }
 
 .custom-form input {
@@ -1259,12 +1317,13 @@ a {
 
 .custom-form input:focus,
 .custom-form textarea:focus {
-	border-bottom: 1px solid var(--tertiary);
-	outline: none;
-	box-shadow: none;
+	/* border: 2px solid var(--tertiary); */
+	/* outline: none; */
+	/* box-shadow: none; */
+	border: none;
+	outline: 4px solid rgba(0, 173, 181, 0.5);
+	box-shadow: 0 0 4px rgba(0, 173, 181, 0.5); /* Glowing effect on focus */
 }
-
-
 
 .custom-form-normal input,
 .custom-form-normal textarea {
@@ -1282,8 +1341,6 @@ a {
 	outline: none;
 	box-shadow: none;
 }
-
-
 
 input::file-selector-button {
 	background-color: white;
@@ -1556,7 +1613,7 @@ input::file-selector-button {
 
 /* NAVBAR ADMIN */
 .navbar-admin {
-	@apply h-16 border-b border-b p-2 fixed z-40 top-0 w-full max-w-screen-2xl bg-gray-100;
+	@apply h-16 border-b border-b p-2 fixed z-40 top-0 w-full max-w-screen-2xl bg-white;
 }
 .navbar-admin__container {
 	@apply flex justify-between items-center;
@@ -1577,7 +1634,7 @@ input::file-selector-button {
 	@apply min-w-fit;
 }
 .drawer-admin__container {
-	@apply h-screen w-full sm:w-fit border-r-2  py-4 flex flex-col gap-4 relative;
+	@apply h-screen w-full sm:w-fit py-4 mb-72 flex flex-col gap-4 relative;
 }
 .drawer-menu {
 	@apply flex items-center gap-2 hover:bg-tertiary pl-2 pr-6 py-2 rounded-md;
@@ -1606,14 +1663,23 @@ input::file-selector-button {
 
 /* layout */
 .layout-card {
-	@apply flex flex-col min-w-full gap-8;
+	@apply flex flex-col min-w-full gap-4;
 }
 .layout-card h1.title {
-	@apply text-red-800;
+	@apply text-black;
 }
 
 .layout-card__header {
 	@apply flex flex-col gap-2;
+}
+
+/* Container */
+.container-card {
+	/* @apply mx-auto bg-white shadow-md rounded px-4 pt-4 pb-32 mb-4; */
+	@apply flex bg-white shadow-md rounded p-4;
+}
+.container-card > h2 {
+	@apply mb-4 text-xl font-bold text-gray-900;
 }
 
 /* Editable */
@@ -1680,4 +1746,116 @@ input::file-selector-button {
 
 #newsTable td.date {
 	@apply text-sm text-info;
+}
+
+/* Container to maintain 3:2 aspect ratio */
+.image-container-third {
+	position: relative;
+	width: 100%; /* Set container width (adjust as needed) */
+	max-width: 600px; /* Optional max width */
+	aspect-ratio: 3 / 2; /* Modern approach for aspect ratio */
+	overflow: hidden; /* Ensure the image doesn't overflow */
+}
+
+/* Fallback for browsers without aspect-ratio support */
+.image-container-third::before {
+	content: "";
+	display: block;
+	padding-top: 66.67%; /* 3:2 ratio (height/width = 2/3 * 100) */
+}
+
+.image-container-third img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* Ensure the image covers the container */
+}
+
+/* Custom Drop Down selection list */
+.custom-select-container {
+	width: 100%;
+	position: relative;
+	font-family: Arial, sans-serif;
+}
+
+/* Custom select styling */
+.custom-select {
+	appearance: none; /* Remove default select arrow */
+	-webkit-appearance: none; /* Safari compatibility */
+	-moz-appearance: none; /* Firefox compatibility */
+	background-color: #f0f0f5;
+	border-radius: 0.25rem;
+	padding: 12px 16px;
+	font-size: 0.875rem;
+	color: var(--primary);
+	cursor: pointer;
+	outline: none;
+	width: 100%;
+	transition: all 0.3s ease;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom Input */
+.input-container {
+	position: relative;
+	width: 300px;
+}
+
+.input-icon {
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 18px;
+	color: #aaa;
+	transition: color 0.3s ease;
+}
+
+.custom-input {
+	width: 100%;
+	padding: 10px 12px 10px 40px; /* Space for the icon */
+	border: 2px solid #ddd;
+	border-radius: 25px;
+	font-size: 16px;
+	outline: none;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-input:hover {
+	border-color: #bbb;
+}
+
+.custom-input:focus {
+	border-color: #0077cc;
+	box-shadow: 0 0 8px rgba(0, 119, 204, 0.4);
+}
+
+.custom-input:focus + .input-icon {
+	color: #0077cc;
+}
+
+.custom-input:hover + .input-icon {
+	color: #666;
+}
+
+/* Contact Info */
+.contact-info_container {
+	@apply flex items-center hover:bg-tertiary/10 rounded w-full;
+}
+
+.contact-info_img_container {
+	@apply size-10 min-w-10 max-w-10 p-1;
+}
+.contact-info_img_container > img {
+	@apply w-full h-full object-cover;
+}
+
+.contact-info_label_container {
+	@apply flex flex-col py-1 px-4 min-w-64 max-w-64 w-64;
+}
+
+.contact-info_icon_container {
+	@apply flex h-full justify-center items-center gap-4 p-2 w-fit min-w-10 max-w-20;
 }

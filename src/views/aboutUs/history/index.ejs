@@ -6,24 +6,16 @@
 		<%- include('../../sections/navbar') %>
 
 		<div class="max-w-screen-2xl mx-auto">
-			<div class="page-header w-full my-20">
-				<div class="w-full h-[30rem] relative">
-				  <img src="/img/history.JPG" alt="" class="w-full h-full object-cover" />
-				  <div class="absolute w-full h-full bottom-0 bg-gray-800/50"></div>
-				  <h1 class="font-bold text-white sm:text-6xl px-2 md:px-12 w-full absolute bottom-1/4 md:bottom-3/4 z-10 uppercase">
-					<%=ourHistoryTranslation.headerTitle%>
-				  </h1>
-				  <div class="bg-tertiary absolute size-28 hidden md:flex bottom-2/3 z-0"></div>
-				</div>      
-			</div>
+
+			<%- include('./historyHero') %>
 
 			<div class="flex flex-col mb-60 md:gap-12 px-4 2xl:px-0">
 				<div class="flex flex-col">
-					<h1 class="font-bold text-tertiary md:text-4xl text-center py-20"><%=ourHistoryTranslation.pageTitle%></h1>
+					<h1 class="font-bold text-tertiary md:text-4xl text-center py-20"><%=historyHero.historyEstablishment%></h1>
 					<div class="timeline">
 
 						<%
-						ourHistoryTranslation.timeline.forEach((history, index) => {
+						historySectionList.forEach((history, index) => {
 
 							if (index % 2 == 0)	{
 						%>
@@ -37,10 +29,10 @@
 								<div class="py-4 md:hidden">
 									<img src="/img/history-1.jpeg" />
 								</div>
-								<h1 class="text-tertiary font-bold"><%=history.date%></h1>
-								<h5 class="font-bold mb-4"><%=history.event%></h5>
+								<h1 class="text-tertiary font-bold"><%=history.title%></h1>
+								<h5 class="font-bold mb-4"><%=history.subtitle%></h5>
 								<p class="text-secondary leading-relaxed">
-									<%=history.detail%>
+									<%=history.content%>
 								</p>
 							</div>
 							<div class="relative hidden md:flex">
@@ -61,10 +53,10 @@
 								<div class="py-4 md:hidden">
 									<img src="/img/history-1.jpeg" />
 								</div>
-								<h1 class="text-tertiary font-bold"><%=history.date%></h1>
-								<h5 class="font-bold mb-4"><%=history.event%></h5>
+								<h1 class="text-tertiary font-bold"><%=history.title%></h1>
+								<h5 class="font-bold mb-4"><%=history.subtitle%></h5>
 								<p class="text-secondary leading-relaxed">
-									<%=history.detail%>
+									<%=history.content%>
 								</p>
 							</div>
 							<div class="relative hidden md:flex">
@@ -91,7 +83,8 @@
 			</div>
 		</div>
 
-		<%- include('../../sections/footer') %> <%- include('../../components/chatWidget') %>
+		<%- include('../../sections/footer') %>
+		<%- include('../../components/chatWidget') %>
 	</body>
 
 	<script src="/js/navbarUtils.js"></script>

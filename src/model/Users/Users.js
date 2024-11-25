@@ -31,6 +31,12 @@ const User = sequelize.define(
 			allowNull: false,
 			unique: true,
 		},
+		failed_login_attempt: {
+			type: DataTypes.INTEGER,
+			allowNull: true,
+			defaultValue: 0,
+			unique: true,
+		},
 		is_active: {
 			type: DataTypes.TINYINT(1),
 			allowNull: true,

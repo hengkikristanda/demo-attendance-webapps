@@ -1,53 +1,26 @@
 <nav id="drawerAdmin" class="drawer-admin bg-white">
 	<div class="drawer-admin__container">
-		<div class="drawer-menu__container">
-			<p class="group-menu_label">Dashboard</p>
-			<hr class="hidden" />
-			<a href="/member/dashboard" class="drawer-menu group">
-				<i class="home-6 remix secondary icon-md group-hover:bg-white"></i>
-				<h6 class="menu-label group-hover:text-white">Home</h6>
-			</a>
-			<a href="/member/inbox" class="drawer-menu group">
-				<i class="inbox remix secondary icon-md group-hover:bg-white"></i>
-				<h6 class="menu-label group-hover:text-white">inbox</h6>
-			</a>
-		</div>
-		<div class="drawer-menu__container">
-			<p class="group-menu_label">Employee</p>
-			<hr class="hidden" />
-			<a href="/member/live-attendance" class="drawer-menu group">
-				<i class="login-icon remix secondary icon-md group-hover:bg-white"></i>
-				<h6 class="menu-label group-hover:text-white">Live Attendance</h6>
-			</a>
-			<a href="/member/log-attendance" class="drawer-menu group">
-				<i class="file-info remix secondary icon-md group-hover:bg-white"></i>
-				<h6 class="menu-label group-hover:text-white">Attendance Log</h6>
-			</a>
-			<a href="/member/report-attendance" class="drawer-menu group">
-				<i class="file-text remix secondary icon-md group-hover:bg-white"></i>
-				<h6 class="menu-label group-hover:text-white">Attendance Report</h6>
-			</a>
-		</div>
-		<div class="drawer-menu__container">
-			<p class="group-menu_label">Web Admin</p>
-			<hr class="hidden" />
-			<a href="/member/web/alumni" class="drawer-menu group">
-				<i class="user-star remix secondary icon-md group-hover:bg-white"></i>
-				<h6 class="menu-label group-hover:text-white">Alumni</h6>
-			</a>
-			<a href="/member/web/lecturer" class="drawer-menu group">
-				<i class="user-voice remix secondary icon-md group-hover:bg-white"></i>
-				<h6 class="menu-label group-hover:text-white">Lecturer</h6>
-			</a>
-			<a href="/member/web/news" class="drawer-menu group">
-				<i class="article-ico remix secondary icon-md group-hover:bg-white"></i>
-				<h6 class="menu-label group-hover:text-white">News</h6>
-			</a>
-			<a href="/member/web/postgraduate" class="drawer-menu group">
-				<i class="menu-book remix secondary icon-md group-hover:bg-white"></i>
-				<h6 class="menu-label group-hover:text-white">Postgraduate</h6>
-			</a>
-		</div>
+		
+		<%
+		cmsMenuList.forEach((cmsMenu) => {
+		%>
+			<div class="drawer-menu__container">
+				<p class="group-menu_label"><%=cmsMenu.group%></p>
+				<hr class="hidden" />
+				<%
+				cmsMenu.menus.forEach((item) => {
+				%>		
+				<a href="<%=item.menu_url%>" class="drawer-menu group">
+					<i class="<%=item.menu_icon%> remix secondary icon-md group-hover:bg-white"></i>
+					<h6 class="menu-label group-hover:text-white"><%=item.menu%></h6>
+				</a>
+				<%
+				});
+				%>
+			</div>
+		<%
+		});
+		%>
 	</div>
 </nav>
 <script>

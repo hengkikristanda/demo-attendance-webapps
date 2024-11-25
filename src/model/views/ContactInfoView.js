@@ -22,6 +22,10 @@ const ContactInfoView = sequelize.define(
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
+		pinned: {
+			type: DataTypes.INTEGER,
+			allowNull: true,
+		},
 	},
 	{
 		tableName: "contact_info_view",

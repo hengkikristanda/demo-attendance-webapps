@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16 bg-gray-100">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card mb-12">
+					<div class="layout-card__header">
+						<div class="flex justify-between">
+							<h1 class="title">Campus Facilities</h1>
+						</div>
+						<% if (alertMessage) { %>
+						<p class="alert-badge <%=alertMessage.className%>"><%=alertMessage.message%></p>
+						<% } %>
+					</div>
+					<div class="flex gap-2">
+						<div class="bg-tertiary w-2"></div>
+						<div class="flex flex-col">
+							<h4 class="font-bold text-primary">Header</h4>
+						</div>
+					</div>
+					<div class="page-header w-full group hover:cursor-pointer mb-12">
+						<a href="/member/web/facilities/header" class="w-full h-40 relative m-0 p-0">
+							<img
+								id="pageHeaderImage"
+								src="<%=heroSectionData.imageUrl%>"
+								alt=""
+								class="w-full h-40 object-cover" />
+							<div
+								class="absolute w-full h-20 bottom-0 bg-gray-800/50 hidden group-hover:flex items-center justify-center text-lg text-white">
+								<i class="pencil-edit remix white icon-md"></i>
+								Click to edit
+							</div>
+							<div class="absolute w-full h-full bottom-0 bg-gray-800/50"></div>
+						</a>
+					</div>
+
+					<div class="flex flex-col gap-2">
+						<div class="flex justify-between items-center">
+							<div class="flex gap-2">
+								<div class="bg-tertiary w-2"></div>
+								<div class="flex justify-between">
+									<h4 class="font-bold text-primary">Sections</h4>
+								</div>
+							</div>
+							<a id="addNewSectionButton" href="#" class="text-link danger-bold">Add New Section</a>
+						</div>
+						<div>
+							<table class="min-w-full">
+								<tbody id="selectedSection"></tbody>
+							</table>
+						</div>
+						<button type="submit" class="btn success">Save Changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal -->
+		<div
+			id="addSectionModal"
+			class="fixed z-50 inset-0 hidden bg-gray-900 bg-opacity-75 flex items-center justify-center py-8">
+			<div class="bg-white rounded-lg shadow-lg p-6 w-fit min-w-96 max-h-full overflow-y-scroll">
+				<div class="flex justify-between">
+					<h2 id="modalTitle" class="text-xl font-bold mb-4">Add Section</h2>
+					<h1 class="close-modal cursor-pointer bi-x p-2 rounded hover:bg-gray-500"></h1>
+				</div>
+
+				<div id="modal-content" class="flex flex-col gap-12">
+					<div class="flex flex-col gap-4">
+						<div id="modalInputContainer" class="flex flex-col w-full gap-4 border-0">
+							<div>
+								<label for="Facility Name">Components</label>
+								<select class="w-full" id="templateList">
+									<option value="null" disabled selected>Select Section</option>
+									<% templateList.forEach((template) => {%>
+									<option value="<%=template.id%>"><%=template.label%></option>
+									<% }); %>
+								</select>
+							</div>
+							<div>
+								<label for="Facility Name">Section</label>
+								<select id="sectionItemList" class="w-full" disabled>
+									<option value="null" disabled selected>No Section available</option>
+								</select>
+							</div>
+							<div class="flex border-0 gap-4 justify-end">
+								<button id="addSection" type="button" class="btn info w-full md:w-fit disabled">
+									<p>Add Section</p>
+								</button>
+								<button id="closeAddSectionModal" type="button" class="btn info w-full md:w-fit">
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<%- include('../../commonSection/alertModal') %>
+	<script src="/js/CommonUtils.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			let selectedSectionList = [];
+
+			const data = <%- JSON.stringify(locals.templateGroups) %>;
+
+			const templateList = document.getElementById("templateList");
+			const contentList = document.getElementById("sectionItemList");
+
+			templateList.addEventListener("change", () => {
+				const selectedTemplate = templateList.value;
+				contentList.innerHTML = "";
+
+				if (contentList.disabled) {
+					contentList.disabled = false;
+				}
+
+				if (data[selectedTemplate] && data[selectedTemplate].length > 0) {
+					data[selectedTemplate].forEach((item) => {
+						const option = document.createElement("option");
+						option.value = item.id;
+						option.textContent = item.heading;
+						contentList.appendChild(option);
+					});
+				} else {
+					const defaultOption = document.createElement("option");
+					defaultOption.disabled = true;
+					defaultOption.selected = true;
+					defaultOption.value = "null";
+					defaultOption.textContent = "No content available";
+					contentList.appendChild(defaultOption);
+				}
+			});
+
+			function openModal() {
+				document.getElementById("addSectionModal").classList.remove("hidden");
+			}
+
+			function closeModal() {
+				document.getElementById("addSectionModal").classList.add("hidden");
+			}
+
+			const addNewSectionButton = document.getElementById("addNewSectionButton");
+			addNewSectionButton.addEventListener("mouseup", openModal);
+
+			const closeSubModal = document.getElementById("closeAddSectionModal");
+			closeSubModal.addEventListener("mouseup", closeModal);
+
+			function disabledCancelButton() {
+				closeSubModal.disabled = true;
+				closeSubModal.classList.remove("info");
+				closeSubModal.classList.add("disabled");
+			}
+
+			function removeSelectedSection() {
+				selectedSectionList = selectedSectionList.filter(item => item.id !== this.id);
+				document.getElementById(this.id).remove();
+			}
+
+			function toggleAddSectionButton() {
+				console.log(templateList.value);
+			}
+
+			function handleAddSelectedSection() {
+
+				const selectedSection = document.getElementById("selectedSection");
+
+				if (!templateList.value !== "null" && contentList.value !== "null") {
+
+					selectedSectionList.push({
+						"id": contentList.value,
+						"templateId":templateList.value
+					});
+
+					const sectionRow = document.createElement("tr");
+					sectionRow.id = contentList.value;
+					const sectionCol = document.createElement("td");
+					sectionCol.classList.add(
+						"hover:cursor-pointer",
+						"hover:underline",
+						"hover:font-semibold",
+						"hover:text-tertiary"
+					);
+					sectionCol.textContent = contentList.textContent;
+
+					sectionRow.appendChild(sectionCol);
+					selectedSection.appendChild(sectionRow);
+
+					sectionRow.addEventListener("mouseup", removeSelectedSection);
+				}
+			}
+
+			const addSection = document.getElementById("addSection");
+			addSection.addEventListener("mouseup", handleAddSelectedSection);
+		});
+	</script>
+</html>

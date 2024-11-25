@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16 bg-gray-100">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card mb-12">
+					<div class="layout-card__header">
+						<div class="flex justify-between">
+							<h1 class="title">Add Sections</h1>
+						</div>
+						<% if (alertMessage) { %>
+						<p class="alert-badge <%=alertMessage.className%>"><%=alertMessage.message%></p>
+						<% } %>
+					</div>
+					<form
+						class="custom-form"
+						method="POST"
+						id="addSectionsForm"
+						enctype="multipart/form-data"
+						action="/member/components/section-accordion/add">
+						<div class="container-card w-full mb-4">
+							<div class="flex gap-4 w-full">
+								<div id="sectionInputContainer" class="flex flex-col gap-4 border-0">
+									<div>
+										<label for="Section Heading">Section Heading</label>
+										<input
+											id="sectionHeading"
+											name="sectionHeading"
+											type="text"
+											maxlength="512"
+											size="75"
+											required />
+									</div>
+									<div>
+										<label for="Section Content">Content</label>
+										<textarea
+											rows="10"
+											id="sectionContent"
+											name="sectionContent"
+											required></textarea>
+									</div>
+									<input type="hidden" id="accordionSectionList" name="accordionSectionList" />
+								</div>
+							</div>
+						</div>
+						<div class="container-card w-full mb-4">
+							<div class="flex gap-4 w-full">
+								<div id="sectionInputContainer" class="flex flex-col gap-4 border-0 w-full">
+									<div>
+										<div class="flex justify-between items-center">
+											<label for="Section Heading" class="w-fit">Accordion Section</label>
+											<a id="addNewSectionButton" href="#" class="text-link danger-bold"
+												>Add New Section</a
+											>
+										</div>
+										<div>
+											<table class="min-w-full">
+												<tbody id="selectedSection"></tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-card gap-6">
+							<button type="submit" class="btn success">Save</button>
+							<a href="#" id="previewChangesButton" class="text-link primary">Preview Changes</a>
+							<a href="/member/components/section-accordion" class="text-link danger-bold"
+								>Discard Changes</a
+							>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<!-- Modal -->
+	<div
+		id="previewModal"
+		class="fixed z-50 inset-0 hidden bg-gray-900 bg-opacity-75 flex items-center justify-center py-8">
+		<div class="bg-white rounded-lg shadow-lg p-6 w-full max-h-full overflow-y-scroll">
+			<h3 class="text-info font-semibold mb-4">Preview</h3>
+			<%- include('../../../template/section/AccordionSectionPreview') %>
+			<a href="#" class="text-link danger-bold text-lg close-modal">Close</a>
+		</div>
+	</div>
+
+	<div
+		id="addSectionModal"
+		class="fixed z-50 inset-0 hidden bg-gray-900 bg-opacity-75 flex items-center justify-center py-8">
+		<div class="bg-white rounded-lg shadow-lg p-6 w-fit min-w-96 max-h-full overflow-y-scroll">
+			<div class="flex justify-between">
+				<h2 id="modalTitle" class="text-xl font-bold mb-4">Add Section</h2>
+				<h1 class="close-modal cursor-pointer bi-x p-2 rounded hover:bg-gray-500"></h1>
+			</div>
+
+			<div id="modal-content" class="flex flex-col gap-12">
+				<div class="flex flex-col gap-4">
+					<div id="modalInputContainer" class="flex flex-col w-full gap-4 border-0">
+						<div>
+							<label for="Accordion Section Heading">Accordion Section Heading</label>
+							<input
+								id="accordionSectionHeading"
+								name="accordionSectionHeading"
+								type="text"
+								maxlength="512"
+								size="75"
+								required />
+						</div>
+						<div>
+							<label for="Accordion Section Content">Content</label>
+							<textarea
+								rows="10"
+								id="accordionSectionContent"
+								name="accordionSectionContent"
+								required></textarea>
+						</div>
+						<div class="flex border-0 gap-4 justify-end">
+							<button id="addSection" type="button" class="btn success w-full md:w-fit">
+								<p>Add Section</p>
+							</button>
+							<button id="closeAddSectionModal" type="button" class="btn info w-full md:w-fit">
+								Close
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		let accordionSectionIndex = 0;
+		let accordionSectionList = [];
+
+		function preparePreviewChanges() {
+			const placeholderInnputHeading = document.getElementById("placeholder-input_heading");
+
+			const sectionContent = document.getElementById("sectionContent").value;
+			if (sectionContent) {
+				const formattedContent = sectionContent
+					.replace(/- /g, "• ") // Replace "- " with bullets
+					.replace(/\r\n|\n/g, "<br>")
+					.replace(/^"|"$/g, "");
+
+				document.getElementById("contentPlaceholder").innerHTML = formattedContent;
+			}
+			placeholderInnputHeading.textContent = document.getElementById("sectionHeading").value;
+
+			const collapsibleSectionFacilityContainer = document.getElementById(
+				"collapsibleSectionFacilityContainer"
+			);
+
+			accordionSectionList.forEach((item, index) => {
+				const collapsibleSectionFacility = document.createElement("div");
+				collapsibleSectionFacility.classList.add("collapsible-section__facility");
+
+				const accordionTitleContainer = document.createElement("div");
+				accordionTitleContainer.classList.add(
+					"flex",
+					"items-center",
+					"gap-3",
+					"mb-4",
+					"cursor-pointer"
+				);
+
+				const accordionTitleIcon = document.createElement("i");
+				accordionTitleIcon.classList.add("bi", "bi-chevron-right");
+
+				const accordionTitle = document.createElement("h4");
+				accordionTitle.textContent = item.heading;
+
+				accordionTitleContainer.appendChild(accordionTitleIcon);
+				accordionTitleContainer.appendChild(accordionTitle);
+
+				const accordionContent = document.createElement("p");
+				accordionContent.classList.add("leading-6");
+				accordionContent.innerHTML = item.content;
+
+				collapsibleSectionFacility.appendChild(accordionTitleContainer);
+				collapsibleSectionFacility.appendChild(accordionContent);
+
+				collapsibleSectionFacility.addEventListener("mouseup", (ev) => {
+					const targetElement = event.target.closest(".collapsible-section__facility");
+					if (targetElement) {
+						const targetCollapse = targetElement.querySelector("p");
+						const targetCollapseIcon = targetElement.querySelector("i");
+
+						if (targetCollapse.style.maxHeight && targetCollapse.style.maxHeight !== "0px") {
+							targetCollapse.style.maxHeight = "0px";
+							targetCollapse.style.marginBottom = "0px";
+							targetCollapseIcon.style.transform = "rotate(0deg)";
+						} else {
+							targetCollapse.style.maxHeight = targetCollapse.scrollHeight + "px";
+							targetCollapse.style.marginBottom = "1rem";
+							targetCollapseIcon.style.transform = "rotate(90deg)";
+						}
+					}
+				});
+
+				collapsibleSectionFacilityContainer.appendChild(collapsibleSectionFacility);
+			});
+		}
+
+		function cleanUpModalContent() {
+			document.getElementById("accordionSectionHeading").value = "";
+			document.getElementById("accordionSectionContent").value = "";
+		}
+
+		function cleanUpPreview() {
+			const collapsibleSectionFacilityContainer = document.getElementById(
+				"collapsibleSectionFacilityContainer"
+			);
+			collapsibleSectionFacilityContainer.innerHTML = "";
+		}
+
+		function openModal() {
+			preparePreviewChanges();
+			document.getElementById("previewModal").classList.remove("hidden");
+		}
+		function closeModal() {
+			cleanUpPreview();
+			document.getElementById("previewModal").classList.add("hidden");
+		}
+		function openAddSectionModal() {
+			document.getElementById("addSectionModal").classList.remove("hidden");
+		}
+		function closeAddSectionModal() {
+			cleanUpModalContent();
+			document.getElementById("addSectionModal").classList.add("hidden");
+		}
+
+		function validateAccordionSection(accordionSectionHeading, accordionSectionContent) {
+			return (
+				accordionSectionHeading.value.trim() !== "" && accordionSectionContent.value.trim() !== ""
+			);
+		}
+
+		function removeSelectedSection() {
+			accordionSectionList = accordionSectionList.filter((item) => item.id !== this.id);
+			document.getElementById(this.id).remove();
+			document.getElementById("accordionSectionList").value = JSON.stringify(accordionSectionList);
+		}
+
+		function appendAccordionSection() {
+			const accordionSectionHeading = document.getElementById("accordionSectionHeading");
+			const accordionSectionContent = document.getElementById("accordionSectionContent");
+
+			if (!validateAccordionSection(accordionSectionHeading, accordionSectionContent)) {
+				alert("Section Heading and Content are required!");
+				return;
+			}
+
+			const selectedSection = document.getElementById("selectedSection");
+
+			const sectionRow = document.createElement("tr");
+			sectionRow.id = accordionSectionIndex++;
+			const sectionCol = document.createElement("td");
+			sectionCol.classList.add(
+				"hover:cursor-pointer",
+				"hover:underline",
+				"hover:font-semibold",
+				"hover:text-tertiary"
+			);
+			sectionCol.textContent = accordionSectionHeading.value;
+
+			sectionRow.appendChild(sectionCol);
+			selectedSection.appendChild(sectionRow);
+
+			sectionRow.addEventListener("mouseup", removeSelectedSection);
+
+			accordionSectionList.push({
+				id: sectionRow.id,
+				heading: accordionSectionHeading.value,
+				content: accordionSectionContent.value,
+			});
+
+			document.getElementById("accordionSectionList").value = JSON.stringify(accordionSectionList);
+
+			closeAddSectionModal();
+		}
+
+		const previewChangesButton = document.getElementById("previewChangesButton");
+		previewChangesButton.addEventListener("mouseup", openModal);
+
+		const closeModalButton = document.querySelectorAll(".close-modal");
+		closeModalButton.forEach((closeButton) => {
+			closeButton.addEventListener("mouseup", closeModal);
+		});
+
+		const addNewSectionButton = document.getElementById("addNewSectionButton");
+		addNewSectionButton.addEventListener("mouseup", openAddSectionModal);
+
+		const closeAddSectionButton = document.getElementById("closeAddSectionModal");
+		closeAddSectionButton.addEventListener("mouseup", closeAddSectionModal);
+
+		const addSection = document.getElementById("addSection");
+		addSection.addEventListener("mouseup", appendAccordionSection);
+	</script>
+</html>
