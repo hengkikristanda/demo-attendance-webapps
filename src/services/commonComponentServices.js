@@ -79,6 +79,34 @@ const getComplaints = async (req) => {
 	};
 };
 
+const getAlumni = async (req) => {
+	await logging(req.language);
+
+	return {
+		title: req.t("alumni:title"),
+		subTitle: req.t("alumni:subTitle"),
+	};
+};
+
+const getPublicComment = async (req) => {
+	await logging(req.language);
+
+	return {
+		title: req.t("publicComment:title"),
+		subTitle: req.t("publicComment:subTitle"),
+		nameLabel: req.t("publicComment:nameLabel"),
+		emailLabel: req.t("publicComment:emailLabel"),
+		phoneLabel: req.t("publicComment:phoneLabel"),
+		commentLabel: req.t("publicComment:commentLabel"),
+		namePlaceholder: req.t("publicComment:namePlaceholder"),
+		emailPlaceholder: req.t("publicComment:emailPlaceholder"),
+		phonePlaceholder: req.t("publicComment:phonePlaceholder"),
+		commentPlaceholder: req.t("publicComment:commentPlaceholder"),
+		submitLabel: req.t("publicComment:submitLabel"),
+		yourCommentLabel: req.t("publicComment:yourCommentLabel"),
+	};
+};
+
 const getAlumniSection = async (req) => {
 	await logging(req.language);
 
@@ -293,4 +321,6 @@ module.exports = {
 	getOrganizationalStructure,
 	getOurLeadersHero,
 	getTrainingSection,
+	getPublicComment,
+	getAlumni,
 };

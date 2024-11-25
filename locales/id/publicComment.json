@@ -1,0 +1,14 @@
+{
+	"title": "Komentar Publik",
+	"subTitle": "Kami ingin sekali mendengar dari Anda! Bagikan masukan dan ulasan Anda untuk membantu kami meningkatkan pengalaman Anda.",
+	"nameLabel": "Nama Lengkap",
+	"emailLabel": "Alamat Email",
+	"phoneLabel": "Nomor Telepon",
+	"commentLabel": "Komentar Anda",
+	"namePlaceholder": "Nama lengkap anda",
+	"emailPlaceholder": "Alamat email anda",
+	"phonePlaceholder": "Nomor telepon anda",
+	"commentPlaceholder": "Tulis komentar anda disini",
+    "submitLabel": "Kirim Komentar",
+    "yourCommentLabel": "Komentar Anda"
+}

@@ -132,6 +132,7 @@ const getHome = async (req, res) => {
 			selectedLanguage,
 		});
 	} catch (error) {
+		console.log("===========ERROR HERE")
 		console.log(error);
 	}
 	return res.redirect("/error");

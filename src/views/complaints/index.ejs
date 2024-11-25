@@ -7,8 +7,8 @@
 
 		<div class="max-w-screen-2xl mx-auto">
 			<div class="flex flex-col gap-6 px-4 my-20">
-				<% if (typeof responseMessage !== 'undefined' && responseMessage) { %>
-					<h6 class="badge <%=responseMessageClass%>"><%= responseMessage %></h6>
+				<% if (alertMessage) { %>
+					<p class="alert-badge <%=alertMessage.className%>"><%=alertMessage.message%></p>
 				<% } %>
 				<div class="flex flex-col w-fit">
 					<h1 class="font-bold text-secondary"><%= complaintsTranslation.title %></h1>
@@ -28,7 +28,7 @@
 								<h5 class="font-bold text-tertiary"><%= complaintsTranslation.chatUs %></h5>
 								<p class="text-secondary mb-1"><%= complaintsTranslation.chatUsLabel %></p>
 								<p class="text-secondary font-bold">
-									<% contactInfo["Email"].forEach(email => { %> <%= email.value %>
+									<% contactInfo["email"].forEach(email => { %> <%= email.value %>
 									<br />
 									<% }); %>
 								</p>
@@ -48,7 +48,7 @@
 								<h5 class="font-bold text-tertiary"><%= complaintsTranslation.callUs %></h5>
 								<p class="text-secondary mb-1"><%= complaintsTranslation.callUsLabel %></p>
 								<p class="text-secondary font-bold">
-									<% contactInfo["Phone"].forEach(phoneNumber => { %> <%=phoneNumber.value %> <% });
+									<% contactInfo["telephone"].forEach(phoneNumber => { %> <%=phoneNumber.value %> <% });
 									%>
 								</p>
 							</div>

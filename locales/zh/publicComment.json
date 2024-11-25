@@ -1,0 +1,14 @@
+{
+	"title": "公众评论",
+	"subTitle": "我们很想听到您的意见！分享您的反馈和评论，帮助我们提升您的体验。",
+	"nameLabel": "全名",
+	"emailLabel": "电子邮件地址",
+	"phoneLabel": "电话号码",
+	"commentLabel": "您的评论",
+	"namePlaceholder": "您的全名",
+	"emailPlaceholder": "您的电子邮件地址",
+	"phonePlaceholder": "您的电话号码",
+	"commentPlaceholder": "在此写下您的评论",
+	"submitLabel": "提交",
+	"yourCommentLabel": "评论"
+}

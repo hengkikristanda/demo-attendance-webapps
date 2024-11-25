@@ -17,7 +17,7 @@ const create = async (newComment) => {
 			fullname: newComment.fullName,
 			email_address: newComment.emailAddress,
 			phone_number: newComment.phoneNumber,
-			comments: newComment.comment,
+			comments: newComment.sanitizeContent,
 		});
 	} catch (error) {
 		console.log(error);

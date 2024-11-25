@@ -25,6 +25,10 @@ const LeadersControllers = require("../controllers/LeadersControllers");
 const FacilitiesController = require("../controllers/FacilitiesController");
 //Complaint
 const ComplaintControllers = require("../controllers/ComplaintsController");
+//Public Comment
+const PublicCommentController = require("../controllers/PublicCommentController");
+//Alumni
+const AlumniController = require("../controllers/AlumniController");
 //Academics
 const TrainingController = require("../controllers/TrainingController");
 const LecturerController = require("../controllers/LecturerController");
@@ -87,29 +91,16 @@ router.get("/facilities", FacilitiesController.getFacilities);
 router.get("/complaints", ComplaintControllers.getComplaints);
 router.post(
 	"/complaints",
-	(req, res, next) => {
-		req.redirectOnError = "/complaints"; // Set the redirect path for this route
-		next();
-	},
-	complaintFileUpload.single("complaintFile"),
+	imageUpload.single("complaintFile"),
 	uploadErrorHandler,
 	ComplaintControllers.postCreateComplaint
 );
 
-router.get("/alumni", Dispatcher.getAlumni);
-router.get("/public-comments", Dispatcher.getPublicComments);
-router.post(
-	"/public-comments",
-	sanitizeCommentInput,
-	(req, res, next) => {
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.redirect("/");
-		}
-		next();
-	},
-	Dispatcher.submitComment
-);
+// Public Comments
+router.get("/public-comments", PublicCommentController.getPublicComments);
+router.post("/public-comments", PublicCommentController.postCreatePublicComment);
+
+router.get("/alumni", AlumniController.getAlumni);
 
 // News
 router.get("/news/:newsId?", NewsController.getNews);
@@ -248,8 +239,7 @@ router.post(
 
 router.get("/test/template", (req, res) => {
 	console.log("Masuk");
-	res.render("template", {
-	});
+	res.render("template", {});
 });
 
 module.exports = router;

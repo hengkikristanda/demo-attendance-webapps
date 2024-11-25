@@ -12,38 +12,35 @@ const currentPage = {
 	zh: "投诉",
 };
 
-let errorMessage = {};
-
 const getComplaints = async (req, res) => {
-	const error = req.query.error || null;
+	try {
+		const selectedLanguage = req.language;
 
-	if (error) {
-		res.locals.responseMessage = `${VALIDATION_ERROR_CODE[error]}`;
-		res.locals.responseMessageClass = "danger";
+		res.locals.complaintsTranslation = await CommonComponentServices.getComplaints(req);
+
+		// Common components
+		const navBarMenuList = await CommonComponentServices.getWebMenu(req.language);
+		res.locals.webMenuList = navBarMenuList;
+		res.locals.footerTranslation = await CommonComponentServices.getFooter(req);
+		res.locals.contactInfo = await CommonComponentServices.getContactInfo();
+		res.locals.companyInfo = await CommonComponentServices.getCompanyInfo();
+
+		const alertMessage = req.flash("alertMessage");
+
+		// Render the index page
+		return res.render("complaints/index", {
+			title: `${WEB_PAGE_TITLE} ${currentPage[selectedLanguage]}`,
+			selectedLanguage,
+			alertMessage: alertMessage[0],
+		});
+	} catch (error) {
+		req.flash("alertMessage");
+		req.flash("alertMessage", {
+			message: "Something went wrong, please try again in a few minutes.",
+			className: "danger",
+		});
+		return res.redirect("/error");
 	}
-
-	if (errorMessage.isError) {
-		res.locals.responseMessage = errorMessage.message;
-		res.locals.responseMessageClass = "danger";
-		errorMessage = {};
-	}
-
-	const selectedLanguage = req.language;
-
-	res.locals.complaintsTranslation = await CommonComponentServices.getComplaints(req);
-
-	// Common components
-	const navBarMenuList = await CommonComponentServices.getWebMenu(req.language);
-	res.locals.webMenuList = navBarMenuList;
-	res.locals.footerTranslation = await CommonComponentServices.getFooter(req);
-	res.locals.contactInfo = await CommonComponentServices.getContactInfo();
-	res.locals.companyInfo = await CommonComponentServices.getCompanyInfo();
-
-	// Render the index page
-	res.render("complaints/index", {
-		title: `${WEB_PAGE_TITLE} ${currentPage[selectedLanguage]}`,
-		selectedLanguage,
-	});
 };
 
 const postCreateComplaint = async (req, res) => {
@@ -52,29 +49,31 @@ const postCreateComplaint = async (req, res) => {
 
 		const sanitizeContent = CommonUtils.sanitizeContent(complaints);
 
-		const fileMetaData = {};
-		if (req.file) {
-			fileMetaData.uploadedFilePath = req.file.path;
-			fileMetaData.originalFileName = req.file.originalname;
-			fileMetaData.mimeType = req.file.mimeType;
-		}
-
-		await ComplaintService.createComplaint(
+		const createdComplaint = await ComplaintService.createComplaint(
 			{
 				full_name: fullName,
 				email_address: emailAddress,
 				phone_no: phoneNumber,
 				content: sanitizeContent,
 			},
-			fileMetaData
+			req.file
 		);
 
-		return res.status(400).json({ error: "TEST" });
+		if (!createdComplaint) throw new Error();
+
+		req.flash("alertMessage");
+		req.flash("alertMessage", {
+			message:
+				"Thank you for submitting your complaint. Your feedback is valuable to us, and we will address your concern as soon as possible.",
+			className: "success",
+		});
 	} catch (error) {
-		console.log(error);
+		req.flash("alertMessage");
+		req.flash("alertMessage", {
+			message: "Failed to Submit Complaint, please try again in a few minutes.",
+			className: "danger",
+		});
 	}
-	errorMessage.message = "Failed to submit complaint. Please try again later";
-	errorMessage.isError = true;
 	return res.redirect("/complaints");
 };
 

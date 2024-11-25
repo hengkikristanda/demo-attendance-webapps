@@ -6,35 +6,23 @@ const CommonUtils = require("../utils/CommonUtils");
 const PublicImage = require("../model/PublicImages");
 const PublicDocument = require("../model/PublicDocument");
 
-const createComplaint = async (data, fileMetaData) => {
+const createComplaint = async (complaintData, uploadedFile) => {
 	const transaction = await sequelize.transaction();
 	try {
-		const { uploadedFilePath, originalFileName, mimeType } = fileMetaData;
 
-		if (uploadedFilePath) {
-			const fileNameWithoutExt = path.parse(uploadedFilePath).name;
-			const id = path.basename(fileNameWithoutExt).replace("complaintFile-", "");
-			const formattedOriginalFileName = CommonUtils.formatDocumentName(originalFileName);
-			const extFileName = path.extname(uploadedFilePath);
+		if (uploadedFile) {
+			const uploadedComplaintImage = await CommonUtils.handleUploadedFile(
+				uploadedFile,
+				"complaintFile-",
+				"uploads/complaint-documents"
+			);
 
-			console.log("ID: " + id);
-
-			const complaintFileData = {
-				id,
-				original_filename: formattedOriginalFileName,
-				mime_type: mimeType,
-			};
-
-			if (allowedDocumentFileFormat.includes(extFileName)) {
-				const newPublicDocument = await PublicDocument.create(complaintFileData);
-				data.document_id = newPublicDocument.id;
-			} else if (allowedImageFileFormat.includes(extFileName)) {
-				const newPublicImage = await PublicImage.create(complaintFileData);
-				data.image_id = newPublicImage.id;
-			}
+			complaintData.image_id = uploadedComplaintImage.id;
+			complaintData.mime_type = uploadedComplaintImage.mime_type;
+			complaintData.original_filename = uploadedComplaintImage.original_filename;
 		}
 
-		const newComplaint = await Complaint.create(data);
+		const newComplaint = await Complaint.create(complaintData);
 
 		await transaction.commit();
 

@@ -1,0 +1,14 @@
+{
+	"title": "공개 의견",
+	"subTitle": "여러분의 의견을 듣고 싶습니다! 의견과 리뷰를 공유해 주시면 더 나은 경험을 제공하는 데 도움이 됩니다.",
+	"nameLabel": "성명",
+	"emailLabel": "이메일 주소",
+	"phoneLabel": "전화번호",
+	"commentLabel": "귀하의 의견",
+	"namePlaceholder": "귀하의 성명",
+	"emailPlaceholder": "귀하의 이메일 주소",
+	"phonePlaceholder": "귀하의 전화번호",
+	"commentPlaceholder": "여기에 귀하의 의견을 작성하세요",
+	"submitLabel": "제출",
+	"yourCommentLabel": "댓글"
+}

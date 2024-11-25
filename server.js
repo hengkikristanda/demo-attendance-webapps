@@ -43,6 +43,8 @@ const i18nextInit = new Promise((resolve, reject) => {
 					"organizationalStructure",
 					"ourLeadersHero",
 					"training",
+					"publicComment",
+					"alumni",
 				],
 				detection: {
 					order: ["querystring", "cookie"],
