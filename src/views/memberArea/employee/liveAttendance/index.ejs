@@ -22,7 +22,7 @@
 				<!-- container ini untuk layout dengan > 1 kolom -->
 				<div class="layout-card">
 					<div class="layout-card__header">
-						<form id="liveAttendanceForm" action="" method="POST">
+						<form id="liveAttendanceForm" action="/member/live-attendance" method="POST">
 							<input type="hidden" id="clockedType" name="clockedType" />
 							<div class="flex justify-between border-b-0">
 								<h1 class="title">Live Attendance</h1>
@@ -82,10 +82,10 @@
 		let serverTime = null;
 		let tickInterval = null;
 
-		async function fetchGMTPlus7Time() {
+		/* async function fetchGMTPlus7Time() {
 			try {
 				const response = await Promise.race([
-					fetch("https://worldtimeapi.org/api/timezone/Asia/Bangkok"),
+					fetch("https://timeapi.io/api/Time/current/zone?timeZone=Asia/Bangkok"),
 					new Promise((_, reject) =>
 						setTimeout(() => reject(new Error("Request timed out")), 5000)
 					),
@@ -99,8 +99,49 @@
 				console.error("Error fetching GMT+7 time:", error);
 				return null;
 			}
+		} */
+
+		function fallbackGMTPlus7Time() {
+			const now = new Date();
+			const gmtPlus7Offset = -7 * 60; // Offset in minutes
+			const localTime = new Date(now.getTime() + (gmtPlus7Offset - now.getTimezoneOffset()) * 60000);
+			return localTime;
 		}
 
+
+		async function fetchGMTPlus7Time() {
+			/*
+			const apis = [
+				"https://timeapi.io/api/Time/current/zone?timeZone=Asia/Bangkok",
+				"https://api.timezonedb.com/v2.1/get-time-zone?key=YOUR_API_KEY&format=json&by=zone&zone=Asia/Bangkok",
+				"https://worldtimeapi.org/api/timezone/Asia/Bangkok",
+			];
+
+			for (const api of apis) {
+				try {
+					const response = await Promise.race([
+						fetch(api),
+						new Promise((_, reject) =>
+							setTimeout(() => reject(new Error("Request timed out")), 5000)
+						),
+					]);
+
+					if (response.ok) {
+						const data = await response.json();
+						const dateTime = data.datetime || data.formatted || null;
+						if (dateTime) return new Date(dateTime);
+					}
+				} catch (error) {
+					console.error(`Error fetching time from API: ${api}`, error);
+				}
+			}
+
+			console.error("All time APIs failed, falling back to static calculation");
+			*/
+			return fallbackGMTPlus7Time();
+		}
+
+		
 		async function updateClock() {
 			const clockElement = document.getElementById("clock");
 			const dateElement = document.getElementById("date");

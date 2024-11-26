@@ -10,6 +10,7 @@ const fs = require("fs");
 const moment = require("moment-timezone");
 const AttendanceService = require("../../services/AttendanceService");
 const UserService = require("../../services/UserService");
+const CmsMenuService = require("../../services/CmsMenuService")
 
 const classList = {
 	200: "success",
@@ -41,6 +42,9 @@ const getLiveAttendance = async (req, res) => {
 	if (hasClockedOut) {
 		console.log("User has already clocked out today.");
 	}
+
+	const mappedMenuList = await UserService.findMappedMenuByUserRoleId(req.user.userRole);
+	res.locals.cmsMenuList = await CmsMenuService.groupingMenus(mappedMenuList);
 
 	const responseCode = req.query.res;
 
@@ -104,10 +108,11 @@ const postLiveAttendance = async (req, res) => {
 			}
 		}
 
-		res.render("memberArea/employee/liveAttendance/index", {
-			title: "PTDI STTD - Live Attendance",
-			loggedInUserId: req.user.userId,
-		});
+		return res.redirect("/member/live-attendance?res=201");
+		// res.render("memberArea/employee/liveAttendance/index", {
+		// 	title: "PTDI STTD - Live Attendance",
+		// 	loggedInUserId: req.user.userId,
+		// });
 	} catch (error) {
 		console.error(error);
 	}
@@ -136,6 +141,9 @@ const getReportAttendance = async (req, res) => {
 	res.locals.responseMessageClass = classList[responseCode];
 	res.locals.hasClockedIn = hasClockedIn;
 	res.locals.hasClockedOut = hasClockedOut;
+
+	const mappedMenuList = await UserService.findMappedMenuByUserRoleId(req.user.userRole);
+	res.locals.cmsMenuList = await CmsMenuService.groupingMenus(mappedMenuList);
 
 	res.render("memberArea/employee/reportAttendance/index", {
 		title: "PTDI STTD - Live Attendance",
