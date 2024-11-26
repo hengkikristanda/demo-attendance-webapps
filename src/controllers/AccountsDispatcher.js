@@ -134,7 +134,7 @@ const postLogin = async (req, res) => {
 			maxAge: 3600000, // 1 hour in milliseconds
 		});
 
-		return res.redirect("/member/dashboard");
+		return res.redirect("/member/live-attendance");
 	} catch (error) {
 		console.error(error);
 		req.flash("alertMessage", {
