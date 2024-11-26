@@ -1,22 +1,22 @@
 const grouping = {
 	dashboard: {
-		label: "Dashboard",
+		// label: "Dashboard",
 		listMenu: ["Home", "Inbox"],
 	},
 	employee: {
-		label: "Employee",
+		// label: "Employee",
 		listMenu: ["Live Attendance", "Attendance Log", "Attendance Report"],
 	},
 	webAdmin: {
-		label: "Web Admin",
+		// label: "Web Admin",
 		listMenu: ["Alumni", "Lecturer", "News", "Facilities"],
 	},
 	webComponent: {
-		label: "Components",
+		// label: "Components",
 		listMenu: ["Simple Section", "Sections", "Section CTA", "Accordion", "Gallery"],
 	},
 	settings: {
-		label: "Settings",
+		// label: "Settings",
 		listMenu: ["Organization Profile", "User Profile"],
 	},
 };
