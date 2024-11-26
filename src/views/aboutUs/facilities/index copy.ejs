@@ -75,8 +75,8 @@
 	<script src="/js/navbarUtils.js"></script>
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
-			const welcomeText = document.querySelector(".welcome-text__facilities span");
-			welcomeText.style.width = "30rem";
+			// const welcomeText = document.querySelector(".welcome-text__facilities span");
+			// welcomeText.style.width = "30rem";
 
 			// Get the modal
 			var modal = document.getElementById("myModal");
@@ -106,27 +106,27 @@
 			};
 		});
 
-		const collapsibleClass = ".collapsible-section__facility";
+		// const collapsibleClass = ".collapsible-section__facility";
 
-		const collapsible = document.querySelectorAll(collapsibleClass);
-		collapsible.forEach((item) => {
-			item.addEventListener("mouseup", () => {
-				const targetElement = event.target.closest(collapsibleClass);
-				if (targetElement) {
-					const targetCollapse = targetElement.querySelector("p");
-					const targetCollapseIcon = targetElement.querySelector("i");
+		// const collapsible = document.querySelectorAll(collapsibleClass);
+		// collapsible.forEach((item) => {
+		// 	item.addEventListener("mouseup", () => {
+		// 		const targetElement = event.target.closest(collapsibleClass);
+		// 		if (targetElement) {
+		// 			const targetCollapse = targetElement.querySelector("p");
+		// 			const targetCollapseIcon = targetElement.querySelector("i");
 
-					if (targetCollapse.style.maxHeight && targetCollapse.style.maxHeight !== "0px") {
-						targetCollapse.style.maxHeight = "0px";
-						targetCollapse.style.marginBottom = "0px";
-						targetCollapseIcon.style.transform = "rotate(0deg)";
-					} else {
-						targetCollapse.style.maxHeight = targetCollapse.scrollHeight + "px";
-						targetCollapse.style.marginBottom = "1rem";
-						targetCollapseIcon.style.transform = "rotate(90deg)";
-					}
-				}
-			});
-		});
+		// 			if (targetCollapse.style.maxHeight && targetCollapse.style.maxHeight !== "0px") {
+		// 				targetCollapse.style.maxHeight = "0px";
+		// 				targetCollapse.style.marginBottom = "0px";
+		// 				targetCollapseIcon.style.transform = "rotate(0deg)";
+		// 			} else {
+		// 				targetCollapse.style.maxHeight = targetCollapse.scrollHeight + "px";
+		// 				targetCollapse.style.marginBottom = "1rem";
+		// 				targetCollapseIcon.style.transform = "rotate(90deg)";
+		// 			}
+		// 		}
+		// 	});
+		// });
 	</script>
 </html>

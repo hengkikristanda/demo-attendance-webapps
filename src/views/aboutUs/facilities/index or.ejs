@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../sections/head') %>
+
+	<body>
+		<%- include('../../sections/navbar') %>
+		<div class="max-w-screen-2xl mx-auto">
+
+			<%#- include('./heroSection') %>
+
+			<% if (heroSectionListData) { %>
+				<% heroSectionListData.forEach(heroSection => { %>
+					<%- include('./heroSection', { 
+						heroSectionImageUrl: heroSection.imageUrl, 
+						heroSectionTitle: heroSection.title, 
+						heroSectionSubtitle: heroSection.subtitle 
+					}) %>
+				<% }); %>
+			<% } %>
+
+			<% if (imagesSectionListData) { %>
+				<% imagesSectionListData.forEach(imagesSection => { %>
+					<%- include('../../template/section/ImageGallerySectionPreview', { 
+						imagesSectionImageUrl: imagesSection.imageUrl, 
+					}) %>
+				<% }); %>
+			<% } %>
+
+			<%- include('../../sections/footer') %> 
+			<%- include('../../components/chatWidget') %>
+		</div>
+	</body>
+
+	<script src="/js/navbarUtils.js"></script>
+</html>
