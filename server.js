@@ -69,6 +69,20 @@ const i18nextInit = new Promise((resolve, reject) => {
 					"d3TransportasiKeretaApiOverviewSection",
 					"d3TransportasiKeretaApiStudentActivitiesSection",
 					"d3TransportasiKeretaApiCareerImpactSection",
+
+					"transportasiDaratHeroSection",
+					"transportasiDaratGroupSection",
+					"transportasiDaratSummarySection",
+					"transportasiDaratOverviewSection",
+					"transportasiDaratStudentActivitiesSection",
+					"transportasiDaratCareerImpactSection",
+
+					"rekayasaOtomotifHeroSection",
+					"rekayasaOtomotifGroupSection",
+					"rekayasaOtomotifSummarySection",
+					"rekayasaOtomotifOverviewSection",
+					"rekayasaOtomotifStudentActivitiesSection",
+					"rekayasaOtomotifCareerImpactSection",
 				],
 				detection: {
 					order: ["querystring", "cookie"],

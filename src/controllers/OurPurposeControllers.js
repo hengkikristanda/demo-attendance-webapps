@@ -18,7 +18,7 @@ const getOurPurpose = async (req, res) => {
 
 		res.locals.ourPurposeHero = await CommonComponentServices.getOurPurposeHero(req);
 
-		const tabListItemId = "236ff3e6-a0d8-11ef-b867-9e406641108e";
+		const tabListItemId = "e5776fdd-a109-11ef-b867-9e406641108e";
 
 		let tabListItems = await TabListItemService.findAllByTabListId(tabListItemId);
 
