@@ -1,4 +1,6 @@
 const CommonComponentServices = require("../services/CommonsComponentServices");
+const CommonUtils = require("../utils/CommonUtils");
+const Constants = require("../utils/Constants");
 const LeadersService = require("../services/Leaders/LeadersService");
 const { WEB_PAGE_TITLE } = require("../utils/Constants");
 
@@ -18,14 +20,17 @@ const getLeaders = async (req, res) => {
 		res.locals.ourLeadersHeroTitle = await CommonComponentServices.getOurLeadersHero(req);
 
 		let ourLeadersList = await LeadersService.findAllInLeadersView();
+
 		ourLeadersList = ourLeadersList.map((leader) => ({
 			id: leader.id,
 			fullName: leader["full_name"],
 			job: leader["job_position"],
 			pos: leader.pos,
-			imageUrl: leader["image_id"]
-				? `/img/leaders/${leader["image_id"]}.${leader["mime_type"].split("/")[1]}`
-				: `/img/profile-picture-placeholder.jpeg`,
+			imageUrl: CommonUtils.getImageUrlPath(
+				leader,
+				"/img/leaders",
+				Constants.PROFILE_PICTURE_PLACEHOLDER
+			),
 			mimeType: leader["mime_type"],
 		}));
 		res.locals.ourLeadersList = ourLeadersList;

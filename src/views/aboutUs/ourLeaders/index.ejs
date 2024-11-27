@@ -15,34 +15,61 @@
 				<hr class="h-2 w-20 bg-tertiary" />
 			</div>
 
-			<div class="flex flex-col items-center gap-20 pt-12 pb-40">
-
-				<div
-					class="grid grid-cols-1 xl:grid-cols-3 w-full reveal fade-right px-4 text-center gap-12 xl:gap-20">
-					<%
-					ourLeadersList.forEach((leader) => {
-					%>
-					<div class="flex flex-col items-center gap-8">
-						<div>
+			<div class="flex flex-col">
+				<% const ourLeadersList = locals.ourLeadersList; %>
+				<div class="flex w-full">
+					<div class="flex flex-col justify-center items-center gap-8 mb-12 w-full">
+						<div class="size-60">
 							<img
-								src="<%=leader.imageUrl%>"
+								src="<%=ourLeadersList[0].imageUrl%>"
 								alt=""
-								class="w-60 h-60 object-cover rounded-full shadow-lg mx-auto object-top" />
+								class="w-full h-full object-cover rounded-full shadow-lg mx-auto object-top" />
 						</div>
 						<div class="flex flex-col justify-center items-center">
 							<hr class="h-1 w-20 bg-tertiary mb-4" />
-							<h3 class="font-bold"><%=leader.fullName%></h3>
-							<h6><%=leader.job%></h6>
+							<h3 class="font-bold"><%=ourLeadersList[0].fullName%></h3>
+							<h6><%=ourLeadersList[0].job%></h6>
 						</div>
-					</div>					
-					<%
-					});
-					%>
+					</div>
+				</div>
+				<div class="flex flex-col lg:flex-row w-full">
+					<% for (let n=1; n<4; n++) { %>
+					<div class="flex flex-col justify-center items-center gap-8 mb-12 w-full lg:w-1/3">
+						<div class="size-60">
+							<img
+								src="<%=ourLeadersList[n].imageUrl%>"
+								alt=""
+								class="w-full h-full object-cover rounded-full shadow-lg mx-auto object-top" />
+						</div>
+						<div class="flex flex-col justify-center items-center">
+							<hr class="h-1 w-20 bg-tertiary mb-4" />
+							<h3 class="font-bold"><%=ourLeadersList[n].fullName%></h3>
+							<h6><%=ourLeadersList[n].job%></h6>
+						</div>
+					</div>
+					<% } %>
+				</div>
+				<div class="flex flex-col lg:flex-row w-full">
+					<% for (let n=4; n<6; n++) { %>
+					<div class="flex flex-col justify-center items-center gap-8 mb-12 w-full md:w-1/2">
+						<div class="size-60">
+							<img
+								src="<%=ourLeadersList[n].imageUrl%>"
+								alt=""
+								class="w-full h-full object-cover rounded-full shadow-lg mx-auto object-top" />
+						</div>
+						<div class="flex flex-col justify-center items-center">
+							<hr class="h-1 w-20 bg-tertiary mb-4" />
+							<h3 class="font-bold"><%=ourLeadersList[n].fullName%></h3>
+							<h6><%=ourLeadersList[n].job%></h6>
+						</div>
+					</div>
+					<% } %>
 				</div>
 			</div>
 		</div>
 
-		<%- include('../../sections/footer') %> 
+		<%- include('../../sections/footer') %>
 		<%- include('../../components/chatWidget') %>
 	</body>
 

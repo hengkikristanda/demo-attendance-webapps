@@ -132,6 +132,14 @@ function getImageUrl(data, filePath) {
 	return data;
 }
 
+function getImageUrlPath(data, filePath, placeholderImage = null) {
+	if (data.image_id) {
+		return `${filePath}/${data.image_id}.${data["mime_type"].split("/")[1]}`;
+	}
+	if (placeholderImage) return placeholderImage;
+	return `https://placehold.co/600x400?text=No+Image+Available`;
+}
+
 async function handleUploadedFile(uploadedFile, prefix, uploadedDir) {
 	// 1. Get the file name
 	const fileNameWithoutExt = path.parse(uploadedFile.path).name;
@@ -173,4 +181,5 @@ module.exports = {
 	sanitizeContent,
 	getImageUrl,
 	handleUploadedFile,
+	getImageUrlPath,
 };

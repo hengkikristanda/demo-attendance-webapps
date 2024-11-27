@@ -10,6 +10,8 @@ const VALIDATION_ERROR_CODE = {
 	423: `File size should not exceed 5mb`,
 };
 
+const PROFILE_PICTURE_PLACEHOLDER = "/img/profile-picture-placeholder.jpeg";
+
 const allowedDocumentFileFormat = [".pdf"];
 const allowedImageFileFormat = [".png", ".jpg", ".jpeg"];
 
@@ -111,4 +113,5 @@ module.exports = {
 	VALIDATION_ERROR_CODE,
 	allowedDocumentFileFormat,
 	allowedImageFileFormat,
+	PROFILE_PICTURE_PLACEHOLDER
 };

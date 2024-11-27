@@ -1551,6 +1551,10 @@ p.danger,
   visibility: visible;
 }
 
+.static {
+  position: static;
+}
+
 .fixed {
   position: fixed;
 }
@@ -1611,10 +1615,6 @@ p.danger,
   top: 3.5rem;
 }
 
-.bottom-1\/2 {
-  bottom: 50%;
-}
-
 .z-0 {
   z-index: 0;
 }
@@ -1625,6 +1625,18 @@ p.danger,
 
 .z-50 {
   z-index: 50;
+}
+
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+
+.col-span-2 {
+  grid-column: span 2 / span 2;
 }
 
 .m-0 {
@@ -1787,6 +1799,11 @@ p.danger,
 .size-28 {
   width: 7rem;
   height: 7rem;
+}
+
+.size-60 {
+  width: 15rem;
+  height: 15rem;
 }
 
 .h-0 {
@@ -5266,6 +5283,10 @@ input::file-selector-button {
 }
 
 @media (min-width: 768px) {
+  .md\:bottom-1\/2 {
+    bottom: 50%;
+  }
+
   .md\:bottom-10 {
     bottom: 2.5rem;
   }
@@ -5280,14 +5301,6 @@ input::file-selector-button {
 
   .md\:top-1\/2 {
     top: 50%;
-  }
-
-  .md\:bottom-1\/4 {
-    bottom: 25%;
-  }
-
-  .md\:bottom-1\/2 {
-    bottom: 50%;
   }
 
   .md\:mx-0 {
@@ -5518,6 +5531,14 @@ input::file-selector-button {
     width: 60%;
   }
 
+  .lg\:w-1\/2 {
+    width: 50%;
+  }
+
+  .lg\:w-1\/3 {
+    width: 33.333333%;
+  }
+
   .lg\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -5550,12 +5571,24 @@ input::file-selector-button {
     display: inline;
   }
 
+  .xl\:w-1\/2 {
+    width: 50%;
+  }
+
+  .xl\:w-1\/3 {
+    width: 33.333333%;
+  }
+
   .xl\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .xl\:grid-cols-6 {
     grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .xl\:flex-row {
+    flex-direction: row;
   }
 
   .xl\:gap-20 {
