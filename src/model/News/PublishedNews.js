@@ -17,7 +17,6 @@ const PublishedNews = sequelize.define(
 		content: {
 			type: DataTypes.TEXT,
 			allowNull: false,
-			unique: true,
 		},
 		display_image_id: {
 			type: DataTypes.STRING(36),
