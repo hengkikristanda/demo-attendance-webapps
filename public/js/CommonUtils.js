@@ -293,3 +293,9 @@ function enforcePhoneNumber(input) {
 			: "(" + match[1] + ") " + match[2] + (match[3] ? "-" + match[3] : "");
 	}
 }
+
+function validateEmailInput(input) {
+	// Regular expression to validate email format
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return emailRegex.test(input);
+}

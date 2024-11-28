@@ -10,7 +10,7 @@ const fs = require("fs");
 const moment = require("moment-timezone");
 const AttendanceService = require("../../services/AttendanceService");
 const UserService = require("../../services/UserService");
-const CmsMenuService = require("../../services/CmsMenuService")
+const CmsMenuService = require("../../services/CmsMenuService");
 
 const classList = {
 	200: "success",
@@ -26,37 +26,50 @@ const messageList = {
 	401: "Failed to Clocked Out. Please try again later",
 };
 
+const PAGE_HEADER = {
+	heading: "Live Attendance",
+};
+
 const getLiveAttendance = async (req, res) => {
-	const loggedInUserId = req.user.userId;
+	try {
+		const loggedInUserId = req.user.userId;
 
-	const existingUser = await UserService.findById(loggedInUserId);
-	if (!existingUser) {
-		throw new Error("No user found for the provided userId: " + loggedInUserId);
+		const existingUser = await UserService.findById(loggedInUserId);
+		if (!existingUser) throw new Error("No user found for the provided userId: " + loggedInUserId);
+
+		const mappedMenuList = await UserService.findMappedMenuByUserRoleId(req.user.userRole);
+		res.locals.cmsMenuList = await CmsMenuService.groupingMenus(mappedMenuList);
+
+		const hasClockedIn = await AttendanceService.hasClockedInToday(loggedInUserId);
+		if (hasClockedIn) {
+			console.log("User has already clocked in today.");
+		}
+		const hasClockedOut = await AttendanceService.hasClockedOutToday(loggedInUserId);
+		if (hasClockedOut) {
+			console.log("User has already clocked out today.");
+		}
+
+		res.locals.hasClockedIn = hasClockedIn;
+		res.locals.hasClockedOut = hasClockedOut;
+
+		const alertMessage = req.flash("alertMessage");
+
+		return res.render("memberArea/employee/liveAttendance/index", {
+			title: "PTDI STTD - Live Attendance",
+			alertMessage: alertMessage[0],
+			pageHeader: PAGE_HEADER,
+		});
+	} catch (error) {
+		console.log(error);
+		req.flash("alertMessage");
+		req.flash("alertMessage", {
+			message: "Something went wrong, please try again in a few minutes.",
+			className: "danger",
+			actionLink: "/users/login",
+			actionLinkLabel: "Back to login page",
+		});
+		return res.redirect("/error");
 	}
-
-	const hasClockedIn = await AttendanceService.hasClockedInToday(loggedInUserId);
-	if (hasClockedIn) {
-		console.log("User has already clocked in today.");
-	}
-	const hasClockedOut = await AttendanceService.hasClockedOutToday(loggedInUserId);
-	if (hasClockedOut) {
-		console.log("User has already clocked out today.");
-	}
-
-	const mappedMenuList = await UserService.findMappedMenuByUserRoleId(req.user.userRole);
-	res.locals.cmsMenuList = await CmsMenuService.groupingMenus(mappedMenuList);
-
-	const responseCode = req.query.res;
-
-	res.locals.responseMessage = messageList[responseCode];
-	res.locals.responseMessageClass = classList[responseCode];
-	res.locals.hasClockedIn = hasClockedIn;
-	res.locals.hasClockedOut = hasClockedOut;
-
-	res.render("memberArea/employee/liveAttendance/index", {
-		title: "PTDI STTD - Live Attendance",
-		loggedInUserId: req.user.userId,
-	});
 };
 
 const postLiveAttendance = async (req, res) => {
@@ -78,6 +91,8 @@ const postLiveAttendance = async (req, res) => {
 		const latitude = parseFloat(latitudeStr);
 		const longitude = parseFloat(longitudeStr);
 
+		req.flash("alertMessage");
+
 		if (!isNaN(latitude) && !isNaN(longitude)) {
 			const clockedType = req.body.clockedType;
 
@@ -90,10 +105,13 @@ const postLiveAttendance = async (req, res) => {
 				});
 
 				if (!attendanceResult) {
-					return res.redirect("/member/live-attendance?res=400");
+					throw new Error("Failed to Clocked In. Please try again in a few minutes.");
 				}
 
-				return res.redirect("/member/live-attendance?res=200");
+				req.flash("alertMessage", {
+					message: "Successfully Locked In",
+					className: "success",
+				});
 			} else if (clockedType && clockedType == "clockedOut") {
 				const todayAttendance = await AttendanceService.todayClockedIn(loggedInUserId);
 
@@ -101,24 +119,32 @@ const postLiveAttendance = async (req, res) => {
 					todayAttendance.clocked_out = mysqlDatetime;
 					const attendanceResult = await AttendanceService.updateAttendance(todayAttendance);
 					if (!attendanceResult) {
-						return res.redirect("/member/live-attendance?res=401");
+						throw new Error("Failed to Clocked Out. Please try again in a few minutes.");
 					}
-					return res.redirect("/member/live-attendance?res=201");
+
+					req.flash("alertMessage", {
+						message: "Successfully Clocked Out",
+						className: "success",
+					});
 				}
 			}
+		} else {
+			throw new Error(
+				"Unable to retrive clocked-in/out location. Please try again in a few minutes."
+			);
 		}
-
-		return res.redirect("/member/live-attendance?res=201");
-		// res.render("memberArea/employee/liveAttendance/index", {
-		// 	title: "PTDI STTD - Live Attendance",
-		// 	loggedInUserId: req.user.userId,
-		// });
 	} catch (error) {
-		console.error(error);
+		console.log(error);
+		req.flash("alertMessage");
+		req.flash("alertMessage", {
+			message: error.message,
+			className: "danger",
+		});
 	}
+	return res.redirect("/member/live-attendance");
 };
 
-const getReportAttendance = async (req, res) => {
+const getReportAttendance2 = async (req, res) => {
 	const loggedInUserId = req.user.userId;
 
 	const existingUser = await UserService.findById(loggedInUserId);
@@ -149,6 +175,31 @@ const getReportAttendance = async (req, res) => {
 		title: "PTDI STTD - Live Attendance",
 		loggedInUserId: req.user.userId,
 	});
+};
+
+const getReportAttendance = async (req, res) => {
+	try {
+		const mappedMenuList = await UserService.findMappedMenuByUserRoleId(req.user.userRole);
+		res.locals.cmsMenuList = await CmsMenuService.groupingMenus(mappedMenuList);
+
+		const alertMessage = req.flash("alertMessage");
+
+		return res.render("memberArea/employee/reportAttendance/index", {
+			title: "PTDI STTD - Attendance Report",
+			alertMessage: alertMessage[0],
+			pageHeader: { heading: "Attendance Report", subheading: "Monthly Report" },
+		});
+	} catch (error) {
+		console.log(error);
+		req.flash("alertMessage");
+		req.flash("alertMessage", {
+			message: "Something went wrong, please try again in a few minutes.",
+			className: "danger",
+			actionLink: "/users/login",
+			actionLinkLabel: "Back to login page",
+		});
+		return res.redirect("/error");
+	}
 };
 
 const generateReport = async (req, res) => {

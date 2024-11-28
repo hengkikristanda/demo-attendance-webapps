@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card gap-8">
+					<h1 class="title">Add New Lecturer</h1>
+					<form
+						class="myform flex w-full"
+						method="POST"
+						id="addLecturerForm"
+						action="/member/web/lecturer/add"
+						enctype="multipart/form-data">
+						<div id="lecturerImageContainer" class="flex flex-col w-full md:w-fit border-0">
+							<div class="w-60 max-w-60 min-w-60 min-h-72 max-h-72 border-2 border-gray-300">
+								<img
+									id="lecturerPhoto"
+									src="https://placehold.co/800x600"
+									alt=""
+									class="object-contain w-full h-full" />
+							</div>
+							<p
+								id="openBrowseFile"
+								class="text-center font-semibold text-tertiary underline cursor-pointer">
+								Click to change picture
+							</p>
+							<input
+								id="profilePictureFile"
+								name="profilePictureFile"
+								type="file"
+								accept=".png, .jpg, .jpeg"
+								class="hidden" />
+						</div>
+						<div class="flex flex-col w-full gap-4 border-0">
+							<div class="flex flex-col border-0">
+								<h6 class="text-secondary font-bold">Lecturer Profile</h6>
+								<hr class="h-1 w-1/4 bg-tertiary" />
+							</div>
+							<div>
+								<label for="full name">Full Name</label>
+								<input
+									name="fullName"
+									type="text"
+									placeholder="Lecturer full name with academic title"
+									maxlength="128"
+									value=""
+									required />
+							</div>
+							<div>
+								<label for="email address">Email Address</label>
+								<input
+									name="emailAddress"
+									type="email"
+									placeholder="Email Address"
+									maxlength="300"
+									value=""
+									required />
+							</div>
+							<div>
+								<label for="cv">Lecturer CV</label>
+								<span class="file-name text-sm" id="cvDisplayName">Click to upload cv</span>
+								<input
+									name="documentFile"
+									type="file"
+									id="documentFile"
+									accept=".pdf"
+									class="hidden" />
+							</div>
+							<div>
+								<label for="phone number">Display Order</label>
+								<input
+									id="displayOrder"
+									name="displayOrder"
+									type="text"
+									placeholder="Display Order"
+									maxlength="3"
+									size="3"
+									value=""
+									required />
+							</div>
+							<div id="profExpContainer" class="flex flex-col border-0 mt-8">
+								<div class="flex flex-row justify-between border-0 items-end">
+									<h6 class="text-secondary font-bold">Professional Experience</h6>
+									<h6
+										id="profExp"
+										class="add-detail-profile__lecturer text-link text-xxs cursor-pointer underline text-tertiary">
+										Add Professional Experience
+									</h6>
+								</div>
+								<hr class="h-1 w-1/4 bg-tertiary" />
+							</div>
+							<div id="eduBgContainer" class="flex flex-col border-0 mt-8">
+								<div class="flex flex-row justify-between border-0 items-end">
+									<h6 class="text-secondary font-bold">Educational Background</h6>
+									<h6
+										id="eduBg"
+										class="add-detail-profile__lecturer text-link text-xxs cursor-pointer underline text-tertiary">
+										Add Educational Background
+									</h6>
+								</div>
+								<hr class="h-1 w-1/4 bg-tertiary" />
+							</div>
+							<div id="researchActivitiesContainer" class="flex flex-col border-0 mt-8">
+								<div class="flex flex-row justify-between border-0 items-end">
+									<h6 class="text-secondary font-bold">Research Activities</h6>
+									<h6
+										id="researchAct"
+										class="add-detail-profile__lecturer text-link text-xxs cursor-pointer underline text-tertiary">
+										Add Research Activities
+									</h6>
+								</div>
+								<hr class="h-1 w-1/4 bg-tertiary" />
+							</div>
+							<div class="flex flex-col md:flex-row border-0 gap-4 my-20">
+								<button class="btn success w-full md:w-fit" type="submit">Submit Changes</button>
+								<a
+									href="/member/web/lecturer"
+									class="hover:bg-red-800 hover:text-white rounded-md text-center w-fit m-0 px-4 font-semibold underline"
+									>Discard Changes</a
+								>
+							</div>
+						</div>
+						<input
+							type="hidden"
+							name="profesionalExperienceItems"
+							id="profesionalExperienceItems" />
+						<input type="hidden" name="educationBackgroundItems" id="educationBackgroundItems" />
+						<input type="hidden" name="researchActivityItems" id="researchActivityItems" />
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div
+			id="modal"
+			class="fixed z-50 inset-0 hidden bg-gray-900 bg-opacity-75 flex items-center justify-center py-8">
+			<div class="bg-white rounded-lg shadow-lg p-6 w-fit max-h-full overflow-y-scroll">
+				<div class="flex justify-between">
+					<h2 id="modalTitle" class="text-xl font-bold mb-4">Add Lecturer Detail</h2>
+					<h1 class="close-modal cursor-pointer bi-x p-2 rounded hover:bg-gray-500"></h1>
+				</div>
+
+				<div id="modal-content" class="flex flex-col gap-12">
+					<div class="flex flex-col gap-4">
+						<div id="modalInputContainer" class="flex flex-col w-full gap-4 border-0">
+							<input type="hidden" id="detailProfileType" value="profExp" />
+							<div id="errorMessage" class="hidden badge danger text-xxs font-semibold"></div>
+							<div id="jobTitle">
+								<label for="jobTitleInput">Job Title</label>
+								<input
+									id="jobTitleInput"
+									name="jobTitle"
+									type="text"
+									maxlength="512"
+									size="75"
+									value=""
+									required />
+							</div>
+							<div id="organizationName">
+								<label for="organizationNameInput">Company/Organization</label>
+								<input
+									id="organizationNameInput"
+									name="organizationName"
+									type="text"
+									size="50"
+									maxlength="300"
+									value=""
+									required />
+							</div>
+							<div id="fromYear" class="flex flex-col">
+								<label for="fromYear">From</label>
+								<div class="flex flex-row gap-2">
+									<select
+										id="fromMonthInput"
+										class="monthSelect text-xs text-gray-700 border-line rounded-md w-1/2"
+										required>
+										<option selected="true" disabled="disabled" value="">Month</option>
+										<% monthNames.forEach((month, index) => { %>
+										<option value="<%=(index+1)%>"><%=month%></option>
+										<% }); %>
+									</select>
+									<select
+										id="fromYearInput"
+										class="yearSelect text-xs text-gray-700 border-line rounded-md w-1/2"
+										required>
+										<option selected="true" disabled="disabled" value="">Year</option>
+										<% for (let n=startYear; n<=currentYear; n++) { %>
+										<option value="<%=n%>"><%=n%></option>
+										<% } %>
+									</select>
+								</div>
+							</div>
+							<div id="toYear" class="flex flex-col">
+								<label for="toYear">To</label>
+								<div class="flex flex-row gap-2">
+									<select
+										id="toMonthInput"
+										class="monthSelect text-xs text-gray-700 border-line rounded-md w-1/2"
+										required>
+										<option selected="true" disabled="disabled" value="">Month</option>
+										<% monthNames.forEach((month, index) => { %>
+										<option value="<%=(index+1)%>"><%=month%></option>
+										<% }); %>
+									</select>
+									<select
+										id="toYearInput"
+										class="yearSelect text-xs text-gray-700 border-line rounded-md w-1/2"
+										required>
+										<option selected="true" disabled="disabled" value="">Year</option>
+										<% for (let n=startYear; n<=currentYear; n++) { %>
+										<option value="<%=n%>"><%=n%></option>
+										<% } %>
+									</select>
+								</div>
+							</div>
+							<div id="isCurrentlyWorkingContainer" class="flex gap-2">
+								<input id="isCurrentlyWorking" name="isCurrentlyWorking" type="checkbox" required />
+								<label for="Currently Working">I'm currently working in this company</label>
+							</div>
+							<div class="flex border-0 gap-4 justify-end">
+								<button id="addSubModalContent" class="btn success w-full md:w-fit">Add</button>
+								<button id="closeSubModal" class="btn info w-full md:w-fit">Cancel</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="/js/CommonUtils.js"></script>
+	<script>
+		let profesionalExperienceItems = [];
+		let educationBackgroundItems = [];
+		let researchActivityItems = [];
+
+		const openBrowseFile = document.getElementById("openBrowseFile");
+		const profilePictureFile = document.getElementById("profilePictureFile");
+		openBrowseFile.addEventListener("mouseup", () => {
+			profilePictureFile.click();
+		});
+		document.getElementById("profilePictureFile").addEventListener("change", function (event) {
+			const file = event.target.files[0];
+			if (file) {
+				const reader = new FileReader();
+				reader.onload = function (e) {
+					document.getElementById("lecturerPhoto").src = e.target.result;
+				};
+				reader.readAsDataURL(file);
+			}
+		});
+		const displayOrder = document.getElementById("displayOrder");
+		displayOrder.addEventListener("input", enforceNumberInput);
+		displayOrder.addEventListener("paste", enforceNumberInputOnCopyPaste);
+
+		// Get elements
+		const documentFile = document.getElementById("documentFile");
+		const cvDisplayName = document.getElementById("cvDisplayName");
+
+		cvDisplayName.addEventListener("mouseup", () => {
+			documentFile.click();
+		});
+
+		// When the file input changes, update the displayed file name
+		documentFile.addEventListener("change", function () {
+			const fileName =
+				documentFile.files.length > 0 ? documentFile.files[0].name : "No file chosen";
+			cvDisplayName.textContent = fileName;
+		});
+
+		function openModal() {
+			document.getElementById("modal").classList.remove("hidden");
+		}
+
+		function closeModal() {
+			document.getElementById("modal").classList.add("hidden");
+			const errorMessage = document.getElementById("errorMessage");
+			errorMessage.classList.add("hidden");
+			errorMessage.innerHTML = "";
+		}
+
+		function loadProfExp() {
+			const detailProfileType = document.getElementById("detailProfileType");
+			detailProfileType.value = "profExpContainer";
+
+			const isCurrentlyWorkingContainer = document.getElementById("isCurrentlyWorkingContainer");
+			isCurrentlyWorkingContainer.classList.remove("hidden");
+
+			const jobTitleLabel = document.querySelector('label[for="jobTitleInput"]');
+			jobTitleLabel.textContent = "Job Title";
+
+			const organizationNameLabel = document.querySelector('label[for="organizationNameInput"]');
+			organizationNameLabel.textContent = "Company/Organization";
+
+			const organizationName = document.getElementById("organizationName");
+			organizationName.classList.remove("hidden");
+
+			const toYear = document.getElementById("toYear");
+			toYear.classList.remove("hidden");
+
+			const fromYear = document.getElementById("fromYear");
+			fromYear.classList.remove("hidden");
+
+			resetJobTitleInput();
+			resetOrganizationInput();
+			resetFromYear();
+			resetToYear();
+		}
+
+		function loadEduBg() {
+			const detailProfileType = document.getElementById("detailProfileType");
+			detailProfileType.value = "eduBgContainer";
+
+			const isCurrentlyWorkingContainer = document.getElementById("isCurrentlyWorkingContainer");
+			isCurrentlyWorkingContainer.classList.add("hidden");
+
+			const jobTitleLabel = document.querySelector('label[for="jobTitleInput"]');
+			jobTitleLabel.textContent = "Field of Study";
+
+			const organizationNameLabel = document.querySelector('label[for="organizationNameInput"]');
+			organizationNameLabel.textContent = "Education Institution";
+
+			const organizationName = document.getElementById("organizationName");
+			organizationName.classList.remove("hidden");
+
+			const toYear = document.getElementById("toYear");
+			toYear.classList.remove("hidden");
+
+			const fromYear = document.getElementById("fromYear");
+			fromYear.classList.remove("hidden");
+
+			resetJobTitleInput();
+			resetOrganizationInput();
+			resetFromYear();
+			resetToYear();
+		}
+
+		function loadResearchAct() {
+			const detailProfileType = document.getElementById("detailProfileType");
+			detailProfileType.value = "researchActivitiesContainer";
+
+			const isCurrentlyWorkingContainer = document.getElementById("isCurrentlyWorkingContainer");
+			isCurrentlyWorkingContainer.classList.add("hidden");
+
+			const jobTitleLabel = document.querySelector('label[for="jobTitleInput"]');
+			jobTitleLabel.textContent = "Research Topics/Title";
+
+			const organizationName = document.getElementById("organizationName");
+			organizationName.classList.add("hidden");
+
+			const toYear = document.getElementById("toYear");
+			toYear.classList.add("hidden");
+
+			const fromYear = document.getElementById("fromYear");
+			fromYear.classList.add("hidden");
+
+			resetJobTitleInput();
+			resetOrganizationInput();
+			resetFromYear();
+			resetToYear();
+		}
+
+		const addDetailProfile = document.querySelectorAll(".add-detail-profile__lecturer");
+		addDetailProfile.forEach((link) => {
+			link.addEventListener("mouseup", (ev) => {
+				openModal();
+				const modal = document.getElementById("modal");
+				const modalTitle = modal.querySelector("#modalTitle");
+				modalTitle.textContent = ev.target.textContent;
+
+				if (ev.target.id == "profExp") {
+					loadProfExp();
+				} else if (ev.target.id == "eduBg") {
+					loadEduBg();
+				} else if (ev.target.id == "researchAct") {
+					loadResearchAct();
+				}
+			});
+		});
+
+		function resetToYear() {
+			const toYear = document.getElementById("toYear");
+			const targetSelect = toYear.querySelectorAll("select");
+			targetSelect.forEach((select) => {
+				select.selectedIndex = 0;
+				select.disabled = false;
+			});
+
+			const isCurrentlyWorking = document.getElementById("isCurrentlyWorking");
+			isCurrentlyWorking.checked = false;
+		}
+
+		function resetJobTitleInput() {
+			const jobTitleInput = document.getElementById("jobTitleInput");
+			jobTitleInput.value = "";
+		}
+
+		function resetOrganizationInput() {
+			const organizationNameInput = document.getElementById("organizationNameInput");
+			organizationNameInput.value = "";
+		}
+
+		function resetFromYear() {
+			const fromYear = document.getElementById("fromYear");
+			const targetSelect = fromYear.querySelectorAll("select");
+			targetSelect.forEach((select) => {
+				select.selectedIndex = 0;
+				select.disabled = false;
+			});
+		}
+
+		const closeSubModal = document.getElementById("closeSubModal");
+		closeSubModal.addEventListener("mouseup", closeModal);
+
+		const isCurrentlyWorking = document.getElementById("isCurrentlyWorking");
+		isCurrentlyWorking.addEventListener("change", () => {
+			const toYear = document.getElementById("toYear");
+			const targetSelect = toYear.querySelectorAll("select");
+			targetSelect.forEach((select) => {
+				select.selectedIndex = 0;
+				select.disabled = !select.disabled;
+			});
+		});
+
+		function validateInput(detailType) {
+			const elementId = {
+				profExpContainer: [
+					"jobTitleInput",
+					"organizationNameInput",
+					"fromMonthInput",
+					"fromYearInput",
+					"toMonthInput",
+					"toYearInput",
+				],
+				eduBgContainer: [
+					"jobTitleInput",
+					"organizationNameInput",
+					"fromMonthInput",
+					"fromYearInput",
+					"toMonthInput",
+					"toYearInput",
+				],
+				researchActivitiesContainer: ["jobTitleInput"],
+			};
+
+			const modalInputContainer = document.getElementById("modalInputContainer");
+
+			const formData = modalInputContainer.querySelectorAll("input, select");
+
+			const invalidInputId = [];
+
+			Array.from(formData).forEach((input) => {
+				if (elementId[detailType].includes(input.id)) {
+					if (
+						input.tagName.toLowerCase() === "input" &&
+						input.type === "text" &&
+						input.value.trim() === ""
+					) {
+						invalidInputId.push(input.id);
+					}
+					if (
+						input.tagName.toLowerCase() === "select" &&
+						input.required &&
+						input.value === "" &&
+						!input.disabled
+					) {
+						invalidInputId.push(input.id);
+					}
+				}
+			});
+			return invalidInputId;
+		}
+
+		function displayErrorMessage(validationResult, detailType) {
+			const elementId = {
+				profExpContainer: {
+					jobTitleInput: "Job Title is Required",
+					organizationNameInput: "Organization Name is Required",
+					fromMonthInput: "From Month is Required",
+					fromYearInput: "From Year is Required",
+					toMonthInput: "To Month is Required",
+					toYearInput: "To Year is Required",
+				},
+				eduBgContainer: {
+					jobTitleInput: "Field of Study is Required",
+					organizationNameInput: "Education Institution is Required",
+					fromMonthInput: "From Month is Required",
+					fromYearInput: "From Year is Required",
+					toMonthInput: "To Month is Required",
+					toYearInput: "To Year is Required",
+				},
+				researchActivitiesContainer: {
+					jobTitleInput: "Research Topics/Title is Required",
+				},
+			};
+
+			const errorMessage = document.getElementById("errorMessage");
+			errorMessage.innerHTML = "";
+			validationResult.forEach((itemId) => {
+				console.log(itemId);
+				const message = elementId[detailType][itemId];
+				const p = document.createElement("p");
+				p.textContent = message;
+				errorMessage.appendChild(p);
+			});
+			errorMessage.classList.remove("hidden");
+		}
+
+		function populateDetailProfile() {
+			const detailProfileType = document.getElementById("detailProfileType");
+
+			const validationResult = validateInput(detailProfileType.value);
+			if (validationResult.length > 0) {
+				displayErrorMessage(validationResult, detailProfileType.value);
+				return;
+			}
+
+			const errorMessage = document.getElementById("errorMessage");
+			errorMessage.classList.add("hidden");
+			errorMessage.innerHTML = "";
+
+			const jobTitleInput = document.getElementById("jobTitleInput").value;
+			const organizationNameInput = document.getElementById("organizationNameInput").value;
+
+			const fromMonthInput = document.getElementById("fromMonthInput");
+			const fromMonthText = fromMonthInput.options[fromMonthInput.selectedIndex].text;
+
+			const fromYearInput = document.getElementById("fromYearInput");
+			const fromYearText = fromYearInput.options[fromYearInput.selectedIndex].text;
+
+			const toMonthInput = document.getElementById("toMonthInput");
+			const toMonthText = toMonthInput.options[toMonthInput.selectedIndex].text;
+
+			const toYearInput = document.getElementById("toYearInput");
+			const toYearText = toYearInput.options[toYearInput.selectedIndex].text;
+
+			let till = "Present";
+			if (!isCurrentlyWorking.checked) {
+				till = `${toMonthText} ${toYearText}`;
+			}
+
+			const uuid = crypto.randomUUID();
+
+			const newElement = document.createElement("div");
+			newElement.id = uuid;
+			newElement.classList.add(
+				"flex",
+				"flex-row",
+				"items-center",
+				"justify-between",
+				"gap-4",
+				"items-center"
+			);
+
+			const isResearchContainer = detailProfileType.value == "researchActivitiesContainer";
+			if (isResearchContainer) {
+				newElement.innerHTML = `
+					<div class="flex flex-col mt-4 cursor-pointer border-0 max-w-3/4">
+						<h6 class="font-bold">${jobTitleInput}</h6>
+					</div>
+					<i class="delete-bin remix secondary icon-md cursor-pointer" onclick="removeRow('${detailProfileType.value}','${uuid}')"></i>`;
+			} else {
+				newElement.innerHTML = `
+					<div class="flex flex-col mt-4 cursor-pointer border-0">
+						<h6 class="font-bold">${jobTitleInput}</h6>
+						<h6 class="text-xxs font-semibold">${organizationNameInput}</h6>
+						<h6 class="text-xxs">${fromMonthText} ${fromYearText} - ${till}</h6>
+					</div>
+					<i class="delete-bin remix secondary icon-md cursor-pointer" onclick="removeRow('${detailProfileType.value}','${uuid}')"></i>`;
+			}
+
+			// Append the new element to the container
+			document.getElementById(detailProfileType.value).appendChild(newElement);
+
+			if (detailProfileType.value == "profExpContainer") {
+				profesionalExperienceItems.push({
+					id: uuid,
+					jobTitle: jobTitleInput,
+					organizationName: organizationNameInput,
+					startMonth: fromMonthInput.value,
+					startYear: fromYearInput.value,
+					endMonth: toMonthInput.value,
+					endYear: toYearInput.value,
+					isCurrentlyWorking: isCurrentlyWorking.checked,
+				});
+			} else if (detailProfileType.value == "eduBgContainer") {
+				educationBackgroundItems.push({
+					id: uuid,
+					jobTitle: jobTitleInput,
+					organizationName: organizationNameInput,
+					startMonth: fromMonthInput.value,
+					startYear: fromYearInput.value,
+					endMonth: toMonthInput.value,
+					endYear: toYearInput.value,
+				});
+			} else if (detailProfileType.value == "researchActivitiesContainer") {
+				researchActivityItems.push({
+					id: uuid,
+					jobTitle: jobTitleInput,
+				});
+			}
+			closeModal();
+		}
+
+		function removeRow(containerId, rowId) {
+			const child = document.getElementById(rowId);
+			document.getElementById(containerId).removeChild(child);
+
+			profesionalExperienceItems = profesionalExperienceItems.filter((item) => item.id !== rowId);
+			educationBackgroundItems = educationBackgroundItems.filter((item) => item.id !== rowId);
+			researchActivityItems = researchActivityItems.filter((item) => item.id !== rowId);
+		}
+
+		const addSubModalContent = document.getElementById("addSubModalContent");
+		addSubModalContent.addEventListener("mouseup", populateDetailProfile);
+
+		const jobTitleInput = document.getElementById("jobTitleInput");
+		// jobTitleInput.addEventListener("input", validateInput);
+
+		const organizationNameInput = document.getElementById("organizationNameInput");
+		// organizationNameInput.addEventListener("input", validateInput);
+
+		const form = document.getElementById("addLecturerForm");
+		const profesionalExperienceData = document.getElementById("profesionalExperienceItems");
+		const educationBackgroundData = document.getElementById("educationBackgroundItems");
+		const researchActivitiesData = document.getElementById("researchActivityItems");
+		form.addEventListener("submit", function () {
+			profesionalExperienceData.value = JSON.stringify(profesionalExperienceItems);
+			educationBackgroundData.value = JSON.stringify(educationBackgroundItems);
+			researchActivitiesData.value = JSON.stringify(researchActivityItems);
+		});
+	</script>
+</html>

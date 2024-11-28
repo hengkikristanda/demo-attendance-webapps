@@ -21,8 +21,42 @@ const GallerySectionsController = require("../controllers/webAdmin/GallerySectio
 const AccordionSectionsController = require("../controllers/webAdmin/AccordionSectionsController");
 const CtaSectionsController = require("../controllers/webAdmin/CtaSectionsController");
 const OrganizationProfileController = require("../controllers/settings/OrganizationProfileController");
+const UserProfileController = require("../controllers/settings/UserProfileController");
+const AttendanceController = require("../controllers/employee/attendanceController")
+const AssetsController = require("../controllers/AssetsController");
+const LecturerAdminController = require("../controllers/webAdmin/LecturerAdminController");
 
 router.use(express.urlencoded({ extended: true }));
+
+// Employee
+// Live Attendance
+router.get("/member/live-attendance", verifyToken, AttendanceController.getLiveAttendance);
+router.post("/member/live-attendance", verifyToken, AttendanceController.postLiveAttendance);
+router.get("/member/log-attendance", verifyToken, AttendanceController.getLogAttendance);
+router.get("/member/report-attendance", verifyToken, AttendanceController.getReportAttendance);
+router.get("/member/generate-report-attendance", verifyToken, AttendanceController.generateReport);
+
+// Web Admin
+// Lecturer
+router.get("/member/web/lecturer", verifyToken, LecturerAdminController.getLecturer);
+router.get(
+	"/member/web/lecturer/:lecturerId/update",
+	verifyToken,
+	LecturerAdminController.getUpdateLecturer
+);
+router.get(
+	"/member/web/lecturer/:lecturerId/delete",
+	verifyToken,
+	LecturerAdminController.deleteLecturer
+);
+router.get("/member/web/lecturer/add", verifyToken, LecturerAdminController.getCreateLecturer);
+router.post("/member/web/lecturer/add", combinedUpload, LecturerAdminController.postCreateLecturer);
+router.post(
+	"/member/web/lecturer/update",
+	combinedUpload,
+	LecturerAdminController.putUpdateLecturer
+);
+
 
 // Facilities
 router.get("/member/web/facilities", verifyToken, FacilitiesController.getFacilities);
@@ -193,16 +227,8 @@ router.post(
 
 // Section CTA
 // Sections
-router.get(
-	"/member/components/section-cta",
-	verifyToken,
-	CtaSectionsController.getSections
-);
-router.get(
-	"/member/components/section-cta/add",
-	verifyToken,
-	CtaSectionsController.getSectionsAdd
-);
+router.get("/member/components/section-cta", verifyToken, CtaSectionsController.getSections);
+router.get("/member/components/section-cta/add", verifyToken, CtaSectionsController.getSectionsAdd);
 router.post(
 	"/member/components/section-cta/add",
 	verifyToken,
@@ -238,8 +264,6 @@ router.get(
 	verifyToken,
 	OrganizationProfileController.getOrganizationProfile
 );
-
-
 router.post(
 	"/member/settings/organization-profile/:id/update",
 	verifyToken,
@@ -247,5 +271,16 @@ router.post(
 	uploadErrorHandler,
 	OrganizationProfileController.putOrganizationUpdate
 );
+
+router.get("/member/settings/user-profile", verifyToken, UserProfileController.getUserProfile);
+router.post(
+	"/member/settings/user-profile/:id/update",
+	verifyToken,
+	imageUpload.single("profilePictureFile"),
+	uploadErrorHandler,
+	UserProfileController.putUserProfile
+);
+
+router.get("/member/assets/images/:id", verifyToken, AssetsController.getImage);
 
 module.exports = router;

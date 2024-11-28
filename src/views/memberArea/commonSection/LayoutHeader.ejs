@@ -1,0 +1,9 @@
+<div class="layout-card__header">
+    <%- include('./AlertMessageBadge') %>
+    <div class="container-card flex-col">
+        <h1 class="title"><%=pageHeader.heading%></h1>
+        <% if (pageHeader.subheading) { %>
+            <h6 class="font-semibold text-secondary"><%=pageHeader.subheading%></h6>
+        <% } %>
+    </div>
+</div>

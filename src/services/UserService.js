@@ -1,9 +1,11 @@
 const Users = require("../model/Users/Users");
 const UsersCmsMenuView = require("../model/Users/UsersCmsMenuView");
+const CommonUtils = require("../utils/CommonUtils");
+const bcrypt = require("bcryptjs");
 
-const findById = async (userId) => {
+const findById = async (userId, isRaw = false) => {
 	try {
-		return Users.findByPk(userId);
+		return Users.findByPk(userId, { raw: isRaw });
 	} catch (error) {
 		console.log(error);
 		throw new Error("Error Find User");
@@ -16,6 +18,29 @@ const updateLoginAttempt = async (user) => {
 	} catch (error) {
 		console.log(error);
 		throw new Error("Error Updating Login Attempt");
+	}
+};
+
+const updateUserProfile = async (existingUserProfileData, newPassword, uploadedFile) => {
+	try {
+		if (uploadedFile) {
+			const uploadedSectionImage = await CommonUtils.handleUploadedFile(
+				uploadedFile,
+				"profilePictureFile-",
+				"uploads/user-profile-picture/"
+			);
+			existingUserProfileData.image_id = uploadedSectionImage.id;
+			existingUserProfileData.mime_type = uploadedSectionImage.mime_type;
+			existingUserProfileData.original_filename = uploadedSectionImage.original_filename;
+		}
+
+		if (newPassword)
+			existingUserProfileData.encoded_password = await bcrypt.hash(newPassword, 10);
+
+		return await existingUserProfileData.save();
+	} catch (error) {
+		console.log(error);
+		throw new Error("Error Updating User Profile");
 	}
 };
 
@@ -63,4 +88,5 @@ module.exports = {
 	updateLoginAttempt,
 	findMappedMenuByUserRoleId,
 	generateRandomPassword,
+	updateUserProfile,
 };

@@ -6,10 +6,23 @@ const PublicDocument = require("../../model/PublicDocument");
 const path = require("path");
 const fs = require("fs-extra"); // Import fs-extra for file handling
 
-const findAllLecturerView = async (orderValue = "full_name") => {
+const findAllLecturerView = async (orderValue = "full_name", isRaw = false) => {
 	try {
 		return LecturerView.findAll({
 			order: [orderValue],
+			raw: isRaw,
+		});
+	} catch (error) {
+		console.log(error);
+		throw new Error("Error Find Lecturer");
+	}
+};
+
+const findAll = async (orderValue = "full_name", isRaw = false) => {
+	try {
+		return Lecturer.findAll({
+			order: [orderValue],
+			raw: isRaw,
 		});
 	} catch (error) {
 		console.log(error);
@@ -43,103 +56,35 @@ const findLecturerById = async (lecturerId) => {
 	}
 };
 
-const createLecturer = async (lecturerData) => {
+const createLecturer = async (lecturerData, lecturerDetail) => {
 	const transaction = await sequelize.transaction();
 	try {
-		const {
-			profesionalExperienceItems,
-			educationBackgroundItems,
-			researchActivityItems,
-			uploadedImagePath,
-			uploadedDocumentPath,
-		} = lecturerData;
-
-		if (uploadedImagePath) {
-			// Define the target directory and generate a new unique file name
-			const targetDir = path.join(__dirname, "../../../public/img/lecturer");
-			const newFileName = path.basename(uploadedImagePath).replace("profilePictureFile-", "");
-			const targetPath = path.join(targetDir, newFileName);
-
-			// Ensure target directory exists and move (rename) the file to the target folder with a new name
-			await fs.ensureDir(targetDir); // Ensure the target directory exists
-			await fs.copy(uploadedImagePath, targetPath); // Copy file to the target folder
-
-			console.log("File copied and renamed to:", targetPath);
-
-			const extFileName = path.extname(newFileName);
-			const publicImageId = newFileName.replace(extFileName, "");
-
-			const publicImageOriginalFileName = formatLecturerName(lecturerData.full_name);
-
-			const newPublicImage = await PublicImage.create({
-				id: publicImageId,
-				original_filename: publicImageOriginalFileName,
-				mime_type: `image/${path.extname(newFileName).replace(".", "")}`,
-			});
-
-			lecturerData.image_id = newPublicImage.id;
-		}
-
-		if (uploadedDocumentPath) {
-			// Define the target directory and generate a new unique file name
-			const targetDir = path.join(__dirname, "../../../public/docs/lecturer-cv");
-			const newFileName = path.basename(uploadedDocumentPath).replace("documentFile-", "");
-			const targetPath = path.join(targetDir, newFileName);
-
-			// Ensure target directory exists and move (rename) the file to the target folder with a new name
-			await fs.ensureDir(targetDir); // Ensure the target directory exists
-			await fs.copy(uploadedDocumentPath, targetPath); // Copy file to the target folder
-
-			console.log("File copied and renamed to:", targetPath);
-
-			const extFileName = path.extname(newFileName);
-			const publicDocumentId = newFileName.replace(extFileName, "");
-
-			const publicDocumentOriginalFileName = formatLecturerName(lecturerData.originalDocumentName.replace(extFileName, ""));
-
-			console.log(`publicDocumentId: ${publicDocumentId}`);
-
-			const newPublicDocument = await PublicDocument.create({
-				id: publicDocumentId,
-				original_filename: publicDocumentOriginalFileName,
-				mime_type: `application/${path.extname(newFileName).replace(".", "")}`,
-			});
-
-			lecturerData.cv_docs = newPublicDocument.id;
-		}
+		const { profesionalExperienceItems, educationBackgroundItems, researchActivityItems } =
+			lecturerDetail;
 
 		const newLecturer = await Lecturer.create(lecturerData, { transaction });
 
 		Array.from(profesionalExperienceItems).forEach(async (item) => {
 			const detail = {
 				lecturer_id: newLecturer.id,
-				job_title: item.jobTitle,
-				organization_name: item.organizationName,
-				start_month: item.startMonth,
-				start_year: item.startYear,
-				end_month: item.endMonth,
-				end_year: item.endYear,
+				job_title: item.job_title,
+				organization_name: item.organization_name,
+				start_year: item.start_year,
+				end_year: item.end_year === "Present" ? null : item.end_year,
+				present: item.end_year === "Present" ? "Y" : "N",
 				type: "work",
 			};
 
-			if (item.isCurrentlyWorking) {
-				detail.end_month = null;
-				detail.end_year = null;
-				detail.present = "Y";
-			}
 			await LecturerDetail.create(detail);
 		});
 
 		Array.from(educationBackgroundItems).forEach(async (item) => {
 			const detail = {
 				lecturer_id: newLecturer.id,
-				job_title: item.jobTitle,
-				organization_name: item.organizationName,
-				start_month: item.startMonth,
-				start_year: item.startYear,
-				end_month: item.endMonth,
-				end_year: item.endYear,
-				present: "N",
+				job_title: item.job_title,
+				organization_name: item.organization_name,
+				start_year: item.start_year,
+				end_year: item.end_year,
 				type: "education",
 			};
 			await LecturerDetail.create(detail);
@@ -148,13 +93,7 @@ const createLecturer = async (lecturerData) => {
 		Array.from(researchActivityItems).forEach(async (item) => {
 			const detail = {
 				lecturer_id: newLecturer.id,
-				job_title: item.jobTitle,
-				organization_name: null,
-				start_month: null,
-				start_year: null,
-				end_month: null,
-				end_year: null,
-				present: "N",
+				job_title: item.job_title,
 				type: "research",
 			};
 			await LecturerDetail.create(detail);
@@ -222,7 +161,9 @@ const updateLecturer = async (lecturerId, lecturerData) => {
 			const extFileName = path.extname(newFileName);
 			const publicDocumentId = newFileName.replace(extFileName, "");
 
-			const publicDocumentOriginalFileName = formatLecturerName(lecturerData.originalDocumentName.replace(extFileName, ""));
+			const publicDocumentOriginalFileName = formatLecturerName(
+				lecturerData.originalDocumentName.replace(extFileName, "")
+			);
 
 			console.log(`publicDocumentId: ${publicDocumentId}`);
 
@@ -348,4 +289,5 @@ module.exports = {
 	deleteLecturer,
 	findLecturerView,
 	findLecturerById,
+	findAll,
 };

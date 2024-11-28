@@ -18,18 +18,6 @@ const LecturerView = sequelize.define(
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		experience: {
-			type: DataTypes.STRING,
-			allowNull: true,
-		},
-        research: {
-			type: DataTypes.STRING,
-			allowNull: true,
-		},
-        education: {
-			type: DataTypes.STRING,
-			allowNull: true,
-		},
         doc_id: {
 			type: DataTypes.STRING,
 			allowNull: true,

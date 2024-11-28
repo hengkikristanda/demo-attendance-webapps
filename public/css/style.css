@@ -654,6 +654,11 @@ body {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+body.admin {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
 :root {
   --primary: #222831;
   --secondary: #393e46;
@@ -1627,18 +1632,6 @@ p.danger,
   z-index: 50;
 }
 
-.col-span-1 {
-  grid-column: span 1 / span 1;
-}
-
-.col-span-3 {
-  grid-column: span 3 / span 3;
-}
-
-.col-span-2 {
-  grid-column: span 2 / span 2;
-}
-
 .m-0 {
   margin: 0px;
 }
@@ -1686,6 +1679,11 @@ p.danger,
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .mb-1 {
@@ -1801,9 +1799,19 @@ p.danger,
   height: 7rem;
 }
 
+.size-48 {
+  width: 12rem;
+  height: 12rem;
+}
+
 .size-60 {
   width: 15rem;
   height: 15rem;
+}
+
+.size-8 {
+  width: 2rem;
+  height: 2rem;
 }
 
 .h-0 {
@@ -1816,6 +1824,10 @@ p.danger,
 
 .h-1 {
   height: 0.25rem;
+}
+
+.h-1\/2 {
+  height: 50%;
 }
 
 .h-10 {
@@ -2408,6 +2420,11 @@ p.danger,
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
+.bg-base {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
@@ -2460,6 +2477,11 @@ p.danger,
   background-color: rgb(34 40 49 / var(--tw-bg-opacity));
 }
 
+.bg-red-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(153 27 27 / var(--tw-bg-opacity));
+}
+
 .bg-secondary {
   --tw-bg-opacity: 1;
   background-color: rgb(57 62 70 / var(--tw-bg-opacity));
@@ -2467,6 +2489,10 @@ p.danger,
 
 .bg-secondary\/50 {
   background-color: rgb(57 62 70 / 0.5);
+}
+
+.bg-secondary\/75 {
+  background-color: rgb(57 62 70 / 0.75);
 }
 
 .bg-slate-200 {
@@ -2506,6 +2532,16 @@ p.danger,
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-line {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+}
+
+.bg-gray-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {
@@ -2680,6 +2716,10 @@ p.danger,
   text-align: start;
 }
 
+.text-end {
+  text-align: end;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -2751,6 +2791,11 @@ p.danger,
 
 .leading-relaxed {
   line-height: 1.625;
+}
+
+.text-base {
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
 }
 
 .text-danger {
@@ -3101,6 +3146,15 @@ li.action-card.danger:hover {
   background-color: rgb(238 238 238 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.admin-container {
+  margin-top: 5rem;
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
 * {
@@ -4289,6 +4343,12 @@ a {
   height: 3rem;
 }
 
+.custom-form input.disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+  font-weight: 600;
+}
+
 .custom-form input:focus,
 .custom-form textarea:focus {
   /* border: 2px solid var(--tertiary); */
@@ -4624,10 +4684,14 @@ input::file-selector-button {
   height: 4rem;
   width: 100%;
   max-width: 1536px;
+  border-radius: 0.375rem;
   border-bottom-width: 1px;
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   padding: 0.5rem;
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .navbar-admin__container {
@@ -4680,9 +4744,18 @@ input::file-selector-button {
 /* DRAWER */
 
 .drawer-admin {
-  /* @apply mt-16; */
+  margin-bottom: 1.5rem;
   min-width: -moz-fit-content;
   min-width: fit-content;
+  border-radius: 0.375rem;
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .drawer-admin__container {
@@ -4839,6 +4912,8 @@ input::file-selector-button {
 .badge-admin > i {
   font-size: 1rem;
   line-height: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
 }
 
 .badge-admin > div > p {
@@ -5112,6 +5187,55 @@ input::file-selector-button {
   justify-content: center;
   gap: 1rem;
   padding: 0.5rem;
+}
+
+/* Live Attendance */
+
+.blink-colon {
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Lecturer Detail Button */
+
+.lecturer-detail {
+  margin-bottom: 1rem;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lecturer-detail_info {
+  @applly flex flex-col;
+}
+
+.lecturer-detail_info h5 {
+  font-weight: 700;
+}
+
+.lecturer-detail_info p {
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(57 62 70 / var(--tw-text-opacity));
+}
+
+.lecturer-detail_delete {
+  cursor: pointer;
+  border-radius: 0.375rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.lecturer-detail_delete:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 173 181 / var(--tw-bg-opacity));
 }
 
 @media (min-width: 768px) {
@@ -5523,20 +5647,16 @@ input::file-selector-button {
     display: none;
   }
 
+  .lg\:w-1\/3 {
+    width: 33.333333%;
+  }
+
   .lg\:w-2\/5 {
     width: 40%;
   }
 
   .lg\:w-3\/5 {
     width: 60%;
-  }
-
-  .lg\:w-1\/2 {
-    width: 50%;
-  }
-
-  .lg\:w-1\/3 {
-    width: 33.333333%;
   }
 
   .lg\:grid-cols-2 {
@@ -5571,24 +5691,12 @@ input::file-selector-button {
     display: inline;
   }
 
-  .xl\:w-1\/2 {
-    width: 50%;
-  }
-
-  .xl\:w-1\/3 {
-    width: 33.333333%;
-  }
-
   .xl\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .xl\:grid-cols-6 {
     grid-template-columns: repeat(6, minmax(0, 1fr));
-  }
-
-  .xl\:flex-row {
-    flex-direction: row;
   }
 
   .xl\:gap-20 {

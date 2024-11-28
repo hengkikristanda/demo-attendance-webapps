@@ -133,8 +133,14 @@ function getImageUrl(data, filePath) {
 }
 
 function getImageUrlPath(data, filePath, placeholderImage = null) {
+	let imageUrl;
 	if (data.image_id) {
-		return `${filePath}/${data.image_id}.${data["mime_type"].split("/")[1]}`;
+		imageUrl = `${filePath}/${data.image_id}`;
+		if (data.mime_type) {
+			return `${imageUrl}.${data.mime_type.split("/")[1]}`;
+		} else if (data.image_mime_type) {
+			return `${imageUrl}.${data.image_mime_type.split("/")[1]}`;
+		}
 	}
 	if (placeholderImage) return placeholderImage;
 	return `https://placehold.co/600x400?text=No+Image+Available`;
@@ -171,7 +177,22 @@ async function handleUploadedFile(uploadedFile, prefix, uploadedDir) {
 	};
 }
 
+function validatePassword(password) {
+	// Regular expression for the password validation
+	const passwordRegex =
+		/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{10,}$/;
+	return passwordRegex.test(password);
+}
+
+function validateEmailInput(input) {
+	// Regular expression to validate email format
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return emailRegex.test(input);
+}
+
 module.exports = {
+	validateEmailInput,
+	validatePassword,
 	logWithTime,
 	formatDateToLongString,
 	getMonthName,

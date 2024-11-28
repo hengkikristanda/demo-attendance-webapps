@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 	<%- include('../../commonSection/header') %>
-	<body>
+	<body class="admin">
 		<%- include('../../commonSection/navbar') %>
 
-		<div class="flex w-full mt-16 bg-gray-100">
+		<div class="admin-container">
 			<%- include('../../commonSection/drawer') %>
-			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
-				<!-- container ini untuk layout dengan > 1 kolom -->
+			<div class="flex justify-between grow gap-8 overflow-auto">
 				<div class="layout-card mb-12">
-					<div class="layout-card__header">
-						<div class="flex justify-between">
-							<h1 class="title">Organization Profile</h1>
-						</div>
-						<% if (alertMessage) { %>
-						<p class="alert-badge <%=alertMessage.className%>"><%=alertMessage.message%></p>
-						<% } %>
-					</div>
+					<%- include('../../commonSection/LayoutHeader') %>
 					<form
 						class="custom-form"
 						method="POST"
@@ -57,24 +49,14 @@
 												rows="5"
 												id="organizationAddress"
 												name="organizationAddress"
-												required></textarea>
+												required><%=companyProfile.address%></textarea>
 										</div>
 										<div>
 											<label for="Organization Logo">Logo</label>
 											<span class="file-name" id="fileName">
-                                                <%
-                                                if (companyProfile.imageUrl) {
-                                                %>
-                                                    <%=companyProfile.original_filename%>
-                                                <%
-                                                } else {
-                                                %>
-                                                    Click to browse file
-                                                <%
-                                                }
-                                                %>
-                                                
-                                            </span>
+												<% if (companyProfile.imageUrl) { %> <%=companyProfile.original_filename%>
+												<% } else { %> Click to browse file <% } %>
+											</span>
 											<input
 												id="logoImageFile"
 												name="logoImageFile"
@@ -179,7 +161,7 @@
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
 
-            const contactIcon = {
+			const contactIcon = {
 				email: "/img/email.PNG",
 				facebook: "/img/facebook.PNG",
 				instagram: "/img/instagram.PNG",
@@ -189,7 +171,7 @@
 				youtube: "/img/youtube.PNG",
 			};
 
-            const contactType = document.getElementById("contactType");
+			const contactType = document.getElementById("contactType");
 			const contactLabel = document.getElementById("contactLabel");
 			const contactValue = document.getElementById("contactValue");
 			const pin = document.getElementById("pin");
@@ -240,7 +222,7 @@
 				const contactInfoImage = document.createElement("img");
 				contactInfoImage.src = contactIcon[contactType.value];
 
-                const contactInfoImageContainer = document.createElement("div");
+		              const contactInfoImageContainer = document.createElement("div");
 				contactInfoImageContainer.classList.add("contact-info_img_container");
 				contactInfoImageContainer.appendChild(contactInfoImage);
 
@@ -258,12 +240,12 @@
 				contactInfoLabelContainer.appendChild(contactInfoLabel);
 				contactInfoLabelContainer.appendChild(contactInfoValue);
 
-                const contactInfoIconContainer = document.createElement("div");
+				const contactInfoIconContainer = document.createElement("div");
 				contactInfoIconContainer.classList.add("contact-info_icon_container");
 
-                if (pin.checked) {
+				if (pin.checked) {
 					const pinIcon = document.createElement("i");
-					pinIcon.classList.add("pushpin", "remix", "icon-md", "primary");
+					pinIcon.classList.add("pushpin", "remix", "icon-md", "primary", "hidden");
 					contactInfoIconContainer.appendChild(pinIcon);
 				}
 
@@ -275,12 +257,12 @@
 					"danger-bold",
 					"cursor-pointer"
 				);
-                contactInfoIconContainer.appendChild(contactInfoRemoveIcon);
+		              contactInfoIconContainer.appendChild(contactInfoRemoveIcon);
 
 				contactInfoContainer.appendChild(contactInfoImageContainer);
-                contactInfoContainer.appendChild(contactInfoLabelContainer);
-                contactInfoContainer.appendChild(contactInfoIconContainer);
-                contactInputContainer.appendChild(contactInfoContainer)
+		              contactInfoContainer.appendChild(contactInfoLabelContainer);
+		              contactInfoContainer.appendChild(contactInfoIconContainer);
+		              contactInputContainer.appendChild(contactInfoContainer)
 
 				contactInfoRemoveIcon.addEventListener("click", () => {
 					contactInfoContainer.remove();
@@ -329,7 +311,7 @@
 				const contactInfoImage = document.createElement("img");
 				contactInfoImage.src = contactIcon[type];
 
-                const contactInfoImageContainer = document.createElement("div");
+		              const contactInfoImageContainer = document.createElement("div");
 				contactInfoImageContainer.classList.add("contact-info_img_container");
 				contactInfoImageContainer.appendChild(contactInfoImage);
 
@@ -347,12 +329,12 @@
 				contactInfoLabelContainer.appendChild(contactInfoLabel);
 				contactInfoLabelContainer.appendChild(contactInfoValue);
 
-                const contactInfoIconContainer = document.createElement("div");
+				const contactInfoIconContainer = document.createElement("div");
 				contactInfoIconContainer.classList.add("contact-info_icon_container");
-                
-                const pinned = isPinned === 1 ? true : false;
 
-                if (pinned) {
+				const pinned = isPinned === 1 ? true : false;
+
+				if (pinned) {
 					const pinIcon = document.createElement("i");
 					pinIcon.classList.add("pushpin", "remix", "icon-md", "primary");
 					contactInfoIconContainer.appendChild(pinIcon);
@@ -366,12 +348,12 @@
 					"danger-bold",
 					"cursor-pointer"
 				);
-                contactInfoIconContainer.appendChild(contactInfoRemoveIcon);
+				contactInfoIconContainer.appendChild(contactInfoRemoveIcon);
 
 				contactInfoContainer.appendChild(contactInfoImageContainer);
-                contactInfoContainer.appendChild(contactInfoLabelContainer);
-                contactInfoContainer.appendChild(contactInfoIconContainer);
-                contactInputContainer.appendChild(contactInfoContainer)
+				contactInfoContainer.appendChild(contactInfoLabelContainer);
+				contactInfoContainer.appendChild(contactInfoIconContainer);
+				contactInputContainer.appendChild(contactInfoContainer)
 
 				contactInfoRemoveIcon.addEventListener("click", () => {
 					contactInfoContainer.remove();
@@ -384,12 +366,12 @@
 				contactInfoHiddenInput.type = "hidden";
 				contactInfoHiddenInput.setAttribute("data-contact-type", type);
 				contactInfoHiddenInput.setAttribute("data-contact-url", value);
-                contactInfoHiddenInput.value = `${type};${label};${value};${pinned}`;
+		              contactInfoHiddenInput.value = `${type};${label};${value};${pinned}`;
 
 				contactInputContainer.appendChild(contactInfoHiddenInput);
 			}
 
-            function onLoad() {
+		          function onLoad() {
 				const companyAddress = `<%- JSON.stringify(companyProfile.address) %>`;
 
 				const organizationAddress = document.getElementById("organizationAddress");
@@ -397,12 +379,12 @@
 					.replace(/<br\s*\/?>/gi, "\n")
 					.replace(/^"|"$/g, "");
 
-                const contactInfoListData = <%- JSON.stringify(contactInfoListData) %>;
-                contactInfoListData.forEach((item) => loadContactList(item.label, item.value, item.channel, item.id, item.pinned));
+		              const contactInfoListData = <%- JSON.stringify(contactInfoListData) %>;
+		              contactInfoListData.forEach((item) => loadContactList(item.label, item.value, item.channel, item.id, item.pinned));
 
 			}
 
-            onLoad();
+			onLoad();
 
 			addContactLink.addEventListener("mouseup", openModal);
 			closeModalButton.addEventListener("mouseup", closeModal);

@@ -2,47 +2,66 @@
 <html lang="en">
 	<%- include('../../commonSection/header') %>
 
-	<body class="admin">
+	<style>
+		.blink-colon {
+			animation: blink 1s steps(2, start) infinite;
+		}
+
+		@keyframes blink {
+			50% {
+				opacity: 0;
+			}
+		}
+	</style>
+	<body class="bg-base">
 		<%- include('../../commonSection/navbar') %>
 
-		<div class="admin-container">
+		<div class="flex w-full mt-16">
 			<%- include('../../commonSection/drawer') %>
 			<div class="flex justify-between grow gap-8 overflow-auto">
 				<div class="layout-card mb-12">
 					<%- include('../../commonSection/LayoutHeader') %>
-
-					<form id="liveAttendanceForm" action="/member/live-attendance" method="POST">
-						<input type="hidden" id="clockedType" name="clockedType" />
-						<div
-							id="attendanceContainer"
-							class="flex flex-col bg-tertiary/5 rounded-md mx-auto px-4 py-8 w-fit items-center shadow-md gap-4 border-b-0">
-							<h6 class="font-bold">Live Attendance</h6>
-							<h1 class="font-semibold" id="clock"><span class="loader primary md"></span></h1>
-							<div id="date" class="text-sm border-b-0">Loading date...</div>
-							<div id="error"></div>
-							<div id="clockInOut" class="flex flex-col gap-6 mt-8 hidden border-b-0">
-								<button
-									id="clockInButton"
-									class="btn disabled w-full md:w-fit min-w-96"
-									type="button"
-									disabled>
-									Clock In
-								</button>
-								<button
-									id="clockOutButton"
-									class="btn disabled w-full md:w-fit min-w-96"
-									type="button"
-									disabled>
-									Clock Out
-								</button>
-							</div>
-							<input id="clockedTime" name="clockedTime" type="hidden" />
-							<input id="clockedLocation" name="clockedLocation" type="hidden" />
-						</div>
-					</form>
 				</div>
 			</div>
 
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<div class="layout-card">
+					<div class="layout-card__header">
+						<form id="liveAttendanceForm" action="/member/live-attendance" method="POST">
+							<input type="hidden" id="clockedType" name="clockedType" />
+							<div class="flex justify-between border-b-0">
+								<h1 class="title">Live Attendance</h1>
+							</div>
+							<div
+								id="attendanceContainer"
+								class="flex flex-col bg-tertiary/5 rounded-md mx-auto px-4 py-8 w-fit items-center shadow-md gap-4 border-b-0">
+								<h6 class="font-bold">Live Attendance</h6>
+								<h1 class="font-semibold" id="clock"><span class="loader primary md"></span></h1>
+								<div id="date" class="text-sm border-b-0">Loading date...</div>
+								<div id="error"></div>
+								<div id="clockInOut" class="flex flex-col gap-6 mt-8 hidden border-b-0">
+									<button
+										id="clockInButton"
+										class="btn disabled w-full md:w-fit min-w-96"
+										type="button"
+										disabled>
+										Clock In
+									</button>
+									<button
+										id="clockOutButton"
+										class="btn disabled w-full md:w-fit min-w-96"
+										type="button"
+										disabled>
+										Clock Out
+									</button>
+								</div>
+								<input id="clockedTime" name="clockedTime" type="hidden" />
+								<input id="clockedLocation" name="clockedLocation" type="hidden" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 

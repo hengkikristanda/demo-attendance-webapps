@@ -16,7 +16,7 @@ const User = sequelize.define(
 		},
 		encoded_password: {
 			type: DataTypes.STRING(255),
-			allowNull: false,
+			allowNull: true,
 		},
 		full_name: {
 			type: DataTypes.STRING(128),
@@ -28,8 +28,20 @@ const User = sequelize.define(
 		},
 		email: {
 			type: DataTypes.STRING(100),
-			allowNull: false,
+			allowNull: true,
 			unique: true,
+		},
+		image_id: {
+			type: DataTypes.STRING(36),
+			allowNull: true,
+		},
+		mime_type: {
+			type: DataTypes.STRING(32),
+			allowNull: true,
+		},
+		original_filename: {
+			type: DataTypes.STRING(128),
+			allowNull: true,
 		},
 		failed_login_attempt: {
 			type: DataTypes.INTEGER,

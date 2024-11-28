@@ -8,7 +8,10 @@ const fs = require("fs");
 
 const LecturerService = require("../../services/Lecturer/LecturerService");
 const LecturerDetailService = require("../../services/Lecturer/LecturerDetailService");
+const UserService = require("../../services/UserService");
+const CmsMenuService = require("../../services/CmsMenuService");
 const CommonUtils = require("../../utils/CommonUtils");
+const { Lecturer } = require("../../model/Lecturer/Lecturer");
 
 const classList = {
 	200: "success",
@@ -31,26 +34,43 @@ const messageList = {
 };
 
 const getLecturer = async (req, res) => {
-	let lecturerList = await LecturerService.findAllLecturerView("pos");
+	try {
+		const mappedMenuList = await UserService.findMappedMenuByUserRoleId(req.user.userRole);
+		res.locals.cmsMenuList = await CmsMenuService.groupingMenus(mappedMenuList);
 
-	// Map the desired attribute (e.g., name) to a new object
-	lecturerList = lecturerList.map((alumni) => {
-		return {
-			id: alumni.id,
-			fullName: alumni["full_name"],
-			pos: alumni.pos,
-		};
-	});
+		let lecturerList = await LecturerService.findAll("pos", true);
 
-	const passedData = req.query.res;
+		// Map the desired attribute (e.g., name) to a new object
+		lecturerList = lecturerList.map((lecturer) => {
+			return {
+				id: lecturer.id,
+				fullName: lecturer.full_name,
+				emailAddress: lecturer.email_address,
+				pos: lecturer.pos,
+				imageUrl: CommonUtils.getImageUrlPath(lecturer, "/img/lecturer"),
+			};
+		});
 
-	res.locals.responseMessage = messageList[passedData];
-	res.locals.responseMessageClass = classList[passedData];
+		res.locals.lecturerList = lecturerList;
 
-	res.render("memberArea/web/lecturer/list", {
-		title: "PTDI STTD - Our Lecturer",
-		lecturerList,
-	});
+		const alertMessage = req.flash("alertMessage");
+
+		return res.render("memberArea/web/lecturer/list", {
+			title: "PTDI STTD - Lecturer",
+			alertMessage: alertMessage[0],
+			pageHeader: { heading: "Lecturer", subheading: "Our Lecturer" },
+		});
+	} catch (error) {
+		console.log(error);
+		req.flash("alertMessage");
+		req.flash("alertMessage", {
+			message: "Something went wrong, please try again in a few minutes.",
+			className: "danger",
+			actionLink: "/users/login",
+			actionLinkLabel: "Back to login page",
+		});
+		return res.redirect("/error");
+	}
 };
 
 const getCreateLecturer = async (req, res) => {
@@ -72,12 +92,28 @@ const getCreateLecturer = async (req, res) => {
 	const startYear = 1965;
 	const currentYear = new Date().getFullYear();
 
-	res.render("memberArea/web/lecturer/create", {
-		title: "PTDI STTD - Add New Lecturer",
-		monthNames,
-		startYear,
-		currentYear,
-	});
+	try {
+		const mappedMenuList = await UserService.findMappedMenuByUserRoleId(req.user.userRole);
+		res.locals.cmsMenuList = await CmsMenuService.groupingMenus(mappedMenuList);
+
+		const alertMessage = req.flash("alertMessage");
+		return res.render("memberArea/web/lecturer/create", {
+			title: "PTDI STTD - Lecturer",
+			alertMessage: alertMessage[0],
+			pageHeader: { heading: "Lecturer", subheading: "Add New Lecturer" },
+			monthNames,
+			startYear,
+			currentYear,
+		});
+	} catch (error) {
+		console.log(error);
+		req.flash("alertMessage");
+		req.flash("alertMessage", {
+			message: error.message,
+			className: "danger",
+		});
+		return res.redirect("/member/web/lecturer");
+	}
 };
 
 const getUpdateLecturer = async (req, res) => {
@@ -208,7 +244,7 @@ const getUpdateLecturer = async (req, res) => {
 };
 
 const postCreateLecturer = async (req, res) => {
-	try {
+	/* try {
 		// Get form data
 		const fullName = req.body.fullName;
 		const emailAddress = req.body.emailAddress;
@@ -254,7 +290,67 @@ const postCreateLecturer = async (req, res) => {
 	} catch (error) {
 		console.error("Error handling form:", error);
 		res.redirect(`/member/web/lecturer?res=401`);
+	} */
+
+	try {
+		const { fullName, emailAddress, displayOrder } = req.body;
+
+		const lecturerData = {
+			full_name: fullName,
+			email_address: emailAddress,
+			pos: displayOrder,
+		};
+
+		const profesionalExperienceItems = JSON.parse(req.body.profesionalExperienceItems);
+		const educationBackgroundItems = JSON.parse(req.body.educationBackgroundItems);
+		const researchActivityItems = JSON.parse(req.body.researchActivityItems);
+
+		const imageFile = req.files["profilePictureFile"] ? req.files["profilePictureFile"][0] : null;
+
+		if (imageFile) {
+			const uploadedImage = await CommonUtils.handleUploadedFile(
+				imageFile,
+				"profilePictureFile-",
+				"public/img/lecturer/"
+			);
+			lecturerData.image_id = uploadedImage.id;
+			lecturerData.image_mime_type = uploadedImage.mime_type;
+			lecturerData.image_original_filename = uploadedImage.original_filename;
+		}
+
+		const documentFile = req.files["documentFile"] ? req.files["documentFile"][0] : null;
+
+		if (documentFile) {
+			const uploadedDocument = await CommonUtils.handleUploadedFile(
+				documentFile,
+				"documentFile-",
+				"public/docs/lecturer-cv/"
+			);
+			lecturerData.cv_docs = uploadedDocument.id;
+			lecturerData.cv_docs_mime_type = uploadedDocument.mime_type;
+			lecturerData.cv_docs_original_filename = uploadedDocument.original_filename;
+		}
+
+		const createdLecturer = await LecturerService.createLecturer(lecturerData, {
+			profesionalExperienceItems,
+			educationBackgroundItems,
+			researchActivityItems,
+		});
+
+		req.flash("alertMessage");
+		req.flash("alertMessage", {
+			message: "Successfully Add Lecturer",
+			className: "success",
+		});
+	} catch (error) {
+		console.log(error);
+		req.flash("alertMessage");
+		req.flash("alertMessage", {
+			message: error.message,
+			className: "danger",
+		});
 	}
+	return res.redirect("/member/web/lecturer");
 };
 
 const putUpdateLecturer = async (req, res) => {
@@ -316,14 +412,27 @@ const putUpdateLecturer = async (req, res) => {
 };
 
 const deleteLecturer = async (req, res) => {
-	const lecturerId = req.params.lecturerId;
+	try {
+		const lecturerId = req.params.lecturerId;
 
-	const deletedAlumni = await LecturerService.deleteLecturer(lecturerId);
-	if (deletedAlumni) {
-		res.redirect(`/member/web/lecturer?res=200`);
-	} else {
-		res.redirect(`/member/web/lecturer?res=400`);
+		const deletedLecturer = await LecturerService.deleteLecturer(lecturerId);
+		if (!deletedLecturer) {
+			throw new Error("Failed to delete lecturer. Please try again later");
+		}
+		req.flash("alertMessage");
+		req.flash("alertMessage", {
+			message: "Successfully Delete Lecturer",
+			className: "success",
+		});
+	} catch (error) {
+		console.log(error);
+		req.flash("alertMessage");
+		req.flash("alertMessage", {
+			message: error.message,
+			className: "danger",
+		});
 	}
+	return res.redirect("/member/web/lecturer");
 };
 
 module.exports = {

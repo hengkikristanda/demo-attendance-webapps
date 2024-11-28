@@ -1,54 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 	<%- include('../../commonSection/header') %>
-	<body>
+	<body class="admin">
 		<%- include('../../commonSection/navbar') %>
 
-		<div class="flex w-full mt-16">
+		<div class="admin-container">
 			<%- include('../../commonSection/drawer') %>
-			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
-				<!-- container ini untuk layout dengan > 1 kolom -->
-				<div class="layout-card">
-					<div class="layout-card__header">
-						<div class="flex justify-between">
-							<h1 class="title">Our Lecturer</h1>
-							<a href="lecturer/add" class="text-red-800 text-right underline p-0 m-0"
-								>Add New Lecturer</a
-							>
-						</div>
-						<% if (typeof responseMessage !== 'undefined') { %>
-						<p class="badge-admin <%= responseMessageClass %>"><%= responseMessage %></p>
-						<% } %>
+			<div class="flex justify-between grow gap-8 overflow-auto">
+				<div class="layout-card mb-12">
+					<%- include('../../commonSection/LayoutHeader') %>
+
+					<div class="container-card">
+						<table class="overflow-x-scroll editable table-auto">
+							<thead>
+								<tr>
+									<th class="title text-center">No</th>
+									<th class="title">Lecturers</th>
+									<th class="title">Email</th>
+									<th class="title">Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% lecturerList.forEach((lecturer) => { %>
+								<tr>
+									<td class="text-center"><%=lecturer.pos%></td>
+									<td>
+										<div class="flex items-center gap-4">
+											<div class="size-8 rounded-full overflow-hidden">
+												<img
+													src="<%=lecturer.imageUrl%>"
+													class="w-full h-full object-cover object-center" />
+											</div>
+											<a
+												href="/member/web/lecturer/<%=lecturer.id%>/update"
+												class="m-0 p-0 h-fit hover:underline font-semibold text-secondary">
+												<%=lecturer.fullName%>
+											</a>
+										</div>
+									</td>
+									<td>
+										<a
+											href="mailto:<%=lecturer.emailAddress%>"
+											class="m-0 p-0 h-fit hover:underline font-semibold text-tertiary"
+											><%=lecturer.emailAddress%></a
+										>
+									</td>
+									<td>
+										<a
+											id="<%=lecturer.id%>"
+											title="Delete Lecturer"
+											class="delete-row m-0 p-0 h-fit w-fit rounded-md group-hover:inline py-2 px-4 hover:bg-tertiary">
+											<i class="delete-bin remix secondary icon-xs"></i>
+										</a>
+									</td>
+								</tr>
+								<%});%>
+							</tbody>
+						</table>
 					</div>
-					<table id="lecturerTable" class="overflow-x-scroll editable">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th class="text-center">Display Order</th>
-							</tr>
-						</thead>
-						<tbody>
-							<% lecturerList.forEach((lecturer) =>{ %>
-							<tr class="group min-h-12 h-12">
-								<td><%=lecturer.fullName%></td>
-								<td class="text-center">
-									<a
-										id="<%=lecturer.id%>"
-										title="Delete Lecturer"
-										class="delete-row hidden rounded-md group-hover:inline py-2 px-4 hover:bg-tertiary">
-										<i class="delete-bin remix secondary icon-xs"></i> </a
-									><a
-										href="/member/web/lecturer/<%=lecturer.id%>/update"
-										title="Update Lecturer"
-										class="hidden rounded-md group-hover:inline py-2 px-4 hover:bg-tertiary">
-										<i class="pencil-edit remix secondary icon-xs"></i>
-									</a>
-									<p class="group-hover:hidden"><%=lecturer.pos%></p>
-								</td>
-							</tr>
-							<% }) %>
-						</tbody>
-					</table>
+					<div class="container-card gap-6">
+						<a href="lecturer/add" class="btn success">Add Lecturer</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -59,7 +71,9 @@
 
 		const rows = document.querySelectorAll(".delete-row");
 		rows.forEach((row, index) => {
-			row.addEventListener("mouseup", () => openModal(index, `/member/web/lecturer/${row.id}/delete`));
+			row.addEventListener("mouseup", () =>
+				openModal(index, `/member/web/lecturer/${row.id}/delete`)
+			);
 		});
 	</script>
 </html>

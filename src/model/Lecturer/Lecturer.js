@@ -24,8 +24,24 @@ const Lecturer = sequelize.define(
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
+		cv_docs_mime_type: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		cv_docs_original_filename: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
 		image_id: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		image_mime_type: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		image_original_filename: {
+			type: DataTypes.STRING,
 			allowNull: true,
 		},
 		pos: {

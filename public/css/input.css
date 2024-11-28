@@ -10,6 +10,9 @@
 	body {
 		@apply bg-white max-w-screen-2xl mx-auto;
 	}
+	body.admin {
+		@apply bg-base;
+	}
 	:root {
 		--primary: #222831;
 		--secondary: #393e46;
@@ -290,6 +293,9 @@ div::-webkit-scrollbar-thumb:hover {
 	}
 	li.action-card.danger {
 		@apply text-danger font-semibold hover:bg-danger hover:text-white;
+	}
+	.admin-container {
+		@apply flex w-full mt-20 bg-base gap-4;
 	}
 }
 
@@ -1315,6 +1321,10 @@ a {
 	height: 3rem;
 }
 
+.custom-form input.disabled {
+	@apply bg-gray-200 font-semibold;
+}
+
 .custom-form input:focus,
 .custom-form textarea:focus {
 	/* border: 2px solid var(--tertiary); */
@@ -1613,7 +1623,7 @@ input::file-selector-button {
 
 /* NAVBAR ADMIN */
 .navbar-admin {
-	@apply h-16 border-b border-b p-2 fixed z-40 top-0 w-full max-w-screen-2xl bg-white;
+	@apply h-16 border-b border-b p-2 fixed z-40 top-0 w-full max-w-screen-2xl bg-white rounded-md shadow-md;
 }
 .navbar-admin__container {
 	@apply flex justify-between items-center;
@@ -1630,8 +1640,7 @@ input::file-selector-button {
 
 /* DRAWER */
 .drawer-admin {
-	/* @apply mt-16; */
-	@apply min-w-fit;
+	@apply min-w-fit mb-6 bg-white border-2 border-gray-200 rounded-md shadow-md;
 }
 .drawer-admin__container {
 	@apply h-screen w-full sm:w-fit py-4 mb-72 flex flex-col gap-4 relative;
@@ -1858,4 +1867,35 @@ input::file-selector-button {
 
 .contact-info_icon_container {
 	@apply flex h-full justify-center items-center gap-4 p-2 w-fit min-w-10 max-w-20;
+}
+
+/* Live Attendance */
+.blink-colon {
+	animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+	50% {
+		opacity: 0;
+	}
+}
+
+/* Lecturer Detail Button */
+.lecturer-detail {
+	@apply mb-4 grow justify-between items-center;
+}
+.lecturer-detail_info {
+	@applly flex flex-col;
+}
+
+.lecturer-detail_info h5 {
+	@apply font-bold;
+}
+
+.lecturer-detail_info p {
+	@apply text-secondary font-semibold;
+}
+
+.lecturer-detail_delete {
+	@apply hover:bg-tertiary px-4 py-2 rounded-md cursor-pointer;
 }

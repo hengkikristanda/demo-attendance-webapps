@@ -16,6 +16,11 @@ const contactTypeId = {
 	youtube: "732a4615-8911-11ef-a41d-f07370d6e2ea",
 };
 
+const PAGE_HEADER = {
+	heading: "PTDI STTD Profile",
+	subheading: "Update Organization Information",
+};
+
 const getOrganizationProfile = async (req, res) => {
 	try {
 		const mappedMenuList = await UserService.findMappedMenuByUserRoleId(req.user.userRole);
@@ -32,6 +37,7 @@ const getOrganizationProfile = async (req, res) => {
 		return res.render("memberArea/settings/organizationProfile", {
 			title: "PTDI STTD - Organization Profile",
 			alertMessage: alertMessage[0],
+			pageHeader: PAGE_HEADER,
 		});
 	} catch (error) {
 		req.flash("alertMessage");

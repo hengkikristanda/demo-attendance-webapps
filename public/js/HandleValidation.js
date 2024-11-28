@@ -16,3 +16,22 @@ function cleanUpValues(inputList) {
 	});
 }
 
+function validateEmailInput(input) {
+	// Regular expression to validate email format
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return emailRegex.test(input);
+}
+
+function enforcePhoneNumber(input) {
+	// Remove any character that is not a digit
+	let cleaned = ("" + input.value).replace(/\D/g, "");
+
+	// Match the cleaned number to the pattern (XXX) XXX-XXXX
+	let match = cleaned.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
+
+	if (match) {
+		input.value = !match[2]
+			? match[1]
+			: "(" + match[1] + ") " + match[2] + (match[3] ? "-" + match[3] : "");
+	}
+}

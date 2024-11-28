@@ -31,6 +31,8 @@ module.exports = {
 				danger: "#EEEEEE",
 				line: "#cbd5e1",
 				info: "#6b7280",
+				base: "#f3f4f6", // gray-100
+				tertiaryLite: "#F2F9F9",
 			},
 			maxWidth: {
 				"1/3": "33%",

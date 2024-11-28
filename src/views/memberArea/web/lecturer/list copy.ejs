@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card">
+					<div class="layout-card__header">
+						<div class="flex justify-between">
+							<h1 class="title">Our Lecturer</h1>
+							<a href="lecturer/add" class="text-red-800 text-right underline p-0 m-0"
+								>Add New Lecturer</a
+							>
+						</div>
+						<% if (typeof responseMessage !== 'undefined') { %>
+						<p class="badge-admin <%= responseMessageClass %>"><%= responseMessage %></p>
+						<% } %>
+					</div>
+					<table id="lecturerTable" class="overflow-x-scroll editable">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th class="text-center">Display Order</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% lecturerList.forEach((lecturer) =>{ %>
+							<tr class="group min-h-12 h-12">
+								<td><%=lecturer.fullName%></td>
+								<td class="text-center">
+									<a
+										id="<%=lecturer.id%>"
+										title="Delete Lecturer"
+										class="delete-row hidden rounded-md group-hover:inline py-2 px-4 hover:bg-tertiary">
+										<i class="delete-bin remix secondary icon-xs"></i> </a
+									><a
+										href="/member/web/lecturer/<%=lecturer.id%>/update"
+										title="Update Lecturer"
+										class="hidden rounded-md group-hover:inline py-2 px-4 hover:bg-tertiary">
+										<i class="pencil-edit remix secondary icon-xs"></i>
+									</a>
+									<p class="group-hover:hidden"><%=lecturer.pos%></p>
+								</td>
+							</tr>
+							<% }) %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+	<%- include('../../commonSection/alertModal') %>
+	<script>
+		const lecturerTable = document.getElementById("lecturerTable");
+
+		const rows = document.querySelectorAll(".delete-row");
+		rows.forEach((row, index) => {
+			row.addEventListener("mouseup", () => openModal(index, `/member/web/lecturer/${row.id}/delete`));
+		});
+	</script>
+</html>

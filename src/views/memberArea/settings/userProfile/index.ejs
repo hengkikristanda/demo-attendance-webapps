@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body class="admin">
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="admin-container">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow gap-8 overflow-auto">
+				<div class="layout-card mb-12">
+					<%- include('../../commonSection/LayoutHeader') %>
+
+					<form
+						class="custom-form"
+						method="POST"
+						id="updateUserProfileForm"
+						enctype="multipart/form-data"
+						action="/member/settings/user-profile/<%=userProfile.id%>/update">
+						<div class="flex flex-col">
+							<div class="container-card mb-4 grow">
+								<div id="profilePictureContainer" class="flex flex-col gap-4 border-0 grow relative">
+									<div class="w-full h-1/2 bg-red-800 absolute">
+									</div>
+									<div
+										id="editableProfilePictureContainer"
+										class="group size-48 rounded-full overflow-hidden mx-auto cursor-pointer relative my-8 border-8 border-white">
+										<div
+											class="bg-secondary/75 w-full h-full absolute hidden group-hover:flex justify-center items-center">
+											<p class="font-semibold text-white underline">Change Photo</p>
+										</div>
+										<img
+											id="profilePictureImage"
+											name="profilePictureImage"
+											src="<%=userProfile.imageUrl%>"
+											class="w-full h-full object-cover object-center" />
+										<input id="profilePictureFile" name="profilePictureFile" type="file" class="hidden" accept=".png, .jpg, .jpeg" />
+									</div>
+								</div>
+							</div>
+							<div class="flex gap-4">
+								<div class="container-card mb-4 grow">
+									<div class="flex gap-4 w-full">
+										<div id="userProfileInputContainer" class="flex flex-col gap-4 border-0 grow">
+											<div>
+												<label for="Fullname">User ID/NIP</label>
+												<input
+													id="userId"
+													name="userId"
+													type="text"
+													maxlength="50"
+													value="<%=userProfile.userId%>"
+													disabled
+													size="75"
+													class="disabled" />
+											</div>
+											<div>
+												<label for="Fullname">Fullname</label>
+												<input
+													id="fullName"
+													name="fullName"
+													type="text"
+													maxlength="50"
+													placeholder="Your full name..."
+													value="<%=userProfile.fullName%>"
+													size="75" />
+											</div>
+											<div>
+												<label for="Email Address">Email Address</label>
+												<input
+													id="emailAddress"
+													name="emailAddress"
+													type="email"
+													placeholder="e.g: email@example.com"
+													maxlength="100"
+													value="<%=userProfile.emailAddress%>"
+													size="75" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="container-card mb-4 grow">
+									<div class="flex gap-4 w-full">
+										<div id="userProfileInputContainer" class="flex flex-col gap-4 border-0 grow">
+											<div>
+												<label for="Mobile Phone Number">Mobile Phone Number</label>
+												<input
+													id="mobilePhoneNumber"
+													name="mobilePhoneNumber"
+													type="tel"
+													placeholder="Your mobile phone number"
+													maxlength="15"
+													value="<%=userProfile.phoneNumber%>"
+													size="75" />
+											</div>
+											<div>
+												<label for="Password">Password</label>
+												<input
+													id="password"
+													name="password"
+													type="password"
+													placeholder="Your password"
+													maxlength="128"
+													value=""
+													size="75" />
+											</div>
+											<div>
+												<label for="Confirm Password">Confirm Password</label>
+												<input
+													id="confirmPassword"
+													name="confirmPassword"
+													type="password"
+													placeholder="Confirm your password"
+													maxlength="128"
+													value=""
+													size="75" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-card gap-6">
+							<button type="submit" class="btn success">Save Changes</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script src="/js/CommonUtils.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const mobilePhoneNumber = document.getElementById("mobilePhoneNumber");
+			mobilePhoneNumber.addEventListener("input", enforceNumberInput);
+			mobilePhoneNumber.addEventListener("paste", enforceNumberInputOnCopyPaste);
+
+			const profilePictureFile = document.getElementById("profilePictureFile");
+
+			const editableProfilePictureContainer = document.getElementById(
+				"editableProfilePictureContainer"
+			);
+
+			editableProfilePictureContainer.addEventListener("mouseup", () => profilePictureFile.click());
+
+			profilePictureFile.addEventListener("change", function (event) {
+				const file = event.target.files[0];
+				if (file) {
+					const reader = new FileReader();
+					reader.onload = function (e) {
+						document.getElementById("profilePictureImage").src = e.target.result;
+					};
+					reader.readAsDataURL(file);
+				}
+			});
+		});
+	</script>
+</html>
