@@ -4,6 +4,7 @@ const { WEB_PAGE_TITLE } = require("../utils/Constants");
 
 const UserService = require("../services/UserService");
 const EmailService = require("../services/EmailService/EmailService");
+const RequestResetPasswordLog = require("../model/AuditLog/RequestResetPasswordLog")
 
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 const JWT_EXPIRES_IN = "1h"; // Token expiration time (e.g., 1 hour)F

@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer");
 const fs = require("fs");
 const path = require("path");
+const { RequestResetPasswordLog } = require("../../model/AuditLog/RequestResetPasswordLog");
 
 require("dotenv").config();
 
@@ -39,9 +40,25 @@ const sendNewPasswordEmail = async (userEmail, newPassword) => {
 
 		await transporterNoReply.sendMail(mailOptions);
 		console.log(`Password reset email sent to ${userEmail}`);
+
+		const resetPasswordLog = {
+			email_recipient: userEmail,
+			status: "SUCCESS",
+		};
+
+		await RequestResetPasswordLog.create(resetPasswordLog);
+
 		return { success: true, message: `Password reset email sent to ${userEmail}` };
 	} catch (error) {
 		console.error("Error sending password reset email:", error);
+		const resetPasswordLog = {
+			email_recipient: userEmail,
+			status: "FAILED",
+			error_log: error.message
+		};
+
+		await RequestResetPasswordLog.create(resetPasswordLog);
+
 		return { success: false, message: "Failed to send password reset email" };
 	}
 };
