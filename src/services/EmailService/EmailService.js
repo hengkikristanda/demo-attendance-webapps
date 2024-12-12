@@ -54,7 +54,7 @@ const sendNewPasswordEmail = async (userEmail, newPassword) => {
 		const resetPasswordLog = {
 			email_recipient: userEmail,
 			status: "FAILED",
-			error_log: error.message
+			error_log: error
 		};
 
 		await RequestResetPasswordLog.create(resetPasswordLog);
