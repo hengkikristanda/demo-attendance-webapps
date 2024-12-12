@@ -414,13 +414,14 @@ div::-webkit-scrollbar-thumb:hover {
 	/* Alert */
 	.alert-badge {
 		/* @apply border px-2.5 py-2 rounded mb-2; */
-		@apply border px-2.5 py-2 rounded-lg mb-2;
+		/* @apply border px-2.5 py-2 rounded-sm mb-2; */
+		@apply px-2.5 py-2 rounded-sm mb-2 shadow-md;
 	}
 	.alert-badge.success {
 		@apply border-green-500 bg-green-100 text-green-700;
 	}
 	.alert-badge.danger {
-		@apply border-red-500 bg-red-100 text-red-700;
+		@apply border-red-800 bg-red-100 text-red-700;
 	}
 
 	/* common style */
@@ -1319,6 +1320,14 @@ a {
 
 .custom-form input {
 	height: 3rem;
+}
+
+.custom-form input.input-sm {
+	height: 1.8rem;
+}
+
+.custom-form input[type="checkbox"] {
+	height: 1.3rem;
 }
 
 .custom-form input.disabled {

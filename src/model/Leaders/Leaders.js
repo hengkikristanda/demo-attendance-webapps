@@ -28,6 +28,14 @@ const Leaders = sequelize.define(
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
+		mime_type: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		original_filename: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
 	},
 	{
 		tableName: "leaders",

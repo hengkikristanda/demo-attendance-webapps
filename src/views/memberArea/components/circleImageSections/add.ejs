@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body>
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="flex w-full mt-16 bg-gray-100">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow p-4 gap-8 overflow-auto">
+				<!-- container ini untuk layout dengan > 1 kolom -->
+				<div class="layout-card mb-12">
+					<div class="layout-card__header">
+						<div class="flex justify-between">
+							<h1 class="title">Add Sections</h1>
+						</div>
+						<% if (alertMessage) { %>
+						<p class="alert-badge <%=alertMessage.className%>"><%=alertMessage.message%></p>
+						<% } %>
+					</div>
+
+					<form
+						class="custom-form"
+						method="POST"
+						id="addSectionsForm"
+						enctype="multipart/form-data"
+						action="/member/components/section-circle-image/add">
+						<div class="container-card w-full mb-4">
+							<div class="flex flex-col gap-4 border-0">
+								<div>
+									<label for="Section Heading">Section Heading</label>
+									<input
+										id="sectionHeading"
+										name="sectionHeading"
+										type="text"
+										maxlength="512"
+										size="75"
+										required />
+								</div>
+
+								<div class="flex justify-start gap-2">
+									<input id="displaySeeMore" type="checkbox" />
+									<label for="Live Chat or Email" class="w-fit"
+										>Display
+										<span class="mx-2 text-sm text-tertiary underline">"See More"</span></label
+									>
+								</div>
+
+								<div id="seeMoreUrl" class="hidden">
+									<label for="Section Heading">Insert URL</label>
+									<input
+										id="sectionHeading"
+										name="sectionHeading"
+										type="url"
+										maxlength="512"
+										size="75" />
+								</div>
+							</div>
+						</div>
+						<div class="container-card w-full mb-4">
+							<div id="displayImageContainer" class="flex flex-col gap-4 border-0 w-full">
+								<label for="Section Heading">Display Image</label>
+								<table id="displayImageTable" class="overflow-x-scroll editable table-auto"></table>
+								<div>
+									<span class="file-name" id="fileName">Add Image</span>
+								</div>
+							</div>
+						</div>
+						<div class="container-card gap-6">
+							<button type="submit" class="btn success">Save</button>
+							<a href="/member/components/section-circle-image" class="text-link danger-bold"
+								>Discard Changes</a
+							>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			let index = 0;
+
+			const displayImageContainer = document.getElementById("displayImageContainer");
+			const seeMoreUrl = document.getElementById("seeMoreUrl");
+			function toggleDisplaySeeMoreUrl(ev) {
+				if (ev.target.checked && seeMoreUrl.classList.contains("hidden")) {
+					seeMoreUrl.classList.remove("hidden");
+				} else {
+					seeMoreUrl.classList.add("hidden");
+				}
+			}
+
+			function createInputFileElement() {
+				const input = document.createElement("input");
+				input.name = "sectionDisplayImageFile";
+				input.type = "file";
+				input.accept = ".png, .jpg, .jpeg";
+
+				return input;
+			}
+
+			function createTableRow(imgSrc) {
+				const uuid = crypto.randomUUID();
+				// Create table row
+				const tr = document.createElement("tr");
+				tr.id = uuid;
+
+				// Create first table cell
+				const td1 = document.createElement("td");
+
+				// Create flex container div
+				const flexDiv = document.createElement("div");
+				flexDiv.className = "flex items-center gap-4";
+
+				// Create image container
+				const imgContainer = document.createElement("div");
+				imgContainer.className = "size-12 rounded-full overflow-hidden";
+
+				// Create image element
+				const img = document.createElement("img");
+				img.src = imgSrc;
+				img.className = "w-full h-full object-cover object-center";
+
+				// Append image to container
+				imgContainer.appendChild(img);
+
+				// Create input container
+				const inputContainer = document.createElement("div");
+				inputContainer.className = "grow";
+
+				// Create input element
+				const input = document.createElement("input");
+				input.type = "text";
+				input.className = "input-sm";
+				input.placeholder = "Insert caption here...";
+
+				// Append input to container
+				inputContainer.appendChild(input);
+
+				// Append image container and input container to flex container
+				flexDiv.appendChild(imgContainer);
+				flexDiv.appendChild(inputContainer);
+
+				// Append flex container to first cell
+				td1.appendChild(flexDiv);
+
+				// Create second table cell
+				const td2 = document.createElement("td");
+				td2.className = "w-2";
+
+				// Create delete button anchor
+				const deleteButton = document.createElement("a");
+				deleteButton.title = "Remove image";
+				deleteButton.className =
+					"delete-row m-0 p-0 h-fit w-fit rounded-md group-hover:inline py-2 px-4 hover:bg-line";
+
+				// Create delete icon
+				const deleteIcon = document.createElement("i");
+				deleteIcon.className = "close-circle remix danger-bold icon-md";
+
+				// Append icon to button
+				deleteButton.appendChild(deleteIcon);
+
+				// Append button to second cell
+				td2.appendChild(deleteButton);
+
+				// Append both cells to row
+				tr.appendChild(td1);
+				tr.appendChild(td2);
+
+				deleteButton.addEventListener("mouseup", () => tr.remove());
+
+				return tr;
+			}
+
+			function validateNumberOfFileInput() {
+				const inputFileLength = document.querySelectorAll(
+					'[name="sectionDisplayImageFile"]'
+				).length;
+				return inputFileLength < 4;
+			}
+
+			const displaySeeMore = document.getElementById("displaySeeMore");
+			displaySeeMore.addEventListener("change", toggleDisplaySeeMoreUrl);
+
+			const table = document.querySelector("#displayImageTable"); // Replace with your table selector
+
+			const fileNameDisplay = document.getElementById("fileName");
+			fileNameDisplay.addEventListener("mouseup", () => {
+				if (validateNumberOfFileInput()) {
+					const newInputFile = createInputFileElement();
+					displayImageContainer.appendChild(newInputFile);
+					newInputFile.click();
+				} else {
+					alert("Max Display Image file exceed: 4");
+				}
+
+				// sectionDisplayImageFile[index].click();
+			});
+		});
+	</script>
+</html>

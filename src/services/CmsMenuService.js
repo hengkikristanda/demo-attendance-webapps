@@ -10,11 +10,11 @@ const grouping = {
 	},
 	webAdmin: {
 		label: "Web Admin",
-		listMenu: ["Alumni", "Lecturer", "News", "Facilities"],
+		listMenu: ["Alumni", "Lecturer", "Leaders", "News", "Facilities"],
 	},
 	webComponent: {
 		label: "Components",
-		listMenu: ["Simple Section", "Sections", "Section CTA", "Accordion", "Gallery"],
+		listMenu: ["Simple Section", "Sections", "Section CTA", "Accordion", "Gallery", "Circle Image"],
 	},
 	settings: {
 		label: "Settings",

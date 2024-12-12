@@ -19,7 +19,7 @@ const getLeaders = async (req, res) => {
 
 		res.locals.ourLeadersHeroTitle = await CommonComponentServices.getOurLeadersHero(req);
 
-		let ourLeadersList = await LeadersService.findAllInLeadersView();
+		let ourLeadersList = await LeadersService.findAll("pos", true);
 
 		ourLeadersList = ourLeadersList.map((leader) => ({
 			id: leader.id,

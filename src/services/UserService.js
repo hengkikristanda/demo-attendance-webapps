@@ -23,6 +23,14 @@ const updateLoginAttempt = async (user) => {
 
 const updateUserProfile = async (existingUserProfileData, newPassword, uploadedFile) => {
 	try {
+
+		const id = req.params.id;
+
+		const existingUser = await UserService.findById(id);
+		if (!existingUser) {
+			throw new Error("No User found for the provided id: " + id);
+		}
+
 		if (uploadedFile) {
 			const uploadedSectionImage = await CommonUtils.handleUploadedFile(
 				uploadedFile,

@@ -1253,13 +1253,16 @@ p.danger,
 
 .alert-badge {
   /* @apply border px-2.5 py-2 rounded mb-2; */
+  /* @apply border px-2.5 py-2 rounded-sm mb-2; */
   margin-bottom: 0.5rem;
-  border-radius: 0.5rem;
-  border-width: 1px;
+  border-radius: 0.125rem;
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .alert-badge.success {
@@ -1273,7 +1276,7 @@ p.danger,
 
 .alert-badge.danger {
   --tw-border-opacity: 1;
-  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+  border-color: rgb(153 27 27 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
@@ -1634,6 +1637,11 @@ p.danger,
 
 .m-0 {
   margin: 0px;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .mx-4 {
@@ -2532,16 +2540,6 @@ p.danger,
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-line {
-  --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
-}
-
-.bg-gray-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {
@@ -4343,6 +4341,14 @@ a {
   height: 3rem;
 }
 
+.custom-form input.input-sm {
+  height: 1.8rem;
+}
+
+.custom-form input[type="checkbox"] {
+  height: 1.3rem;
+}
+
 .custom-form input.disabled {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
@@ -5266,6 +5272,11 @@ input::file-selector-button {
 .hover\:bg-gray-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-line:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-primary:hover {

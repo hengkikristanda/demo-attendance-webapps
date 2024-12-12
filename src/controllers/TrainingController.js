@@ -639,6 +639,49 @@ const getTraining = async (req, res) => {
 	return res.redirect("/error");
 };
 
+const getTrainingRegistration = async (req, res) => {
+	try {
+		const selectedLanguage = req.language;
+
+		// Common components
+		const navBarMenuList = await CommonComponentServices.getWebMenu(req.language);
+		res.locals.webMenuList = navBarMenuList;
+		res.locals.footerTranslation = await CommonComponentServices.getFooter(req);
+		res.locals.contactInfo = await CommonComponentServices.getContactInfo();
+		res.locals.companyInfo = await CommonComponentServices.getCompanyInfo();
+
+		const trainingTranslation = await CommonComponentServices.getTrainingSection(req);
+
+		res.locals.trainingTranslation = trainingTranslation;
+
+		let trainingCategoryTranslation = ID;
+
+		if (selectedLanguage === "en") {
+			trainingCategoryTranslation = EN;
+		} else if (selectedLanguage === "ko") {
+			trainingCategoryTranslation = KO;
+		} else if (selectedLanguage === "ja") {
+			trainingCategoryTranslation = JA;
+		} else if (selectedLanguage === "zh") {
+			trainingCategoryTranslation = ZH;
+		}
+
+		res.locals.trainingCategoryTranslation = trainingCategoryTranslation;
+		res.locals.ctaButtonLabel = CTA_BUTTON_LABEL[selectedLanguage];
+
+		// Render the index page
+		return res.render("academics/training/registration/index", {
+			title: `${WEB_PAGE_TITLE} ${currentPage[selectedLanguage]}`,
+			currentPage: currentPage[selectedLanguage],
+			selectedLanguage,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+	return res.redirect("/error");
+};
+
 module.exports = {
 	getTraining,
+	getTrainingRegistration,
 };

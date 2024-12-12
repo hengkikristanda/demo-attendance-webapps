@@ -106,7 +106,7 @@ router.get("/news/:newsId?", NewsController.getNews);
 //Academics
 router.get("/lecturers", LecturerController.getLecturers);
 router.get("/training", TrainingController.getTraining);
-router.get("/training/registration", Dispatcher.getTrainingRegistration);
+router.get("/training/registration", TrainingController.getTrainingRegistration);
 
 //Academics Under Graduate
 router.get(

@@ -17,14 +17,16 @@ const { body, validationResult } = require("express-validator");
 const FacilitiesController = require("../controllers/webAdmin/FacilitiesAdminController");
 const SectionsController = require("../controllers/webAdmin/SectionsController");
 const SimpleSectionsController = require("../controllers/webAdmin/SimpleSectionsController");
+const CircleIconSectionsController = require("../controllers/webAdmin/CircleIconSectionsController");
 const GallerySectionsController = require("../controllers/webAdmin/GallerySectionsController");
 const AccordionSectionsController = require("../controllers/webAdmin/AccordionSectionsController");
 const CtaSectionsController = require("../controllers/webAdmin/CtaSectionsController");
 const OrganizationProfileController = require("../controllers/settings/OrganizationProfileController");
 const UserProfileController = require("../controllers/settings/UserProfileController");
-const AttendanceController = require("../controllers/employee/attendanceController")
+const AttendanceController = require("../controllers/employee/attendanceController");
 const AssetsController = require("../controllers/AssetsController");
 const LecturerAdminController = require("../controllers/webAdmin/LecturerAdminController");
+const LeaderAdminController = require("../controllers/webAdmin/LeaderAdminController");
 
 router.use(express.urlencoded({ extended: true }));
 
@@ -57,6 +59,27 @@ router.post(
 	LecturerAdminController.putUpdateLecturer
 );
 
+// Leaders
+router.get("/member/web/leader", verifyToken, LeaderAdminController.getLeader);
+router.get(
+	"/member/web/leader/:leaderId/update",
+	verifyToken,
+	uploadErrorHandler,
+	LeaderAdminController.getUpdateLeader
+);
+router.get("/member/web/leader/:leaderId/delete", verifyToken, LeaderAdminController.deleteLeader);
+router.get("/member/web/leader/add", verifyToken, LeaderAdminController.getCreateLeader);
+router.post(
+	"/member/web/leader/add",
+	imageUpload.single("profilePictureFile"),
+	LeaderAdminController.postCreateLeader
+);
+router.post(
+	"/member/web/leader/:leaderId/update",
+	imageUpload.single("profilePictureFile"),
+	uploadErrorHandler,
+	LeaderAdminController.putUpdateLeader
+);
 
 // Facilities
 router.get("/member/web/facilities", verifyToken, FacilitiesController.getFacilities);
@@ -255,6 +278,44 @@ router.post(
 	imageUpload.single("sectionDisplayImageFile"),
 	uploadErrorHandler,
 	CtaSectionsController.putSectionsUpdate
+);
+
+// Circle Icon Section
+router.get(
+	"/member/components/section-circle-image",
+	verifyToken,
+	CircleIconSectionsController.getSections
+);
+router.get(
+	"/member/components/section-circle-image/add",
+	verifyToken,
+	CircleIconSectionsController.getSectionsAdd
+);
+router.post(
+	"/member/components/section-circle-image/add",
+	verifyToken,
+	imageUpload.single("sectionDisplayImageFile"),
+	uploadErrorHandler,
+	CircleIconSectionsController.postSectionsAdd
+);
+
+router.get(
+	"/member/components/section-simple/:sectionId/delete",
+	verifyToken,
+	SimpleSectionsController.deleteSection
+);
+
+router.get(
+	"/member/components/section-simple/:sectionId/update",
+	verifyToken,
+	SimpleSectionsController.getSectionsUpdate
+);
+router.post(
+	"/member/components/section-simple/:sectionId/update",
+	verifyToken,
+	imageUpload.single("sectionDisplayImageFile"),
+	uploadErrorHandler,
+	SimpleSectionsController.putSectionsUpdate
 );
 
 // ===== Settings

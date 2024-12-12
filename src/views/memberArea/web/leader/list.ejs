@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body class="admin">
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="admin-container">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow gap-8 overflow-auto">
+				<div class="layout-card mb-12">
+					<%- include('../../commonSection/LayoutHeader') %>
+
+					<div class="container-card">
+						<table class="overflow-x-scroll editable table-auto">
+							<thead>
+								<tr>
+									<th class="title text-center">No</th>
+									<th class="title">Leaders</th>
+									<th class="title">Job Position</th>
+									<th class="title">Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+								if (leaderList.length > 0) {
+									leaderList.forEach((leader) => { 
+								%>
+								<tr>
+									<td class="text-center"><%=leader.pos%></td>
+									<td>
+										<div class="flex items-center gap-4">
+											<div class="size-8 rounded-full overflow-hidden">
+												<img
+													src="<%=leader.imageUrl%>"
+													class="w-full h-full object-cover object-center" />
+											</div>
+											<a
+												href="/member/web/leader/<%=leader.id%>/update"
+												class="m-0 p-0 h-fit hover:underline font-semibold text-secondary">
+												<%=leader.fullName%>
+											</a>
+										</div>
+									</td>
+									<td><%=leader.jobPosition%></td>
+									<td>
+										<a
+											id="<%=leader.id%>"
+											title="Delete Leader"
+											class="delete-row m-0 p-0 h-fit w-fit rounded-md group-hover:inline py-2 px-4 hover:bg-tertiary">
+											<i class="delete-bin remix secondary icon-xs"></i>
+										</a>
+									</td>
+								</tr>
+								<%});
+								} else {
+								%>
+								<tr>
+									<td colspan="4" class="text-center">
+										No Data Found
+									</td>
+								</tr>
+								<%
+								}
+								%>
+							</tbody>
+						</table>
+					</div>
+					<div class="container-card gap-6">
+						<a href="leader/add" class="btn success">Add Leader</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<%- include('../../commonSection/alertModal') %>
+	<script>
+		const rows = document.querySelectorAll(".delete-row");
+		rows.forEach((row, index) => {
+			row.addEventListener("mouseup", () =>
+				openModal(index, `/member/web/leader/${row.id}/delete`)
+			);
+		});
+	</script>
+</html>

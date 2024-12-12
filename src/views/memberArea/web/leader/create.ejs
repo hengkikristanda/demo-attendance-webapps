@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../../commonSection/header') %>
+	<body class="admin">
+		<%- include('../../commonSection/navbar') %>
+
+		<div class="admin-container">
+			<%- include('../../commonSection/drawer') %>
+			<div class="flex justify-between grow gap-8 overflow-auto">
+				<div class="layout-card mb-12">
+					<%- include('../../commonSection/LayoutHeader') %>
+
+					<form
+						class="custom-form"
+						method="POST"
+						id="updateUserProfileForm"
+						enctype="multipart/form-data"
+						action="/member/web/leader/add">
+						<div class="flex flex-col">
+							<div class="flex gap-4">
+								<div class="container-card mb-4 grow">
+									<div
+										id="profilePictureContainer"
+										class="flex flex-col gap-4 border-0 grow relative">
+										<div class="w-full h-1/2 bg-red-800 absolute"></div>
+										<div
+											id="editableProfilePictureContainer"
+											class="group size-48 rounded-full overflow-hidden mx-auto my-auto cursor-pointer relative border-8 border-white">
+											<div
+												class="bg-secondary/75 w-full h-full absolute hidden group-hover:flex justify-center items-center">
+												<p class="font-semibold text-white underline">Change Photo</p>
+											</div>
+											<img
+												id="profilePictureImage"
+												name="profilePictureImage"
+												src="/img/profile-picture-placeholder.jpeg"
+												class="w-full h-full object-cover object-center" />
+											<input
+												id="profilePictureFile"
+												name="profilePictureFile"
+												type="file"
+												class="hidden"
+												accept=".png, .jpg, .jpeg" />
+										</div>
+									</div>
+								</div>
+								<div class="container-card mb-4 grow">
+									<div class="flex gap-4 w-full">
+										<div id="userProfileInputContainer" class="flex flex-col gap-4 border-0 grow">
+											<div>
+												<label for="Full Name">Leader Full Name</label>
+												<input
+													id="fullName"
+													name="fullName"
+													type="text"
+													placeholder="Leader's Full name with academics title"
+													maxlength="128"
+													value=""
+													size="75" />
+											</div>
+											<div>
+												<label for="Job Position">Job Position</label>
+												<input
+													id="jobPosition"
+													name="jobPosition"
+													type="text"
+													placeholder="Leader's Job Position"
+													maxlength="128"
+													value=""
+													size="75" />
+											</div>
+											<div>
+												<label for="Display Order">Display Order</label>
+												<input
+													id="displayOrder"
+													name="displayOrder"
+													type="text"
+													placeholder="e.g: 1"
+													maxlength="2"
+													value=""
+													size="75" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-card gap-6">
+							<button type="submit" class="btn success">Save Changes</button>
+							<a href="/member/web/leader" class="text-link danger-bold">Discard Changes</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="/js/CommonUtils.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const displayOrder = document.getElementById("displayOrder");
+			displayOrder.addEventListener("input", enforceNumberInput);
+			displayOrder.addEventListener("paste", enforceNumberInputOnCopyPaste);
+
+			const profilePictureFile = document.getElementById("profilePictureFile");
+
+			const editableProfilePictureContainer = document.getElementById(
+				"editableProfilePictureContainer"
+			);
+
+			editableProfilePictureContainer.addEventListener("mouseup", () => profilePictureFile.click());
+
+			profilePictureFile.addEventListener("change", function (event) {
+				const file = event.target.files[0];
+				if (file) {
+					const reader = new FileReader();
+					reader.onload = function (e) {
+						document.getElementById("profilePictureImage").src = e.target.result;
+					};
+					reader.readAsDataURL(file);
+				}
+			});
+		});
+	</script>
+</html>
